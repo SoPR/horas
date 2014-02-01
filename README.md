@@ -51,6 +51,10 @@ Si tienes una idea de como mejorar esta plataforma o si has encontrado algún er
 
 Este proyecto no sería posible sin la colaboración de otros developers que han donado su tiempo para crear esta aplicación. Si  encuentras un error por favor crea un [issue](https://github.com/SoPR/horas/issues) y si puedes arreglarlo te invitamos a hacer y someter un pull request.
 
+Si necesitas ideas de como ayudar puede ver la lista de tareas pendientes.
+
+:white_check_mark: [TO-DO](TODO.md)
+
 
 ### License
 
