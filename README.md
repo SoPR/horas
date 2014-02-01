@@ -44,7 +44,7 @@ Para que este sistema sea efectivo debemos plantear algunas reglas simples a las
 
 Si tienes una idea de como mejorar esta plataforma o si has encontrado algún error déjanos saber creando un issue en el repositorio.
 
-[Issues](https://github.com/SoPR/horas/issues) - para reportar problemas, errores, sugerencias, etc.
+:beetle: [Issues](https://github.com/SoPR/horas/issues) - para reportar problemas, errores, sugerencias, etc.
 
 
 ### Developers
