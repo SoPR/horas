@@ -53,6 +53,7 @@ INSTALLED_APPS = (
     'allauth.socialaccount.providers.persona',
 
     # Local apps
+    'apps.util',
     'apps.profiles',
 )
 
@@ -75,6 +76,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.tz',
     'django.contrib.messages.context_processors.messages',
     'django.core.context_processors.request',
+
     'allauth.account.context_processors.account',
     'allauth.socialaccount.context_processors.socialaccount',
 )
