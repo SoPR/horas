@@ -9,7 +9,7 @@ class User(AbstractUser):
     Defines our custom user model.
     '''
     # Public profile information
-    bio = models.TextField()
+    bio = models.TextField(blank=True)
     twitter_username = models.CharField(blank=True, max_length=50)
     facebook_username = models.CharField(blank=True, max_length=50)
     github_username = models.CharField(blank=True, max_length=50)
