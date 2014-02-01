@@ -6,7 +6,8 @@
 .LSOverride
 
 # Icon must ends with two \r.
-Icon
+Icon
+
 
 # Thumbnails
 ._*
@@ -64,6 +65,7 @@ coverage.xml
 # Django stuff:
 *.log
 *.pot
+*.sqlite3
 
 # Sphinx documentation
 docs/_build/
