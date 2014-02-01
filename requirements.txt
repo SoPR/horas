@@ -1,7 +1,8 @@
 -e git://github.com/django/django.git@4a488c14833000eaf5d2b4c2787b6a61c99a4f53#egg=Django-origin/HEAD
 Werkzeug==0.9.4
 django-allauth==0.15.0
--e git+https://github.com/django-debug-toolbar/django-debug-toolbar.git@1449c014ed449c7c139e2912b0ebb063b1134c83#egg=django_debug_toolbar-origin/master
+django-braces==1.3.1
+-e git+https://github.com/django-debug-toolbar/django-debug-toolbar.git@1449c014ed449c7c139e2912b0ebb063b1134c83#egg=django_debug_toolbar-origin/HEAD
 django-extensions==1.3.3
 django-taggit==0.11.2
 oauthlib==0.6.1
