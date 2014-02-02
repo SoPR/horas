@@ -56,6 +56,22 @@ Si necesitas ideas de como ayudar puede ver la lista de tareas pendientes.
 :white_check_mark: [TO-DO](TODO.md)
 
 
+#### Para correr el proyecto
+
+Es necesario tener instalado [Brunch](http://brunch.io) para poder correr el proyecto.
+
+```bash
+$ git clone https://github.com/SoPR/horas.git
+$ cd horas/static_src
+$ npm install
+$ cd ..
+$ pip install -r requirements.txt
+$ python manage.py migrate
+$ python manage.py brunchserver
+```
+Abre tu browser en [http://localhost:8000/](http://localhost:8000/)
+
+
 ### License
 
 All of "Horas" is licensed under the MIT license.
