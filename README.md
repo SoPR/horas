@@ -2,6 +2,7 @@
 
 Una plataforma para facilitar la [mentoría](http://es.wikipedia.org/wiki/Mentoria).
 
+![Horas Screenshot](http://i.imgur.com/PVqMSQm.png)
 
 ### Idea
 
