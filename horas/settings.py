@@ -80,14 +80,27 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'allauth.socialaccount.context_processors.socialaccount',
 )
 
+TEMPLATE_DIRS = (
+    os.path.join(BASE_DIR, 'templates'),
+)
+
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend'
 )
 
-# all auth settings
-ACCOUNT_EMAIL_VERIFICATION = 'none'
+# Custom user model
+AUTH_USER_MODEL = 'profiles.User'
+LOGIN_URL = '/accounts/login/'
+LOGIN_REDIRECT_URL = '/profiles/'
+
+# allauth settings
+ACCOUNT_EMAIL_SUBJECT_PREFIX = '[Horas] '
+ACCOUNT_LOGOUT_ON_GET = True
 ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_SIGNUP_PASSWORD_VERIFICATION = False
+ACCOUNT_CONFIRM_EMAIL_ON_GET = True
+ACCOUNT_LOGOUT_REDIRECT_URL = LOGIN_URL
 
 ROOT_URLCONF = 'horas.urls'
 
@@ -122,8 +135,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/dev/howto/static-files/
 
 STATIC_URL = '/static/'
-
-# Custom user model
-AUTH_USER_MODEL = 'profiles.User'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

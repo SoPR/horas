@@ -6,5 +6,6 @@ urlpatterns = patterns(
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^profiles/', include('apps.profiles.urls')),
+
     url(r'^accounts/', include('allauth.urls')),
 )
