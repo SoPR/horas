@@ -53,7 +53,6 @@ INSTALLED_APPS = (
     'allauth.socialaccount.providers.persona',
 
     # Local apps
-    'apps.util',
     'apps.profiles',
 )
 
