@@ -17,7 +17,7 @@ class Command(StaticfilesRunserverCommand):
     def start_brunch(self):
         self.stdout.write('--> Starting brunch')
         self.brunch_process = subprocess.Popen(
-            ['cd {0} && npm start'.format(settings.BRUNCH_DIR)],
+            ['cd {0} && brunch watch --server'.format(settings.BRUNCH_DIR)],
             shell=True,
             stdin=subprocess.PIPE,
             stdout=self.stdout,
