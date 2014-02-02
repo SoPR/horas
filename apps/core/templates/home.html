@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block ember_app_scripts %}
+  <!--Rendered by backend-->
+{% endblock ember_app_scripts %}
+
+{% block title %}
+    {% trans "Horas - Todos ayudando a todos" %}
+{% endblock title %}
+
+{% block content %}
+    {% include "persona/auth.html" %}
+    <h1 class="page-title">{% trans "Horas" %}</h1>
+    <h2 class="page-subtitle">
+        {% blocktrans %}
+            Donde mentores donan <span class="highlight">1 hora</span> a la semana para ayudar a gente que quiere hacer lo imposible.
+        {% endblocktrans %}
+    </h2>
+
+    <section class="container home-login-buttons">
+        <h4 class="home-login-title">{% trans "Entra ahora, solo toma un minuto empezar" %}</h4>
+        <ul class="menu-list">
+            {% include "socialaccount/snippets/provider_list.html" with process="login" %}
+        </ul>
+        <span class="help-text login-help-text">
+            {% blocktrans %}
+                Puedes registrarte usando una de tus cuentas de redes sociales, pero si esa idea no te gusta puedes <a href="#">crear una cuenta tradicional</a>, si ya la tienes haz <a href="#">login</a>.
+            {% endblocktrans %}
+        </span>
+    </section>
+
+    <section class="container cont-top-line home-stats-container">
+        <section class="third">
+            <h3 class="block-title">{% trans "Mentores" %}</h3>
+            <span class="stat stat-lg">1,523</span>
+        </section>
+        <section class="third">
+            <h3 class="block-title">{% trans "Reuniones" %}</h3>
+            <span class="stat stat-lg">3,582</span>
+        </section>
+        <section class="third last">
+            <h3 class="block-title">{% trans "Disiplinas" %}</h3>
+            <span class="stat stat-lg">422</span>
+        </section>
+    </section>
+{% endblock content %}

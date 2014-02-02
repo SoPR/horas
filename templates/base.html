@@ -25,15 +25,8 @@
     {% block content %}{% endblock content %}
     {% block extra_body %}{% endblock %}
 
+    <script src="{% static 'javascripts/vendor.js' %}"></script>
     {% block ember_app_scripts %}
-        <script>
-            var SETTINGS = {
-                login_url: "{% url 'account_login' %}",
-                logout_url: "{% url 'account_logout' %}",
-                signup_url: "{% url 'account_signup' %}",
-            };
-        </script>
-        <script src="{% static 'javascripts/vendor.js' %}"></script>
         <script src="{% static 'javascripts/app.js' %}"></script>
         <script>require('initialize');</script>
     {% endblock ember_app_scripts %}

@@ -1,4 +1,135 @@
 @import 'nib'
 
-html, body
-  margin 20px
+linkColor = #13a1f8
+linkActiveColor = #fb3115
+grey0 = #e6e6e6
+grey1 = #bfbfbf
+grey2 = #7f7f7f
+grey3 = #3f3f3f
+twitterColor = #469aea
+facebookColor = #3d5490
+googleColor = #d3342c
+personaColor = #f0741e
+
+html
+    font-family 'Helvetica Neue', Helvetica, Arial, sans-serif
+
+a
+    color linkColor
+
+    &:active
+        color linkActiveColor
+
+.page-title
+    font-size 150px
+    letter-spacing -20px
+    text-align center
+    margin-bottom 0px
+
+.page-subtitle
+    color grey2
+    font-weight normal
+    text-align center
+    margin 0 auto
+    width 600px
+
+.highlight
+    color black
+    background-color yellow
+
+.container
+    margin 20px auto
+    width 960px
+
+.cont-top-line
+    border-top 1px solid grey0
+
+.third
+    margin-right 10px
+    float left
+    width 300px
+    text-align center
+
+.last
+    margin-right 0
+
+.block-title
+    color grey1
+
+.stat
+    font-weight bold
+
+.stat-lg
+    color grey3
+    font-size 60px
+
+.home-stats-container
+    margin-top 50px
+
+.home-login-buttons
+    text-align center
+    margin 30px auto
+
+.menu-list
+    padding 0
+
+.menu-list-item
+    display inline
+
+.btn
+    padding 15px 30px
+    background-color grey0
+    border-radius 3px
+    text-decoration none
+    color darken(grey0, 50)
+
+    &:hover
+        background-color darken(grey0, 10)
+
+    &:active
+        background-color darken(grey0, 20)
+
+
+.btn-twitter
+    background-color twitterColor
+    color lighten(twitterColor, 30) !important
+    &:hover
+        background-color darken(twitterColor, 10)
+    &:active
+        background-color darken(twitterColor, 20)
+
+.btn-facebook
+    background-color facebookColor
+    color lighten(facebookColor, 40) !important
+    &:hover
+        background-color darken(facebookColor, 10)
+    &:active
+        background-color darken(facebookColor, 20)
+
+.btn-google
+    background-color googleColor
+    color lighten(googleColor, 40) !important
+    &:hover
+        background-color darken(googleColor, 10)
+    &:active
+        background-color darken(googleColor, 20)
+
+.btn-persona
+    background-color personaColor
+    color lighten(personaColor, 40) !important
+    &:hover
+        background-color darken(personaColor, 10)
+    &:active
+        background-color darken(personaColor, 20)
+
+.help-text
+    font-size 12px
+    color grey2
+
+.login-help-text
+    display block
+    margin 30px auto 0 auto
+    width 420px
+
+.home-login-title
+    margin-bottom 25px

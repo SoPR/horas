@@ -8,4 +8,6 @@ urlpatterns = patterns(
     url(r'^profiles/', include('apps.profiles.urls')),
 
     url(r'^accounts/', include('allauth.urls')),
+
+    url(r'', include('apps.core.urls')),
 )
