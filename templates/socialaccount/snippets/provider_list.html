@@ -3,17 +3,13 @@
 {% for provider in socialaccount.providers %}
 {% if provider.id == "openid" %}
 {% for brand in provider.get_brands %}
-<li class="menu-list-item">
   <a title="{{brand.name}}"
-     class="btn socialaccount_provider btn-{{provider.id}} {{brand.id}}"
+     class="btn btn-lg btn-{{provider.id}} socialaccount_provider {{brand.id}}"
      href="{% provider_login_url provider.id openid=brand.openid_url process=process %}"
      >{{brand.name}}</a>
-</li>
 {% endfor %}
 {% endif %}
-<li class="menu-list-item">
-  <a title="{{provider.name}}" class="btn socialaccount_provider btn-{{provider.id}}"
+  <a title="{{provider.name}}" class="btn btn-lg btn-{{provider.id}} socialaccount_provider"
      href="{% provider_login_url provider.id process=process %}">{{provider.name}}</a>
-</li>
 {% endfor %}
 

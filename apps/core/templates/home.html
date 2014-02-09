@@ -11,39 +11,50 @@
 
 {% block content %}
     {% include "persona/auth.html" %}
-    <h1 class="page-title">{% trans "Horas" %}</h1>
-    <h2 class="page-subtitle">
-        {% blocktrans %}
-            Donde mentores donan <span class="highlight">1 hora</span> a la semana para ayudar a gente que quiere hacer lo imposible.
-        {% endblocktrans %}
-    </h2>
 
-    <section class="container home-login-buttons">
-        <h4 class="home-login-title">{% trans "Entra ahora, solo toma un minuto empezar" %}</h4>
-        <ul class="menu-list">
-            {% include "socialaccount/snippets/provider_list.html" with process="login" %}
-        </ul>
-        <span class="help-text login-help-text">
-            {% url 'account_signup' as account_signup %}
-            {% url 'account_login' as account_login %}
-            {% blocktrans %}
-                Puedes registrarte usando una de tus cuentas de redes sociales, pero si esa idea no te gusta puedes <a href="{{ account_signup }}">crear una cuenta tradicional</a>, si ya la tienes haz <a href="{{ account_login }}">login</a>.
-            {% endblocktrans %}
-        </span>
-    </section>
+    <div class="container">
+        <div class="row col-sm-12">
+            <h1 class="page-title text-center">{% trans "Horas" %}</h1>
+        </div> <!-- /.row col-sm-12 -->
 
-    <section class="container cont-top-line home-stats-container">
-        <section class="third">
-            <h3 class="block-title">{% trans "Mentores" %}</h3>
-            <span class="stat stat-lg">1,523</span>
-        </section>
-        <section class="third">
-            <h3 class="block-title">{% trans "Reuniones" %}</h3>
-            <span class="stat stat-lg">3,582</span>
-        </section>
-        <section class="third last">
-            <h3 class="block-title">{% trans "Disiplinas" %}</h3>
-            <span class="stat stat-lg">422</span>
-        </section>
-    </section>
+        <div class="row col-sm-6 col-sm-offset-3">
+            <h3 class="page-subtitle text-center">
+                {% blocktrans %}
+                    Donde mentores donan <span class="highlight">1 hora</span> a la semana para ayudar a gente que quiere hacer lo imposible.
+                {% endblocktrans %}
+            </h3>
+        </div> <!-- /.row col-sm-6 col-sm-offset-3 -->
+
+        <section class="row col-sm-12 text-center home-login-area">
+            <h4 class="home-login-title">{% trans "Entra ahora, solo toma un minuto empezar" %}</h4>
+
+            <div class="row col-sm-12 home-login-button-group">
+                {% include "socialaccount/snippets/provider_list.html" with process="login" %}
+            </div>
+
+            <div class="col-sm-6 col-sm-offset-3 help-text">
+                {% url 'account_signup' as account_signup %}
+                {% url 'account_login' as account_login %}
+                {% blocktrans %}
+                    Puedes registrarte usando una de tus cuentas de redes sociales, pero si esa idea no te gusta puedes <a href="{{ account_signup }}">crear una cuenta tradicional</a>, si ya la tienes haz <a href="{{ account_login }}">login</a>.
+                {% endblocktrans %}
+            </div>
+        </section> <!-- /.row col-sm-12 text-center home-login-area -->
+
+        <section class="row col-sm-12 text-center home-stats-container">
+            <section class="col-sm-4">
+                <h3>{% trans "Mentores" %}</h3>
+                <span class="stat stat-lg">1,523</span>
+            </section>
+            <section class="col-sm-4">
+                <h3>{% trans "Reuniones" %}</h3>
+                <span class="stat stat-lg">3,582</span>
+            </section>
+            <section class="col-sm-4">
+                <h3>{% trans "Disiplinas" %}</h3>
+                <span class="stat stat-lg">422</span>
+            </section>
+        </section> <!-- /.row col-sm-12 text-center home-stats-container -->
+
+    </div> <!-- /.container -->
 {% endblock content %}
