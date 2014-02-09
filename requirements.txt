@@ -1,13 +1,3 @@
--e git://github.com/django/django.git@43510cffcbf64e73232da1d6209151c7232fd2b6#egg=Django-dev
-Werkzeug==0.9.4
+-e git+git://github.com/django/django.git@1.7a2#egg=django-alpha
 django-allauth==0.15.0
-django-braces==1.3.1
--e git+https://github.com/django-debug-toolbar/django-debug-toolbar.git@1449c014ed449c7c139e2912b0ebb063b1134c83#egg=django_debug_toolbar-origin/HEAD
 django-extensions==1.3.3
-django-taggit==0.11.2
-oauthlib==0.6.1
-python3-openid==3.0.3
-requests==2.2.1
-requests-oauthlib==0.4.0
-six==1.5.2
-sqlparse==0.1.11

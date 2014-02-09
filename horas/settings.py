@@ -40,10 +40,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
 
     # Third-party
-    'debug_toolbar.apps.DebugToolbarConfig',
     'django_extensions',
-
-    # allauth
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
