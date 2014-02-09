@@ -9,5 +9,5 @@ urlpatterns = patterns(
 
     url(r'^accounts/', include('allauth.urls')),
 
-    url(r'', include('apps.core.urls')),
+    url(r'^$', include('apps.core.urls')),
 )
