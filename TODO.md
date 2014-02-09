@@ -4,9 +4,11 @@ Sorry for the spanglish. If you want to contribute just pick a task and update i
 
 - <input type="checkbox" disabled checked> **[done]** - Initial social auth setup with Twitter, Facebook, Google and Mozilla Persona.
 
+- <input type="checkbox" disabled checked> **[done]** - Setup of Brunch With Ember Reloaded.
+
 - <input type="checkbox" disabled> **[in progress: [gcollazo](http://github.com/gcollazo)]** - Override all auth templates with our custom versions.
 
-- <input type="checkbox" disabled checked> **[done]** - Setup of Brunch With Ember Reloaded.
+- <input type="checkbox" disabled> **[in progress: community]** - Come up with a name and domain for the project. Please join the discussion on [issue #1](https://github.com/SoPR/horas/issues/1).
 
 - <input type="checkbox" disabled> **[not started]** - Make generic html rendered by the server to deliver all the JavaScript, css and `<noscript>` data.
 
