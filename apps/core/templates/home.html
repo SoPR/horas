@@ -24,8 +24,10 @@
             {% include "socialaccount/snippets/provider_list.html" with process="login" %}
         </ul>
         <span class="help-text login-help-text">
+            {% url 'account_signup' as account_signup %}
+            {% url 'account_login' as account_login %}
             {% blocktrans %}
-                Puedes registrarte usando una de tus cuentas de redes sociales, pero si esa idea no te gusta puedes <a href="#">crear una cuenta tradicional</a>, si ya la tienes haz <a href="#">login</a>.
+                Puedes registrarte usando una de tus cuentas de redes sociales, pero si esa idea no te gusta puedes <a href="{{ account_signup }}">crear una cuenta tradicional</a>, si ya la tienes haz <a href="{{ account_login }}">login</a>.
             {% endblocktrans %}
         </span>
     </section>
