@@ -13,9 +13,7 @@ exports.config = {
         before: [
           'vendor/scripts/common/console-polyfill.js',
           'vendor/scripts/common/jquery.js',
-          'vendor/scripts/common/handlebars.js',
-          'vendor/scripts/development/ember.js',
-          'vendor/scripts/development/ember-data.js'
+          'vendor/scripts/common/bootstrap.js'
         ]
       }
     },
@@ -24,7 +22,7 @@ exports.config = {
         'stylesheets/app.css': /^(app|vendor)/
       },
       order: {
-        before: ['vendor/styles/normalize.css']
+        before: ['vendor/styles/bootstrap.css']
       }
     },
     templates: {
@@ -48,10 +46,7 @@ exports.config = {
           order: {
             before: [
               'vendor/scripts/common/console-polyfill.js',
-              'vendor/scripts/common/jquery.js',
-              'vendor/scripts/common/handlebars.js',
-              'vendor/scripts/production/ember.js',
-              'vendor/scripts/production/ember-data.js'
+              'vendor/scripts/common/bootstrap.js'
             ]
           }
         }

@@ -4,5 +4,6 @@ from .views import ProfileDetailView
 urlpatterns = patterns(
     '',  # Empty string as prefix
 
-    url('^$', ProfileDetailView.as_view(), name='profile_detail')
+    url('^(?P<username>.*)/$', ProfileDetailView.as_view(), name='profile_detail'),
+    # url('^$', ProfileDetailView.as_view(), name='profile_detail')
 )
