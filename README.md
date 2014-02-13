@@ -59,7 +59,7 @@ Si necesitas ideas de como ayudar puede ver la lista de tareas pendientes.
 
 #### Para correr el proyecto
 
-Es necesario tener instalado [Brunch](http://brunch.io) para poder correr el proyecto.
+Es necesario tener instalado Python 3.3 y [Brunch](http://brunch.io) para poder correr el proyecto.
 
 ```bash
 $ git clone https://github.com/SoPR/horas.git
