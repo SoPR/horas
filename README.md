@@ -43,9 +43,15 @@ Para que este sistema sea efectivo debemos plantear algunas reglas simples a las
 
 ### Reportar errores, sugerencias y otros comentarios
 
-Si tienes una idea de como mejorar esta plataforma o si has encontrado algún error déjanos saber creando un issue en el repositorio.
+Si tienes una idea de como mejorar esta plataforma o si has encontrado algún error déjanos saber creando un "issue" en el repositorio.
 
 :beetle: [Issues](https://github.com/SoPR/horas/issues) - para reportar problemas, errores, sugerencias, etc.
+
+#### Cómo usar "issues" en GitHub
+
+Aquí un [vídeo](http://www.youtube.com/watch?v=TJlYiMp8FuY) que explica como crear "issues". Recuerda que primero necesitas crear una cuenta de [GitHub](https://github.com/join), es gratis.
+
+[![link](http://i.imgur.com/eN07Qqu.png)](http://www.youtube.com/watch?v=TJlYiMp8FuY)
 
 
 ### Developers
