@@ -49,7 +49,7 @@ Si tienes una idea de como mejorar esta plataforma o si has encontrado algún er
 
 #### Cómo usar "issues" en GitHub
 
-Aquí un [vídeo](http://www.youtube.com/watch?v=TJlYiMp8FuY) que explica como crear "issues". Recuerda que primero necesitas crear una cuenta de [GitHub](https://github.com/join), es gratis.
+Aquí un [vídeo](http://www.youtube.com/watch?v=TJlYiMp8FuY) que explica como crear "issues". Recuerda que primero necesitas [crear una cuenta de GitHub](https://github.com/join), es gratis.
 
 [![link](http://i.imgur.com/eN07Qqu.png)](http://www.youtube.com/watch?v=TJlYiMp8FuY)
 
