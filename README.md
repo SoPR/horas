@@ -1,5 +1,5 @@
 # Horas - Design Branch
-Este branch es para compartir y mantener todos los archivos relacionados al diseño de este proyecto. El primer diseño fue hecho usando la aplicación Sketch para Mac OS X, pero trataremos de mantener copias de todos los diseños en format PDF y PNG para que todos podamos ver en lo que se está trabajando.
+Este branch es para compartir y mantener todos los archivos relacionados al diseño de este proyecto. El primer diseño fue hecho usando la aplicación [Sketch](http://www.bohemiancoding.com/sketch/) para Mac OS X, pero trataremos de mantener copias de todos los diseños en format PDF y PNG para que todos podamos ver en lo que se está trabajando.
 
 Estos diseños servirán de guía para los desarrolladores que están trabajando la aplicación.
 
