@@ -3,6 +3,14 @@ Este branch es para compartir y mantener todos los archivos relacionados al dise
 
 Estos diseños servirán de guía para los desarrolladores que están trabajando la aplicación.
 
+---
+
+### Recomendaciones
+
+Si tienes alguna sugerencia sobre como mejorar este diseño crea un issue y usa el "label" de design para poder tener una discusión sobre tu propuesta.
+
+[Issues](https://github.com/SoPR/horas/issues/new) - para enviar sugerencias.
+
 
 ---
 
