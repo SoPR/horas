@@ -2,7 +2,7 @@
 
 Una plataforma para facilitar la [mentoría](http://es.wikipedia.org/wiki/Mentoria).
 
-![Horas Screenshot](http://i.imgur.com/PVqMSQm.png)
+![Horas Screenshot](https://raw2.github.com/SoPR/horas/design/png/01-index.png)
 
 ### Idea
 
@@ -55,6 +55,13 @@ Este proyecto no sería posible sin la colaboración de otros developers que han
 Si necesitas ideas de como ayudar puede ver la lista de tareas pendientes.
 
 :white_check_mark: [TO-DO](TODO.md)
+
+
+### Diseñadores
+
+Tenemos un branch dedicado para compartir y colaborar sobre el diseño de la plataforma. Mantendremos el diseño más reciente en ese branch.
+
+:art: [Design](https://github.com/SoPR/horas/tree/design) - Branch dedicado al diseño de este proyecto.
 
 
 #### Para correr el proyecto
