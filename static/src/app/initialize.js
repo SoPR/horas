@@ -1,6 +1,5 @@
-var Application = require('application');
+var app = require('application');
 
 $(function() {
-  app = new Application();
   app.initialize();
 });
