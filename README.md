@@ -2,7 +2,7 @@
 
 Una plataforma para facilitar la [mentoría](http://es.wikipedia.org/wiki/Mentoria).
 
-![Horas Screenshot](https://raw2.github.com/SoPR/horas/design/png/01-index.png)
+![Horas Screenshot](https://raw2.github.com/SoPR/horas/design/png/01.png)
 
 ### Idea
 
