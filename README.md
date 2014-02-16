@@ -21,42 +21,27 @@ Si tienes alguna sugerencia sobre cómo mejorar este diseño, crea un "issue" y 
 
 ---
 
-### Home
+### Views
 
-![home](png/01-index.png)
+![home](png/01.png)
 
----
 
-### Discover
+![home](png/02.png)
 
-![home](png/02-discover.png)
 
----
+![home](png/03.png)
 
-### Search Results Page
-![home](png/03-search-results.png)
 
----
+![home](png/04.png)
 
-### Profile
-![home](png/04-profile.png)
 
----
+![home](png/05.png)
 
-### Confirmation
-![home](png/05-confirmation.png)
 
----
+![home](png/06.png)
 
-### Reserved
-![home](png/06-reserved.png)
 
----
+![home](png/07.png)
 
-### Edit Profile
-![home](png/07-edit-profile.png)
 
----
-
-### Tus Horas
-![home](png/08-tus-horas.png)
+![home](png/08.png)
