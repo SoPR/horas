@@ -31,7 +31,7 @@ SITE_ID = 1
 
 # Application definition
 INSTALLED_APPS = (
-    'django.contrib.admin.apps.AdminConfig',
+    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
 
     # Third-party
+    'south',
     'django_extensions',
     'allauth',
     'allauth.account',
