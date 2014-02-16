@@ -1,4 +1,4 @@
-from django.views.generic import DetailView
+from django.views.generic import DetailView, UpdateView
 
 from braces.views import LoginRequiredMixin
 
@@ -9,6 +9,12 @@ class ProfileDetailView(LoginRequiredMixin, DetailView):
     '''
     Displays the user profile information
     '''
+    model = User
+    slug_field = 'username'
+    slug_url_kwarg = 'username'
+
+
+class ProfileUpdateView(LoginRequiredMixin, UpdateView):
     model = User
     slug_field = 'username'
     slug_url_kwarg = 'username'

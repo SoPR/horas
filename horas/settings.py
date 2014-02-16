@@ -55,6 +55,7 @@ INSTALLED_APPS = (
     # Local apps
     'apps.core',
     'apps.profiles',
+    'apps.search',
 )
 
 MIDDLEWARE_CLASSES = (
