@@ -58,6 +58,10 @@ Aquí un [vídeo](http://www.youtube.com/watch?v=TJlYiMp8FuY) que explica como c
 
 Este proyecto no sería posible sin la colaboración de otros developers que han donado su tiempo para crear esta aplicación. Si  encuentras un error por favor crea un [issue](https://github.com/SoPR/horas/issues) y si puedes arreglarlo te invitamos a hacer y someter un pull request.
 
+Tenemos un [chat room](https://www.hipchat.com/g3IXLRctN) para facilitar la comunicación y coordinación del equipo.
+
+[Chat Room](https://www.hipchat.com/g3IXLRctN)
+
 Si necesitas ideas de como ayudar puede ver la lista de tareas pendientes.
 
 :white_check_mark: [TO-DO](TODO.md)
