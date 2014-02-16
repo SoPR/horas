@@ -29,7 +29,7 @@ Sorry for the spanglish. If you want to contribute just pick a task and update i
         - confirmation - /meeting/<:meeting_id>/
 
 
-- **[in progress: gcollazo]** - Build templates based on [current wireframes](https://github.com/SoPR/horas/tree/design).
+- **[in progress: gcollazo]** - Build templates / css based on [current wireframes](https://github.com/SoPR/horas/tree/design).
 
 - **[in progress: community]** - Come up with a name and domain for the project. Please join the discussion on [issue #1](https://github.com/SoPR/horas/issues/1).
 
@@ -37,8 +37,6 @@ Sorry for the spanglish. If you want to contribute just pick a task and update i
 
 - **[not started]** - Create `Meeting` model to keep track of future meetings and it's status.
     - This model will reference a `mentor` and a `protege`, it will have a `DateTime`, a `format` (Skype, Hangout, Phone) and a status (`scheduled`, `cancelled`). We are going to need a `cancelled_by` field to record who cancelled the meeting). Meeting creation will be done via a weekly scheduled job that will create all the available meetings for the next week. The idea is that every Monday at 9AM we create all the meeting slots for the following week. Every user will only have 1 meeting spot available per week.
-
-- **[not started]** - Add and configure DjangoRESTFramework to add a full REST API to the site using Sessions, oAuth2 and JWT (with user initiated expiration enabled) for auth. Make sure we are integrating correctly with allauth.
 
 - **[not started]** - Profile view should display an "Edit Profile" button to the profile owner.
 
@@ -55,4 +53,4 @@ Sorry for the spanglish. If you want to contribute just pick a task and update i
     - 24 hrs before the meeting starts
     - 3 hrs after the meeting start time to ask for feedback
 
-
+- **[not started]** - Add and configure DjangoRESTFramework to add a full REST API to the site using Sessions, oAuth2 and JWT (with user initiated expiration enabled) for auth. Make sure we are integrating correctly with allauth.
