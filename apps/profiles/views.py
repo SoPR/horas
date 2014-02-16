@@ -10,7 +10,5 @@ class ProfileDetailView(LoginRequiredMixin, DetailView):
     Displays the user profile information
     '''
     model = User
-
-    def get_object(self):
-        # Get the currently logged in user
-        return self.request.user
+    slug_field = 'username'
+    slug_url_kwarg = 'username'
