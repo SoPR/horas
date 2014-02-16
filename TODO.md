@@ -33,21 +33,26 @@ Sorry for the spanglish. If you want to contribute just pick a task and update i
 
 - **[in progress: community]** - Come up with a name and domain for the project. Please join the discussion on [issue #1](https://github.com/SoPR/horas/issues/1).
 
-- **[not started]** - Make generic html rendered by the server to deliver all the JavaScript, css and `<noscript>` data.
-
 - :white_check_mark: - Expertise tags. Every user should be able to add a bunch of tags which describe the topics she is good at. This information will be used to search for users in a specific topic.
 
-- **[not started]** Create `Meeting` model to keep track of future meetings and it's status.
-    - This model will reference a `mentor` and a `protege`, it will have a `DateTime`, a medium (Skype, Hangout, Phone) and a status (`waiting`, `confirmed`, `rejected`). La idea es que cada user va a tener unos settings en su profile que indican que día de la semana y a que hora va a estar disponible para conceder reuniones. Cuando estemos mirando el perfil de un user vamos a mostrar una lista de todos los slots disponibles y el user puede "book" ese espacio. Todos los usuarios deben compartir horas para poder "bookiar" horas de otros.
+- **[not started]** - Create `Meeting` model to keep track of future meetings and it's status.
+    - This model will reference a `mentor` and a `protege`, it will have a `DateTime`, a `format` (Skype, Hangout, Phone) and a status (`scheduled`, `cancelled`). We are going to need a `cancelled_by` field to record who cancelled the meeting). Meeting creation will be done via a weekly scheduled job that will create all the available meetings for the next week. The idea is that every Monday at 9AM we create all the meeting slots for the following week. Every user will only have 1 meeting spot available per week.
 
-- **[not started]** Add and configure DjangoRESTFramework to add a full REST API to the site using Sessions, oAuth2 and JWT (with user initiated expiration enabled) for auth. Make sure we are integrating correctly with allauth.
+- **[not started]** - Add and configure DjangoRESTFramework to add a full REST API to the site using Sessions, oAuth2 and JWT (with user initiated expiration enabled) for auth. Make sure we are integrating correctly with allauth.
 
-- **[not started]** Home view. A view which will stat from the site like how many users, how many meetings and a few testimonials. Users should be able to sign up or login from this page using any of the available methods, currently: Twitter, Facebook, Google, Persona, internal accounts.
+- **[not started]** - Profile view should display an "Edit Profile" button to the profile owner.
 
-- **[not started]** Search. We should be able to search by name and areas of expertise (tags). This will require a search results page.
+- **[not started]** - Profile view should display a list of all meetings that user has scheduled as a mentor of apprentice.
 
-- **[not started]** Profile Detail View. This view will show a gravatar, full name, shot bio, social media links and expertise tags for each user. On the main area of this page we will show a few upcoming available slots. Each slot will have a [Book Now] button next to it.
+- **[not started]** - User should be able to cancel a meeting by going to his/her profile and clicking the "Cancel Meeting" button. This action should trigger the creation of a new meeting slot for the host of the meeting.
 
-- **[not started]** Profile Update View. This view will allow the user to connect to all available social media networks, change her meeting settings and enter usernames for skype, hangout, phone, physical address.
+- **[not started]** - We need to setup something like Celery or simpler if possible to handle async operations like email notifications.
 
-- **[not started]** Reply to meeting request view. In this view the mentor will reply `accept` or `reject` to all `Meeting`s with a state of `waiting`.
+- **[not started]** - User should receive email notification when
+    - Meeting slots are created
+    - Meeting is reserved / scheduled
+    - Meeting is cancelled
+    - 24 hrs before the meeting starts
+    - 3 hrs after the meeting start time to ask for feedback
+
+
