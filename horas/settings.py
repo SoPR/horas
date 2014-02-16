@@ -41,6 +41,7 @@ INSTALLED_APPS = (
 
     # Third-party
     'south',
+    'debug_toolbar',
     'django_extensions',
     'allauth',
     'allauth.account',
