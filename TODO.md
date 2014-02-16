@@ -11,6 +11,24 @@ Sorry for the spanglish. If you want to contribute just pick a task and update i
 
 - :white_check_mark: - Override all auth templates with our custom versions.
 
+- **[in progress: jpadilla]** - Create django apps and urls for development.
+
+    - core
+        - home /
+
+    - profiles
+        - user profile - /<:username>/
+        - user profile edit - /<:username>/update/
+        - user meetings feed - /<:username>.ics|rss|atom
+
+    - search
+        - search - /search/
+        - search results page - /search?q=<:searchterms>
+
+    - meetings
+        - confirmation - /meeting/<:meeting_id>/
+
+
 - **[in progress: gcollazo]** - Build templates based on [current wireframes](https://github.com/SoPR/horas/tree/design).
 
 - **[in progress: community]** - Come up with a name and domain for the project. Please join the discussion on [issue #1](https://github.com/SoPR/horas/issues/1).
@@ -19,7 +37,7 @@ Sorry for the spanglish. If you want to contribute just pick a task and update i
 
 - **[in progress: jpadilla]** - Expertise tags. Every user should be able to add a bunch of tags which describe the topics she is good at. This information will be used to search for users in a specific topic.
 
-- **[not started]** Create `Meeting` model to keep track of future meetings and it's status.             
+- **[not started]** Create `Meeting` model to keep track of future meetings and it's status.
     - This model will reference a `mentor` and a `protege`, it will have a `DateTime`, a medium (Skype, Hangout, Phone) and a status (`waiting`, `confirmed`, `rejected`). La idea es que cada user va a tener unos settings en su profile que indican que día de la semana y a que hora va a estar disponible para conceder reuniones. Cuando estemos mirando el perfil de un user vamos a mostrar una lista de todos los slots disponibles y el user puede "book" ese espacio. Todos los usuarios deben compartir horas para poder "bookiar" horas de otros.
 
 - **[not started]** Add and configure DjangoRESTFramework to add a full REST API to the site using Sessions, oAuth2 and JWT (with user initiated expiration enabled) for auth. Make sure we are integrating correctly with allauth.
