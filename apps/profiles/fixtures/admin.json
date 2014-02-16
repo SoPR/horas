@@ -1,0 +1,33 @@
+[
+{
+    "fields": {
+        "groups": [], 
+        "twitter_username": "", 
+        "day_of_week": "", 
+        "start_time": null, 
+        "is_staff": true, 
+        "last_name": "", 
+        "email": "admin@example.com", 
+        "jitsi": "", 
+        "password": "pbkdf2_sha256$12000$RduUj04zmDNE$O4kytCg2PP89k/LdTHHxGYHM3mUdkdnG8DGe2hpzlQA=", 
+        "last_login": "2014-02-16T14:27:01.025Z", 
+        "phone": "", 
+        "user_permissions": [], 
+        "date_joined": "2014-02-16T14:27:01.025Z", 
+        "skype": "", 
+        "first_name": "", 
+        "github_username": "", 
+        "date_updated": "2014-02-16T14:27:01.147Z", 
+        "website_url": "", 
+        "address": "", 
+        "username": "admin", 
+        "facebook_username": "", 
+        "google": "", 
+        "is_superuser": true, 
+        "bio": "", 
+        "is_active": true
+    }, 
+    "model": "profiles.user", 
+    "pk": 1
+}
+]

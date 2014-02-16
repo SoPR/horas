@@ -17,3 +17,14 @@ class DaysOfWeekField(models.CharField):
         kwargs['choices'] = DAYS_OF_WEEK
         kwargs['max_length'] = 1
         super().__init__(*args, **kwargs)
+
+    def south_field_triple(self):
+        """
+        Returns a suitable description of this field for South.
+        """
+        from south.modelsinspector import introspector
+
+        field_class = "django.db.models.fields.CharField"
+        args, kwargs = introspector(self)
+
+        return (field_class, args, kwargs)
