@@ -56,6 +56,7 @@ INSTALLED_APPS = (
     'apps.core',
     'apps.profiles',
     'apps.search',
+    'apps.meetings',
 )
 
 MIDDLEWARE_CLASSES = (

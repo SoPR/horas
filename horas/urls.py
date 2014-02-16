@@ -10,6 +10,8 @@ urlpatterns = patterns(
 
     url(r'^search/', include('apps.search.urls')),
 
+    url(r'^meetings/', include('apps.meetings.urls')),
+
     url(r'^accounts/', include('allauth.urls')),
 
     url(r'^(?P<username>[-\w]+)', include('apps.profiles.urls')),
