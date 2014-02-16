@@ -14,7 +14,7 @@ Sorry for the spanglish. If you want to contribute just pick a task and update i
 
 - <input type="checkbox" disabled> **[not started]** - Make generic html rendered by the server to deliver all the JavaScript, css and `<noscript>` data.
 
-- <input type="checkbox" disabled> **[not started]** - Expertise tags. Every user should be able to add a bunch of tags which describe the topics she is good at. This information will be used to search for users in a specific topic.
+- <input type="checkbox" disabled> **[in progress: jpadilla]** - Expertise tags. Every user should be able to add a bunch of tags which describe the topics she is good at. This information will be used to search for users in a specific topic.
 
 - <input type="checkbox" disabled> **[not started]** Create `Meeting` model to keep track of future meetings and it's status.             
     - This model will reference a `mentor` and a `protege`, it will have a `DateTime`, a medium (Skype, Hangout, Phone) and a status (`waiting`, `confirmed`, `rejected`). La idea es que cada user va a tener unos settings en su profile que indican que día de la semana y a que hora va a estar disponible para conceder reuniones. Cuando estemos mirando el perfil de un user vamos a mostrar una lista de todos los slots disponibles y el user puede "book" ese espacio. Todos los usuarios deben compartir horas para poder "bookiar" horas de otros.
