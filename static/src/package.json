@@ -1,0 +1,22 @@
+{
+  "name": "SoPR/horas",
+  "description": "Una plataforma para facilitar la mentoría.",
+  "author": "@gcollazo",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SoPR/horas.git"
+  },
+  "scripts": {
+    "start": "brunch watch --server",
+    "test": "brunch test"
+  },
+  "dependencies": {
+    "javascript-brunch": ">= 1.0 < 1.8",
+    "css-brunch": ">= 1.0 < 1.8",
+    "uglify-js-brunch": ">= 1.0 < 1.8",
+    "clean-css-brunch": ">= 1.0 < 1.8",
+    "auto-reload-brunch": ">= 1.0 < 1.8",
+    "stylus-brunch": "~1.8.0"
+  }
+}

@@ -131,11 +131,11 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/dev/howto/static-files/
-BRUNCH_DIR = os.path.join(BASE_DIR, 'static_src')
-STATIC_URL = '/static/'
+BRUNCH_DIR = os.path.join(BASE_DIR, 'static', 'src')
+STATIC_URL = '/static/dist/'
 
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
+    os.path.join(BASE_DIR, 'static', 'dist'),
 )
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
