@@ -6,7 +6,9 @@ Sorry for the spanglish. If you want to contribute just pick a task and update i
 
 - <input type="checkbox" disabled checked> **[done]** - Setup of Brunch With Ember Reloaded.
 
-- <input type="checkbox" disabled> **[in progress: [gcollazo](http://github.com/gcollazo)]** - Override all auth templates with our custom versions.
+- <input type="checkbox" disabled> **[in progress: gcollazo]** - Replace Ember.js setup with something minimal. We made the decision to keep the app a "plain-old Django app". This should extend the amount of local contributors.
+
+- <input type="checkbox" disabled> **[paused]** - Override all auth templates with our custom versions.
 
 - <input type="checkbox" disabled> **[in progress: community]** - Come up with a name and domain for the project. Please join the discussion on [issue #1](https://github.com/SoPR/horas/issues/1).
 
