@@ -7,9 +7,12 @@ urlpatterns = patterns(
     '',  # Empty string as prefix
 
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^(?P<username>[-\w]+)', include('apps.profiles.urls')),
+
+    url(r'^search/', include('apps.search.urls')),
 
     url(r'^accounts/', include('allauth.urls')),
+
+    url(r'^(?P<username>[-\w]+)', include('apps.profiles.urls')),
 
     url(r'^$', include('apps.core.urls')),
 )

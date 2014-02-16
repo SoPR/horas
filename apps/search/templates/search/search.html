@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block app_scripts %}
+  {# Don't include app.js #}
+{% endblock app_scripts %}
+
+{% block title %}
+    {% trans "Horas - Todos ayudando a todos" %}
+{% endblock title %}
+
+{% block header %}
+    {# No Header #}
+{% endblock header %}
+
+{% block content %}
+    search/search.html
+{% endblock content %}
