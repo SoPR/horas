@@ -11,7 +11,7 @@ Sorry for the spanglish. If you want to contribute just pick a task and update i
 
 - :white_check_mark: - Override all auth templates with our custom versions.
 
-- **[in progress: jpadilla]** - Create django apps and urls for development.
+- :white_check_mark: - Create django apps and urls for development.
 
     - core
         - home /
