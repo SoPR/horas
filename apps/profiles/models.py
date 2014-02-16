@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
+from taggit.managers import TaggableManager
+
 from .fields import DaysOfWeekField
 
 
@@ -25,6 +27,8 @@ class User(AbstractUser):
     google = models.CharField(blank=True, max_length=50)
     jitsi = models.CharField(blank=True, max_length=50)
     address = models.TextField(blank=True)
+
+    tags = TaggableManager(blank=True)
 
     date_updated = models.DateTimeField(auto_now=True)
 
