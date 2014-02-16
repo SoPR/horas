@@ -80,9 +80,9 @@ Es necesario tener instalado Python 3.3 y [Brunch](http://brunch.io) para poder 
 
 ```bash
 $ git clone https://github.com/SoPR/horas.git
-$ cd horas/static_src
+$ cd horas/static/src
 $ npm install
-$ cd ..
+$ cd ../..
 $ pip install -r requirements.txt
 $ python manage.py syncdb
 $ python manage.py migrate
