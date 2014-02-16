@@ -3,13 +3,15 @@
 Sorry for the spanglish. If you want to contribute just pick a task and update it's status, make sure you add your GitHub username so we can get in touch.
 
 
-- :white_check_mark: **[done]** - Initial social auth setup with Twitter, Facebook, Google and Mozilla Persona.
+- :white_check_mark: - Initial social auth setup with Twitter, Facebook, Google and Mozilla Persona.
 
-- :white_check_mark: **[done]** - Setup of Brunch With Ember Reloaded.
+- :white_check_mark: - Setup of Brunch With Ember Reloaded.
 
-- **[in progress: gcollazo]** - Replace Ember.js setup with something minimal. We made the decision to keep the app a "plain-old Django app". This should extend the amount of local contributors.
+- :white_check_mark: - Replace Ember.js setup with something minimal. We made the decision to keep the app a "plain-old Django app". This should extend the amount of local contributors.
 
-- **[paused]** - Override all auth templates with our custom versions.
+- :white_check_mark: - Override all auth templates with our custom versions.
+
+- **[in progress: gcollazo]** - Build templates based on [current wireframes](https://github.com/SoPR/horas/tree/design).
 
 - **[in progress: community]** - Come up with a name and domain for the project. Please join the discussion on [issue #1](https://github.com/SoPR/horas/issues/1).
 
