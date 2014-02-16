@@ -6,6 +6,7 @@
 
 {% block content %}
     <div class="container">
-        <h1>{{ request.user }}</h1>
+        <h1>{{ object.username }}</h1>
+        <p>Tags: {{ object.tags.names|join:", " }}</p>
     </div> <!-- /.container -->
 {% endblock content %}
