@@ -33,7 +33,7 @@
 
 <p>Una plataforma para facilitar la <a href="http://es.wikipedia.org/wiki/Mentoria">mentoría</a>.</p>
 
-<p><img src="https://raw2.github.com/SoPR/horas/design/png/01-index.png" alt="Horas Screenshot"></p>
+<p><img src="https://raw2.github.com/SoPR/horas/design/png/01.png" alt="Horas Screenshot"></p>
 
 <h3>
 <a name="idea" class="anchor" href="#idea"><span class="octicon octicon-link"></span></a>Idea</h3>
@@ -79,14 +79,25 @@
 </ol><h3>
 <a name="reportar-errores-sugerencias-y-otros-comentarios" class="anchor" href="#reportar-errores-sugerencias-y-otros-comentarios"><span class="octicon octicon-link"></span></a>Reportar errores, sugerencias y otros comentarios</h3>
 
-<p>Si tienes una idea de como mejorar esta plataforma o si has encontrado algún error déjanos saber creando un issue en el repositorio.</p>
+<p>Si tienes una idea de como mejorar esta plataforma o si has encontrado algún error déjanos saber creando un "issue" en el repositorio.</p>
 
 <p><img class="emoji" title=":beetle:" alt=":beetle:" src="https://github.global.ssl.fastly.net/images/icons/emoji/beetle.png" height="20" width="20" align="absmiddle"><a href="https://github.com/SoPR/horas/issues">Issues</a> - para reportar problemas, errores, sugerencias, etc.</p>
+
+<h4>
+<a name="c%C3%B3mo-usar-issues-en-github" class="anchor" href="#c%C3%B3mo-usar-issues-en-github"><span class="octicon octicon-link"></span></a>Cómo usar "issues" en GitHub</h4>
+
+<p>Aquí un <a href="http://www.youtube.com/watch?v=TJlYiMp8FuY">vídeo</a> que explica como crear "issues". Recuerda que primero necesitas <a href="https://github.com/join">crear una cuenta de GitHub</a>, es gratis.</p>
+
+<p><a href="http://www.youtube.com/watch?v=TJlYiMp8FuY"><img src="http://i.imgur.com/eN07Qqu.png" alt="link"></a></p>
 
 <h3>
 <a name="developers" class="anchor" href="#developers"><span class="octicon octicon-link"></span></a>Developers</h3>
 
 <p>Este proyecto no sería posible sin la colaboración de otros developers que han donado su tiempo para crear esta aplicación. Si  encuentras un error por favor crea un <a href="https://github.com/SoPR/horas/issues">issue</a> y si puedes arreglarlo te invitamos a hacer y someter un pull request.</p>
+
+<p>Tenemos un <a href="https://www.hipchat.com/g3IXLRctN">chat room</a> para facilitar la comunicación y coordinación del equipo.</p>
+
+<p><a href="https://www.hipchat.com/g3IXLRctN">Chat Room</a></p>
 
 <p>Si necesitas ideas de como ayudar puede ver la lista de tareas pendientes.</p>
 
@@ -105,15 +116,17 @@
 <p>Es necesario tener instalado Python 3.3 y <a href="http://brunch.io">Brunch</a> para poder correr el proyecto.</p>
 
 <div class="highlight highlight-bash"><pre><span class="nv">$ </span>git clone https://github.com/SoPR/horas.git
-<span class="nv">$ </span><span class="nb">cd </span>horas/static_src
+<span class="nv">$ </span><span class="nb">cd </span>horas/static/src
 <span class="nv">$ </span>npm install
-<span class="nv">$ </span><span class="nb">cd</span> ..
+<span class="nv">$ </span><span class="nb">cd</span> ../..
 <span class="nv">$ </span>pip install -r requirements.txt
+<span class="nv">$ </span>python manage.py syncdb
 <span class="nv">$ </span>python manage.py migrate
+<span class="nv">$ </span>python manage.py loaddata apps/profiles/fixtures/admin.json
 <span class="nv">$ </span>python manage.py brunchserver
 </pre></div>
 
-<p>Abre tu browser en <a href="http://localhost:8000/">http://localhost:8000/</a></p>
+<p>Abre tu browser en <a href="http://localhost:8000/">http://localhost:8000/</a>. Para accesar la sección de administración ve a <a href="http://localhost:8000/admin/">http://localhost:8000/admin/</a>, y usa el username <strong>admin</strong> y el password <strong>abc123</strong>.</p>
 
 <h3>
 <a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h3>
