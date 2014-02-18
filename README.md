@@ -2,6 +2,9 @@
 
 Una plataforma para facilitar la [mentoría](http://es.wikipedia.org/wiki/Mentoria).
 
+### [Regístrate](http://eepurl.com/OFTOv) para recibir información y actualizaciones sobre este proyecto.
+
+
 ![Horas Screenshot](https://raw2.github.com/SoPR/horas/design/png/01.png)
 
 ### Idea
