@@ -44,7 +44,7 @@ class User(AbstractUser):
         Meeting = get_model('meetings', 'Meeting')
 
         today = now().date()
-        delta = datetime.timedelta((self.day_of_week-today.weekday()) % 7)
+        delta = datetime.timedelta((self.day_of_week - today.weekday()) % 7)
 
         next_slot_date = today + delta
         next_slot = datetime.datetime.combine(

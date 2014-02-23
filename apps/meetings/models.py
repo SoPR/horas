@@ -1,4 +1,7 @@
 from django.db import models
+
+from notification import models as notification
+
 from ..core.models import BaseModel
 
 
@@ -13,11 +16,6 @@ class Meeting(BaseModel):
 
     datetime = models.DateTimeField()
 
-    class Meta:
-        unique_together = (
-            ('mentor', 'datetime'),
-        )
-
     def __str__(self):
         return '{} - {}'.format(self.mentor, self.datetime)
 
@@ -27,17 +25,17 @@ class Meeting(BaseModel):
         self.save()
 
         notification.send(
-          [self.mentor],
-          'reserved_meeting_slot',
-          {'meeting': self})
-
+            [self.mentor],
+            'reserved_meeting_slot',
+            {'meeting': self})
 
     def cancel(self, user):
         self.cancelled_by = user
         self.save()
 
-        notification.send(
-          [self.mentor],
-          'cancel_meeting',
-          {'meeting': self})
+        self.mentor.create_meeting_slot()
 
+        notification.send(
+            [self.mentor],
+            'cancel_meeting',
+            {'meeting': self})
