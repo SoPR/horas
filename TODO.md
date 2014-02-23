@@ -31,7 +31,7 @@ Sorry for the spanglish. If you want to contribute just pick a task and update i
 
 - **[in progress: gcollazo]** - Build templates / css based on [current wireframes](https://github.com/SoPR/horas/tree/design).
 
-- **[in progress: community]** - Come up with a name and domain for the project. Please join the discussion on [issue #1](https://github.com/SoPR/horas/issues/1).
+- :white_check_mark: - Come up with a name and domain for the project. Please join the discussion on [issue #1](https://github.com/SoPR/horas/issues/1).
 
 - :white_check_mark: - Expertise tags. Every user should be able to add a bunch of tags which describe the topics she is good at. This information will be used to search for users in a specific topic.
 
