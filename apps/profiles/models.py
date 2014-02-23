@@ -50,8 +50,10 @@ class User(AbstractUser):
         next_slot = datetime.datetime.combine(
             next_slot_date, self.start_time).replace(tzinfo=utc)
 
-
         meeting_slot = Meeting.objects.create(mentor=self, datetime=next_slot)
-        # Notify user
-        notification.send([self], 'create_meeting_slot', {'meeting': meeting_slot})
 
+        # Notify user
+        notification.send(
+            [self],
+            'create_meeting_slot',
+            {'meeting': meeting_slot})
