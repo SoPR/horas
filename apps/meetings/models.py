@@ -26,6 +26,18 @@ class Meeting(BaseModel):
         self.message = message
         self.save()
 
+        notification.send(
+          [self.mentor],
+          'reserved_meeting_slot',
+          {'meeting': self})
+
+
     def cancel(self, user):
         self.cancelled_by = user
         self.save()
+
+        notification.send(
+          [self.mentor],
+          'cancel_meeting',
+          {'meeting': self})
+
