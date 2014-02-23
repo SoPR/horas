@@ -46,7 +46,7 @@ Sorry for the spanglish. If you want to contribute just pick a task and update i
 
 - **[not started]** - We need to setup something like Celery or simpler if possible to handle async operations like email notifications.
 
-- **[not started]** - User should receive email notification when
+- **[in progress: crm114]** - User should receive email notification when
     - Meeting slots are created
     - Meeting is reserved / scheduled
     - Meeting is cancelled
