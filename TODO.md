@@ -42,7 +42,9 @@ Sorry for the spanglish. If you want to contribute just pick a task and update i
 
 - **[not started]** - Profile view should display a list of all meetings that user has scheduled as a mentor of apprentice.
 
-- **[not started]** - User should be able to cancel a meeting by going to his/her profile and clicking the "Cancel Meeting" button. This action should trigger the creation of a new meeting slot for the host of the meeting.
+- **[not started]** - User should be able to cancel a meeting by going to his/her profile and clicking the "Cancel Meeting" button.
+
+- **[in progress: jpadilla]** - Cancelling a meeting should trigger the creation of a new meeting slot for the host of the meeting.
 
 - **[not started]** - We need to setup something like Celery or simpler if possible to handle async operations like email notifications.
 
