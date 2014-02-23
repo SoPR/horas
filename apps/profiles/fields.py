@@ -2,17 +2,17 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
 DAYS_OF_WEEK = (
-    (0, _('Sunday')),
-    (1, _('Monday')),
-    (2, _('Tuesday')),
-    (3, _('Wednesday')),
-    (4, _('Thursday')),
-    (5, _('Friday')),
-    (6, _('Saturday'))
+    (0, _('Monday')),
+    (1, _('Tuesday')),
+    (2, _('Wednesday')),
+    (3, _('Thursday')),
+    (4, _('Friday')),
+    (5, _('Saturday')),
+    (6, _('Sunday')),
 )
 
 
-class DaysOfWeekField(models.CharField):
+class DaysOfWeekField(models.IntegerField):
     def __init__(self, *args, **kwargs):
         kwargs['choices'] = DAYS_OF_WEEK
         kwargs['max_length'] = 1
@@ -24,7 +24,7 @@ class DaysOfWeekField(models.CharField):
         """
         from south.modelsinspector import introspector
 
-        field_class = "django.db.models.fields.CharField"
+        field_class = "django.db.models.fields.IntegerField"
         args, kwargs = introspector(self)
 
         return (field_class, args, kwargs)
