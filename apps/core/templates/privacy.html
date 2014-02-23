@@ -1,0 +1,328 @@
+
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<style>
+body {
+    padding:30px;
+    font:14px helvetica,arial,freesans,clean,sans-serif;
+    color:#333;
+}
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+body {
+    font-size: 14px;
+    line-height: 1.6;
+}
+body>*:first-child {
+    margin-top: 0!important;
+}
+body>*:last-child {
+    margin-bottom: 0!important;
+}
+body a.absent {
+    color: #c00;
+}
+body h1, body h2, body h3, body h4, body h5, body h6 {
+    margin: 20px 0 10px;
+    padding: 0;
+    font-weight: bold;
+    -webkit-font-smoothing: antialiased;
+}
+body h1 tt, body h1 code, body h2 tt, body h2 code, body h3 tt, body h3 code, body h4 tt, body h4 code, body h5 tt, body h5 code, body h6 tt, body h6 code {
+    font-size: inherit;
+}
+body h1 {
+    font-size: 28px;
+    color: #000;
+}
+body h2 {
+    font-size: 24px;
+    border-bottom: 1px solid #ccc;
+    color: #000;
+}
+body h3 {
+    font-size: 18px;
+}
+body h4 {
+    font-size: 16px;
+}
+body h5 {
+    font-size: 14px;
+}
+body h6 {
+    color: #777;
+    font-size: 14px;
+}
+body p, body blockquote, body ul, body ol, body dl, body li, body table, body pre {
+    margin: 15px 0;
+}
+body hr {
+    background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC) repeat-x 0 0;
+    border: 0 none;
+    color: #ccc;
+    height: 4px;
+    padding: 0;
+}
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+    margin-top: 0;
+    padding-top: 0;
+}
+body h1+p, body h2+p, body h3+p, body h4+p, body h5+p, body h6+p {
+    margin-top: 0;
+}
+body li p.first {
+    display: inline-block;
+}
+body ul, body ol {
+    padding-left: 30px;
+}
+body ul li>:first-child, body ol li>:first-child {
+    margin-top: 0;
+}
+body ul li>:last-child, body ol li>:last-child {
+    margin-bottom: 0;
+}
+body dl {
+    padding: 0;
+}
+body dl dt {
+    font-size: 14px;
+    font-weight: bold;
+    font-style: italic;
+    padding: 0;
+    margin: 15px 0 5px;
+}
+body dl dt:first-child {
+    padding: 0;
+}
+body dl dt>:first-child {
+    margin-top: 0;
+}
+body dl dt>:last-child {
+    margin-bottom: 0;
+}
+body dl dd {
+    margin: 0 0 15px;
+    padding: 0 15px;
+}
+body dl dd>:first-child {
+    margin-top: 0;
+}
+body dl dd>:last-child {
+    margin-bottom: 0;
+}
+body blockquote {
+    border-left: 4px solid #DDD;
+    padding: 0 15px;
+    color: #777;
+}
+body blockquote>:first-child {
+    margin-top: 0;
+}
+body blockquote>:last-child {
+    margin-bottom: 0;
+}
+body table {
+    padding: 0;
+    border-collapse: collapse;
+    border-spacing: 0px;
+}
+body table tr {
+    border-top: 1px solid #ccc;
+    background-color: #fff;
+    margin: 0;
+    padding: 0;
+}
+body table tr:nth-child(2n) {
+    background-color: #f8f8f8;
+}
+body table tr th {
+    font-weight: bold;
+}
+body table tr th, body table tr td {
+    border: 1px solid #ccc;
+    text-align: left;
+    margin: 0;
+    padding: 6px 13px;
+}
+body table tr th>:first-child, body table tr td>:first-child {
+    margin-top: 0;
+}
+body table tr th>:last-child, body table tr td>:last-child {
+    margin-bottom: 0;
+}
+body img {
+    max-width: 100%;
+}
+body span.frame {
+    display: block;
+    overflow: hidden;
+}
+body span.frame>span {
+    border: 1px solid #ddd;
+    display: block;
+    float: left;
+    overflow: hidden;
+    margin: 13px 0 0;
+    padding: 7px;
+    width: auto;
+}
+body span.frame span img {
+    display: block;
+    float: left;
+}
+body span.frame span span {
+    clear: both;
+    color: #333;
+    display: block;
+    padding: 5px 0 0;
+}
+body span.align-center {
+    display: block;
+    overflow: hidden;
+    clear: both;
+}
+body span.align-center>span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: center;
+}
+body span.align-center span img {
+    margin: 0 auto;
+    text-align: center;
+}
+body span.align-right {
+    display: block;
+    overflow: hidden;
+    clear: both;
+}
+body span.align-right>span {
+    display: block;
+    overflow: hidden;
+    margin: 13px 0 0;
+    text-align: right;
+}
+body span.align-right span img {
+    margin: 0;
+    text-align: right;
+}
+body span.float-left {
+    display: block;
+    margin-right: 13px;
+    overflow: hidden;
+    float: left;
+}
+body span.float-left span {
+    margin: 13px 0 0;
+}
+body span.float-right {
+    display: block;
+    margin-left: 13px;
+    overflow: hidden;
+    float: right;
+}
+body span.float-right>span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: right;
+}
+body code, body tt {
+    margin: 0 2px;
+    padding: 0 5px;
+    white-space: nowrap;
+    border: 1px solid #eaeaea;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+}
+body pre>code {
+    margin: 0;
+    padding: 0;
+    white-space: pre;
+    border: none;
+    background: transparent;
+}
+body .highlight pre, body pre {
+    background-color: #f8f8f8;
+    border: 1px solid #ccc;
+    font-size: 12px;
+    line-height: 19px;
+    overflow: auto;
+    padding: 6px 10px;
+    border-radius: 3px;
+}
+body pre code, body pre tt {
+    background-color: transparent;
+    border: none;
+}
+#wiki-wrapper body>h1:first-child, #wiki-wrapper .gollum-rest-content body>div:first-child>div:first-child>h1:first-child, #wiki-wrapper .gollum-pod-content body>a.dummyTopAnchor:first-child+h1, #wiki-wrapper .gollum-org-content body>p.title:first-child, #wiki-wrapper .gollum-asciidoc-content body>#header:first-child>h1:first-child {
+    display: none;
+}
+</style>
+<title>Privacy Policy</title>
+<!-- GA -->
+
+</head>
+<body>
+<h1>Privacy Policy</h1>
+
+<p>Your privacy is critically important to us. At 1Hora we have a few fundamental principles:</p>
+
+<ul>
+<li><p>We don’t ask you for personal information unless we truly need it. (We can’t stand services that ask you for things like your gender or income level for no apparent reason.)</p></li>
+<li><p>We don’t share your personal information with anyone except to comply with the law, develop our products, or protect our rights.</p></li>
+<li><p>We don’t store personal information on our servers unless required for the on-going operation of one of our services.</p></li>
+<li><p>In our products, we aim to make it as simple as possible for you to control what’s visible to the public, seen by search engines, kept private, and permanently deleted.</p></li>
+</ul>
+
+
+<p>If you have questions about deleting or correcting your personal data please contact us at <a href="mailto:info@1hora.org">info@1hora.org</a>.</p>
+
+
+<h3>Website Visitors</h3>
+
+<p>Like most website operators, 1Hora collects non-personally-identifying information of the sort that web browsers and servers typically make available, such as the browser type, language preference, referring site, and the date and time of each visitor request. 1Hora's purpose in collecting non-personally identifying information is to better understand how 1Hora’s visitors use its website. From time to time, 1Hora may release non-personally-identifying information in the aggregate, e.g., by publishing a report on trends in the usage of its website.</p>
+
+<p>1Hora also collects potentially personally-identifying information like Internet Protocol (IP) addresses for users. 1Hora only discloses user IP addresses under the same circumstances that it uses and discloses personally-identifying information as described below.</p>
+
+<h3>Gathering of Personally-Identifying Information</h3>
+
+<p>Certain visitors to 1Hora’s websites choose to interact with 1Hora in ways that require 1Hora to gather personally-identifying information. The amount and type of information that 1Hora gathers depends on the nature of the interaction. For example, we ask visitors who sign up for an account at 1hora.org to provide an email, password and phone number. Those who engage in transactions with 1Hora – by purchasing access to the paid service, for example – are asked to provide additional information, including as necessary the personal and financial information required to process those transactions. In each case, 1Hora collects such information only insofar as is necessary or appropriate to fulfill the purpose of the visitor’s interaction with 1Hora. 1Hora does not disclose personally-identifying information other than as described below. And visitors can always refuse to supply personally-identifying information, with the caveat that it may prevent them from engaging in certain website-related activities.</p>
+
+<h3>Aggregated Statistics</h3>
+
+<p>1Hora may collect statistics about the behavior of visitors to its websites. For instance, 1Hora may monitor the amount of commits a typical repository has on minusm.com. 1Hora may display this information publicly or provide it to others. However, 1Hora does not disclose personally-identifying information other than as described below.</p>
+
+<h3>Protection of Certain Personally-Identifying Information</h3>
+
+<p>1Hora discloses potentially personally-identifying and personally-identifying information only to those of its employees, contractors and affiliated organizations that (i) need to know that information in order to process it on 1Hora’s behalf or to provide services available at 1Hora’s websites, and (ii) that have agreed not to disclose it to others. Some of those employees, contractors and affiliated organizations may be located outside of your home country; by using 1Hora’s websites, you consent to the transfer of such information to them. 1Hora will not rent or sell potentially personally-identifying and personally-identifying information to anyone. Other than to its employees, contractors and affiliated organizations, as described above, 1Hora discloses potentially personally-identifying and personally-identifying information only in response to a subpoena, court order or other governmental request, or when 1Hora believes in good faith that disclosure is reasonably necessary to protect the property or rights of 1Hora, third parties or the public at large. If you are a registered user of a 1Hora website and have supplied your email address, 1Hora may occasionally send you an email to tell you about new features, solicit your feedback, or just keep you up to date with what’s going on with 1Hora and our products. We primarily use our blog and twitter accounts to communicate this type of information, so we expect to keep this type of email to a minimum. If you send us a request (for example via a support email or via one of our feedback mechanisms), we reserve the right to publish it in order to help us clarify or respond to your request or to help us support other users. 1Hora takes all measures reasonably necessary to protect against the unauthorized access, use, alteration or destruction of potentially personally-identifying and personally-identifying information.</p>
+
+<h3>Cookies</h3>
+
+<p>A cookie is a string of information that a website stores on a visitor’s computer, and that the visitor’s browser provides to the website each time the visitor returns. 1Hora uses cookies to help 1Hora identify and track visitors, their usage of 1Hora websites, and their website access preferences. 1Hora visitors who do not wish to have cookies placed on their computers should set their browsers to refuse cookies before using 1Hora’s websites, with the drawback that certain features of 1Hora’s websites may not function properly without the aid of cookies.</p>
+
+<h3>Business Transfers</h3>
+
+<p>If 1Hora, or substantially all of its assets, were acquired, or in the unlikely event that 1Hora goes out of business or enters bankruptcy, user information would be one of the assets that is transferred or acquired by a third party. You acknowledge that such transfers may occur, and that any acquirer of 1Hora may continue to use your personal information as set forth in this policy.</p>
+
+<h3>Ads</h3>
+
+<p>Ads appearing on any of our websites may be delivered to users by advertising partners, who may set cookies. These cookies allow the ad server to recognize your computer each time they send you an online advertisement to compile information about you or others who use your computer. This information allows ad networks to, among other things, deliver targeted advertisements that they believe will be of most interest to you. This Privacy Policy covers the use of cookies by 1Hora and does not cover the use of cookies by any advertisers.</p>
+
+<h3>Privacy Policy Changes</h3>
+
+<p>Although most changes are likely to be minor, 1Hora may change its Privacy Policy from time to time, and in 1Hora’s sole discretion. 1Hora encourages visitors to frequently check this page for any changes to its Privacy Policy. Your continued use of this site after any change in this Privacy Policy will constitute your acceptance of such change.</p>
+
+<p>Modified from <a href="http://automattic.com/privacy/">Automattic's Privacy Policy</a></p>
+
+<p>Also read our <a href="http://www.1hora.org/tos/">Terms of Service</a>.</p>
+
+<p>Last updated: Monday, June 24, 2013</p>
+</body>
+</html>
