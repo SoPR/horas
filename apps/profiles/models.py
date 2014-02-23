@@ -1,5 +1,9 @@
+import datetime
+
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.db.models.loading import get_model
+from django.utils.timezone import now, utc
 
 from taggit.managers import TaggableManager
 
@@ -34,3 +38,15 @@ class User(AbstractUser):
 
     def get_tiny_name(self):
         return '{0}. {1}'.format(self.first_name[0], self.last_name)
+
+    def create_meeting(self):
+        Meeting = get_model('meetings', 'Meeting')
+
+        today = now().date()
+        delta = datetime.timedelta((self.day_of_week-today.weekday()) % 7)
+
+        next_slot_date = today + delta
+        next_slot = datetime.datetime.combine(
+            next_slot_date, self.start_time).replace(tzinfo=utc)
+
+        return Meeting.objects.create(mentor=self, datetime=next_slot)
