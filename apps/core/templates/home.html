@@ -17,26 +17,45 @@
     {% include "persona/auth.html" %}
 
     <div class="container">
-        <div class="row col-sm-12">
-            <h1 class="page-title text-center">{% trans "Horas" %}</h1>
+        <div class="row col-sm-12 home-branding-wrapper">
+            <h1 class="branding-huge text-center">{% trans "1hora" %}</h1>
         </div> <!-- /.row col-sm-12 -->
 
         <div class="row col-sm-6 col-sm-offset-3">
-            <h3 class="page-subtitle text-center">
+            <h4 class="branding-subtitle text-muted text-center">
                 {% blocktrans %}
-                    Donde mentores donan <span class="highlight">1 hora</span> a la semana para ayudar a gente que quiere hacer lo imposible.
+                    El mejor lugar para compartir lo que sabes y aprender<br>de quienes han estado donde quieres llegar.
                 {% endblocktrans %}
-            </h3>
+            </h4>
         </div> <!-- /.row col-sm-6 col-sm-offset-3 -->
 
-        <section class="row col-sm-12 text-center home-login-area">
-            <h4 class="home-login-title">{% trans "Entra ahora, solo toma un minuto empezar" %}</h4>
+        <section class="row col-sm-12 margin-vertical-50">
+            <div class="col-sm-3 col-sm-offset-2">
+                <span class="big-number">1</span>
+                <h4 class="inline-block">{% trans "Regístrate" %}</h3>
+                <div class="margin-vertical-10">Regístrate para ser mentor y para poder reservar reuniones con otros mentores.</div>
+            </div> <!-- /.col-sm-3 -->
+            <div class="col-sm-3">
+                <span class="big-number">2</span>
+                <h4 class="inline-block">{% trans "Comparte" %}</h3>
+                <div class="margin-vertical-10">Comparte las horas que estarás disponible para dar reuniones a otros en la comunidad.</div>
+            </div> <!-- /.col-sm-3 -->
+            <div class="col-sm-3">
+                <span class="big-number">3</span>
+                <h4 class="inline-block">{% trans "Reúnete" %}</h3>
+                <div class="margin-vertical-10">Busca un mentor con el que te quieras reunir y reserva un espacio.</div>
+            </div> <!-- /.col-sm-3 -->
+        </section> <!-- /.row col-sm-12 -->
 
-            <div class="row col-sm-12 home-login-button-group">
+
+        <section class="row col-sm-12 text-center">
+            <h4>{% trans "Entra ahora, sólo toma un minuto" %}</h4>
+
+            <div class="row col-sm-12">
                 {% include "socialaccount/snippets/provider_list.html" with process="login" %}
             </div>
 
-            <div class="col-sm-6 col-sm-offset-3 help-text">
+            <div class="col-sm-6 col-sm-offset-3 text-muted margin-vertical-10 text-help-small">
                 {% url 'account_signup' as account_signup %}
                 {% url 'account_login' as account_login %}
                 {% blocktrans %}
@@ -45,20 +64,107 @@
             </div>
         </section> <!-- /.row col-sm-12 text-center home-login-area -->
 
-        <section class="row col-sm-12 text-center home-stats-container">
-            <section class="col-sm-4">
-                <h3>{% trans "Mentores" %}</h3>
-                <span class="stat stat-lg">1,523</span>
-            </section>
-            <section class="col-sm-4">
-                <h3>{% trans "Reuniones" %}</h3>
-                <span class="stat stat-lg">3,582</span>
-            </section>
-            <section class="col-sm-4">
-                <h3>{% trans "Disiplinas" %}</h3>
-                <span class="stat stat-lg">422</span>
-            </section>
-        </section> <!-- /.row col-sm-12 text-center home-stats-container -->
+        <div class="row">
+            <hr class="col-sm-12 horizontal-line">
+        </div>
+
+        <section class="row featured-mentors-title">
+            <div class="col-sm-12 text-center">
+                <h3>{% trans "Mentores Destacados" %}</h3>
+            </div> <!-- /.col-sm-12 text-center -->
+        </section> <!-- /.row -->
+
+        <section class="row">
+            <ul class="media-list">
+                <li class="media col-sm-4">
+                    <a href="#" class="pull-left">
+                        <img src="//placehold.it/70x70" alt="user gravatar" class="media-object">
+                    </a>
+                    <div class="media-object">
+                        <h4 class="media-heading"><a href="#">Frank Underwood</a></h4>
+                        <div class="user-widget-small-bio text-muted">
+                            Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse commodo fermentum leo, id cras amet.
+                        </div> <!-- /.user-widget-small-bio text-muted -->
+                    </div>
+                </li>
+
+                <li class="media col-sm-4">
+                    <a href="#" class="pull-left">
+                        <img src="//placehold.it/70x70" alt="user gravatar" class="media-object">
+                    </a>
+                    <div class="media-object">
+                        <h4 class="media-heading"><a href="#">Frank Underwood</a></h4>
+                        <div class="user-widget-small-bio text-muted">
+                            Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse commodo fermentum leo, id cras amet.
+                        </div> <!-- /.user-widget-small-bio text-muted -->
+                    </div>
+                </li>
+
+                <li class="media col-sm-4">
+                    <a href="#" class="pull-left">
+                        <img src="//placehold.it/70x70" alt="user gravatar" class="media-object">
+                    </a>
+                    <div class="media-object">
+                        <h4 class="media-heading"><a href="#">Frank Underwood</a></h4>
+                        <div class="user-widget-small-bio text-muted">
+                            Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse commodo fermentum leo, id cras amet.
+                        </div> <!-- /.user-widget-small-bio text-muted -->
+                    </div>
+                </li>
+
+                <li class="media col-sm-4">
+                    <a href="#" class="pull-left">
+                        <img src="//placehold.it/70x70" alt="user gravatar" class="media-object">
+                    </a>
+                    <div class="media-object">
+                        <h4 class="media-heading"><a href="#">Frank Underwood</a></h4>
+                        <div class="user-widget-small-bio text-muted">
+                            Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse commodo fermentum leo, id cras amet.
+                        </div> <!-- /.user-widget-small-bio text-muted -->
+                    </div>
+                </li>
+
+                <li class="media col-sm-4">
+                    <a href="#" class="pull-left">
+                        <img src="//placehold.it/70x70" alt="user gravatar" class="media-object">
+                    </a>
+                    <div class="media-object">
+                        <h4 class="media-heading"><a href="#">Frank Underwood</a></h4>
+                        <div class="user-widget-small-bio text-muted">
+                            Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse commodo fermentum leo, id cras amet.
+                        </div> <!-- /.user-widget-small-bio text-muted -->
+                    </div>
+                </li>
+
+                <li class="media col-sm-4">
+                    <a href="#" class="pull-left">
+                        <img src="//placehold.it/70x70" alt="user gravatar" class="media-object">
+                    </a>
+                    <div class="media-object">
+                        <h4 class="media-heading"><a href="#">Frank Underwood</a></h4>
+                        <div class="user-widget-small-bio text-muted">
+                            Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse commodo fermentum leo, id cras amet.
+                        </div> <!-- /.user-widget-small-bio text-muted -->
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <footer class="row footer">
+            <div class="col-sm-12">
+                <ul class="list-inline">
+                    <li><span class="branding-small">1hora</span></li>
+                    <li><span class="text-muted">|</span></li>
+                    <li><a href="#" class="text-muted">Some Rights Reserved</a></li>
+                    <li><span class="text-muted">|</span></li>
+                    <li><a href="#">Sobre 1hora</a></li>
+                    <li><a href="#">Politica de Privacidad</a></li>
+                    <li><a href="#">Terminos de Uso</a></li>
+                    <li><a href="#">Contacto</a></li>
+                    <li><a href="#">Source</a></li>
+                </ul>
+            </div>
+        </footer>
 
     </div> <!-- /.container -->
 {% endblock content %}

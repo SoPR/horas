@@ -1,4 +1,96 @@
 @import 'nib'
+@import '_colors.styl'
 
 body
-    background-color white
+    font-face Helvetica, 'Helvetica Neue', sans-serif
+
+.home-branding-wrapper
+    margin-top 20px
+
+.branding-huge
+    font-size 100px
+    font-weight 800
+    letter-spacing -8px
+
+.branding-small
+    font-size 15px
+    font-weight 800
+    letter-spacing -2px
+
+.branding-subtitle
+    font-weight normal
+
+.big-number
+    border 3px solid $grey2
+    font-size 20px
+    font-weight bold
+    padding 8px 15px
+    border-radius 30px
+    margin-right 5px
+
+.inline-block
+    display inline-block
+
+.margin-vertical-50
+    margin-top 50px
+    margin-bottom 50px
+
+.margin-vertical-10
+    margin-top 10px
+    margin-bottom 10px
+
+.text-help-small
+    font-size 12px
+
+
+.btn-facebook
+    background-color $facebook-blue
+    color lighten($facebook-blue, 40)
+
+    &:hover
+        color darken($facebook-blue, 20)
+
+.btn-twitter
+    background-color $twitter-blue
+    color lighten($twitter-blue, 30)
+
+    &:hover
+        color darken($twitter-blue, 20)
+
+.btn-google
+    background-color $google-red
+    color lighten($google-red, 30)
+
+    &:hover
+        color darken($google-red, 20)
+
+.btn-persona
+    background-color $persona-orange
+    color lighten($persona-orange, 30)
+
+    &:hover
+        color darken($persona-orange, 20)
+
+.horizontal-line
+    border-top 1px solid $grey1
+
+.user-widget-small-name
+    font-weight bold
+    font-size 15px
+
+.user-widget-small-bio
+    font-size 12px
+
+.user-widget-small
+    margin-bottom 30px
+
+.media:first-child
+    margin-top 15px
+
+.featured-mentors-title
+    margin-bottom 20px
+
+.footer
+    border-top 1px solid $grey1
+    margin-top 50px
+    padding 20px 0
