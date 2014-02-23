@@ -13,3 +13,4 @@ class Command(BaseCommand):
         notification.create_notice_type("pre_meeting_reminder", _("Your upcoming meeting"), _("your meetings starts in 24 hours"))
         notification.create_notice_type("post_meeting_feedback_request", _("Let us know"), _("how did your meeting go?"))
 
+        self.stdout.write('--> Created notice types')
