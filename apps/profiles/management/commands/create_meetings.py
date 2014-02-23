@@ -16,7 +16,7 @@ class Command(BaseCommand):
             users = User.objects.all()
 
         for user in users:
-            meetings_created.append(user.create_meeting())
+            meetings_created.append(user.create_meeting_slot())
 
         self.stdout.write('Succesfully created {} meetings.'.format(
             len(meetings_created)))

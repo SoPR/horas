@@ -5,6 +5,7 @@ from django.contrib.auth.models import AbstractUser
 from django.db.models.loading import get_model
 from django.utils.timezone import now, utc
 
+from notification import models as notification
 from taggit.managers import TaggableManager
 
 from .fields import DaysOfWeekField
@@ -39,7 +40,7 @@ class User(AbstractUser):
     def get_tiny_name(self):
         return '{0}. {1}'.format(self.first_name[0], self.last_name)
 
-    def create_meeting(self):
+    def create_meeting_slot(self):
         Meeting = get_model('meetings', 'Meeting')
 
         today = now().date()
@@ -49,4 +50,8 @@ class User(AbstractUser):
         next_slot = datetime.datetime.combine(
             next_slot_date, self.start_time).replace(tzinfo=utc)
 
-        return Meeting.objects.create(mentor=self, datetime=next_slot)
+
+        meeting_slot = Meeting.objects.create(mentor=self, datetime=next_slot)
+        # Notify user
+        notification.send([self], 'create_meeting_slot', {'meeting': meeting_slot})
+
