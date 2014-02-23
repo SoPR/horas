@@ -47,9 +47,9 @@ Sorry for the spanglish. If you want to contribute just pick a task and update i
 - **[not started]** - We need to setup something like Celery or simpler if possible to handle async operations like email notifications.
 
 - **[in progress: crm114]** - User should receive email notification when
-    - Meeting slots are created
-    - Meeting is reserved / scheduled
-    - Meeting is cancelled
+    - :white_check_mark: Meeting slots are created
+    - :white_check_mark: Meeting is reserved / scheduled
+    - :white_check_mark: Meeting is cancelled
     - 24 hrs before the meeting starts
     - 3 hrs after the meeting start time to ask for feedback
 
