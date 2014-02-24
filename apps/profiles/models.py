@@ -8,6 +8,7 @@ from django.utils.timezone import now, utc
 from notification import models as notification
 from taggit.managers import TaggableManager
 
+from .utils import get_gravatar_url
 from .fields import DaysOfWeekField
 
 
@@ -16,14 +17,17 @@ class User(AbstractUser):
     Defines our custom user model.
     '''
     # Public profile information
+    featured = models.BooleanField(default=False)
     bio = models.TextField(blank=True)
     twitter_username = models.CharField(blank=True, max_length=50)
     facebook_username = models.CharField(blank=True, max_length=50)
     github_username = models.CharField(blank=True, max_length=50)
     website_url = models.URLField(blank=True, max_length=50)
+    gravatar_url = models.URLField(blank=True)
+    is_gravatar_verified = models.BooleanField(default=False)
 
     # Meeting availability
-    day_of_week = DaysOfWeekField(blank=True, db_index=True)
+    day_of_week = DaysOfWeekField(blank=True, null=True, db_index=True)
     start_time = models.TimeField(null=True, blank=True)
 
     # Kept private until meeting
@@ -36,6 +40,12 @@ class User(AbstractUser):
     tags = TaggableManager(blank=True)
 
     date_updated = models.DateTimeField(auto_now=True)
+
+    def save(self, *args, **kwargs):
+        if not self.gravatar_url:
+            self.gravatar_url = get_gravatar_url(self.email)
+
+        super(User, self).save(*args, **kwargs)
 
     def get_tiny_name(self):
         return '{0}. {1}'.format(self.first_name[0], self.last_name)
