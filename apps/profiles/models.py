@@ -4,6 +4,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.db.models.loading import get_model
 from django.utils.timezone import now, utc
+from django.core.urlresolvers import reverse_lazy
 
 from notification import models as notification
 from taggit.managers import TaggableManager
@@ -46,6 +47,9 @@ class User(AbstractUser):
             self.gravatar_url = get_gravatar_url(self.email)
 
         super(User, self).save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return reverse_lazy('profile_detail', args=[self.username])
 
     def get_tiny_name(self):
         return '{0}. {1}'.format(self.first_name[0], self.last_name)

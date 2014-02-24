@@ -76,77 +76,23 @@
 
         <section class="row">
             <ul class="media-list">
-                <li class="media col-sm-4">
-                    <a href="#" class="pull-left">
-                        <img src="//placehold.it/70x70" alt="user gravatar" class="media-object">
-                    </a>
-                    <div class="media-object">
-                        <h4 class="media-heading"><a href="#">Frank Underwood</a></h4>
-                        <div class="user-widget-small-bio text-muted">
-                            Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse commodo fermentum leo, id cras amet.
-                        </div> <!-- /.user-widget-small-bio text-muted -->
-                    </div>
-                </li>
-
-                <li class="media col-sm-4">
-                    <a href="#" class="pull-left">
-                        <img src="//placehold.it/70x70" alt="user gravatar" class="media-object">
-                    </a>
-                    <div class="media-object">
-                        <h4 class="media-heading"><a href="#">Frank Underwood</a></h4>
-                        <div class="user-widget-small-bio text-muted">
-                            Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse commodo fermentum leo, id cras amet.
-                        </div> <!-- /.user-widget-small-bio text-muted -->
-                    </div>
-                </li>
-
-                <li class="media col-sm-4">
-                    <a href="#" class="pull-left">
-                        <img src="//placehold.it/70x70" alt="user gravatar" class="media-object">
-                    </a>
-                    <div class="media-object">
-                        <h4 class="media-heading"><a href="#">Frank Underwood</a></h4>
-                        <div class="user-widget-small-bio text-muted">
-                            Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse commodo fermentum leo, id cras amet.
-                        </div> <!-- /.user-widget-small-bio text-muted -->
-                    </div>
-                </li>
-
-                <li class="media col-sm-4">
-                    <a href="#" class="pull-left">
-                        <img src="//placehold.it/70x70" alt="user gravatar" class="media-object">
-                    </a>
-                    <div class="media-object">
-                        <h4 class="media-heading"><a href="#">Frank Underwood</a></h4>
-                        <div class="user-widget-small-bio text-muted">
-                            Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse commodo fermentum leo, id cras amet.
-                        </div> <!-- /.user-widget-small-bio text-muted -->
-                    </div>
-                </li>
-
-                <li class="media col-sm-4">
-                    <a href="#" class="pull-left">
-                        <img src="//placehold.it/70x70" alt="user gravatar" class="media-object">
-                    </a>
-                    <div class="media-object">
-                        <h4 class="media-heading"><a href="#">Frank Underwood</a></h4>
-                        <div class="user-widget-small-bio text-muted">
-                            Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse commodo fermentum leo, id cras amet.
-                        </div> <!-- /.user-widget-small-bio text-muted -->
-                    </div>
-                </li>
-
-                <li class="media col-sm-4">
-                    <a href="#" class="pull-left">
-                        <img src="//placehold.it/70x70" alt="user gravatar" class="media-object">
-                    </a>
-                    <div class="media-object">
-                        <h4 class="media-heading"><a href="#">Frank Underwood</a></h4>
-                        <div class="user-widget-small-bio text-muted">
-                            Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse commodo fermentum leo, id cras amet.
-                        </div> <!-- /.user-widget-small-bio text-muted -->
-                    </div>
-                </li>
+                {% for user in featured_users %}
+                    <li class="media col-sm-4">
+                        <a href="{{ user.get_absolute_url }}" class="pull-left">
+                            <img src="{{ user.gravatar_url }}" alt="user gravatar" class="media-object">
+                        </a>
+                        <div class="media-object">
+                            <h4 class="media-heading">
+                                <a href="{{ user.get_absolute_url }}">
+                                    {{ user.get_full_name }}
+                                </a>
+                            </h4>
+                            <div class="user-widget-small-bio text-muted">
+                                {{ user.bio }}
+                            </div> <!-- /.user-widget-small-bio text-muted -->
+                        </div>
+                    </li>
+                {% endfor %}
             </ul>
 
             <div class="col-sm-12 text-center featured-mentors-more-wrapper">
