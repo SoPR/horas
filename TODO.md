@@ -48,6 +48,8 @@ Sorry for the spanglish. If you want to contribute just pick a task and update i
 
 - **[not started]** - We need to setup something like Celery or simpler if possible to handle async operations like email notifications.
 
+- **[not started]** - Write HTML and plain text templates for email notifications
+
 - **[in progress: crm114]** - User should receive email notification when
     - :white_check_mark: Meeting slots are created
     - :white_check_mark: Meeting is reserved / scheduled
