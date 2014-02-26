@@ -6,7 +6,7 @@
 {% endblock app_scripts %}
 
 {% block title %}
-    {% trans "Horas - Todos ayudando a todos" %}
+    {% trans "Todos ayudando a todos" %}
 {% endblock title %}
 
 {% block header %}
@@ -17,41 +17,47 @@
     {% include "persona/auth.html" %}
 
     <div class="container">
-        <div class="row col-sm-12 home-branding-wrapper">
-            <h1 class="branding-huge text-center">{% trans "1hora" %}</h1>
-        </div> <!-- /.row col-sm-12 -->
+        <div class="row">
+            <div class="col-sm-12 home-branding-wrapper">
+                <h1 class="branding-huge text-center">{% trans "1hora" %}</h1>
+            </div>
+        </div> <!-- /.row -->
 
-        <div class="row col-sm-6 col-sm-offset-3">
-            <h4 class="branding-subtitle text-muted text-center">
-                {% blocktrans %}
-                    El mejor lugar para compartir lo que sabes y aprender<br>de quienes han estado donde quieres llegar.
-                {% endblocktrans %}
-            </h4>
+        <div class="row home-branding-subtitle-wrapper">
+            <div class="col-sm-12">
+                <h4 class="branding-subtitle text-muted text-center">
+                    {% blocktrans %}
+                        El mejor lugar para compartir lo que sabes y aprender<br>de quienes han estado donde quieres llegar.
+                    {% endblocktrans %}
+                </h4>
+            </div>
         </div> <!-- /.row col-sm-6 col-sm-offset-3 -->
 
-        <section class="row col-sm-12 margin-vertical-50">
-            <div class="col-sm-3 col-sm-offset-2">
-                <span class="big-number">1</span>
-                <h4 class="inline-block">{% trans "Regístrate" %}</h3>
-                <div class="margin-vertical-10">Regístrate para ser mentor y para poder reservar reuniones con otros mentores.</div>
-            </div> <!-- /.col-sm-3 -->
-            <div class="col-sm-3">
-                <span class="big-number">2</span>
-                <h4 class="inline-block">{% trans "Comparte" %}</h3>
-                <div class="margin-vertical-10">Comparte las horas que estarás disponible para dar reuniones a otros en la comunidad.</div>
-            </div> <!-- /.col-sm-3 -->
-            <div class="col-sm-3">
-                <span class="big-number">3</span>
-                <h4 class="inline-block">{% trans "Reúnete" %}</h3>
-                <div class="margin-vertical-10">Busca un mentor con el que te quieras reunir y reserva un espacio.</div>
-            </div> <!-- /.col-sm-3 -->
+        <section class="row">
+            <div class="col-sm-8 col-sm-offset-2 home-123-bullets-wrapper">
+                <div class="col-sm-4 home-123-bullet">
+                    <span class="big-number">1</span>
+                    <h4 class="inline-block">{% trans "Regístrate" %}</h3>
+                    <div class="margin-vertical-10">{% trans "Regístrate para ser mentor y para poder reservar reuniones con otros mentores." %}</div>
+                </div> <!-- /.col-sm-3 -->
+                <div class="col-sm-4 home-123-bullet">
+                    <span class="big-number">2</span>
+                    <h4 class="inline-block">{% trans "Comparte" %}</h3>
+                    <div class="margin-vertical-10">{% trans "Comparte las horas que estarás disponible para dar reuniones a otros en la comunidad." %}</div>
+                </div> <!-- /.col-sm-3 -->
+                <div class="col-sm-4 home-123-bullet">
+                    <span class="big-number">3</span>
+                    <h4 class="inline-block">{% trans "Reúnete" %}</h3>
+                    <div class="margin-vertical-10">{% trans "Busca un mentor con el que te quieras reunir y reserva un espacio." %}</div>
+                </div> <!-- /.col-sm-3 -->
+            </div>
         </section> <!-- /.row col-sm-12 -->
 
 
-        <section class="row col-sm-12 text-center">
+        <section class="row text-center home-social-auth-wrapper">
             <h4>{% trans "Entra ahora, sólo toma un minuto" %}</h4>
 
-            <div class="row col-sm-12">
+            <div class="row">
                 {% include "socialaccount/snippets/provider_list.html" with process="login" %}
             </div>
 
@@ -65,7 +71,7 @@
         </section> <!-- /.row col-sm-12 text-center home-login-area -->
 
         <div class="row">
-            <hr class="col-sm-12 horizontal-line">
+            <div class="col-sm-12 horizontal-line"></div>
         </div>
 
         <section class="row featured-mentors-title">
@@ -77,7 +83,7 @@
         <section class="row">
             <ul class="media-list">
                 {% for user in featured_users %}
-                    <li class="media col-sm-4">
+                    <li class="media col-sm-4 home-media-wrapper">
                         <a href="{{ user.get_absolute_url }}" class="pull-left">
                             <img src="{{ user.gravatar_url }}" alt="user gravatar" class="media-object">
                         </a>
@@ -96,26 +102,9 @@
             </ul>
 
             <div class="col-sm-12 text-center featured-mentors-more-wrapper">
-                <a href="" class="btn btn-default btn-lg btn-grey">Ver más</a> <span class="text-muted">Tenemos {{ users_count }} mentores registrados</span>
+                <a href="#" class="btn btn-default btn-lg btn-grey">{% trans "Ver más" %}</a> <span class="text-muted">{% blocktrans %}Tenemos {{ users_count }} mentores registrados{% endblocktrans %}</span>
             </div>
-
         </section>
-
-        <footer class="row footer">
-            <div class="col-sm-12">
-                <ul class="list-inline">
-                    <li><span class="branding-small">1hora</span></li>
-                    <li><span class="text-muted">|</span></li>
-                    <li><a href="#" class="text-muted">Some Rights Reserved</a></li>
-                    <li><span class="text-muted">|</span></li>
-                    <li><a href="#">Sobre 1hora</a></li>
-                    <li><a href="#">Politica de Privacidad</a></li>
-                    <li><a href="#">Terminos de Uso</a></li>
-                    <li><a href="#">Contacto</a></li>
-                    <li><a href="#">Source</a></li>
-                </ul>
-            </div>
-        </footer>
 
     </div> <!-- /.container -->
 {% endblock content %}

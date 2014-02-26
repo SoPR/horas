@@ -1,0 +1,20 @@
+{% load i18n %}
+<div class="container">
+    <footer class="row footer">
+        <div class="col-sm-4">
+            <ul class="list-inline">
+                <li><span class="branding-small"><a href="#">1hora</a></span></li>
+                <li><span class="text-muted">|</span></li>
+                <li><a href="#" class="text-muted">{% trans "Creative Commons" %}</a></li>
+            </ul>
+        </div>
+        <div class="col-sm-8 text-right">
+            <ul class="list-inline">
+                <li><a href="{% url 'about' %}">{% trans "Sobre 1hora" %}</a></li>
+                <li><a href="{% url 'legal' %}">{% trans "Legal" %}</a></li>
+                <li><a href="{% url 'contact' %}">{% trans "Contacto" %}</a></li>
+                <li><a href="https://github.com/SoPR/horas">{% trans "Source" %}</a></li>
+            </ul>
+        </div>
+    </footer>
+</div>

@@ -1,4 +1,5 @@
 from django.conf.urls import patterns, include, url
+from django.views.generic.base import TemplateView
 from django.contrib import admin
 
 admin.autodiscover()
@@ -14,7 +15,12 @@ urlpatterns = patterns(
 
     url(r'^accounts/', include('allauth.urls')),
 
-    url(r'^(?P<username>[-\w]+)', include('apps.profiles.urls')),
+    # This pages are in apps/core/templates
+    url(r'^legal/$', TemplateView.as_view(template_name='legal.html'), name='legal'),
+    url(r'^about/$', TemplateView.as_view(template_name='about.html'), name='about'),
+    url(r'^contact/$', TemplateView.as_view(template_name='contact.html'), name='contact'),
+
+    url(r'^(?P<username>[-\w]+)/', include('apps.profiles.urls')),
 
     url(r'^$', include('apps.core.urls')),
 )
