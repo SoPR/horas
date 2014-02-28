@@ -1,14 +1,14 @@
 {% load i18n %}
 <div class="container">
     <footer class="row footer">
-        <div class="col-sm-4">
+        <div class="col-sm-4 footer-left-column">
             <ul class="list-inline">
                 <li><span class="branding-small"><a href="#">1hora</a></span></li>
                 <li><span class="text-muted">|</span></li>
                 <li><a href="#" class="text-muted">{% trans "Creative Commons" %}</a></li>
             </ul>
         </div>
-        <div class="col-sm-8 text-right">
+        <div class="col-sm-8 text-right footer-right-column">
             <ul class="list-inline">
                 <li><a href="{% url 'about' %}">{% trans "Sobre 1hora" %}</a></li>
                 <li><a href="{% url 'legal' %}">{% trans "Legal" %}</a></li>
