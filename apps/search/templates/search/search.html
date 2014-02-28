@@ -9,10 +9,125 @@
     {% trans "Horas - Todos ayudando a todos" %}
 {% endblock title %}
 
-{% block header %}
-    {# No Header #}
-{% endblock header %}
-
 {% block content %}
-    search/search.html
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 search-wrapper">
+                <form method="get">
+                    <div class="col-sm-10 padding-0-left padding-0-right">
+                        <input type="text" name="q" class="search-huge" placeholder="{% trans "Buscar por nombre de mentor o tema" %}" autofocus>
+                    </div>
+                    <div class="col-sm-2 padding-0-left padding-0-right">
+                        <button class="btn btn-search-huge pull-right" type="submit">{% trans "Buscar" %}</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+        <div class="col-sm-12 horizontal-line search-page-horizontal-line"></div>
+
+
+        <div class="row">
+            <div class="col-sm-12">
+                <h3>{% trans "Buscar por tema" %}</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <ul class="list-inline search-link-list">
+                    <li><a href="#">startups</a></li>
+                    <li><a href="#">web development</a></li>
+                    <li><a href="#">mobile development</a></li>
+                    <li><a href="#">ios</a></li>
+                    <li><a href="#">python</a></li>
+                    <li><a href="#">sin fines de lucro</a></li>
+                    <li><a href="#">emprendimiento</a></li>
+                    <li><a href="#">startups</a></li>
+                    <li><a href="#">web development</a></li>
+                    <li><a href="#">mobile development</a></li>
+                    <li><a href="#">ios</a></li>
+                    <li><a href="#">python</a></li>
+                    <li><a href="#">sin fines de lucro</a></li>
+                    <li><a href="#">emprendimiento</a></li>
+                    <li><a href="#">startups</a></li>
+                    <li><a href="#">web development</a></li>
+                    <li><a href="#">mobile development</a></li>
+                    <li><a href="#">ios</a></li>
+                    <li><a href="#">python</a></li>
+                    <li><a href="#">sin fines de lucro</a></li>
+                    <li><a href="#">emprendimiento</a></li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="col-sm-12 horizontal-line search-page-horizontal-line"></div>
+
+
+        <div class="row search-page-row">
+            <div class="col-sm-12">
+                <h3>{% trans "Buscar por localidad" %}</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <ul class="list-inline search-link-list">
+                    <li><a href="#">San Juan, PR</a></li>
+                    <li><a href="#">Ponce, PR</a></li>
+                    <li><a href="#">Mayagüez, PR</a></li>
+                    <li><a href="#">Miami, FL</a></li>
+                    <li><a href="#">New York, NY</a></li>
+                    <li><a href="#">San Juan, PR</a></li>
+                    <li><a href="#">Ponce, PR</a></li>
+                    <li><a href="#">Mayagüez, PR</a></li>
+                    <li><a href="#">Miami, FL</a></li>
+                    <li><a href="#">New York, NY</a></li>
+                    <li><a href="#">San Juan, PR</a></li>
+                    <li><a href="#">Ponce, PR</a></li>
+                    <li><a href="#">Mayagüez, PR</a></li>
+                    <li><a href="#">Miami, FL</a></li>
+                    <li><a href="#">New York, NY</a></li>
+                    <li><a href="#">San Juan, PR</a></li>
+                    <li><a href="#">Ponce, PR</a></li>
+                    <li><a href="#">Mayagüez, PR</a></li>
+                    <li><a href="#">Miami, FL</a></li>
+                    <li><a href="#">New York, NY</a></li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="col-sm-12 horizontal-line search-page-horizontal-line"></div>
+
+
+        <section class="row">
+            {% if search_results.count > 0 %}
+                <ul class="media-list">
+                    {% for user in search_results %}
+                        <li class="media col-sm-4 home-media-wrapper">
+                            <a href="{{ user.get_absolute_url }}" class="pull-left">
+                                <img src="{{ user.gravatar_url }}" alt="user gravatar" class="media-object">
+                            </a>
+                            <div class="media-object">
+                                <h4 class="media-heading">
+                                    <a href="{{ user.get_absolute_url }}">
+                                        {{ user.get_full_name }}
+                                    </a>
+                                </h4>
+                                <div class="user-widget-small-bio text-muted">
+                                    {{ user.bio }}
+                                </div> <!-- /.user-widget-small-bio text-muted -->
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <div class="col-sm-12">
+                    <h4 class="text-muted text-center">{% trans "No hay resultados para esta busqueda" %}</h4>
+                </div>
+            {% endif %}
+        </section>
+
+    </div>
 {% endblock content %}
