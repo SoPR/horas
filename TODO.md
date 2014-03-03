@@ -59,4 +59,4 @@ Sorry for the spanglish. If you want to contribute just pick a task and update i
 
 - **[not started]** - Add and configure DjangoRESTFramework to add a full REST API to the site using Sessions, oAuth2 and JWT (with user initiated expiration enabled) for auth. Make sure we are integrating correctly with allauth.
 
-- **[in progress: jpadilla]** - Implement Search and Search Results page
+- :white_check_mark: - Implement Search and Search Results page
