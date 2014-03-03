@@ -1,8 +1,11 @@
 Django==1.6.2
 South==0.8.4
+Unidecode==0.04.14
 Werkzeug==0.9.4
 django-allauth==0.15.0
+django-autoslug==1.7.2
 django-braces==1.3.1
+django-cities-light==2.1.13
 django-debug-toolbar==1.0.1
 django-extensions==1.3.3
 -e git+https://github.com/pinax/django-notification@3116c616409c47109e5bb1a3fbf273d380b5c2ea#egg=django_notification-dev

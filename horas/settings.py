@@ -52,6 +52,7 @@ INSTALLED_APPS = (
     'allauth.socialaccount.providers.persona',
     'taggit',
     'notification',
+    'cities_light',
 
     # Local apps
     'apps.core',

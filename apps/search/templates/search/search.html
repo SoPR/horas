@@ -15,7 +15,7 @@
             <div class="col-sm-12 search-wrapper">
                 <form method="get">
                     <div class="col-sm-10 padding-0-left padding-0-right">
-                        <input type="text" name="q" class="search-huge" placeholder="{% trans "Buscar por nombre de mentor o tema" %}" autofocus>
+                        <input type="text" name="q" value="{{ search_term }}" class="search-huge" placeholder="{% trans "Buscar por nombre de mentor o tema" %}" autofocus>
                     </div>
                     <div class="col-sm-2 padding-0-left padding-0-right">
                         <button class="btn btn-search-huge pull-right" type="submit">{% trans "Buscar" %}</button>
@@ -27,7 +27,7 @@
 
         <div class="col-sm-12 horizontal-line search-page-horizontal-line"></div>
 
-
+        {% if not search_term %}
         <div class="row">
             <div class="col-sm-12">
                 <h3>{% trans "Buscar por tema" %}</h3>
@@ -36,27 +36,13 @@
         <div class="row">
             <div class="col-sm-12">
                 <ul class="list-inline search-link-list">
-                    <li><a href="#">startups</a></li>
-                    <li><a href="#">web development</a></li>
-                    <li><a href="#">mobile development</a></li>
-                    <li><a href="#">ios</a></li>
-                    <li><a href="#">python</a></li>
-                    <li><a href="#">sin fines de lucro</a></li>
-                    <li><a href="#">emprendimiento</a></li>
-                    <li><a href="#">startups</a></li>
-                    <li><a href="#">web development</a></li>
-                    <li><a href="#">mobile development</a></li>
-                    <li><a href="#">ios</a></li>
-                    <li><a href="#">python</a></li>
-                    <li><a href="#">sin fines de lucro</a></li>
-                    <li><a href="#">emprendimiento</a></li>
-                    <li><a href="#">startups</a></li>
-                    <li><a href="#">web development</a></li>
-                    <li><a href="#">mobile development</a></li>
-                    <li><a href="#">ios</a></li>
-                    <li><a href="#">python</a></li>
-                    <li><a href="#">sin fines de lucro</a></li>
-                    <li><a href="#">emprendimiento</a></li>
+                {% for tag in tags %}
+                    <li>
+                        <a href="{% url "search_list" %}?q={{tag.slug}}">
+                            {{ tag }}
+                        </a>
+                    </li>
+                {% endfor %}
                 </ul>
             </div>
         </div>
@@ -73,38 +59,26 @@
         <div class="row">
             <div class="col-sm-12">
                 <ul class="list-inline search-link-list">
-                    <li><a href="#">San Juan, PR</a></li>
-                    <li><a href="#">Ponce, PR</a></li>
-                    <li><a href="#">Mayagüez, PR</a></li>
-                    <li><a href="#">Miami, FL</a></li>
-                    <li><a href="#">New York, NY</a></li>
-                    <li><a href="#">San Juan, PR</a></li>
-                    <li><a href="#">Ponce, PR</a></li>
-                    <li><a href="#">Mayagüez, PR</a></li>
-                    <li><a href="#">Miami, FL</a></li>
-                    <li><a href="#">New York, NY</a></li>
-                    <li><a href="#">San Juan, PR</a></li>
-                    <li><a href="#">Ponce, PR</a></li>
-                    <li><a href="#">Mayagüez, PR</a></li>
-                    <li><a href="#">Miami, FL</a></li>
-                    <li><a href="#">New York, NY</a></li>
-                    <li><a href="#">San Juan, PR</a></li>
-                    <li><a href="#">Ponce, PR</a></li>
-                    <li><a href="#">Mayagüez, PR</a></li>
-                    <li><a href="#">Miami, FL</a></li>
-                    <li><a href="#">New York, NY</a></li>
+                {% for city in cities %}
+                    <li>
+                        <a href="{% url "search_list" %}?q={{ city.name }}, {{ city.country.code2 }}">
+                            {{ city.name }}, {{ city.country.code2 }}
+                        </a>
+                    </li>
+                {% endfor %}
                 </ul>
             </div>
         </div>
 
 
         <div class="col-sm-12 horizontal-line search-page-horizontal-line"></div>
+        {% endif %}
 
 
         <section class="row">
-            {% if search_results.count > 0 %}
+            {% if object_list %}
                 <ul class="media-list">
-                    {% for user in search_results %}
+                    {% for user in object_list %}
                         <li class="media col-sm-4 home-media-wrapper">
                             <a href="{{ user.get_absolute_url }}" class="pull-left">
                                 <img src="{{ user.gravatar_url }}" alt="user gravatar" class="media-object">
@@ -124,7 +98,9 @@
                 </ul>
             {% else %}
                 <div class="col-sm-12">
-                    <h4 class="text-muted text-center">{% trans "No hay resultados para esta busqueda" %}</h4>
+                    <h4 class="text-muted text-center">
+                        {% trans "No hay resultados para esta busqueda" %}
+                    </h4>
                 </div>
             {% endif %}
         </section>

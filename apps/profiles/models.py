@@ -26,6 +26,7 @@ class User(AbstractUser):
     website_url = models.URLField(blank=True, max_length=50)
     gravatar_url = models.URLField(blank=True)
     is_gravatar_verified = models.BooleanField(default=False)
+    location = models.ForeignKey('cities_light.City', blank=True, null=True)
 
     # Meeting availability
     day_of_week = DaysOfWeekField(blank=True, null=True, db_index=True)
