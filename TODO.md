@@ -60,3 +60,7 @@ Sorry for the spanglish. If you want to contribute just pick a task and update i
 - **[not started]** - Add and configure DjangoRESTFramework to add a full REST API to the site using Sessions, oAuth2 and JWT (with user initiated expiration enabled) for auth. Make sure we are integrating correctly with allauth.
 
 - :white_check_mark: - Implement Search and Search Results page
+
+- **[not started]** - Create a CONTRIBUTING.md file explaning how to contribute to the project. The document should have sections for developers, designers and everyone else. We can [use this as a guide](https://github.com/TryGhost/Ghost/blob/master/CONTRIBUTING.md).
+
+- **[not started]** - Creata an AUTHORS.md file for listing all contributors for the project. We can [use this as a guide](https://github.com/kennethreitz/requests/blob/master/AUTHORS.rst).
