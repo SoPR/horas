@@ -83,14 +83,15 @@ Es necesario tener instalado Python 3.3 y [Brunch](http://brunch.io) para poder 
 
 ```bash
 $ git clone https://github.com/SoPR/horas.git
-$ cd horas/static/src
-$ npm install
-$ cd ../..
-$ pip install -r requirements.txt
-$ python manage.py syncdb
-$ python manage.py migrate
-$ python manage.py loaddata apps/profiles/fixtures/admin.json
-$ python manage.py brunchserver
+$ cd horas
+$ vagrant up
+```
+Este paso tomará varios minutos dependiendo de su conexión de internet. Cuando termine haga:
+
+```bash
+$ vagrant ssh
+$ cd horas
+$ runhoras
 ```
 Abre tu browser en [http://localhost:8000/](http://localhost:8000/). Para accesar la sección de administración ve a [http://localhost:8000/admin/](http://localhost:8000/admin/), y usa el username **admin** y el password **abc123**.
 
