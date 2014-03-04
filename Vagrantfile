@@ -16,6 +16,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # within the machine from a port on the host machine. In the example below,
   # accessing "localhost:8080" will access port 8000 on the guest machine.
   config.vm.network :forwarded_port, guest: 8000, host: 8000
+  config.vm.network :forwarded_port, guest: 9485, host: 9485
 
   # Shell provisioning
   config.vm.provision "shell", path: "https://raw.github.com/SoPR/horas-install/master/install-dev-tools.sh"

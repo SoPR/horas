@@ -2,7 +2,7 @@
 
 # Vagrant
 .vagrant
-
+src/
 ### OSX ###
 .DS_Store
 .AppleDouble
