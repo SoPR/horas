@@ -7,14 +7,14 @@ Una plataforma para facilitar la [mentoría](http://es.wikipedia.org/wiki/Mentor
 
 ![Horas Screenshot](https://raw2.github.com/SoPR/horas/design/png/01.png)
 
-### Idea
+## Idea
 
 En Puerto Rico hay cientos de personas que quieren empezar un negocio, una organización benéfica, una liga deportiva, un programa educativo entre muchas otras iniciativas. Las personas que asumen estos proyecto necesitan ayuda para lograr realizar estas cosas que tanto nos hacen falta.
 
 Este proyecto pretende conectar a estas personas que quieren cambiar el mundo con los mentores que los ayudarán a lograrlo.
 
 
-### Mecánica
+## Mecánica
 
 Los mentores se registran e indican en que momento de la semana pueden donar **1 hora** de su tiempo para reunirse con alguien que quiere pedirle ayuda, consejo o simplemente conocerle.
 
@@ -29,7 +29,7 @@ Las reuniones se pueden realizar de la manera que sea más conveniente para el m
 - Por teléfono
 
 
-### Reglas
+## Reglas
 
 Para que este sistema sea efectivo debemos plantear algunas reglas simples a las que todos nos comprometeremos a respetar.
 
@@ -44,20 +44,17 @@ Para que este sistema sea efectivo debemos plantear algunas reglas simples a las
 5. Los **aprendices** deben comprometerse a ser respetuosos del tiempo de los mentores siendo puntuales y estando preparados para la reunión. Una vez terminada la reunión es importante completar el "review" de esa reunión para que otros sepan como te fue.
 
 
-### Reportar errores, sugerencias y otros comentarios
+## Reportar errores, sugerencias y otros comentarios
 
 Si tienes una idea de como mejorar esta plataforma o si has encontrado algún error déjanos saber creando un "issue" en el repositorio.
 
 :beetle: [Issues](https://github.com/SoPR/horas/issues) - para reportar problemas, errores, sugerencias, etc.
 
-#### Cómo usar "issues" en GitHub
+### Cómo usar "issues" en GitHub
 
 Aquí un [vídeo](http://www.youtube.com/watch?v=TJlYiMp8FuY) que explica como crear "issues". Recuerda que primero necesitas [crear una cuenta de GitHub](https://github.com/join), es gratis.
 
-[![link](http://i.imgur.com/eN07Qqu.png)](http://www.youtube.com/watch?v=TJlYiMp8FuY)
-
-
-### Developers
+## Developers
 
 Este proyecto no sería posible sin la colaboración de otros developers que han donado su tiempo para crear esta aplicación. Si  encuentras un error por favor crea un [issue](https://github.com/SoPR/horas/issues) y si puedes arreglarlo te invitamos a hacer y someter un pull request.
 
@@ -70,33 +67,51 @@ Si necesitas ideas de como ayudar puede ver la lista de tareas pendientes.
 :white_check_mark: [TO-DO](TODO.md)
 
 
-### Diseñadores
+### Para correr el proyecto
 
-Tenemos un branch dedicado para compartir y colaborar sobre el diseño de la plataforma. Mantendremos el diseño más reciente en ese branch.
+Hay dos opciones para correr el proyecto la primera usando Vagrant y la segunda instalando en tu ambiente local.
 
-:art: [Design](https://github.com/SoPR/horas/tree/design) - Branch dedicado al diseño de este proyecto.
-
-
-#### Para correr el proyecto
-
-Es necesario tener instalado Python 3.3 y [Brunch](http://brunch.io) para poder correr el proyecto.
+#### Opción 1: Vagrant
+Para esta opción debes tener instalado [VirtualBox](https://www.virtualbox.org/) y [Vagrant](http://www.vagrantup.com/). Ambos son fáciles de instalar, gratis y disponibles para varias plataformas. Esta es la opción recomendada para colaboradores nuevos.
 
 ```bash
 $ git clone https://github.com/SoPR/horas.git
 $ cd horas
 $ vagrant up
 ```
-Este paso tomará varios minutos dependiendo de su conexión de internet. Cuando termine haga:
+Este paso tomará varios minutos dependiendo de su conexión de internet. Luego.
 
 ```bash
 $ vagrant ssh
 $ cd horas
 $ runhoras
 ```
+
 Abre tu browser en [http://localhost:8000/](http://localhost:8000/). Para accesar la sección de administración ve a [http://localhost:8000/admin/](http://localhost:8000/admin/), y usa el username **admin** y el password **abc123**.
 
 
-### License
+#### Opción 2: Local
+Para esta opción debes tener instalado **Python 3** en tu máquina y [Brunch](http://brunch.io). También es recomendado que crees un [virtualevn](http://www.virtualenv.org/) para el proyecto pero no es un requisito.
+
+```bash
+$ git clone https://github.com/SoPR/horas.git
+$ cd horas/static/src
+$ npm install
+$ cd ../..
+$ pip install -r requirements.txt
+$ python3 manage.py brunchserver
+```
+
+Abre tu browser en [http://localhost:8000/](http://localhost:8000/). Para accesar la sección de administración ve a [http://localhost:8000/admin/](http://localhost:8000/admin/), y usa el username **admin** y el password **abc123**.
+
+## Diseñadores
+
+Tenemos un branch dedicado para compartir y colaborar sobre el diseño de la plataforma. Mantendremos el diseño más reciente en ese branch.
+
+:art: [Design](https://github.com/SoPR/horas/tree/design) - Branch dedicado al diseño de este proyecto.
+
+
+## License
 
 All of "Horas" is licensed under the MIT license.
 
