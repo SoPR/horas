@@ -102,7 +102,7 @@
             </ul>
 
             <div class="col-sm-12 text-center featured-mentors-more-wrapper">
-                <a href="#" class="btn btn-default btn-lg btn-grey">{% trans "Ver más" %}</a> <span class="text-muted">{% blocktrans %}Tenemos {{ users_count }} mentores registrados{% endblocktrans %}</span>
+                <a href="{% url 'search_list' %}" class="btn btn-default btn-lg btn-grey">{% trans "Ver más" %}</a> <span class="text-muted">{% blocktrans %}Tenemos {{ users_count }} mentores registrados{% endblocktrans %}</span>
             </div>
         </section>
 
