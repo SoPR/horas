@@ -38,7 +38,7 @@
                     <ul class="list-inline search-link-list">
                     {% for tag in tags %}
                         <li>
-                            <a href="{% url "search_list" %}?q={{tag.slug}}">
+                            <a href="{% url "search_query" tag.slug %}">
                                 {{ tag }}
                             </a>
                         </li>
