@@ -28,50 +28,50 @@
         <div class="col-sm-12 horizontal-line search-page-horizontal-line"></div>
 
         {% if not search_term %}
-        <div class="row">
-            <div class="col-sm-12">
-                <h3>{% trans "Buscar por tema" %}</h3>
+            <div class="row">
+                <div class="col-sm-12">
+                    <h3>{% trans "Buscar por tema" %}</h3>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-12">
-                <ul class="list-inline search-link-list">
-                {% for tag in tags %}
-                    <li>
-                        <a href="{% url "search_list" %}?q={{tag.slug}}">
-                            {{ tag }}
-                        </a>
-                    </li>
-                {% endfor %}
-                </ul>
+            <div class="row">
+                <div class="col-sm-12">
+                    <ul class="list-inline search-link-list">
+                    {% for tag in tags %}
+                        <li>
+                            <a href="{% url "search_list" %}?q={{tag.slug}}">
+                                {{ tag }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                    </ul>
+                </div>
             </div>
-        </div>
 
 
-        <div class="col-sm-12 horizontal-line search-page-horizontal-line"></div>
+            <div class="col-sm-12 horizontal-line search-page-horizontal-line"></div>
 
 
-        <div class="row search-page-row">
-            <div class="col-sm-12">
-                <h3>{% trans "Buscar por localidad" %}</h3>
+            <div class="row search-page-row">
+                <div class="col-sm-12">
+                    <h3>{% trans "Buscar por localidad" %}</h3>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-12">
-                <ul class="list-inline search-link-list">
-                {% for city in cities %}
-                    <li>
-                        <a href="{% url "search_list" %}?q={{ city.name }}, {{ city.country.code2 }}">
-                            {{ city.name }}, {{ city.country.code2 }}
-                        </a>
-                    </li>
-                {% endfor %}
-                </ul>
+            <div class="row">
+                <div class="col-sm-12">
+                    <ul class="list-inline search-link-list">
+                    {% for city in cities %}
+                        <li>
+                            <a href="{% url "search_list" %}?q={{ city.name }}, {{ city.country.code2 }}">
+                                {{ city.name }}, {{ city.country.code2 }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                    </ul>
+                </div>
             </div>
-        </div>
 
 
-        <div class="col-sm-12 horizontal-line search-page-horizontal-line"></div>
+            <div class="col-sm-12 horizontal-line search-page-horizontal-line"></div>
         {% endif %}
 
 
