@@ -1,18 +1,23 @@
 {% load i18n %}
+{% load active_link %}
 <header class="container header">
     <div class="row">
         <div class="col-xs-12 col-sm-9 header-branding">
             <h1 class="branding-medium inline-block"><a href="{% url 'home' %}">1hora</a></h1>
             <ul class="list-inline inline-block header-menu-list">
-                <li><a href="#" class="header-menu-link active">{% trans "Tus Horas" %}</a></li>
-                <li><a href="{% url 'search_list' %}" class="header-menu-link">{% trans "Mentores" %}</a></li>
+                {% url 'profile_detail' request.user as profile_url %}
+                {% url 'search_list' as search_url %}
+                <li><a href="{{ profile_url }}" class="header-menu-link {% active_link request profile_url%}">{% trans "Tus Horas" %}</a></li>
+                <li><a href="{{ search_url }}" class="header-menu-link {% active_link request search_url %}">{% trans "Mentores" %}</a></li>
             </ul>
         </div> <!-- /.header-branding -->
 
         <div class="col-sm-3 header-user-menu hidden-xs">
             <div class="user-menu-wrapper pull-right">
-                <img src="//placehold.it/20x20" alt="">
-                <a href="#" class="header-user-menu-name-link">Claire Underwood</a>
+                <img src="{{ request.user.gravatar_url }}?s=20" alt="{{ request.user.get_full_name }}" title="{{ request.user.get_full_name }}">
+                <a href="{{ profile_url }}" class="header-user-menu-name-link">
+                    {{ request.user.username }}
+                </a>
             </div>
         </div> <!-- /.header-user-menu -->
     </div>
