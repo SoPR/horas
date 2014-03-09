@@ -16,9 +16,12 @@ urlpatterns = patterns(
     url(r'^accounts/', include('allauth.urls')),
 
     # This pages are in apps/core/templates
-    url(r'^legal/$', TemplateView.as_view(template_name='legal.html'), name='legal'),
-    url(r'^about/$', TemplateView.as_view(template_name='about.html'), name='about'),
-    url(r'^contact/$', TemplateView.as_view(template_name='contact.html'), name='contact'),
+    url(r'^legal/$', TemplateView.as_view(
+        template_name='legal.html'), name='legal'),
+    url(r'^about/$', TemplateView.as_view(
+        template_name='about.html'), name='about'),
+    url(r'^contact/$', TemplateView.as_view(
+        template_name='contact.html'), name='contact'),
 
     url(r'^(?P<username>[-\w]+)/', include('apps.profiles.urls')),
 

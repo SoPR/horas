@@ -96,7 +96,7 @@ AUTHENTICATION_BACKENDS = (
 # Custom user model
 AUTH_USER_MODEL = 'profiles.User'
 LOGIN_URL = '/accounts/login/'
-LOGIN_REDIRECT_URL = '/profiles/'
+LOGIN_REDIRECT_URL = '/me/'
 
 # allauth settings
 ACCOUNT_EMAIL_SUBJECT_PREFIX = '[Horas] '
