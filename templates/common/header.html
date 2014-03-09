@@ -7,8 +7,8 @@
             <ul class="list-inline inline-block header-menu-list">
                 {% url 'profile_detail' request.user as profile_url %}
                 {% url 'search_list' as search_url %}
-                <li><a href="{{ profile_url }}" class="header-menu-link {% active_link request profile_url%}">{% trans "Tus Horas" %}</a></li>
                 <li><a href="{{ search_url }}" class="header-menu-link {% active_link request search_url %}">{% trans "Mentores" %}</a></li>
+                <li><a href="{{ profile_url }}" class="header-menu-link {% active_link request profile_url%}">{% trans "Tus Horas" %}</a></li>
             </ul>
         </div> <!-- /.header-branding -->
 

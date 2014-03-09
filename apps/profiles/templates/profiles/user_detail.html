@@ -9,7 +9,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-3 profile-sidebar">
-                <img src="{{ object.gravatar_url }}?s=285" alt="Gravatar" class="img-responsive">
+                <img src="{{ object.gravatar_url }}?s=285" alt="Gravatar" class="img-responsive img-thumbnail">
                 <h3>{{ object.get_full_name }}</h3>
                 <div class="text-muted">{{ object.bio }}</div>
                 <div class="margin-vertical-50">
@@ -39,11 +39,11 @@
                         <div class="col-xs-4 col-md-2">
                             <a href="#" class="btn btn-lg btn-success">{% trans "Reservar" %}</a>
                         </div>
-                        <div class="col-xs-4">
+                        <div class="col-xs-5">
                             <strong>Lunes, 24 de Febrero de 2014</strong><br>
                             2:00 - 3:00 PM AST
                         </div>
-                        <div class="col-xs-1">
+                        <div class="col-xs-3">
                             <strong>{% trans "Formatos" %}</strong><br>
                             Skype, Hangout
                         </div>
@@ -51,26 +51,49 @@
                 </section> <!-- /.row profile-content-section -->
 
                 <section class="profile-content-section">
-                    <h3 class="text-section-header">{% trans "Historial de horas" %}</h3>
+                    <h3 class="text-section-header">{% trans "Próximas reuniones" %}</h3>
                     <div class="row profile-meeting-row">
-                        <div class="col-sm-3">
-                            <img src="//placehold.it/45x45" alt="">
-                            <img src="//placehold.it/45x45" alt="">
+                        <div class="col-xs-1">
+                            <img src="//placehold.it/45x45" alt="" class="img-rounded">
                         </div>
-                        <div class="col-sm-4">
+                        <div class="col-xs-1">
+                            <img src="//placehold.it/45x45" alt="" class="img-rounded">
+                        </div>
+                        <div class="col-xs-offset-1 col-sm-offset-0 col-xs-5">
                             <strong>Lunes, 24 de Febrero de 2014</strong><br>
                             2:00 - 3:00 PM AST
                         </div>
                         <div class="col-sm-3">
-                            <a href="#" class="btn btn-default btn-grey">{% trans "Cancelar reunión" %}</a>
+                            <a href="#" class="btn btn-default btn-grey">{% trans "Confirmar" %}</a>
                         </div>
                     </div> <!-- /.row profile-meeting-row -->
                     <div class="row profile-meeting-row">
-                        <div class="col-sm-3">
-                            <img src="//placehold.it/45x45" alt="">
-                            <img src="//placehold.it/45x45" alt="">
+                        <div class="col-xs-1">
+                            <img src="//placehold.it/45x45" alt="" class="img-rounded">
                         </div>
-                        <div class="col-sm-4">
+                        <div class="col-xs-1">
+                            <img src="//placehold.it/45x45" alt="" class="img-rounded">
+                        </div>
+                        <div class="col-xs-offset-1 col-sm-offset-0 col-xs-5">
+                            <strong>Lunes, 24 de Febrero de 2014</strong><br>
+                            2:00 - 3:00 PM AST
+                        </div>
+                        <div class="col-sm-3">
+                            <a href="#" class="btn btn-default btn-grey">{% trans "Cancelar" %}</a>
+                        </div>
+                    </div> <!-- /.row profile-meeting-row -->
+                </section> <!-- /.row profile-content-section -->
+
+                <section class="profile-content-section">
+                    <h3 class="text-section-header">{% trans "Historia" %}</h3>
+                    <div class="row profile-meeting-row">
+                        <div class="col-xs-1">
+                            <img src="//placehold.it/45x45" alt="" class="img-rounded">
+                        </div>
+                        <div class="col-xs-1">
+                            <img src="//placehold.it/45x45" alt="" class="img-rounded">
+                        </div>
+                        <div class="col-xs-offset-1 col-sm-offset-0 col-xs-5">
                             <strong>Lunes, 24 de Febrero de 2014</strong><br>
                             2:00 - 3:00 PM AST
                         </div>
@@ -79,11 +102,13 @@
                         </div>
                     </div> <!-- /.row profile-meeting-row -->
                     <div class="row profile-meeting-row">
-                        <div class="col-sm-3">
-                            <img src="//placehold.it/45x45" alt="">
-                            <img src="//placehold.it/45x45" alt="">
+                        <div class="col-xs-1">
+                            <img src="//placehold.it/45x45" alt="" class="img-rounded">
                         </div>
-                        <div class="col-sm-4">
+                        <div class="col-xs-1">
+                            <img src="//placehold.it/45x45" alt="" class="img-rounded">
+                        </div>
+                        <div class="col-xs-offset-1 col-sm-offset-0 col-xs-5">
                             <strong>Lunes, 24 de Febrero de 2014</strong><br>
                             2:00 - 3:00 PM AST
                         </div>
