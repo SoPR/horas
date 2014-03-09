@@ -19,8 +19,8 @@
                 <li><a href="{{ search_url }}">{% trans "Mentores" %}</a></li>
                 <li><a href="{{ profile_url }}">{% trans "Tus Horas" %}</a></li>
                 <li class="divider"></li>
-                <li><a href="#"><span class="glyphicon glyphicon-cog"></span> {% trans "Configuración" %}</a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> {% trans "Logout" %}</a></li>
+                <li><a href="{% url 'profile_update' request.user.username %}"><span class="glyphicon glyphicon-cog"></span> {% trans "Configuración" %}</a></li>
+                <li><a href="{% url 'account_logout' %}"><span class="glyphicon glyphicon-log-out"></span> {% trans "Logout" %}</a></li>
             </ul>
         </div><!-- .navbar-collapse -->
     </nav> <!-- .navbar-default -->
@@ -44,9 +44,9 @@
                 <img src="{{ request.user.gravatar_url }}?s=20" alt="{{ request.user.get_full_name }}" title="{{ request.user.get_full_name }}"> {{ request.user.get_full_name }} <span class="caret"></span>
               </button>
               <ul class="dropdown-menu" role="menu">
-                <li><a href="#"><span class="glyphicon glyphicon-cog"></span> {% trans "Configuración" %}</a></li>
+                <li><a href="{% url 'profile_update' request.user.username %}"><span class="glyphicon glyphicon-cog"></span> {% trans "Configuración" %}</a></li>
                 <li class="divider"></li>
-                <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> {% trans "Logout" %}</a></li>
+                <li><a href="{% url 'account_logout' %}"><span class="glyphicon glyphicon-log-out"></span> {% trans "Logout" %}</a></li>
               </ul>
             </div>
         </div> <!-- /.header-user-menu -->
