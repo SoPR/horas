@@ -8,29 +8,7 @@
 {% block content %}
     <div class="container">
         <div class="row">
-            <div class="col-sm-3 profile-sidebar">
-                <img src="{{ object.gravatar_url }}?s=285" alt="Gravatar" class="img-responsive img-thumbnail">
-                <h3>{{ object.get_full_name }}</h3>
-                <div class="text-muted">{{ object.bio }}</div>
-                <div class="margin-vertical-50">
-                    {% if object.location %}
-                        <div>{{ object.location }}</div>
-                    {% endif %}
-                    {% if object.website_url %}
-                        <div><a href="{{ object.website_url }}">{{ object.website_url }}</a></div>
-                    {% endif %}
-                    {% blocktrans with object.date_joined|date:"N j, o" as date %}
-                        <div>Mentor desde {{ date }}</div>
-                    {% endblocktrans %}
-                </div>
-
-                <h4>{% trans "Temas" %}</h4>
-                <ul class="list-inline">
-                    {% for tag in object.tags.all %}
-                        <li><a href="{% url 'search_query' tag.slug %}">{{ tag }}</a></li>
-                    {% endfor %}
-                </ul>
-            </div> <!-- /.profile-sidebar -->
+            {% include "profiles/profile_sidebar.html" %}
 
             <div class="col-sm-9 profile-content-wrapper">
                 <section class="profile-content-section">
