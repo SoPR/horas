@@ -9,59 +9,51 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-3 profile-sidebar">
-                <div class="col-sm-12">
-                    <img src="//placehold.it/285x285" alt="" class="img-responsive">
-                    {% if request.user == object %}
-                        <div class="margin-vertical-10"><a href="#" class="btn btn-xs btn-default">{% trans "Editar mi perfil" %}</a></div>
+                <img src="{{ object.gravatar_url }}?s=285" alt="Gravatar" class="img-responsive">
+                <h3>{{ object.get_full_name }}</h3>
+                <div class="text-muted">{{ object.bio }}</div>
+                <div class="margin-vertical-50">
+                    {% if object.location %}
+                        <div>{{ object.location }}</div>
                     {% endif %}
-                    <h3>{{ object.get_full_name }}</h3>
-                    <div class="text-muted">{{ object.bio }}</div>
-                    <div class="margin-vertical-50">
-                        {% if object.location %}
-                            <div>{{ object.location }}</div>
-                        {% endif %}
-                        {% if object.website_url %}
-                            <div><a href="{{ object.website_url }}">{{ object.website_url }}</a></div>
-                        {% endif %}
-                        {% blocktrans with object.date_joined|date:"N j, o" as date %}
-                            <div>Mentor desde {{ date }}</div>
-                        {% endblocktrans %}
-                    </div>
-
-                    <h4>{% trans "Temas" %}</h4>
-                    <ul class="list-inline">
-                        {% for tag in object.tags.all %}
-                            <li><a href="{% url 'search_query' tag.slug %}">{{ tag }}</a></li>
-                        {% endfor %}
-                    </ul>
+                    {% if object.website_url %}
+                        <div><a href="{{ object.website_url }}">{{ object.website_url }}</a></div>
+                    {% endif %}
+                    {% blocktrans with object.date_joined|date:"N j, o" as date %}
+                        <div>Mentor desde {{ date }}</div>
+                    {% endblocktrans %}
                 </div>
+
+                <h4>{% trans "Temas" %}</h4>
+                <ul class="list-inline">
+                    {% for tag in object.tags.all %}
+                        <li><a href="{% url 'search_query' tag.slug %}">{{ tag }}</a></li>
+                    {% endfor %}
+                </ul>
             </div> <!-- /.profile-sidebar -->
 
             <div class="col-sm-9 profile-content-wrapper">
-                <section class="row profile-content-section">
+                <section class="profile-content-section">
                     <h3 class="text-section-header">{% trans "Hora disponible" %}</h3>
                     <div class="row profile-meeting-row">
-                        <div class="col-sm-2">
+                        <div class="col-xs-4 col-md-2">
                             <a href="#" class="btn btn-lg btn-success">{% trans "Reservar" %}</a>
                         </div>
-                        <div class="col-sm-4">
+                        <div class="col-xs-4">
                             <strong>Lunes, 24 de Febrero de 2014</strong><br>
                             2:00 - 3:00 PM AST
                         </div>
-                        <div class="col-sm-3">
+                        <div class="col-xs-1">
                             <strong>{% trans "Formatos" %}</strong><br>
                             Skype, Hangout
                         </div>
                     </div> <!-- /.row profile-meeting-row -->
                 </section> <!-- /.row profile-content-section -->
 
-                <section class="row profile-content-section">
+                <section class="profile-content-section">
                     <h3 class="text-section-header">{% trans "Historial de horas" %}</h3>
                     <div class="row profile-meeting-row">
-                        <div class="col-sm-1">
-                            <img src="//placehold.it/45x45" alt="">
-                        </div>
-                        <div class="col-sm-2">
+                        <div class="col-sm-3">
                             <img src="//placehold.it/45x45" alt="">
                             <img src="//placehold.it/45x45" alt="">
                         </div>
@@ -70,14 +62,11 @@
                             2:00 - 3:00 PM AST
                         </div>
                         <div class="col-sm-3">
-                            <a href="#" class="btn btn-default">{% trans "Cancelar reunión" %}</a>
+                            <a href="#" class="btn btn-default btn-grey">{% trans "Cancelar reunión" %}</a>
                         </div>
                     </div> <!-- /.row profile-meeting-row -->
                     <div class="row profile-meeting-row">
-                        <div class="col-sm-1">
-                            <img src="//placehold.it/45x45" alt="">
-                        </div>
-                        <div class="col-sm-2">
+                        <div class="col-sm-3">
                             <img src="//placehold.it/45x45" alt="">
                             <img src="//placehold.it/45x45" alt="">
                         </div>
@@ -86,14 +75,11 @@
                             2:00 - 3:00 PM AST
                         </div>
                         <div class="col-sm-3">
-                            {% trans "Celebrada" %}
+                            <span class="glyphicon glyphicon-ok-circle icon-success"></span> {% trans "Celebrada" %}
                         </div>
                     </div> <!-- /.row profile-meeting-row -->
                     <div class="row profile-meeting-row">
-                        <div class="col-sm-1">
-                            <img src="//placehold.it/45x45" alt="">
-                        </div>
-                        <div class="col-sm-2">
+                        <div class="col-sm-3">
                             <img src="//placehold.it/45x45" alt="">
                             <img src="//placehold.it/45x45" alt="">
                         </div>
@@ -102,7 +88,7 @@
                             2:00 - 3:00 PM AST
                         </div>
                         <div class="col-sm-3">
-                            {% trans "Cancelada" %}
+                            <span class="glyphicon glyphicon-remove-circle icon-cancelled"></span> {% trans "Cancelada" %}
                         </div>
                     </div> <!-- /.row profile-meeting-row -->
                 </section> <!-- /.row profile-content-section -->

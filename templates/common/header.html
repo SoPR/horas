@@ -16,7 +16,7 @@
             <div class="user-menu-wrapper pull-right">
                 <img src="{{ request.user.gravatar_url }}?s=20" alt="{{ request.user.get_full_name }}" title="{{ request.user.get_full_name }}">
                 <a href="{{ profile_url }}" class="header-user-menu-name-link">
-                    {{ request.user.username }}
+                    {{ request.user.get_full_name }}
                 </a>
             </div>
         </div> <!-- /.header-user-menu -->
