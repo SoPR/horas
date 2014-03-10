@@ -23,7 +23,7 @@ urlpatterns = patterns(
     url(r'^contact/$', TemplateView.as_view(
         template_name='contact.html'), name='contact'),
 
-    url(r'^(?P<username>[^/]+)/', include('apps.profiles.urls')),
+    url(r'', include('apps.profiles.urls')),
 
     url(r'^$', include('apps.core.urls')),
 )
