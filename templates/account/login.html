@@ -27,7 +27,10 @@
                 <br>
                 <hr> <!-- hr -->
                 <br>
-
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
                 <form class="login" method="POST" action="{% url 'account_login' %}">
                     {% csrf_token %}
                     {% bootstrap_form form %}
