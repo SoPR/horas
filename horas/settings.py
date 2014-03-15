@@ -98,16 +98,16 @@ AUTHENTICATION_BACKENDS = (
 # Custom user model
 AUTH_USER_MODEL = 'profiles.User'
 LOGIN_URL = '/accounts/login/'
-LOGIN_REDIRECT_URL = '/me/'
 
 # allauth settings
+ACCOUNT_ADAPTER = 'apps.profiles.adapters.AccountAdapter'
 ACCOUNT_EMAIL_SUBJECT_PREFIX = '[Horas] '
 ACCOUNT_LOGOUT_ON_GET = True
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_SIGNUP_PASSWORD_VERIFICATION = False
 ACCOUNT_CONFIRM_EMAIL_ON_GET = True
 ACCOUNT_LOGOUT_REDIRECT_URL = LOGIN_URL
-ACCOUNT_USERNAME_BLACKLIST = ['admin', 'me']
+ACCOUNT_USERNAME_BLACKLIST = ['admin']
 ACCOUNT_SIGNUP_FORM_CLASS = 'apps.profiles.forms.SignupForm'
 
 ROOT_URLCONF = 'horas.urls'
