@@ -31,4 +31,5 @@ DATABASES = {
 STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 
 MANDRILL_API_KEY = os.environ.get('MANDRILL_APIKEY')
-EMAIL_BACKEND = "djrill.mail.backends.djrill.DjrillBackend"
+DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL')
+EMAIL_BACKEND = 'djrill.mail.backends.djrill.DjrillBackend'
