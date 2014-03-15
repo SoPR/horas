@@ -13,6 +13,207 @@
     <div class="container">
         <div class="row">
             {% include "profiles/profile_sidebar.html" %}
+
+            <div class="col-sm-9 profile-content-wrapper">
+                <section class="profile-content-section">
+                    <h4 class="text-section-header">{% trans "Editar perfil" %}</h4>
+
+                    <form method="post" role="form">
+                        {% csrf_token %}
+
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group has-error has-feedback">
+                                    <label class="control-label" for="firstNameInput">{% trans "Nombre" %}</label>
+                                    <input type="text" class="form-control" id="firstNameInput" placeholder="{% trans "Juan" %}">
+                                    <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+                                    <div class="help-block">Error goes here</div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="control-label" for="lastName">{% trans "Apellidos" %}</label>
+                                    <input type="text" class="form-control" id="lastName" placeholder="{% trans "Rivera Martinez" %}">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label class="control-label" for="bio">{% trans "Biografía corta" %}</label>
+                                    <textarea class="form-control" rows="3" id="bio"></textarea>
+                                    <div class="help-block">{% trans "Máximo 140 caracteres" %}</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label class="control-label" for="tags">{% trans "Lista de temas" %}</label>
+                                    <textarea class="form-control" rows="3" id="tags" placeholder="{% trans "diseño, programación, cocina" %}"></textarea>
+                                    <div class="help-block">{% trans "Separados por comas" %}</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr> <!-- hr -->
+
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="control-label" for="city">{% trans "Ciudad" %}</label>
+                                    <input type="text" class="form-control" id="city" placeholder="{% trans "San Juan" %}">
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="control-label" for="state">{% trans "Estado" %}</label>
+                                    <input type="text" class="form-control" id="state" placeholder="{% trans "Puerto Rico" %}">
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr> <!-- hr -->
+
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="control-label" for="skype">{% trans "Skype" %}</label>
+                                    <input type="text" class="form-control" id="skype" placeholder="{% trans "username" %}">
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="control-label" for="hangout">{% trans "Google Hangout" %}</label>
+                                    <input type="text" class="form-control" id="hangout" placeholder="{% trans "juan@example.com" %}">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="control-label" for="skype">{% trans "Jitsi" %}</label>
+                                    <input type="text" class="form-control" id="skype" placeholder="{% trans "juan@example.com" %}">
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="control-label" for="hangout">{% trans "Teléfono" %}</label>
+                                    <input type="text" class="form-control" id="hangout" placeholder="{% trans "787-555-4321" %}">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label class="control-label" for="tags">{% trans "Dirección para reuniones en persona" %}</label>
+                                    <textarea class="form-control" rows="3" id="tags" placeholder="{% trans "Panadería Kasalta 1966 Calle McLeary, San Juan, PR - http://maps.google.com/123" %}"></textarea>
+                                    <div class="help-block">{% trans "Información sobre donde quieres hacer tus reuniones en persona." %}</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr> <!-- hr -->
+
+                        <h4 class="text-section-header">{% trans "Tus horas" %}</h4>
+                        <p>{% trans "En esta sección escogerás que día de la semana y a que hora estarás disponible para ofrecer reuniones a los usuarios de 1hora.org. Cada semana haremos disponible un (1) espacio usando estas preferencias." %}</p>
+
+                        <br>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label class="control-label">{% trans "Día de la semana" %}</label><br>
+
+                                    <label for="sun" class="radio-inline">
+                                        <input type="radio" id="sun" name="day" value=""> {% trans "Domingo" %}
+                                    </label>
+                                    <label for="mon" class="radio-inline">
+                                        <input type="radio" id="mon" name="day" value=""> {% trans "Lunes" %}
+                                    </label>
+                                    <label for="tue" class="radio-inline">
+                                        <input type="radio" id="tue" name="day" value=""> {% trans "Martes" %}
+                                    </label>
+                                    <label for="wed" class="radio-inline">
+                                        <input type="radio" id="wed" name="day" value=""> {% trans "Miercoles" %}
+                                    </label>
+                                    <label for="thu" class="radio-inline">
+                                        <input type="radio" id="thu" name="day" value=""> {% trans "Jueves" %}
+                                    </label>
+                                    <label for="fri" class="radio-inline">
+                                        <input type="radio" id="fri" name="day" value=""> {% trans "Viernes" %}
+                                    </label>
+                                    <label for="sat" class="radio-inline">
+                                        <input type="radio" id="sat" name="day" value=""> {% trans "Sábado" %}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label class="control-label">{% trans "Hora del día" %}</label>
+                                    <select name="" id="" class="form-control">
+                                        <option value="">12:00 AM</option>
+                                        <option value="">1:00 AM</option>
+                                        <option value="">2:00 AM</option>
+                                        <option value="">3:00 AM</option>
+                                        <option value="">4:00 AM</option>
+                                        <option value="">5:00 AM</option>
+                                        <option value="">6:00 AM</option>
+                                        <option value="">7:00 AM</option>
+                                        <option value="">8:00 AM</option>
+                                        <option value="">9:00 AM</option>
+                                        <option value="">10:00 AM</option>
+                                        <option value="">11:00 AM</option>
+                                        <option value="">12:00 PM</option>
+                                        <option value="">1:00 PM</option>
+                                        <option value="">2:00 PM</option>
+                                        <option value="">3:00 PM</option>
+                                        <option value="">4:00 PM</option>
+                                        <option value="">5:00 PM</option>
+                                        <option value="">6:00 PM</option>
+                                        <option value="">7:00 PM</option>
+                                        <option value="">8:00 PM</option>
+                                        <option value="">9:00 PM</option>
+                                        <option value="">10:00 PM</option>
+                                        <option value="">11:00 PM</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="user-profile-time-end">
+                                    {% blocktrans %}
+                                        las reuniones duran <strong>1 hora</strong>.
+                                    {% endblocktrans %}
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr> <!-- hr -->
+
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-success">Guardar</button>
+                                    <a href="#">{% trans "Quiero borrar mi cuenta" %}</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+
+                </section> <!-- /.profile-content-section -->
+            </div> <!-- /.profile-content-wrapper -->
         </div>
     </div>
 {% endblock content %}
