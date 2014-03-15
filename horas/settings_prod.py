@@ -33,3 +33,20 @@ STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 MANDRILL_API_KEY = os.environ.get('MANDRILL_APIKEY')
 DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL')
 EMAIL_BACKEND = 'djrill.mail.backends.djrill.DjrillBackend'
+
+# Memcache setup
+os.environ['MEMCACHE_SERVERS'] = os.environ.get('MEMCACHIER_SERVERS', '').replace(',', ';')
+os.environ['MEMCACHE_USERNAME'] = os.environ.get('MEMCACHIER_USERNAME', '')
+os.environ['MEMCACHE_PASSWORD'] = os.environ.get('MEMCACHIER_PASSWORD', '')
+
+CACHES = {
+  'default': {
+    'BACKEND': 'django_pylibmc.memcached.PyLibMCCache',
+    'TIMEOUT': 1000,
+    'BINARY': True,
+    'OPTIONS': {
+        'tcp_nodelay': True,
+        'remove_failed': 4
+    }
+  }
+}
