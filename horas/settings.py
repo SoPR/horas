@@ -19,12 +19,7 @@ ENVIRONMENT = os.environ.get('ENVIRONMENT', 'development')
 # See https://docs.djangoproject.com/en/dev/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '*l)$1&%)qt$q@kegwc_syo3y#y+uuc$q2!@50thfhootp0oa*t'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-TEMPLATE_DEBUG = DEBUG
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 ALLOWED_HOSTS = ['localhost', 'unahora.herokuapp.com']
 
@@ -63,9 +58,6 @@ INSTALLED_APPS = (
     'apps.search',
     'apps.meetings',
 )
-
-if ENVIRONMENT == 'development':
-    INSTALLED_APPS += ('debug_toolbar',)
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -118,16 +110,6 @@ ROOT_URLCONF = 'horas.urls'
 
 WSGI_APPLICATION = 'horas.wsgi.application'
 
-# Database
-# https://docs.djangoproject.com/en/dev/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
-
 # Internationalization
 # https://docs.djangoproject.com/en/dev/topics/i18n/
 LANGUAGE_CODE = 'es-pr'
@@ -142,17 +124,14 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/dev/howto/static-files/
-DEFAULT_FILE_STORAGE = 'storages.backends.s3.S3Storage'
+BRUNCH_DIR = os.path.join(BASE_DIR, 'static', 'src')
 
-if ENVIRONMENT == 'production':
-    STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+DEFAULT_FILE_STORAGE = 'storages.backends.s3.S3Storage'
 
 AWS_PRELOAD_METADATA = True
 AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
 AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
-
-BRUNCH_DIR = os.path.join(BASE_DIR, 'static', 'src')
 
 STATIC_URL = '/static/dist/'
 
@@ -162,4 +141,12 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static', 'dist'),
 )
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# Load environment specific settings
+if ENVIRONMENT == 'production':
+    from settings_prod import *
+else:
+    from settings_dev import *
+
+MIDDLEWARE_CLASSES = ENV_MIDDLEWARE + MIDDLEWARE_CLASSES
+INSTALLED_APPS = ENV_INSTALLED_APPS + INSTALLED_APPS
