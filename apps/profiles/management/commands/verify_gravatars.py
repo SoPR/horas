@@ -1,5 +1,5 @@
 import datetime
-import urllib
+import urllib2
 
 from django.core.management.base import BaseCommand
 from django.utils.timezone import now
@@ -18,11 +18,13 @@ class Command(BaseCommand):
 
         for user in users:
             try:
-                urllib.request.urlopen(user.gravatar_url)
+                request = urllib2.Request(user.gravatar_url)
+                urllib2.urlopen(request)
+
                 user.is_gravatar_verified = True
                 user.save()
                 users_verified.append(user)
-            except urllib.error.HTTPError:
+            except urllib2.HTTPError:
                 users_not_verified.append(user)
 
         self.stdout.write('Verified {} users.\nUnverifed {} users.'.format(
