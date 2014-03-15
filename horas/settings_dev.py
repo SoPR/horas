@@ -7,6 +7,8 @@ DEBUG = True
 
 TEMPLATE_DEBUG = DEBUG
 
+PROTOCOL = 'http'
+
 ENV_MIDDLEWARE = ()
 ENV_INSTALLED_APPS = ('debug_toolbar',)
 

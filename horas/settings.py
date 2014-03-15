@@ -15,6 +15,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # Current environment, defaults to development
 ENVIRONMENT = os.environ.get('ENVIRONMENT', 'development')
 
+APPNAME='horas'
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/dev/howto/deployment/checklist/
 
@@ -51,6 +53,7 @@ INSTALLED_APPS = (
     'gunicorn',
     'storages',
     'collectfast',
+    'djangosecure',
 
     # Local apps
     'apps.core',
@@ -60,6 +63,7 @@ INSTALLED_APPS = (
 )
 
 MIDDLEWARE_CLASSES = (
+    'djangosecure.middleware.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
