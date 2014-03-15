@@ -112,7 +112,7 @@ WSGI_APPLICATION = 'horas.wsgi.application'
 
 # Internationalization
 # https://docs.djangoproject.com/en/dev/topics/i18n/
-LANGUAGE_CODE = 'es-pr'
+LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
 
