@@ -20,7 +20,7 @@ SECURE_BROWSER_XSS_FILTER = True
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 ENV_MIDDLEWARE = ()
-ENV_INSTALLED_APPS = ()
+ENV_INSTALLED_APPS = ('djrill',)
 
 # Database
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
@@ -30,4 +30,5 @@ DATABASES = {
 
 STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+MANDRILL_API_KEY = os.environ.get('MANDRILL_APIKEY')
+EMAIL_BACKEND = "djrill.mail.backends.djrill.DjrillBackend"
