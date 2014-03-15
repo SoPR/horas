@@ -63,4 +63,6 @@ Sorry for the spanglish. If you want to contribute just pick a task and update i
 
 - **[not started]** - Create a CONTRIBUTING.md file explaning how to contribute to the project. The document should have sections for developers, designers and everyone else. We can [use this as a guide](https://github.com/TryGhost/Ghost/blob/master/CONTRIBUTING.md).
 
-- **[not started]** - Creata an AUTHORS.md file for listing all contributors for the project. We can [use this as a guide](https://github.com/kennethreitz/requests/blob/master/AUTHORS.rst).
+- **[not started]** - Create an AUTHORS.md file for listing all contributors for the project. We can [use this as a guide](https://github.com/kennethreitz/requests/blob/master/AUTHORS.rst).
+
+- **[not started]** - Signup flow: After user sign up from social media providers we must redirect the user to a form asking for all the required information like first and last name, email, bio ,etc. Some providers don't have all this info. We must also give the user a change to connect more social networks to the account. Finnaly the user must choose their prefered "meeting hours".
