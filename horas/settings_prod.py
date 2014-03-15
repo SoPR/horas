@@ -20,7 +20,10 @@ SECURE_BROWSER_XSS_FILTER = True
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 ENV_MIDDLEWARE = ()
-ENV_INSTALLED_APPS = ('djrill',)
+ENV_INSTALLED_APPS = (
+    'djrill',
+    'raven.contrib.django.raven_compat'
+)
 
 # Database
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases

@@ -27,6 +27,7 @@ python-dateutil==2.2
 python-openid==2.2.5
 python3-openid==3.0.3
 pytz==2014.1
+raven==4.0.4
 requests==2.2.1
 requests-oauthlib==0.4.0
 six==1.5.2
