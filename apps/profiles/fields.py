@@ -16,7 +16,7 @@ class DaysOfWeekField(models.IntegerField):
     def __init__(self, *args, **kwargs):
         kwargs['choices'] = DAYS_OF_WEEK
         kwargs['max_length'] = 1
-        super().__init__(*args, **kwargs)
+        super(DaysOfWeekField, self).__init__(*args, **kwargs)
 
     def south_field_triple(self):
         """

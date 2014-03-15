@@ -30,7 +30,6 @@ ALLOWED_HOSTS = ['localhost', 'unahora.herokuapp.com']
 
 SITE_ID = 1
 
-
 # Application definition
 INSTALLED_APPS = (
     'django.contrib.admin',
@@ -55,6 +54,8 @@ INSTALLED_APPS = (
     'notification',
     'cities_light',
     'gunicorn',
+    'storages',
+    'collectfast',
 
     # Local apps
     'apps.core',
@@ -129,8 +130,7 @@ DATABASES = {
 
 # Internationalization
 # https://docs.djangoproject.com/en/dev/topics/i18n/
-
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es-pr'
 
 TIME_ZONE = 'UTC'
 
@@ -142,8 +142,21 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/dev/howto/static-files/
+DEFAULT_FILE_STORAGE = 'storages.backends.s3.S3Storage'
+
+if ENVIRONMENT == 'production':
+    STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+
+AWS_PRELOAD_METADATA = True
+AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
+
 BRUNCH_DIR = os.path.join(BASE_DIR, 'static', 'src')
+
 STATIC_URL = '/static/dist/'
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static', 'public')
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static', 'dist'),

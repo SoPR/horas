@@ -74,3 +74,5 @@ coverage.xml
 docs/_build/
 
 static/dist
+
+.env
