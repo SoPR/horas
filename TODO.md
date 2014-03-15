@@ -66,3 +66,7 @@ Sorry for the spanglish. If you want to contribute just pick a task and update i
 - **[not started]** - Create an AUTHORS.md file for listing all contributors for the project. We can [use this as a guide](https://github.com/kennethreitz/requests/blob/master/AUTHORS.rst).
 
 - **[not started]** - Signup flow: After user sign up from social media providers we must redirect the user to a form asking for all the required information like first and last name, email, bio ,etc. Some providers don't have all this info. We must also give the user a change to connect more social networks to the account. Finnaly the user must choose their prefered "meeting hours".
+
+- **[not started]** - Hide header when user is not authenticated. Also define what to show, maybe a call to action.
+
+- **[not started]** - When the user has no available meetings what should we show? maybe a call to action to "subscribe" to that user, so when new meetings are available you get a notification.
