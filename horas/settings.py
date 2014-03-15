@@ -101,6 +101,7 @@ LOGIN_URL = '/accounts/login/'
 
 # allauth settings
 ACCOUNT_ADAPTER = 'apps.profiles.adapters.AccountAdapter'
+ACCOUNT_DEFAULT_HTTP_PROTOCOL = 'https'
 ACCOUNT_EMAIL_SUBJECT_PREFIX = '[Horas] '
 ACCOUNT_LOGOUT_ON_GET = True
 ACCOUNT_EMAIL_REQUIRED = True
