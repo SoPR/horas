@@ -4,8 +4,8 @@
     <h3>{{ object.get_full_name }}</h3>
     <div class="text-muted">{{ object.bio }}</div>
     <div class="margin-vertical-50">
-        {% if object.location %}
-            <div>{{ object.location }}</div>
+        {% if object.location_id %}
+            <div>{{ object.get_location }}</div>
         {% endif %}
         {% if object.website_url %}
             <div><a href="{{ object.website_url }}">{{ object.website_url }}</a></div>
