@@ -34,6 +34,9 @@ MANDRILL_API_KEY = os.environ.get('MANDRILL_APIKEY')
 DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL')
 EMAIL_BACKEND = 'djrill.mail.backends.djrill.DjrillBackend'
 
+# cached sessions
+SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
+
 # Memcache setup
 os.environ['MEMCACHE_SERVERS'] = os.environ.get('MEMCACHIER_SERVERS', '').replace(',', ';')
 os.environ['MEMCACHE_USERNAME'] = os.environ.get('MEMCACHIER_USERNAME', '')
