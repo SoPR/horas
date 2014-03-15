@@ -15,7 +15,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # Current environment, defaults to development
 ENVIRONMENT = os.environ.get('ENVIRONMENT', 'development')
 
-APPNAME='horas'
+APPNAME = 'horas'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/dev/howto/deployment/checklist/
