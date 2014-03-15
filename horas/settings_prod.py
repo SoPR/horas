@@ -35,7 +35,7 @@ DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL')
 EMAIL_BACKEND = 'djrill.mail.backends.djrill.DjrillBackend'
 
 # cached sessions
-SESSION_ENGINE = 'django.contrib.sessions.backends.cache_db'
+SESSION_ENGINE = 'django.contrib.sessions.backends.cached_db'
 
 # Memcache setup
 os.environ['MEMCACHE_SERVERS'] = os.environ.get('MEMCACHIER_SERVERS', '').replace(',', ';')
