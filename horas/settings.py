@@ -54,6 +54,7 @@ INSTALLED_APPS = (
     'storages',
     'collectfast',
     'djangosecure',
+    'bootstrap3',
 
     # Local apps
     'apps.core',

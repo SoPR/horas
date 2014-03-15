@@ -12,7 +12,23 @@
 {% block content %}
     <div class="container">
         <div class="row">
-            {% include "profiles/profile_sidebar.html" %}
+            <div class="col-sm-3 profile-sidebar">
+                <img src="{{ object.gravatar_url }}?s=285" alt="Gravatar" class="img-responsive img-thumbnail">
+                <p class="margin-vertical-20 text-muted">
+                    {% blocktrans %}
+                        Para modificar tu foto de perfil debes hacerlo en <a href="http://gravatar.com">gravatar.com</a>
+                    {% endblocktrans %}
+                </p>
+
+                <h4>{% trans "Otras configuraciones" %}</h4>
+                <ul class="list-unstyled">
+                    <li><a href="{% url 'account_email' %}">{% trans "Cambiar email" %}</a></li>
+                    <li><a href="{% url 'account_change_password' %}">{% trans "Cambiar password" %}</a></li>
+                    <li><a href="{% url 'socialaccount_connections' %}">{% trans "Perfiles sociales" %}</a></li>
+                    <li><a href="#">{% trans "Borrar mi cuenta" %}</a></li>
+                </ul>
+
+            </div> <!-- /.profile-sidebar -->
 
             <div class="col-sm-9 profile-content-wrapper">
                 <section class="profile-content-section">
@@ -204,8 +220,8 @@
                         <div class="row">
                             <div class="col-xs-12">
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-success">Guardar</button>
-                                    <a href="#">{% trans "Quiero borrar mi cuenta" %}</a>
+                                    <button type="submit" class="btn btn-primary">Guardar</button>
+                                    <a href="{% url 'profile_detail' request.user.username %}" class="btn btn-link">{% trans "Cancelar" %}</a>
                                 </div>
                             </div>
                         </div>
