@@ -12,7 +12,7 @@ class Command(StaticfilesRunserverCommand):
 
     def inner_run(self, *args, **options):
         self.start_brunch()
-        return super().inner_run(*args, **options)
+        return super(Command, self).inner_run(*args, **options)
 
     def start_brunch(self):
         self.stdout.write('--> Starting brunch')
