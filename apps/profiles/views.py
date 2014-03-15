@@ -12,7 +12,7 @@ class ProfileDetailView(DetailView):
     '''
     Displays the user profile information
     '''
-    model = User
+    queryset = User.objects.select_related('location', 'location__country')
     slug_field = 'username'
     slug_url_kwarg = 'username'
 
