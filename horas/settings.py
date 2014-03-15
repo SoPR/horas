@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/dev/ref/settings/
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
+# Current environment, defaults to development
+ENVIRONMENT = os.environ.get('ENVIRONMENT', 'development')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/dev/howto/deployment/checklist/
@@ -22,7 +24,7 @@ SECRET_KEY = '*l)$1&%)qt$q@kegwc_syo3y#y+uuc$q2!@50thfhootp0oa*t'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-TEMPLATE_DEBUG = True
+TEMPLATE_DEBUG = DEBUG
 
 ALLOWED_HOSTS = ['localhost', 'unahora.herokuapp.com']
 
@@ -41,7 +43,6 @@ INSTALLED_APPS = (
 
     # Third-party
     'south',
-    'debug_toolbar',
     'django_extensions',
     'allauth',
     'allauth.account',
@@ -53,6 +54,7 @@ INSTALLED_APPS = (
     'taggit',
     'notification',
     'cities_light',
+    'gunicorn',
 
     # Local apps
     'apps.core',
@@ -60,6 +62,9 @@ INSTALLED_APPS = (
     'apps.search',
     'apps.meetings',
 )
+
+if ENVIRONMENT == 'development':
+    INSTALLED_APPS += ('debug_toolbar',)
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -112,7 +117,6 @@ ROOT_URLCONF = 'horas.urls'
 
 WSGI_APPLICATION = 'horas.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
 
@@ -135,7 +139,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/dev/howto/static-files/
