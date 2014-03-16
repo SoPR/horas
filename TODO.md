@@ -29,7 +29,7 @@ Sorry for the spanglish. If you want to contribute just pick a task and update i
         - confirmation - /meeting/<:meeting_id>/
 
 
-- **[in progress: gcollazo]** - Build templates / css based on [current wireframes](https://github.com/SoPR/horas/tree/design).
+- :white_check_mark: - Build templates / css based on [current wireframes](https://github.com/SoPR/horas/tree/design).
 
 - :white_check_mark: - Come up with a name and domain for the project. Please join the discussion on [issue #1](https://github.com/SoPR/horas/issues/1).
 
