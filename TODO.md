@@ -38,7 +38,7 @@ Sorry for the spanglish. If you want to contribute just pick a task and update i
 - :white_check_mark: - Create `Meeting` model to keep track of future meetings and it's status.
     - This model will reference a `mentor` and a `protege`, it will have a `DateTime`, a `format` (Skype, Hangout, Phone) and a status (`scheduled`, `cancelled`). We are going to need a `cancelled_by` field to record who cancelled the meeting). Meeting creation will be done via a weekly scheduled job that will create all the available meetings for the next week. The idea is that every Monday at 9AM we create all the meeting slots for the following week. Every user will only have 1 meeting spot available per week.
 
-- **[not started]** - Profile view should display an "Edit Profile" button to the profile owner.
+- :white_check_mark: - Profile view should display an "Edit Profile" button to the profile owner.
 
 - **[not started]** - Profile view should display a list of all meetings that user has scheduled as a mentor of apprentice.
 
