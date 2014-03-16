@@ -61,8 +61,8 @@
                     <ul class="list-inline search-link-list">
                     {% for city in cities %}
                         <li>
-                            <a href="{% url "search_list" %}?q={{ city.name }}, {{ city.country.code2 }}">
-                                {{ city.name }}, {{ city.country.code2 }}
+                            <a href="{% url "search_list" %}?q={{ city }}">
+                                {{ city }}
                             </a>
                         </li>
                     {% endfor %}

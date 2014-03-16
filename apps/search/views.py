@@ -5,7 +5,6 @@ from django.views.generic import ListView
 from django.db.models import Q, Count
 
 from taggit.models import Tag
-from cities_light.models import City
 
 from ..profiles.models import User
 
@@ -21,9 +20,8 @@ class SearchView(ListView):
             num_times=Count('taggit_taggeditem_items')
         ).filter(num_times__gt=0).order_by('-num_times')
 
-        cities = City.objects.select_related('country').all().annotate(
-            num_users=Count('user')
-        ).filter(num_users__gt=0).order_by('-num_users')
+        cities = User.objects.exclude(
+            city='').values_list('city', flat=True).distinct()
 
         context.update({
             'tags': tags[:20],
@@ -43,13 +41,15 @@ class SearchView(ListView):
                 'first_name__istartswith',
                 'last_name__istartswith',
                 'tags__name__icontains',
-                'location__search_names__icontains',
+                'city__icontains',
+                'state__icontains',
             )
 
             for term in search_term.split():
                 for query in queries:
                     search_args.append(Q(**{query: term}))
 
-            return queryset.filter(reduce(operator.or_, search_args))
+            return queryset.filter(
+                reduce(operator.or_, search_args)).distinct()
 
         return queryset[:9]
