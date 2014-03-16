@@ -57,8 +57,12 @@ class User(AbstractUser):
         return '{0}. {1}'.format(self.first_name[0], self.last_name)
 
     def get_location(self):
-        location = self.location
-        return '{0}, {1}'.format(location.name, location.country.code2)
+        if self.city and self.state:
+            return '{0}, {1}'.format(self.city, self.state)
+        elif self.city:
+            return self.city
+        elif self.state:
+            return self.state
 
     def create_meeting_slot(self):
         Meeting = get_model('meetings', 'Meeting')

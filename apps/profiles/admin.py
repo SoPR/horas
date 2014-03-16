@@ -33,7 +33,7 @@ class CustomUserAdmin(UserAdmin):
     add_form = CustomUserCreationForm
     fieldsets = UserAdmin.fieldsets + (
         ('Profile', {
-            'fields': ('featured', 'bio', 'twitter_username',
+            'fields': ('featured', 'bio', 'city', 'state', 'twitter_username',
                        'facebook_username', 'github_username', 'website_url',
                        'gravatar_url', 'is_gravatar_verified', 'day_of_week',
                        'start_time', 'phone', 'skype', 'google',
