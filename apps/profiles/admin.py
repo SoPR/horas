@@ -31,10 +31,9 @@ class CustomUserCreationForm(UserCreationForm):
 class CustomUserAdmin(UserAdmin):
     form = CustomUserChangeForm
     add_form = CustomUserCreationForm
-    raw_id_fields = ('location', )
     fieldsets = UserAdmin.fieldsets + (
         ('Profile', {
-            'fields': ('location', 'featured', 'bio', 'twitter_username',
+            'fields': ('featured', 'bio', 'twitter_username',
                        'facebook_username', 'github_username', 'website_url',
                        'gravatar_url', 'is_gravatar_verified', 'day_of_week',
                        'start_time', 'phone', 'skype', 'google',
