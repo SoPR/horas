@@ -1,14 +1,20 @@
 {% extends "account/base.html" %}
-
-{% load url from future %}
 {% load i18n %}
+{% load bootstrap3 %}
 
-{% block head_title %}{% trans "Sign Up Closed" %}{% endblock %}
+{% block title %}
+    {% trans "Registro cerrado" %}
+{% endblock title %}
 
 {% block content %}
-<h1>{% trans "Sign Up Closed" %}</h1>
-
-<p>{% trans "We are sorry, but the sign up is currently closed." %}</p>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-5">
+                <h3>{% trans "Registro cerrado" %}</h3>
+                <p>{% trans "Disculpe, el registro está temporeramente cerrado." %}</p>
+            </div>
+        </div>
+    </div>
 {% endblock %}
 
 
