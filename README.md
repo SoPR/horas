@@ -1,4 +1,4 @@
-# :clock3: Horas
+﻿# :clock3: Horas
 
 Una plataforma para facilitar la [mentoría](http://es.wikipedia.org/wiki/Mentoria).
 
@@ -99,6 +99,7 @@ $ cd horas/static/src
 $ npm install
 $ cd ../..
 $ pip install -r requirements.txt
+$ python manage.py syncdb --migrate
 $ python manage.py brunchserver
 ```
 
