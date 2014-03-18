@@ -76,3 +76,4 @@ docs/_build/
 static/dist
 
 .env
+/venv/
