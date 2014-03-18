@@ -12,6 +12,9 @@ PROTOCOL = 'http'
 ENV_MIDDLEWARE = ()
 ENV_INSTALLED_APPS = ('debug_toolbar',)
 
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = os.environ.get('SECRET_KEY','*@aeunc&$_)4&rk#z8%pq!*nkzup^ory)lgezx6vn!i99=%q*-')
+
 # Database
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
 DATABASES = {
