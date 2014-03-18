@@ -98,6 +98,7 @@ $ git clone https://github.com/SoPR/horas.git
 $ cd horas/static/src
 $ npm install
 $ cd ../..
+$ cp .env.example .env
 $ pip install -r requirements.txt
 $ python manage.py syncdb --migrate
 $ python manage.py brunchserver
