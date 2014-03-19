@@ -113,6 +113,10 @@ Tenemos un branch dedicado para compartir y colaborar sobre el diseño de la pla
 :art: [Design](https://github.com/SoPR/horas/tree/design) - Branch dedicado al diseño de este proyecto.
 
 
+## Prensa
+[Mentoría gratis para la innovación boricua](http://www.elnuevodia.com/mentoriagratisparalainnovacionboricua-1731302.html) - El Nuevo Día
+
+
 ## License
 
 All of "Horas" is licensed under the MIT license.
