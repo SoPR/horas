@@ -12,9 +12,8 @@ from django.conf import settings
 from notification import models as notification
 from taggit.managers import TaggableManager
 
-from .utils import get_gravatar_url
+from .utils import get_gravatar_url, next_weekday
 from .fields import DaysOfWeekField
-from ..meetings.utils import next_weekday
 
 
 class User(AbstractUser):
