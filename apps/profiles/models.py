@@ -79,7 +79,7 @@ class User(AbstractUser):
             return self.state
 
     def create_meeting_slot(self):
-        if self.timezone and self.day_of_week and self.start_time:
+        if self.is_active and self.timezone and self.day_of_week and self.start_time:
             Meeting = get_model('meetings', 'Meeting')
 
             user_tz = pytz.timezone(self.timezone)
