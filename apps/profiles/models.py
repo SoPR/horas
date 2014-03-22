@@ -1,10 +1,10 @@
-import datetime
+from datetime import datetime
 import pytz
 
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.db.models.loading import get_model
-from django.utils.timezone import now, utc
+from django.utils.timezone import now, get_default_timezone, make_aware
 from django.core.urlresolvers import reverse_lazy
 
 from django.conf import settings
@@ -14,6 +14,7 @@ from taggit.managers import TaggableManager
 
 from .utils import get_gravatar_url
 from .fields import DaysOfWeekField
+from ..meetings.utils import next_weekday
 
 
 class User(AbstractUser):
@@ -24,7 +25,7 @@ class User(AbstractUser):
     PRETTY_TIMEZONE_CHOICES = [('', '--- Select ---')]
 
     for tz in pytz.common_timezones:
-        now = datetime.datetime.now(pytz.timezone(tz))
+        now = datetime.now(pytz.timezone(tz))
         PRETTY_TIMEZONE_CHOICES.append(
             (tz, ' %s (GMT%s)' % (tz, now.strftime('%z'))))
 
@@ -79,19 +80,24 @@ class User(AbstractUser):
             return self.state
 
     def create_meeting_slot(self):
-        Meeting = get_model('meetings', 'Meeting')
+        if self.timezone and self.day_of_week and self.start_time:
+            Meeting = get_model('meetings', 'Meeting')
 
-        today = now().date()
-        delta = datetime.timedelta((self.day_of_week - today.weekday()) % 7)
+            user_tz = pytz.timezone(self.timezone)
+            date = next_weekday(now(), self.day_of_week)
+            next_slot_local = make_aware(
+                datetime.combine(date, self.start_time), user_tz)
 
-        next_slot_date = today + delta
-        next_slot = datetime.datetime.combine(
-            next_slot_date, self.start_time).replace(tzinfo=utc)
+            next_slot = next_slot_local.astimezone(get_default_timezone())
+            meeting_slot, created = Meeting.objects.get_or_create(mentor=self, datetime=next_slot)
 
-        meeting_slot = Meeting.objects.create(mentor=self, datetime=next_slot)
+            # Notify user
+            if created:
+                notification.send(
+                    [self],
+                    'create_meeting_slot',
+                    {'meeting': meeting_slot})
 
-        # Notify user
-        notification.send(
-            [self],
-            'create_meeting_slot',
-            {'meeting': meeting_slot})
+            return meeting_slot, created
+
+        return None, False
