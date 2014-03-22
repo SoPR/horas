@@ -1,4 +1,7 @@
 # encoding: utf-8
+import pytz
+import datetime
+
 from django import forms
 from django.utils import six
 from django.utils.translation import ugettext_lazy as _
@@ -60,6 +63,10 @@ TIME_CHOICES = (
     ('23:30:00', '11:30 PM'),
 )
 
+TIMEZONE_CHOICES = []
+for tz in pytz.common_timezones:
+    TIMEZONE_CHOICES.append((tz, tz))
+
 
 class TagWidget(forms.Textarea):
     def render(self, name, value, attrs=None):
@@ -94,7 +101,7 @@ class ProfileUpdateForm(forms.ModelForm):
         model = User
         fields = ('first_name', 'last_name', 'bio', 'tags', 'city', 'state',
                   'skype', 'google', 'jitsi', 'phone', 'address',
-                  'day_of_week', 'start_time')
+                  'day_of_week', 'start_time', 'timezone')
 
     def __init__(self, *args, **kwargs):
         super(ProfileUpdateForm, self).__init__(*args, **kwargs)
@@ -151,5 +158,8 @@ class ProfileUpdateForm(forms.ModelForm):
         self.fields['day_of_week'].widget = forms.RadioSelect(
             choices=DAYS_OF_WEEK)
 
-        self.fields['start_time'].label = _(u'Hora del día - (Hora de Puerto Rico, AST UTC-4:00)')
+        self.fields['start_time'].label = _(u'Hora del día')
         self.fields['start_time'].widget = forms.Select(choices=TIME_CHOICES)
+
+        self.fields['timezone'].label = _(u'Zona horaria')
+        self.fields['timezone'].widget = forms.Select(choices=TIMEZONE_CHOICES)

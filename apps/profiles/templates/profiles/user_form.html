@@ -191,6 +191,14 @@
                             </div>
                         </div>
 
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group{% if form.timezone.errors %} has-error has-feedback{% endif %}">
+                                    {% bootstrap_field form.timezone label_class="control-label" %}
+                                </div>
+                            </div>
+                        </div>
+
                         <hr> <!-- hr -->
 
                         <div class="row">

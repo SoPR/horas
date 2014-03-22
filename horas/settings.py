@@ -71,6 +71,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'apps.core.middleware.TimezoneMiddleware'
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
@@ -121,6 +122,7 @@ WSGI_APPLICATION = 'horas.wsgi.application'
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
+HORAS_DEFAULT_TZ = os.environ.get('HORAS_DEFAULT_TZ')
 
 USE_I18N = True
 

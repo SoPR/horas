@@ -37,7 +37,7 @@ class CustomUserAdmin(UserAdmin):
                        'facebook_username', 'github_username', 'website_url',
                        'gravatar_url', 'is_gravatar_verified', 'day_of_week',
                        'start_time', 'phone', 'skype', 'google',
-                       'jitsi', 'address', 'tags')
+                       'jitsi', 'address', 'tags', 'timezone')
         }),
     )
 

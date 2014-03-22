@@ -1,10 +1,13 @@
 import datetime
+import pytz
 
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.db.models.loading import get_model
 from django.utils.timezone import now, utc
 from django.core.urlresolvers import reverse_lazy
+
+from django.conf import settings
 
 from notification import models as notification
 from taggit.managers import TaggableManager
@@ -17,6 +20,14 @@ class User(AbstractUser):
     '''
     Defines our custom user model.
     '''
+
+    PRETTY_TIMEZONE_CHOICES = [('', '--- Select ---')]
+
+    for tz in pytz.common_timezones:
+        now = datetime.datetime.now(pytz.timezone(tz))
+        PRETTY_TIMEZONE_CHOICES.append(
+            (tz, ' %s (GMT%s)' % (tz, now.strftime('%z'))))
+
     # Public profile information
     featured = models.BooleanField(default=False)
     bio = models.TextField(blank=True)
@@ -32,6 +43,9 @@ class User(AbstractUser):
     # Meeting availability
     day_of_week = DaysOfWeekField(blank=True, null=True, db_index=True)
     start_time = models.TimeField(null=True, blank=True)
+    timezone = models.CharField(max_length=255,
+                                default=settings.HORAS_DEFAULT_TZ,
+                                choices=PRETTY_TIMEZONE_CHOICES)
 
     # Kept private until meeting
     phone = models.CharField(blank=True, max_length=50)
