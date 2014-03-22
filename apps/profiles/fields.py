@@ -1,14 +1,16 @@
+# -*- coding: utf-8 -*-
+
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
 DAYS_OF_WEEK = (
-    (0, _('Monday')),
-    (1, _('Tuesday')),
-    (2, _('Wednesday')),
-    (3, _('Thursday')),
-    (4, _('Friday')),
-    (5, _('Saturday')),
-    (6, _('Sunday')),
+    (0, _('Lunes')),
+    (1, _('Martes')),
+    (2, _(u'Miércoles')),
+    (3, _('Jueves')),
+    (4, _('Viernes')),
+    (5, _(u'Sábado')),
+    (6, _('Domingo')),
 )
 
 
