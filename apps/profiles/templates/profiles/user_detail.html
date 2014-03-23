@@ -61,6 +61,8 @@
                                 <div class="col-sm-3">
                                     {% if meeting.state == 'cancelled' %}
                                         <span class="glyphicon glyphicon-remove-circle icon-cancelled"></span> {% trans "Cancelada por" %} {{ meeting.cancelled_by.get_tiny_name }}
+                                    {% elif meeting.state == 'didnt_happened' %}
+                                        <span class="glyphicon glyphicon-remove-circle icon-cancelled"></span> {% trans "No fue celebrada" %}
                                     {% elif meeting.state == 'completed' %}
                                         <span class="glyphicon glyphicon-ok-circle icon-success"></span> {% trans "Celebrada" %}
                                     {% endif %}
