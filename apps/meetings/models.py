@@ -29,30 +29,6 @@ class Meeting(BaseModel):
     def __str__(self):
         return '{} - {}'.format(self.mentor, self.datetime)
 
-    def reserve(self, user):
-        self.get_state_info().make_transition('reserve', user)
-
-    def confirm(self, user):
-        self.get_state_info().make_transition('confirm', user)
-        # TODO: Send notification
-
-    def cancel(self, user):
-        if self.state == 'reserved':
-            self.get_state_info().make_transition('cancel_reserved', user)
-        else:
-            self.get_state_info().make_transition('cancel_confirmed', user)
-        # TODO: Send notification
-
-    def didnt_happened(self):
-        if self.state == 'reserved':
-            self.get_state_info().make_transition('didnt_happened_reserved')
-        else:
-            self.get_state_info().make_transition('didnt_happened_confirmed')
-
-    def complete(self, user):
-        self.get_state_info().make_transition('complete', user)
-        # TODO: Send notification
-
     def get_time_range_text(self):
         tz = get_current_timezone()
         start_datetime = self.datetime.astimezone(tz)
