@@ -4,9 +4,10 @@ from django.db import models
 from django.utils.timezone import get_current_timezone
 from django.utils.formats import date_format
 
-from notification import models as notification
+from django_states.fields import StateField
 
 from ..core.models import BaseModel
+from .states import MeetingStateMachine
 
 
 class Meeting(BaseModel):
@@ -20,32 +21,37 @@ class Meeting(BaseModel):
 
     datetime = models.DateTimeField()
 
+    state = StateField(machine=MeetingStateMachine, default='available', db_index=True)
+
     class Meta:
         ordering = ('-datetime',)
 
     def __str__(self):
         return '{} - {}'.format(self.mentor, self.datetime)
 
-    def reserve(self, user, message):
-        self.protege = user
-        self.message = message
-        self.save()
+    def reserve(self, user):
+        self.get_state_info().make_transition('reserve', user)
 
-        notification.send(
-            [self.mentor],
-            'reserved_meeting_slot',
-            {'meeting': self})
+    def confirm(self, user):
+        self.get_state_info().make_transition('confirm', user)
+        # TODO: Send notification
 
     def cancel(self, user):
-        self.cancelled_by = user
-        self.save()
+        if self.state == 'reserved':
+            self.get_state_info().make_transition('cancel_reserved', user)
+        else:
+            self.get_state_info().make_transition('cancel_confirmed', user)
+        # TODO: Send notification
 
-        self.mentor.create_meeting_slot()
+    def didnt_happened(self):
+        if self.state == 'reserved':
+            self.get_state_info().make_transition('didnt_happened_reserved')
+        else:
+            self.get_state_info().make_transition('didnt_happened_confirmed')
 
-        notification.send(
-            [self.mentor],
-            'cancel_meeting',
-            {'meeting': self})
+    def complete(self, user):
+        self.get_state_info().make_transition('complete', user)
+        # TODO: Send notification
 
     def get_time_range_text(self):
         tz = get_current_timezone()

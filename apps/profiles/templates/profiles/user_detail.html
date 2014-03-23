@@ -40,7 +40,11 @@
                                 {% include "profiles/meeting_row_gravatars.html" %}
                                 {% include "profiles/meeting_row_dates.html" %}
                                 <div class="col-sm-3">
-                                    <a href="#" class="btn btn-default btn-grey">{% trans "Confirmar" %}</a>
+                                    {% if meeting.state == 'reserved' %}
+                                        <a href="#" class="btn btn-default btn-grey">{% trans "Confirmar" %}</a>
+                                    {% elif meeting.state == 'confirmed' %}
+                                        <span class="glyphicon glyphicon-ok-circle icon-success"></span> {% trans "Confirmada" %}
+                                    {% endif %}
                                 </div>
                             </div> <!-- /.row profile-meeting-row -->
                         {% endfor %}
@@ -55,9 +59,9 @@
                                 {% include "profiles/meeting_row_gravatars.html" %}
                                 {% include "profiles/meeting_row_dates.html" %}
                                 <div class="col-sm-3">
-                                    {% if meeting.cancelled_by %}
+                                    {% if meeting.state == 'cancelled' %}
                                         <span class="glyphicon glyphicon-remove-circle icon-cancelled"></span> {% trans "Cancelada por" %} {{ meeting.cancelled_by.get_tiny_name }}
-                                    {% else %}
+                                    {% elif meeting.state == 'completed' %}
                                         <span class="glyphicon glyphicon-ok-circle icon-success"></span> {% trans "Celebrada" %}
                                     {% endif %}
                                 </div>
