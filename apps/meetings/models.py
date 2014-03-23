@@ -1,4 +1,8 @@
+from datetime import timedelta
+
 from django.db import models
+from django.utils.timezone import get_current_timezone
+from django.utils.formats import date_format
 
 from notification import models as notification
 
@@ -15,6 +19,9 @@ class Meeting(BaseModel):
     message = models.TextField(blank=True)
 
     datetime = models.DateTimeField()
+
+    class Meta:
+        ordering = ('-datetime',)
 
     def __str__(self):
         return '{} - {}'.format(self.mentor, self.datetime)
@@ -39,3 +46,15 @@ class Meeting(BaseModel):
             [self.mentor],
             'cancel_meeting',
             {'meeting': self})
+
+    def get_time_range_text(self):
+        tz = get_current_timezone()
+        start_datetime = self.datetime.astimezone(tz)
+
+        start_time = start_datetime.time()
+        end_time = (start_datetime + timedelta(hours=1)).time()
+
+        start_time_fmt = date_format(start_time, 'TIME_FORMAT')
+        end_time_fmt = date_format(end_time, 'TIME_FORMAT')
+
+        return '{0} - {1} ({2})'.format(start_time_fmt, end_time_fmt, start_datetime.tzname())
