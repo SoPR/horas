@@ -11,90 +11,61 @@
             {% include "profiles/profile_sidebar.html" %}
 
             <div class="col-sm-9 profile-content-wrapper">
-                <section class="profile-content-section">
-                    <h3 class="text-section-header">{% trans "Hora disponible" %}</h3>
-                    <div class="row profile-meeting-row">
-                        <div class="col-xs-4 col-md-2">
-                            <a href="#" class="btn btn-lg btn-success">{% trans "Reservar" %}</a>
-                        </div>
-                        <div class="col-xs-5">
-                            <strong>Lunes, 24 de Febrero de 2014</strong><br>
-                            2:00 - 3:00 PM AST
-                        </div>
-                        <div class="col-xs-3">
-                            <strong>{% trans "Formatos" %}</strong><br>
-                            Skype, Hangout
-                        </div>
-                    </div> <!-- /.row profile-meeting-row -->
-                </section> <!-- /.row profile-content-section -->
+                {% if object.meetings.available %}
+                    <section class="profile-content-section">
+                        <h3 class="text-section-header">{% trans "Hora disponible" %}</h3>
+                        {% for meeting in object.meetings.available %}
+                            <div class="row profile-meeting-row">
+                                <div class="col-xs-4 col-md-2">
+                                    <a href="#" class="btn btn-lg btn-success">{% trans "Reservar" %}</a>
+                                </div>
+                                <div class="col-xs-5">
+                                    <strong>{{ meeting.datetime|date:"DATE_FORMAT" }}</strong><br>
+                                    {{ meeting.get_time_range_text }}
+                                </div>
+                                <div class="col-xs-3">
+                                    <strong>{% trans "Formatos" %}</strong><br>
+                                    {{ object.user.get_meeting_formats }}
+                                </div>
+                            </div> <!-- /.row profile-meeting-row -->
+                        {% endfor %}
+                    </section> <!-- /.row profile-content-section -->
+                {% endif %}
 
-                <section class="profile-content-section">
-                    <h3 class="text-section-header">{% trans "Próximas reuniones" %}</h3>
-                    <div class="row profile-meeting-row">
-                        <div class="col-xs-1">
-                            <img src="//placehold.it/45x45" alt="" class="img-rounded">
-                        </div>
-                        <div class="col-xs-1">
-                            <img src="//placehold.it/45x45" alt="" class="img-rounded">
-                        </div>
-                        <div class="col-xs-offset-1 col-sm-offset-0 col-xs-5">
-                            <strong>Lunes, 24 de Febrero de 2014</strong><br>
-                            2:00 - 3:00 PM AST
-                        </div>
-                        <div class="col-sm-3">
-                            <a href="#" class="btn btn-default btn-grey">{% trans "Confirmar" %}</a>
-                        </div>
-                    </div> <!-- /.row profile-meeting-row -->
-                    <div class="row profile-meeting-row">
-                        <div class="col-xs-1">
-                            <img src="//placehold.it/45x45" alt="" class="img-rounded">
-                        </div>
-                        <div class="col-xs-1">
-                            <img src="//placehold.it/45x45" alt="" class="img-rounded">
-                        </div>
-                        <div class="col-xs-offset-1 col-sm-offset-0 col-xs-5">
-                            <strong>Lunes, 24 de Febrero de 2014</strong><br>
-                            2:00 - 3:00 PM AST
-                        </div>
-                        <div class="col-sm-3">
-                            <a href="#" class="btn btn-default btn-grey">{% trans "Cancelar" %}</a>
-                        </div>
-                    </div> <!-- /.row profile-meeting-row -->
-                </section> <!-- /.row profile-content-section -->
+                {% if object.meetings.next %}
+                    <section class="profile-content-section">
+                        <h3 class="text-section-header">{% trans "Próximas reuniones" %}</h3>
+                        {% for meeting in object.meetings.next %}
+                            <div class="row profile-meeting-row">
+                                {% include "profiles/meeting_row_gravatars.html" %}
+                                {% include "profiles/meeting_row_dates.html" %}
+                                <div class="col-sm-3">
+                                    <a href="#" class="btn btn-default btn-grey">{% trans "Confirmar" %}</a>
+                                </div>
+                            </div> <!-- /.row profile-meeting-row -->
+                        {% endfor %}
+                    </section> <!-- /.row profile-content-section -->
+                {% endif %}
 
-                <section class="profile-content-section">
-                    <h3 class="text-section-header">{% trans "Historia" %}</h3>
-                    <div class="row profile-meeting-row">
-                        <div class="col-xs-1">
-                            <img src="//placehold.it/45x45" alt="" class="img-rounded">
-                        </div>
-                        <div class="col-xs-1">
-                            <img src="//placehold.it/45x45" alt="" class="img-rounded">
-                        </div>
-                        <div class="col-xs-offset-1 col-sm-offset-0 col-xs-5">
-                            <strong>Lunes, 24 de Febrero de 2014</strong><br>
-                            2:00 - 3:00 PM AST
-                        </div>
-                        <div class="col-sm-3">
-                            <span class="glyphicon glyphicon-ok-circle icon-success"></span> {% trans "Celebrada" %}
-                        </div>
-                    </div> <!-- /.row profile-meeting-row -->
-                    <div class="row profile-meeting-row">
-                        <div class="col-xs-1">
-                            <img src="//placehold.it/45x45" alt="" class="img-rounded">
-                        </div>
-                        <div class="col-xs-1">
-                            <img src="//placehold.it/45x45" alt="" class="img-rounded">
-                        </div>
-                        <div class="col-xs-offset-1 col-sm-offset-0 col-xs-5">
-                            <strong>Lunes, 24 de Febrero de 2014</strong><br>
-                            2:00 - 3:00 PM AST
-                        </div>
-                        <div class="col-sm-3">
-                            <span class="glyphicon glyphicon-remove-circle icon-cancelled"></span> {% trans "Cancelada" %}
-                        </div>
-                    </div> <!-- /.row profile-meeting-row -->
-                </section> <!-- /.row profile-content-section -->
+                {% if object.meetings.past %}
+                    <section class="profile-content-section">
+                        <h3 class="text-section-header">{% trans "Historia" %}</h3>
+                        {% for meeting in object.meetings.past %}
+                            <div class="row profile-meeting-row">
+                                {% include "profiles/meeting_row_gravatars.html" %}
+                                {% include "profiles/meeting_row_dates.html" %}
+                                <div class="col-sm-3">
+                                    {% if meeting.cancelled_by %}
+                                        <span class="glyphicon glyphicon-remove-circle icon-cancelled"></span> {% trans "Cancelada por" %} {{ meeting.cancelled_by.get_tiny_name }}
+                                    {% else %}
+                                        <span class="glyphicon glyphicon-ok-circle icon-success"></span> {% trans "Celebrada" %}
+                                    {% endif %}
+                                </div>
+                            </div> <!-- /.row profile-meeting-row -->
+                        {% endfor %}
+                    </section> <!-- /.row profile-content-section -->
+                {% endif %}
+
             </div> <!-- /.profile-content-wrapper -->
 
         </div> <!-- /.row -->

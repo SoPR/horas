@@ -1,11 +1,14 @@
+from django.db.models import Q
 from django.views.generic import DetailView, UpdateView
 from django.core.urlresolvers import reverse_lazy
 from django.contrib import messages
+from django.utils.timezone import now
 from django.utils.translation import ugettext_lazy as _
 
 from braces.views import LoginRequiredMixin
 
 from .models import User
+from ..meetings.models import Meeting
 from .forms import ProfileUpdateForm
 
 
@@ -16,6 +19,29 @@ class ProfileDetailView(DetailView):
     model = User
     slug_field = 'username'
     slug_url_kwarg = 'username'
+
+    def get_object(self, *args, **kwargs):
+        user = super(ProfileDetailView, self).get_object(*args, **kwargs)
+        meetings = Meeting.objects.select_related(
+            'mentor', 'protege', 'cancelled_by').filter(Q(mentor=user) | Q(protege=user))
+
+        meetings_available = meetings.filter(protege=None, datetime__gt=now())
+
+        meetings_next = meetings.filter(
+            protege__isnull=False, cancelled_by=None, datetime__gt=now())
+
+        meetings_past = meetings.filter(Q(datetime__lt=now()) | Q(cancelled_by__isnull=False))
+
+        object = {
+            'user': user,
+            'meetings': {
+                'available': meetings_available,
+                'next': meetings_next,
+                'past': meetings_past
+            }
+        }
+
+        return object
 
 
 class ProfileUpdateView(LoginRequiredMixin, UpdateView):
