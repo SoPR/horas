@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from datetime import datetime
 import pytz
 
@@ -6,6 +8,7 @@ from django.contrib.auth.models import AbstractUser
 from django.db.models.loading import get_model
 from django.utils.timezone import now, get_default_timezone, make_aware
 from django.core.urlresolvers import reverse_lazy
+from django.utils.translation import ugettext_lazy as _
 
 from django.conf import settings
 
@@ -77,6 +80,22 @@ class User(AbstractUser):
             return self.city
         elif self.state:
             return self.state
+
+    def get_meeting_formats(self):
+        available_formats = (
+            (self.phone, _(u'Teléfono')),
+            (self.skype, _('Skype')),
+            (self.google, _('Google')),
+            (self.jitsi, _('Jitsi')),
+            (self.address, _('En persona')),
+        )
+
+        output = []
+        for _format in available_formats:
+            if _format[0]:
+                output.append(_format[1].encode('utf-8'))
+
+        return ', '.join(sorted(output))
 
     def create_meeting_slot(self):
         if self.is_active and self.timezone and self.day_of_week and self.start_time:
