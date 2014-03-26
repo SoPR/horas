@@ -1,9 +1,9 @@
 import hmac
-from urllib import urlencode
 from hashlib import sha256
 from base64 import b64decode, b64encode
 
 from django.http import HttpResponseNotFound, HttpResponseRedirect
+from django.utils.http import urlencode
 from django.core.urlresolvers import reverse
 from django.conf import settings
 
