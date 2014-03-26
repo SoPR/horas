@@ -22,6 +22,9 @@ APPNAME = 'horas'
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('SECRET_KEY')
+SSO_SECRET_KEY = os.environ.get('SSO_SECRET_KEY')
+
+DISCOURSE_SSO_REDIRECT_URL='http://comunidad.1hora.org/session/sso_login?'
 
 ALLOWED_HOSTS = ['localhost', 'unahora.herokuapp.com']
 
@@ -61,6 +64,7 @@ INSTALLED_APPS = (
     'apps.profiles',
     'apps.search',
     'apps.meetings',
+    'apps.sso',
 )
 
 MIDDLEWARE_CLASSES = (

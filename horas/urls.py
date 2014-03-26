@@ -15,6 +15,8 @@ urlpatterns = patterns(
 
     url(r'^accounts/', include('allauth.urls')),
 
+    url(r'^api/v1/', include('apps.sso.urls')),
+
     # This pages are in apps/core/templates
     url(r'^legal/$', TemplateView.as_view(
         template_name='legal.html'), name='legal'),
