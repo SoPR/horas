@@ -140,6 +140,9 @@ BRUNCH_DIR = os.path.join(BASE_DIR, 'static', 'src')
 
 DEFAULT_FILE_STORAGE = 'storages.backends.s3.S3Storage'
 
+# un-comment line to collectstatic to S3
+# STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+
 AWS_PRELOAD_METADATA = True
 AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
