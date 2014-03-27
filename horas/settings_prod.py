@@ -32,6 +32,7 @@ DATABASES = {
 }
 
 STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+STATIC_URL = 'https://org-1hora-static.s3.amazonaws.com/'
 
 MANDRILL_API_KEY = os.environ.get('MANDRILL_APIKEY')
 DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL')
