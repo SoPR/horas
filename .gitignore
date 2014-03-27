@@ -71,3 +71,6 @@ coverage.xml
 docs/_build/
 
 static/
+
+.env
+.vagrant
