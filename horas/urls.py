@@ -1,11 +1,16 @@
 from django.conf.urls import patterns, include, url
-from django.views.generic.base import TemplateView
+from django.views.generic.base import TemplateView, RedirectView
+from django.conf import settings
 from django.contrib import admin
 
 admin.autodiscover()
 
 urlpatterns = patterns(
     '',  # Empty string as prefix
+
+    url(r'^favicon.ico/$', RedirectView.as_view(
+        url=settings.STATIC_URL + 'images/favicon.ico')),
+
 
     url(r'^admin/', include(admin.site.urls)),
 
@@ -17,6 +22,7 @@ urlpatterns = patterns(
 
     url(r'^api/v1/', include('apps.sso.urls')),
 
+
     # This pages are in apps/core/templates
     url(r'^legal/$', TemplateView.as_view(
         template_name='legal.html'), name='legal'),
@@ -24,6 +30,7 @@ urlpatterns = patterns(
         template_name='about.html'), name='about'),
     url(r'^contact/$', TemplateView.as_view(
         template_name='contact.html'), name='contact'),
+
 
     url(r'', include('apps.profiles.urls')),
 
