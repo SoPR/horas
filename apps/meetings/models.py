@@ -21,6 +21,7 @@ class Meeting(BaseModel):
 
     datetime = models.DateTimeField()
 
+    # posible state values are documented on states.py
     state = StateField(machine=MeetingStateMachine, default='available', db_index=True)
 
     class Meta:

@@ -1,3 +1,46 @@
+'''
+Possible states
+---------------
+
+available:
+    A new meeting.
+
+reserved:
+    A meeting that was available and reserved by protege.
+
+confirmed:
+    A meeting that was reserved by a protege and later accepted
+    by the meeting's mentor.
+
+cancelled:
+    A meeting that was either reserved or confirmed and
+    then cancelled by the mentor or protege.
+
+waiting_reply:
+    At least 1 hour have passed from the meeting's start datetime
+    and mentor or protege have not replied to our how was the
+    meeting email.
+
+didnt_happen:
+    Mentor or protege replied to our how was the meeting email
+    saying the meeting did not happen.
+
+did_happen:
+    Mentor or protege replied to our how was the meeting email
+    saying the meeting did happen.
+
+unused:
+    at least 1 hour have passed from the meeting's start datetime
+    and the meeting is still in the available state, meaning
+    it was not reserved by a protege.
+
+deleted:
+    A meeting in available state can be transitioned to deleted
+    by the system after a user updates his/her meeting settings.
+    This transition will produce a new available meeting.
+
+'''
+
 from django.utils.translation import ugettext_lazy as _
 
 from django_states.machine import StateMachine, StateDefinition, StateTransition
@@ -21,11 +64,20 @@ class MeetingStateMachine(StateMachine):
     class cancelled(StateDefinition):
         description = _('Cancelled')
 
-    class didnt_happened(StateDefinition):
-        description = _('Meeting didn\'t happened')
+    class waiting_reply(StateDefinition):
+        description = _('Waiting for reply')
 
-    class completed(StateDefinition):
-        description = _('Completed')
+    class didnt_happen(StateDefinition):
+        description = _('Meeting didn\'t happen')
+
+    class did_happen(StateDefinition):
+        description = _('Meeting did happen')
+
+    class unused(StateDefinition):
+        description = _('Un-used')
+
+    class deleted(StateDefinition):
+        description = _('Deleted')
 
 
     # state transitions
@@ -71,17 +123,27 @@ class MeetingStateMachine(StateMachine):
             instance.cancelled_by = user
             instance.save()
 
-    class didnt_happened_reserved(StateTransition):
+    class flag_didnt_happen_reserved(StateTransition):
         from_state = 'reserved'
-        to_state = 'didnt_happened'
+        to_state = 'didnt_happen'
         description = _('When the meetings is not held after being reserved')
 
-    class didnt_happened_confirmed(StateTransition):
+    class flag_didnt_happen_confirmed(StateTransition):
         from_state = 'confirmed'
-        to_state = 'didnt_happened'
+        to_state = 'didnt_happen'
         description = _('When the meetings is not held after being confirmed')
 
-    class complete(StateTransition):
+    class flag_did_happen(StateTransition):
         from_state = 'confirmed'
-        to_state = 'completed'
+        to_state = 'did_happen'
         description = _('When mentor or protege confirms the meeting was held')
+
+    class flag_unused(StateTransition):
+        from_state = 'available'
+        to_state = 'unused'
+        description = _('When a meeting was never reserved by a protege')
+
+    class delete(StateTransition):
+        from_state = 'available'
+        to_state = 'deleted'
+        description = _('When the user change settings we destroy available meetings')
