@@ -16,8 +16,6 @@ urlpatterns = patterns(
 
     url(r'^search/', include('apps.search.urls')),
 
-    url(r'^meetings/', include('apps.meetings.urls')),
-
     url(r'^accounts/', include('allauth.urls')),
 
     url(r'^api/v1/', include('apps.sso.urls')),
@@ -31,8 +29,8 @@ urlpatterns = patterns(
     url(r'^contact/$', TemplateView.as_view(
         template_name='contact.html'), name='contact'),
 
-
-    url(r'', include('apps.profiles.urls')),
+    url(r'^(?P<username>[^/]+)/meetings/', include('apps.meetings.urls')),
+    url(r'^(?P<username>[^/]+)/', include('apps.profiles.urls')),
 
     url(r'^$', include('apps.core.urls')),
 )

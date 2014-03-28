@@ -4,11 +4,11 @@ from .views import ProfileDetailView, ProfileUpdateView
 urlpatterns = patterns(
     '',  # Empty string as prefix
 
-    url('^(?P<username>[^/]+)/$',
+    url(r'^$',
         ProfileDetailView.as_view(),
         name='profile_detail'),
 
-    url('^(?P<username>[^/]+)/update/$',
+    url(r'^update/$',
         ProfileUpdateView.as_view(),
         name='profile_update'),
 
