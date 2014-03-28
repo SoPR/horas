@@ -77,3 +77,4 @@ static/dist
 
 .env
 /venv/
+/src
