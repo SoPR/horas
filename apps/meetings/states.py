@@ -123,6 +123,16 @@ class MeetingStateMachine(StateMachine):
             instance.cancelled_by = user
             instance.save()
 
+    class flag_waiting_reply_reserved(StateTransition):
+        from_state = 'reserved'
+        to_state = 'waiting_reply'
+        description = _('')
+
+    class flag_waiting_reply_confirmed(StateTransition):
+        from_state = 'confirmed'
+        to_state = 'waiting_reply'
+        description = _('')
+
     class flag_didnt_happen_reserved(StateTransition):
         from_state = 'reserved'
         to_state = 'didnt_happen'
