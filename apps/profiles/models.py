@@ -111,10 +111,9 @@ class User(AbstractUser):
 
             # Notify user
             if created:
-                notification.send(
-                    [self],
-                    'create_meeting_slot',
-                    {'meeting': meeting_slot})
+                notification.send([self],
+                                  'create_meeting_slot',
+                                  {'meeting': meeting_slot})
 
             return meeting_slot, created
 
