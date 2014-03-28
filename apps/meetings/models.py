@@ -1,8 +1,10 @@
+# -*- coding: utf-8 -*-
 from datetime import timedelta
 
 from django.db import models
 from django.utils.timezone import get_current_timezone, now
 from django.utils.formats import date_format
+from django.utils.translation import ugettext_lazy as _
 
 from django_states.fields import StateField
 
@@ -17,8 +19,8 @@ class Meeting(BaseModel):
     cancelled_by = models.ForeignKey('profiles.User', blank=True, null=True,
                                      related_name='+')
 
+    format = models.CharField(blank=True, max_length=50)
     message = models.TextField(blank=True)
-
     datetime = models.DateTimeField()
 
     # posible state values are documented on states.py
