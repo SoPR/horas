@@ -1,7 +1,7 @@
 from datetime import timedelta
 
 from django.db import models
-from django.utils.timezone import get_current_timezone
+from django.utils.timezone import get_current_timezone, now
 from django.utils.formats import date_format
 
 from django_states.fields import StateField
@@ -22,13 +22,18 @@ class Meeting(BaseModel):
     datetime = models.DateTimeField()
 
     # posible state values are documented on states.py
-    state = StateField(machine=MeetingStateMachine, default='available', db_index=True)
+    state = StateField(
+        machine=MeetingStateMachine, default='available', db_index=True)
 
     class Meta:
         ordering = ('-datetime',)
 
     def __str__(self):
         return '{} - {}'.format(self.mentor, self.datetime)
+
+    def is_in_past(self):
+        # I actually like this method name
+        return now() > (self.datetime + timedelta(hours=1))
 
     def get_time_range_text(self):
         tz = get_current_timezone()
