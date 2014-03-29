@@ -91,10 +91,10 @@ class User(AbstractUser):
         )
 
         output = []
-        for _format in available_formats:
-            if _format[0]:
+        for format in available_formats:
+            if format[0]:
                 output.append(
-                    (_format[1], _format[2].encode('utf-8'))
+                    (format[1], format[2].encode('utf-8'))
                 )
 
         return output
