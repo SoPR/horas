@@ -17,7 +17,7 @@
                         {% for meeting in object.meetings.available %}
                             <div class="row profile-meeting-row">
                                 <div class="col-xs-4 col-md-2">
-                                    <a href="{% url 'meeting_detail' object.user meeting.id %}" class="btn btn-lg btn-success">{% trans "Reservar" %}</a>
+                                    <a href="{% url 'meeting_detail' profile_user meeting.id %}" class="btn btn-lg btn-success">{% trans "Reservar" %}</a>
                                 </div>
                                 <div class="col-xs-5">
                                     <strong>{{ meeting.datetime|date:"DATE_FORMAT" }}</strong><br>

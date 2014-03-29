@@ -1,8 +1,8 @@
 from django.conf.urls import patterns, url
-from .views import MeetingDetailView
+from .views import MeetingUpdateView
 
 urlpatterns = patterns(
     '',  # Empty string as prefix
 
-    url('^(?P<pk>\d+)/$', MeetingDetailView.as_view(), name='meeting_detail'),
+    url('^(?P<pk>\d+)/$', MeetingUpdateView.as_view(), name='meeting_detail'),
 )

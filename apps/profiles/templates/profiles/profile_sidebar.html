@@ -1,21 +1,21 @@
 {% load i18n %}
 <div class="col-sm-3 profile-sidebar">
-    <img src="{{ object.user.gravatar_url }}?s=285" alt="Gravatar" class="img-responsive img-thumbnail">
-    <h3>{{ object.user.get_full_name }}</h3>
-    <div class="text-muted">{{ object.user.bio }}</div>
+    <img src="{{ profile_user.gravatar_url }}?s=285" alt="Gravatar" class="img-responsive img-thumbnail">
+    <h3>{{ profile_user.get_full_name }}</h3>
+    <div class="text-muted">{{ profile_user.bio }}</div>
     <div class="margin-vertical-50">
-        <div>{{ object.user.get_location }}</div>
-        {% if object.user.website_url %}
-            <div><a href="{{ object.user.website_url }}">{{ object.user.website_url }}</a></div>
+        <div>{{ profile_user.get_location }}</div>
+        {% if profile_user.website_url %}
+            <div><a href="{{ profile_user.website_url }}">{{ profile_user.website_url }}</a></div>
         {% endif %}
-        {% blocktrans with object.user.date_joined|date:"N j, o" as date %}
+        {% blocktrans with profile_user.date_joined|date:"N j, o" as date %}
             <div>Mentor desde {{ date }}</div>
         {% endblocktrans %}
     </div>
 
     <h4>{% trans "Temas" %}</h4>
     <ul class="list-inline">
-        {% for tag in object.user.tags.all %}
+        {% for tag in profile_user.tags.all %}
             <li><a href="{% url 'search_query' tag.slug %}">{{ tag }}</a></li>
         {% endfor %}
     </ul>

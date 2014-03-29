@@ -21,9 +21,9 @@ class ProfileDetailView(DetailView):
     slug_url_kwarg = 'username'
 
     def get_object(self, *args, **kwargs):
-        user = super(ProfileDetailView, self).get_object(*args, **kwargs)
+        profile_user = super(ProfileDetailView, self).get_object(*args, **kwargs)
         meetings = Meeting.objects.select_related(
-            'mentor', 'protege', 'cancelled_by').filter(Q(mentor=user) | Q(protege=user))
+            'mentor', 'protege', 'cancelled_by').filter(Q(mentor=profile_user) | Q(protege=profile_user))
 
         meetings_available = meetings.filter(state='available', datetime__gt=now())
 
@@ -34,7 +34,7 @@ class ProfileDetailView(DetailView):
                                         Q(state__in=['cancelled', 'didnt_happened', 'completed']))
 
         object = {
-            'user': user,
+            'profile_user': profile_user,
             'meetings': {
                 'available': meetings_available,
                 'next': meetings_next,
@@ -43,6 +43,11 @@ class ProfileDetailView(DetailView):
         }
 
         return object
+
+    def get_context_data(self, *args, **kwargs):
+        ctx = super(ProfileDetailView, self).get_context_data(*args, **kwargs)
+        ctx['profile_user'] = self.object['profile_user']
+        return ctx
 
 
 class ProfileUpdateView(LoginRequiredMixin, UpdateView):
