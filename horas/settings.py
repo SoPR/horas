@@ -45,7 +45,6 @@ class Common(Configuration):
         'allauth.socialaccount.providers.persona',
         'taggit',
         'notification',
-        'cities_light',
         'gunicorn',
         'storages',
         'collectfast',
