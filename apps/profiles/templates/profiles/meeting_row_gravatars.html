@@ -1,8 +1,8 @@
 {% load i18n %}
 
 <div class="col-xs-1">
-    <img src="{{ meeting.mentor.gravatar_url }}?s=45" alt="" class="img-rounded {% if meeting.cancelled_by == meeting.mentor %}did-cancel-meeting{% endif %}" title="{% trans "Mentor:" %} {{ meeting.mentor.get_full_name }} - {{ meeting.mentor }}">
+    <img src="{{ meeting.mentor.gravatar_url }}?s=45&d=identicon" alt="" class="img-rounded {% if meeting.cancelled_by == meeting.mentor %}did-cancel-meeting{% endif %}" title="{% trans "Mentor:" %} {{ meeting.mentor.get_full_name }} - {{ meeting.mentor }}">
 </div>
 <div class="col-xs-1">
-    <img src="{{ meeting.protege.gravatar_url }}?s=45" alt="" class="img-rounded {% if meeting.cancelled_by == meeting.protege %}did-cancel-meeting{% endif %}" title="{% trans "Aprendiz:" %} {{ meeting.protege.get_full_name }} - {{ meeting.protege }}">
+    <img src="{{ meeting.protege.gravatar_url }}?s=45&d=identicon" alt="" class="img-rounded {% if meeting.cancelled_by == meeting.protege %}did-cancel-meeting{% endif %}" title="{% trans "Aprendiz:" %} {{ meeting.protege.get_full_name }} - {{ meeting.protege }}">
 </div>
