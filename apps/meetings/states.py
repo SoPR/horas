@@ -95,6 +95,9 @@ class MeetingStateMachine(StateMachine):
                 'reserved_meeting_slot',
                 {'meeting': instance})
 
+        def has_permission(transition, instance, user):
+            return instance.mentor != user
+
     class confirm(StateTransition):
         from_state = 'reserved'
         to_state = 'confirmed'
