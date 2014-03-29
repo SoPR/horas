@@ -8,7 +8,11 @@ https://docs.djangoproject.com/en/dev/howto/deployment/wsgi/
 """
 
 import os
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "horas.settings")
 
-from django.core.wsgi import get_wsgi_application
+ENVIRONMENT = os.getenv('ENVIRONMENT', 'DEVELOPMENT').title()
+
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'horas.settings')
+os.environ.setdefault('DJANGO_CONFIGURATION', ENVIRONMENT)
+
+from configurations.wsgi import get_wsgi_application
 application = get_wsgi_application()
