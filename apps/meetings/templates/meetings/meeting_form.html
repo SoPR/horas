@@ -40,7 +40,7 @@
                             <form method="post">
                                 {% csrf_token %}<br>
                                 {% bootstrap_form form %}
-                                <button type="submit" class="btn btn-success">{% trans "Reservar" %}</button> <a href="{% url 'profile_detail' user.username %}" class="btn btn-link">{% trans "Cancelar" %}</a>
+                                <button type="submit" class="btn btn-success">{% trans "Reservar" %}</button> <a href="{% url 'profile_detail' profile_user.username %}" class="btn btn-link">{% trans "Cancelar" %}</a>
                             </form>
                         </div>
                     </div>
