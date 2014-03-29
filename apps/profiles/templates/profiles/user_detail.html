@@ -25,7 +25,7 @@
                                 </div>
                                 <div class="col-xs-3">
                                     <strong>{% trans "Formatos" %}</strong><br>
-                                    {{ object.user.get_meeting_formats_string }}
+                                    {{ profile_user.get_meeting_formats_string }}
                                 </div>
                             </div> <!-- /.row profile-meeting-row -->
                         {% endfor %}
@@ -40,9 +40,15 @@
                                 {% include "profiles/meeting_row_gravatars.html" %}
                                 {% include "profiles/meeting_row_dates.html" %}
                                 <div class="col-sm-3">
-                                    {% if meeting.state == 'reserved' %}
+                                    {% if meeting.state == 'reserved' and user == meeting.mentor %}
                                         <a href="#" class="btn btn-default btn-grey">{% trans "Confirmar" %}</a>
-                                    {% elif meeting.state == 'confirmed' %}
+                                    {% endif %}
+                                    {% if meeting.state == 'reserved' %}
+                                        {% if user == meeting.mentor or user == meeting.protege %}
+                                            <a href="#" class="btn btn-default btn-grey">{% trans "Cancelar" %}</a>
+                                        {% endif %}
+                                    {% endif %}
+                                    {% if meeting.state == 'confirmed' %}
                                         <span class="glyphicon glyphicon-ok-circle icon-success"></span> {% trans "Confirmada" %}
                                     {% endif %}
                                 </div>
