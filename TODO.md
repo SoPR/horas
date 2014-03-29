@@ -71,6 +71,6 @@ Sorry for the spanglish. If you want to contribute just pick a task and update i
 
 - **[not started]** - When the user has no available meetings what should we show? maybe a call to action to "subscribe" to that user, so when new meetings are available you get a notification.
 
-- **[in progress: jpadilla]** - Migrate settings.py setup to use [jezdez/django-configurations](https://github.com/jezdez/django-configurations/). We can use [this example](https://gist.github.com/jpadilla/864f53b67efaf1c1dd1c) as a reference.
+- :white_check_mark: - Migrate settings.py setup to use [jezdez/django-configurations](https://github.com/jezdez/django-configurations/). We can use [this example](https://gist.github.com/jpadilla/864f53b67efaf1c1dd1c) as a reference.
 
 - **[in progress: crm114]** - Setup and deploy [comunidad.1hora.org](http://comunidad.1hora.org) using [Discourse](http://www.discourse.org/). The idea is to have a place where people can share conversations around what happens on 1hora.org. Somewhere to go and talk about their 1hora.org experiences. 
