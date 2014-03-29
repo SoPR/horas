@@ -21,11 +21,11 @@
                                 </div>
                                 <div class="col-xs-5">
                                     <strong>{{ meeting.datetime|date:"DATE_FORMAT" }}</strong><br>
-                                    {{ meeting.get_time_range_text }}
+                                    {{ meeting.get_time_range_string }}
                                 </div>
                                 <div class="col-xs-3">
                                     <strong>{% trans "Formatos" %}</strong><br>
-                                    {{ object.user.get_meeting_formats }}
+                                    {{ object.user.get_meeting_formats_string }}
                                 </div>
                             </div> <!-- /.row profile-meeting-row -->
                         {% endfor %}

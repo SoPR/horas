@@ -37,7 +37,7 @@ class Meeting(BaseModel):
         # I actually like this method name
         return now() > (self.datetime + timedelta(hours=1))
 
-    def get_time_range_text(self):
+    def get_time_range_string(self):
         tz = get_current_timezone()
         start_datetime = self.datetime.astimezone(tz)
 

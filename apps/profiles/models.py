@@ -24,7 +24,7 @@ class User(AbstractUser):
     Defines our custom user model.
     '''
 
-    PRETTY_TIMEZONE_CHOICES = [('', '--- Select ---')]
+    PRETTY_TIMEZONE_CHOICES = [('', _('--- Selecciona ---'))]
 
     for tz in pytz.common_timezones:
         now = datetime.now(pytz.timezone(tz))
@@ -83,17 +83,28 @@ class User(AbstractUser):
 
     def get_meeting_formats(self):
         available_formats = (
-            (self.phone, _(u'Teléfono')),
-            (self.skype, _('Skype')),
-            (self.google, _('Google')),
-            (self.jitsi, _('Jitsi')),
-            (self.address, _('En persona')),
+            (self.phone, 'phone', _(u'Teléfono')),
+            (self.skype, 'skype', _('Skype')),
+            (self.google, 'google', _('Google')),
+            (self.jitsi, 'jitsi', _('Jitsi')),
+            (self.address, 'inperson', _('En persona')),
         )
 
         output = []
         for _format in available_formats:
             if _format[0]:
-                output.append(_format[1].encode('utf-8'))
+                output.append(
+                    (_format[1], _format[2].encode('utf-8'))
+                )
+
+        return output
+
+    def get_meeting_formats_string(self):
+        formats = self.get_meeting_formats()
+
+        output = []
+        for format in formats:
+            output.append(format[1])
 
         return ', '.join(sorted(output))
 
