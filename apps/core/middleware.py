@@ -28,6 +28,7 @@ class EnsureCompleteProfileMiddleware(object):
         if request.user.is_authenticated():
             skip_urls = [str(reverse_lazy('profile_update', args=[request.user.username]))]
             skip_urls.append('/admin')
+            skip_urls.append('/accounts/logout/')
 
             if not request.user.has_complete_profile() and request.path not in skip_urls:
                 messages.info(request, _('Debes completar tu perfil para continuar'))
