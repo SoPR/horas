@@ -1,3 +1,4 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 from django.views.generic import UpdateView
 from django.core.urlresolvers import reverse_lazy
@@ -29,6 +30,28 @@ class MeetingUpdateView(LoginRequiredMixin, UpdateView):
         user = self.object.mentor
         ctx['profile_user'] = user
         return ctx
+
+    def get_success_url(self):
+        return reverse_lazy('profile_detail',
+                            args=[self.kwargs['username']])
+
+
+class MeetingConfirmView(LoginRequiredMixin, UpdateView):
+    model = Meeting
+    http_method_names = ['post']
+
+    def post(self, *args, **kwargs):
+        self.object = self.get_object()
+
+        if self.request.user == self.object.mentor:
+            self.object.get_state_info().make_transition('confirm', self.request.user)
+
+        return HttpResponseRedirect(self.get_success_url())
+
+    def get_object(self, *args, **kwargs):
+        return get_object_or_404(
+            Meeting.objects.select_related('mentor', 'protege'),
+            pk=self.kwargs.get('pk'), mentor=self.request.user, state='reserved')
 
     def get_success_url(self):
         return reverse_lazy('profile_detail',

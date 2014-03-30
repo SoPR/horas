@@ -41,7 +41,10 @@
                                 {% include "profiles/meeting_row_dates.html" %}
                                 <div class="col-sm-3">
                                     {% if meeting.state == 'reserved' and user == meeting.mentor %}
-                                        <a href="#" class="btn btn-default btn-grey">{% trans "Confirmar" %}</a>
+                                        <form action="{% url 'meeting_confirm' profile_user.username meeting.id %}" method="post">
+                                            {% csrf_token %}
+                                            <button type="submit" class="btn btn-default btn-grey">{% trans "Confirmar" %}</button>
+                                        </form>
                                     {% endif %}
                                     {% if meeting.state == 'reserved' %}
                                         {% if user == meeting.mentor or user == meeting.protege %}
