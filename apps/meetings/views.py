@@ -14,7 +14,6 @@ class MeetingDetailView(LoginRequiredMixin, DetailView):
     model = Meeting
 
     def get_object(self, *args, **kwargs):
-        print ('--->get_object')
         return get_object_or_404(
             Meeting.objects.select_related('mentor', 'protege'),
             Q(mentor=self.request.user) | Q(protege=self.request.user),
