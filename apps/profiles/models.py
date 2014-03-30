@@ -137,10 +137,7 @@ class User(AbstractUser):
         return ', '.join(sorted(output))
 
     def create_meeting_slot(self):
-        print('create_meeting_slot', self.has_complete_profile(), self.is_active)
-        print('self', self, self.day_of_week, self.start_time, self.timezone)
         if self.has_complete_profile() and self.is_active:
-            print('has_complete_profile and self.is_active')
             Meeting = get_model('meetings', 'Meeting')
 
             user_tz = pytz.timezone(self.timezone)

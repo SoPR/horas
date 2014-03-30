@@ -29,7 +29,7 @@ class EnsureCompleteProfileMiddleware(object):
             skip_urls = [str(reverse_lazy('profile_update', args=[request.user.username]))]
             skip_urls.append('/admin')
 
-            if not request.user.has_complete_profile() and request.path in skip_urls:
+            if not request.user.has_complete_profile() and request.path not in skip_urls:
                 messages.info(request, _('Debes completar tu perfil para continuar'))
                 return HttpResponseRedirect(skip_urls[0])
 
