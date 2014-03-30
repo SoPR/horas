@@ -23,6 +23,8 @@ class Common(Configuration):
 
     SITE_ID = 1
 
+    DATE_FORMAT = 'D, F j, Y'
+
     # Application definition
     INSTALLED_APPS = (
         'django.contrib.admin',

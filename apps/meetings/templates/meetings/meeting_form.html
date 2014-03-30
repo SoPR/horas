@@ -19,7 +19,7 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <h4><a href="{% url 'profile_detail' user.username %}">{{ user.get_full_name }}</a> con <a href="{% url 'profile_detail' meeting.mentor.username %}">{{ meeting.mentor.get_full_name }}</a></h4>
-                                <h2>{{meeting.datetime|date:"DATE_FORMAT"}}<br>
+                                <h2>{{meeting.datetime|date}}<br>
                                 {{ meeting.get_time_range_string }}</h2><br>
                             </div>
                         </div>

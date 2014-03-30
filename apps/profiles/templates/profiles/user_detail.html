@@ -20,7 +20,7 @@
                                     <a href="{% url 'meeting_update' profile_user meeting.id %}" class="btn btn-lg btn-success">{% trans "Reservar" %}</a>
                                 </div>
                                 <div class="col-xs-5">
-                                    <strong>{{ meeting.datetime|date:"DATE_FORMAT" }}</strong><br>
+                                    <strong>{{ meeting.datetime|date }}</strong><br>
                                     {{ meeting.get_time_range_string }}
                                 </div>
                                 <div class="col-xs-3">
