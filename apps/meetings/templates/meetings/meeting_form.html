@@ -39,6 +39,10 @@
                         </div>
                         <div class="row meeting-form-wrapper">
                             <div class="col-sm-12">
+                                <strong>{% trans "Temas" %}</strong>
+                                {% for tag in meeting.mentor.tags.all %}
+                                    {{ tag }}
+                                {% endfor %}
                                 <form method="post">
                                     {% csrf_token %}<br>
                                     {% bootstrap_form form %}

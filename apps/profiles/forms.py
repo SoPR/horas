@@ -120,6 +120,7 @@ class ProfileUpdateForm(forms.ModelForm):
         self.fields['bio'].help_text = _('Maximo de 140 caracteres')
 
         self.fields['tags'].label = _('Lista de temas')
+        self.fields['tags'].required = True
         self.fields['tags'].widget = TagWidget(attrs={'rows': 3})
         self.fields['tags'].help_text = _('Separados por comas')
 
