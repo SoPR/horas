@@ -76,3 +76,29 @@ class MeetingConfirmView(LoginRequiredMixin, UpdateView):
     def get_success_url(self):
         return reverse_lazy('profile_detail',
                             args=[self.kwargs['username']])
+
+
+class MeetingCancelView(LoginRequiredMixin, UpdateView):
+    model = Meeting
+    http_method_names = ['post']
+
+    def post(self, *args, **kwargs):
+        self.object = self.get_object()
+
+        if self.request.user == self.object.mentor or \
+            self.request.user == self.object.protege:
+
+            trans_name = 'cancel_{}'.format(self.object.state)
+            self.object.get_state_info().make_transition(trans_name, self.request.user)
+
+        return HttpResponseRedirect(self.get_success_url())
+
+    def get_object(self, *args, **kwargs):
+        return get_object_or_404(
+            Meeting.objects.select_related('mentor', 'protege'),
+            Q(mentor=self.request.user) | Q(protege=self.request.user),
+            Q(state='reserved') | Q(state='confirmed'), pk=self.kwargs.get('pk'))
+
+    def get_success_url(self):
+        return reverse_lazy('profile_detail',
+                            args=[self.kwargs['username']])

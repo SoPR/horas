@@ -42,7 +42,7 @@
                                 <div class="col-sm-3 pull-right">
                                     {% if meeting.state == 'reserved' or meeting.state == 'confirmed' %}
                                         {% if user == meeting.mentor or user == meeting.protege %}
-                                            <form action="" method="post" class="form-inline">
+                                            <form action="{% url 'meeting_cancel' meeting.mentor.username meeting.id %}" method="post" class="form-inline">
                                                 {% csrf_token %}
                                                 <button type="submit" class="btn btn-default btn-grey btn-sm">{% trans "Cancelar" %}</button>
                                             </form>
@@ -67,15 +67,6 @@
                             <div class="row profile-meeting-row">
                                 {% include "profiles/meeting_row_gravatars.html" %}
                                 {% include "profiles/meeting_row_info.html" %}
-                                <div class="col-sm-3">
-                                    {% if meeting.state == 'cancelled' %}
-                                        <span class="glyphicon glyphicon-remove-circle icon-cancelled"></span> {% trans "Cancelada por" %} {{ meeting.cancelled_by.get_tiny_name }}
-                                    {% elif meeting.state == 'didnt_happened' %}
-                                        <span class="glyphicon glyphicon-remove-circle icon-cancelled"></span> {% trans "No fue celebrada" %}
-                                    {% elif meeting.state == 'completed' %}
-                                        <span class="glyphicon glyphicon-ok-circle icon-success"></span> {% trans "Celebrada" %}
-                                    {% endif %}
-                                </div>
                             </div> <!-- /.row profile-meeting-row -->
                         {% endfor %}
                     </section> <!-- /.row profile-content-section -->
