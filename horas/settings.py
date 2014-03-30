@@ -67,7 +67,8 @@ class Common(Configuration):
         'django.contrib.auth.middleware.AuthenticationMiddleware',
         'django.contrib.messages.middleware.MessageMiddleware',
         'django.middleware.clickjacking.XFrameOptionsMiddleware',
-        'apps.core.middleware.TimezoneMiddleware'
+        'apps.core.middleware.TimezoneMiddleware',
+        'apps.core.middleware.EnsureCompleteProfileMiddleware',
     )
 
     TEMPLATE_CONTEXT_PROCESSORS = (

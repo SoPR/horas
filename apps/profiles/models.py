@@ -73,6 +73,13 @@ class User(AbstractUser):
     def get_tiny_name(self):
         return '{0}. {1}'.format(self.first_name[0], self.last_name)
 
+    def has_complete_profile(self):
+        dates = all([self.day_of_week, self.start_time, self.timezone])
+        contact = any([self.phone, self.skype,
+                      self.google, self.jitsi, self.address])
+
+        return all([dates, contact])
+
     def get_location(self):
         if self.city and self.state:
             return '{0}, {1}'.format(self.city, self.state)
