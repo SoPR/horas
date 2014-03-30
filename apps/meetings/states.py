@@ -64,6 +64,9 @@ class MeetingStateMachine(StateMachine):
     class cancelled(StateDefinition):
         description = _('Cancelled')
 
+        def handler(self, instance):
+            instance.mentor.create_meeting_slot()
+
     class waiting_reply(StateDefinition):
         description = _('Waiting for reply')
 

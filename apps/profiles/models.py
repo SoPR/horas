@@ -10,6 +10,7 @@ from django.utils.timezone import now, get_default_timezone, make_aware
 from django.core.urlresolvers import reverse_lazy
 from django.utils.translation import ugettext_lazy as _
 from django.db.models.signals import post_save
+from django.db.models import Q
 
 from django.conf import settings
 
@@ -76,7 +77,7 @@ class User(AbstractUser):
         return '{0}. {1}'.format(self.first_name[0], self.last_name)
 
     def has_complete_profile(self):
-        dates = all([self.day_of_week, self.start_time, self.timezone])
+        dates = all([str(self.day_of_week), self.start_time, self.timezone])
         contact = any([self.phone, self.skype,
                       self.google, self.jitsi, self.address])
 
@@ -136,7 +137,10 @@ class User(AbstractUser):
         return ', '.join(sorted(output))
 
     def create_meeting_slot(self):
-        if self.is_active and self.timezone and self.day_of_week and self.start_time:
+        print('create_meeting_slot', self.has_complete_profile(), self.is_active)
+        print('self', self, self.day_of_week, self.start_time, self.timezone)
+        if self.has_complete_profile() and self.is_active:
+            print('has_complete_profile and self.is_active')
             Meeting = get_model('meetings', 'Meeting')
 
             user_tz = pytz.timezone(self.timezone)
@@ -145,7 +149,15 @@ class User(AbstractUser):
                 datetime.combine(date, self.start_time), user_tz)
 
             next_slot = next_slot_local.astimezone(get_default_timezone())
-            meeting_slot, created = Meeting.objects.get_or_create(mentor=self, datetime=next_slot)
+
+            try:
+                meeting_slot = Meeting.objects.get(state='available', mentor=self)
+                created = False
+            except Meeting.DoesNotExist:
+                meeting_slot = Meeting.objects.create(mentor=self, datetime=next_slot)
+                created = True
+
+            print('meeting_slot', meeting_slot, 'created', created)
 
             # Notify user
             if created:
@@ -166,6 +178,7 @@ def meeting_post_save(sender, instance, **kwargs):
     available_meetings = Meeting.objects.filter(state='available')
     for meeting in available_meetings:
         meeting.get_state_info().make_transition('delete')
+
     instance.create_meeting_slot()
 
 post_save.connect(meeting_post_save, sender=User)
