@@ -36,8 +36,8 @@ class MeetingUpdateView(LoginRequiredMixin, UpdateView):
     def get_object(self, *args, **kwargs):
         return get_object_or_404(
             Meeting.objects.select_related('mentor', 'protege'),
-            ~Q(mentor=self.request.user), pk=self.kwargs.get('pk'),
-            state='available', protege=None, mentor__username=self.kwargs['username'])
+            pk=self.kwargs.get('pk'), state='available',
+            protege=None, mentor__username=self.kwargs['username'])
 
     def get_form_kwargs(self, *args, **kwargs):
         kwargs = super(MeetingUpdateView, self).get_form_kwargs(*args, **kwargs)

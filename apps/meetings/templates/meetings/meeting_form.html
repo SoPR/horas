@@ -14,36 +14,46 @@
             <div class="col-sm-9">
                 <section class="meeting-form-section">
                     <h3 class="text-section-header">{% trans "Reservar reunión" %}</h3>
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <h4>Con: {{ meeting.mentor.get_full_name }}</h4>
-                            <h2>{{meeting.datetime|date:"DATE_FORMAT"}}<br>
-                            {{ meeting.get_time_range_string }}</h2><br>
+
+                    {% if user != meeting.mentor %}
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <h4><a href="{% url 'profile_detail' user.username %}">{{ user.get_full_name }}</a> con <a href="{% url 'profile_detail' meeting.mentor.username %}">{{ meeting.mentor.get_full_name }}</a></h4>
+                                <h2>{{meeting.datetime|date:"DATE_FORMAT"}}<br>
+                                {{ meeting.get_time_range_string }}</h2><br>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <p>
-                                {% blocktrans %}
-                                    Una vez reservada la reunión el mentor que confirmarla. Cuando el mentor confirme la reunión ten enviaremos un correo electrónico con más detalles sobre la reunión.
-                                {% endblocktrans %}
-                            </p>
-                            <p>
-                                {% blocktrans %}
-                                    Selecciona el formato que prefieres para reunión y entra un mensaje para el mentor.
-                                {% endblocktrans %}
-                            </p>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <p>
+                                    {% blocktrans %}
+                                        Una vez reservada la reunión el mentor que confirmarla. Cuando el mentor confirme la reunión ten enviaremos un correo electrónico con más detalles sobre la reunión.
+                                    {% endblocktrans %}
+                                </p>
+                                <p>
+                                    {% blocktrans %}
+                                        Selecciona el formato que prefieres para reunión y entra un mensaje para el mentor.
+                                    {% endblocktrans %}
+                                </p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row meeting-form-wrapper">
-                        <div class="col-sm-12">
-                            <form method="post">
-                                {% csrf_token %}<br>
-                                {% bootstrap_form form %}
-                                <button type="submit" class="btn btn-success">{% trans "Reservar" %}</button> <a href="{% url 'profile_detail' profile_user.username %}" class="btn btn-link">{% trans "Cancelar" %}</a>
-                            </form>
+                        <div class="row meeting-form-wrapper">
+                            <div class="col-sm-12">
+                                <form method="post">
+                                    {% csrf_token %}<br>
+                                    {% bootstrap_form form %}
+                                    <button type="submit" class="btn btn-success">{% trans "Reservar" %}</button> <a href="{% url 'profile_detail' profile_user.username %}" class="btn btn-link">{% trans "Volver al perfil de" %} {{ profile_user.get_full_name }}</a>
+                                </form>
+                            </div>
                         </div>
-                    </div>
+                    {% else %}
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <h4>{% trans "No puedes reservar una reunión contigo mismo." %}</h4>
+                                <a href="{% url 'profile_detail' profile_user.username %}">{% trans "Volver a tu perfil" %}</a>
+                            </div>
+                        </div>
+                    {% endif %}
                 </section>
             </div>
         </div>
