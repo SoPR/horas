@@ -61,7 +61,7 @@ class ProfileUpdateView(LoginRequiredMixin, UpdateView):
         return queryset.filter(pk=self.request.user.pk)
 
     def get_success_url(self):
-        return reverse_lazy('profile_update', args=[self.object.username])
+        return reverse_lazy('profile_detail', args=[self.object.username])
 
     def form_valid(self, *args, **kwargs):
         messages.success(self.request, _('Perfil guardado con exito'))

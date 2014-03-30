@@ -9,6 +9,7 @@ from django.db.models.loading import get_model
 from django.utils.timezone import now, get_default_timezone, make_aware
 from django.core.urlresolvers import reverse_lazy
 from django.utils.translation import ugettext_lazy as _
+from django.db.models.signals import post_save
 
 from django.conf import settings
 
@@ -17,6 +18,7 @@ from taggit.managers import TaggableManager
 
 from .utils import get_gravatar_url, next_weekday
 from .fields import DaysOfWeekField
+from apps.meetings.models import Meeting
 
 
 class User(AbstractUser):
@@ -154,3 +156,16 @@ class User(AbstractUser):
             return meeting_slot, created
 
         return None, False
+
+
+def meeting_post_save(sender, instance, **kwargs):
+    '''
+    Delete (state) available meetings
+    then create a new meeting
+    '''
+    available_meetings = Meeting.objects.filter(state='available')
+    for meeting in available_meetings:
+        meeting.get_state_info().make_transition('delete')
+    instance.create_meeting_slot()
+
+post_save.connect(meeting_post_save, sender=User)
