@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load bootstrap3 %}
+
+{% block title %}
+    {% trans "Horas - Todos ayudando a todos" %}
+{% endblock title %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            {% include "profiles/profile_sidebar.html" %}
+
+            <div class="col-sm-9">
+                <section class="meeting-form-section">
+                    <h3 class="text-section-header">{% trans "Reunión" %}</h3>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h4>{% trans "Con" %}: {{ meeting.protege.get_full_name }}</h4>
+                            <h2>{{meeting.datetime|date:"DATE_FORMAT"}}<br>
+                            {{ meeting.get_time_range_string }}</h2><br>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <p>
+                                <strong>{% trans "Formato" %}:</strong><br>
+                                {{ meeting_format_name }} {% if meeting.state == 'confirmed' %}- {{ meeting_format_information }}{% endif %}
+                            </p>
+                            <p>
+                                <strong>{% trans "Mensaje" %}:</strong><br>
+                                {{ meeting.message }}
+                            </p>
+                        </div>
+                    </div>
+
+                    <hr> <!-- hr -->
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <form action="" method="post" class="form-inline">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-default btn-grey">{% trans "Cancelar reunión" %}</button>
+                            </form>
+                            {% if meeting.state == 'reserved' and meeting.mentor == user %}
+                                <form action="{% url 'meeting_confirm' meeting.mentor.username meeting.id %}" method="post" class="form-inline">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-default btn-success">{% trans "Confirmar" %}</button>
+                                </form>
+                            {% endif %}
+                            <a href="{% url 'profile_detail' meeting.mentor.username %}" class="btn btn-link">{% trans "Volver al perfil de " %} {{ meeting.mentor.get_full_name }}</a>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

@@ -81,7 +81,7 @@ class User(AbstractUser):
         elif self.state:
             return self.state
 
-    def get_meeting_formats(self):
+    def get_all_meeting_fromats(self):
         available_formats = (
             (self.phone, 'phone', _(u'Teléfono')),
             (self.skype, 'skype', _('Skype')),
@@ -89,9 +89,27 @@ class User(AbstractUser):
             (self.jitsi, 'jitsi', _('Jitsi')),
             (self.address, 'inperson', _('En persona')),
         )
+        return available_formats
+
+    def get_meeting_format_information(self, key):
+        all_formats = self.get_all_meeting_fromats()
+        for format in all_formats:
+            if key == format[1]:
+                return format[0]
+        return False
+
+    def get_meeting_format_name(self, key):
+        all_formats = self.get_all_meeting_fromats()
+        for format in all_formats:
+            if key == format[1]:
+                return format[2]
+        return False
+
+    def get_meeting_formats(self):
+        all_formats = self.get_all_meeting_fromats()
 
         output = []
-        for format in available_formats:
+        for format in all_formats:
             if format[0]:
                 output.append(
                     (format[1], format[2].encode('utf-8'))

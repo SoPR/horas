@@ -1,0 +1,12 @@
+{% load i18n %}
+
+<div class="col-xs-offset-1 col-sm-offset-0 col-xs-5">
+    <strong><a href="{% url 'meeting_detail' meeting.mentor.username meeting.id %}">{{ meeting.datetime|date:"DATE_FORMAT" }} - {{ meeting.get_time_range_string }}</a></strong><br>
+    <a href="{% url 'profile_detail' meeting.protege.username %}">{{ meeting.protege.get_full_name }}</a> con <a href="{% url 'profile_detail' meeting.mentor.username %}">{{ meeting.mentor.get_full_name }}</a>
+    {% if meeting.state == 'reserved' %}
+        <br><span class="glyphicon glyphicon-ok-circle icon-warning"></span> <small>{% trans "Reunón reservada" %}</small>
+    {% endif %}
+    {% if meeting.state == 'confirmed' %}
+        <br><span class="glyphicon glyphicon-ok-circle icon-success"></span> <small>{% trans "Reunón confirmada" %}</small>
+    {% endif %}
+</div>

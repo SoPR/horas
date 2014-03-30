@@ -16,7 +16,7 @@
                     <h3 class="text-section-header">{% trans "Reservar reunión" %}</h3>
                     <div class="row">
                         <div class="col-sm-12">
-                            <h3>Con: {{ meeting.mentor.get_full_name }}</h3>
+                            <h4>Con: {{ meeting.mentor.get_full_name }}</h4>
                             <h2>{{meeting.datetime|date:"DATE_FORMAT"}}<br>
                             {{ meeting.get_time_range_string }}</h2><br>
                         </div>
