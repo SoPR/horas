@@ -85,7 +85,7 @@ class User(AbstractUser):
 
     def get_location(self):
         if self.city and self.state:
-            return '{0}, {1}'.format(self.city, self.state)
+            return u'{0}, {1}'.format(self.city, self.state)
         elif self.city:
             return self.city
         elif self.state:
