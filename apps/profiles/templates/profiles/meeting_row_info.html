@@ -16,7 +16,7 @@
     {% elif meeting.state == 'cancelled' %}
         <span class="glyphicon glyphicon-remove-circle icon-cancelled"></span> <small>{% trans "Cancelada por" %} <a href="{% url 'profile_detail' meeting.cancelled_by %}">{{ meeting.cancelled_by.get_full_name }}</a></small>
     {% elif meeting.state == 'unused' %}
-        <span class="glyphicon glyphicon-remove-circle icon-cancelled"></span> <small>{% trans "No fue celebrada" %}</small>
+        <span class="glyphicon glyphicon-remove-circle icon-cancelled"></span> <small>{% trans "No fue reservada" %}</small>
     {% elif meeting.state == 'completed' %}
         <span class="glyphicon glyphicon-ok-circle icon-success"></span> <small>{% trans "Celebrada" %}</small>
     {% endif %}
