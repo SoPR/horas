@@ -6,7 +6,9 @@
     {% else %}
         <strong>{{ meeting.datetime|date }} - {{ meeting.get_time_range_string }}</strong><br>
     {% endif %}
-    <a href="{% url 'profile_detail' meeting.protege.username %}">{{ meeting.protege.get_full_name }}</a> con <a href="{% url 'profile_detail' meeting.mentor.username %}">{{ meeting.mentor.get_full_name }}</a><br>
+    {% if meeting.protege and meeting.mentor %}
+        <a href="{% url 'profile_detail' meeting.protege.username %}">{{ meeting.protege.get_full_name }}</a> con <a href="{% url 'profile_detail' meeting.mentor.username %}">{{ meeting.mentor.get_full_name }}</a><br>
+    {% endif %}
     {% if meeting.state == 'reserved' %}
         <span class="glyphicon glyphicon-ok-circle icon-warning"></span> <small>{% trans "Reunón reservada" %}</small>
     {% elif meeting.state == 'confirmed' %}
