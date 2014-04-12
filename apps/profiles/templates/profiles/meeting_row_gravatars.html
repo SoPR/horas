@@ -6,5 +6,7 @@
 <div class="col-xs-1">
     {% if meeting.protege %}
         <img src="{{ meeting.protege.gravatar_url }}?s=45&d=identicon" alt="" class="img-rounded {% if meeting.cancelled_by == meeting.protege %}did-cancel-meeting{% endif %}" title="{% trans "Aprendiz:" %} {{ meeting.protege.get_full_name }} - {{ meeting.protege }}">
+    {% else %}
+        <div class="img-rounded gravatar-placeholder-grey"></div>
     {% endif %}
 </div>

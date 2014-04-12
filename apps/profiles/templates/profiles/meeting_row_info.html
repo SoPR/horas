@@ -9,15 +9,5 @@
     {% if meeting.protege and meeting.mentor %}
         <a href="{% url 'profile_detail' meeting.protege.username %}">{{ meeting.protege.get_full_name }}</a> con <a href="{% url 'profile_detail' meeting.mentor.username %}">{{ meeting.mentor.get_full_name }}</a><br>
     {% endif %}
-    {% if meeting.state == 'reserved' %}
-        <span class="glyphicon glyphicon-ok-circle icon-warning"></span> <small>{% trans "Reunón reservada" %}</small>
-    {% elif meeting.state == 'confirmed' %}
-        <span class="glyphicon glyphicon-ok-circle icon-success"></span> <small>{% trans "Reunón confirmada" %}</small>
-    {% elif meeting.state == 'cancelled' %}
-        <span class="glyphicon glyphicon-remove-circle icon-cancelled"></span> <small>{% trans "Cancelada por" %} <a href="{% url 'profile_detail' meeting.cancelled_by %}">{{ meeting.cancelled_by.get_full_name }}</a></small>
-    {% elif meeting.state == 'unused' %}
-        <span class="glyphicon glyphicon-remove-circle icon-cancelled"></span> <small>{% trans "No fue reservada" %}</small>
-    {% elif meeting.state == 'completed' %}
-        <span class="glyphicon glyphicon-ok-circle icon-success"></span> <small>{% trans "Celebrada" %}</small>
-    {% endif %}
+    {% include "profiles/meeting_row_state.html" %}
 </div>
