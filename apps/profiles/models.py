@@ -10,7 +10,6 @@ from django.utils.timezone import now, get_default_timezone, make_aware
 from django.core.urlresolvers import reverse_lazy
 from django.utils.translation import ugettext_lazy as _
 from django.db.models.signals import post_save
-from django.db.models import Q
 
 from django.conf import settings
 
@@ -19,7 +18,6 @@ from taggit.managers import TaggableManager
 
 from .utils import get_gravatar_url, next_weekday
 from .fields import DaysOfWeekField
-from apps.meetings.models import Meeting
 
 
 class User(AbstractUser):
@@ -67,6 +65,28 @@ class User(AbstractUser):
     def save(self, *args, **kwargs):
         if not self.gravatar_url:
             self.gravatar_url = get_gravatar_url(self.email)
+
+        # Check if meeting availability changed
+        if self.pk and self.day_of_week and self.start_time and self.timezone:
+            original = User.objects.get(pk=self.pk)
+
+            checks = [
+                original.day_of_week != self.day_of_week,
+                original.start_time != self.start_time,
+                original.timezone != self.timezone
+            ]
+
+            # if any field changed then we must
+            # delete meetings and create a new one
+            if any(checks):
+                print('---> meeting preferences changed')
+                Meeting = get_model('meetings', 'Meeting')
+                available_meetings = Meeting.objects.filter(state='available', mentor=self)
+
+                for meeting in available_meetings:
+                    meeting.get_state_info().make_transition('delete')
+
+                self.create_meeting_slot()
 
         super(User, self).save(*args, **kwargs)
 
@@ -147,6 +167,7 @@ class User(AbstractUser):
 
             next_slot = next_slot_local.astimezone(get_default_timezone())
 
+            # Getto get_or_create
             try:
                 meeting_slot = Meeting.objects.get(state='available', mentor=self)
                 created = False
@@ -154,10 +175,9 @@ class User(AbstractUser):
                 meeting_slot = Meeting.objects.create(mentor=self, datetime=next_slot)
                 created = True
 
-            print('meeting_slot', meeting_slot, 'created', created)
-
             # Notify user
             if created:
+                print('-> Created meeting_slot: {0}'.format(meeting_slot))
                 notification.send([self],
                                   'create_meeting_slot',
                                   {'meeting': meeting_slot})
@@ -165,17 +185,3 @@ class User(AbstractUser):
             return meeting_slot, created
 
         return None, False
-
-
-def meeting_post_save(sender, instance, **kwargs):
-    '''
-    Delete (state) available meetings
-    then create a new meeting
-    '''
-    available_meetings = Meeting.objects.filter(state='available')
-    for meeting in available_meetings:
-        meeting.get_state_info().make_transition('delete')
-
-    instance.create_meeting_slot()
-
-post_save.connect(meeting_post_save, sender=User)
