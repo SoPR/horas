@@ -65,10 +65,23 @@ class MeetingStateMachine(StateMachine):
         description = _('Cancelled')
 
         def handler(self, instance):
+            if instance.cancelled_by_mentor():
+                # TODO: Send message to protege
+                pass
+
+            if instance.cancelled_by_protege():
+                # TODO: Send message to mentor
+                pass
+
             instance.mentor.create_meeting_slot()
 
     class waiting_reply(StateDefinition):
         description = _('Waiting for reply')
+
+        def handler(self, instance):
+            # TODO: Send "how was the meeting email" to protege
+            # TODO: Send "remind the protege to respond email" to mentor
+            pass
 
     class didnt_happen(StateDefinition):
         description = _('Meeting didn\'t happen')
