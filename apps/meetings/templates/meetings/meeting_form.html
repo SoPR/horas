@@ -26,8 +26,8 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <p>
-                                    {% blocktrans %}
-                                        Una vez reservada la reunión el mentor que confirmarla. Cuando el mentor confirme la reunión ten enviaremos un correo electrónico con más detalles sobre la reunión.
+                                    {% blocktrans with meeting.mentor.first_name as mentor %}
+                                        Una vez reserves la reunión, {{ mentor }} tiene que confirmar su disponibilidad. Cuando {{ mentor }} confirme la reunión te enviaremos un correo electrónico con más detalles.
                                     {% endblocktrans %}
                                 </p>
                                 <p>
@@ -39,10 +39,12 @@
                         </div>
                         <div class="row meeting-form-wrapper">
                             <div class="col-sm-12">
-                                <strong>{% trans "Temas" %}</strong>
-                                {% for tag in meeting.mentor.tags.all %}
-                                    {{ tag }}
-                                {% endfor %}
+                                {% if meeting.mentor.tags.all %}
+                                    <strong>{% trans "Temas" %}</strong>
+                                    {% for tag in meeting.mentor.tags.all %}
+                                        {{ tag }}
+                                    {% endfor %}
+                                {% endif %}
                                 <form method="post">
                                     {% csrf_token %}<br>
                                     {% bootstrap_form form %}
