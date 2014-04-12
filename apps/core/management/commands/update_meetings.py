@@ -3,11 +3,8 @@ This command is responsible for updating the state of meetings
 based on the defined rules. This rules are partially documented
 on apps.meetings.states module.
 """
-from datetime import timedelta
-
 from django.core.management.base import BaseCommand
-from django.utils.timezone import now
-from django.db.models import Q, F
+from django.db.models import Q
 
 from apps.meetings.models import Meeting
 from apps.profiles.models import User
@@ -37,7 +34,7 @@ class Command(BaseCommand):
                 meeting.get_state_info().make_transition('flag_unused')
 
 
-        # 3. create meetings for all users
+        # 3. create all missing meetings
         users = User.objects.filter(is_active=True)
 
         for u in users:
