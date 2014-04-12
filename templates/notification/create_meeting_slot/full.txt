@@ -1,1 +1,9 @@
-Hello world {{ meeting }}
+{% load tz %}
+Hola {{ meeting.mentor.first_name }},
+
+Acabamos de crear un espacio de reunión para ti. Ahora cualquier persona registrada en 1hora.org puede reservar ese espacio. Cuando alguien reserver esa reunión tendrás oportunidad de confirmar.
+{% timezone meeting.mentor.timezone %}
+La reunión será el: {{ meeting.datetime|date }} @ {{ meeting.get_time_range_string }}.
+{% endtimezone %}
+
+- 1hora.org

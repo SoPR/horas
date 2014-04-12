@@ -1,1 +1,11 @@
-Hello world {{ meeting }}
+{% load tz %}
+
+Hola {{ meeting.mentor.first_name }},
+
+<p>Acabamos de crear un espacio de reunión para ti. Ahora cualquier persona registrada en 1hora.org puede reservar ese espacio. Cuando alguien reserver esa reunión tendrás oportunidad de confirmar.</p>
+
+{% timezone meeting.mentor.timezone %}
+    <p>La reunión será el: {{ meeting.datetime|date }} @ {{ meeting.get_time_range_string }}.</p>
+{% endtimezone %}
+
+<p>- <a href="https://1hora.org">1hora.org</a></p>

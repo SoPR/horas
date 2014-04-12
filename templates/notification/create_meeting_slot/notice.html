@@ -1,1 +1,3 @@
-Hello world {{ meeting }}
+{% load tz %}{%timezone meeting.mentor.timezone %}
+Se ha creado un espacio de reunión para el {{ meeting.datetime|date }} @ {{ meeting.get_time_range_string }}.
+{% endtimezone %}
