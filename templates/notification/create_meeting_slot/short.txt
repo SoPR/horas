@@ -1,1 +1,1 @@
-Espacio de reunón creado.
+{% load i18n %}{% blocktrans %}Espacio de reunión creado.{% endblocktrans %}

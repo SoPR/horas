@@ -1,3 +1,1 @@
-{% load tz %}{%timezone meeting.mentor.timezone %}
-Se ha creado un espacio de reunión para el {{ meeting.datetime|date }} @ {{ meeting.get_time_range_string }}.
-{% endtimezone %}
+{% load tz %}{%timezone meeting.mentor.timezone %}{% blocktrans with the_date=meeting.datetime|date the_time=meeting.get_time_range_string %}Se ha creado un espacio de reunión para el {{ the_date }} @ {{ the_time }}.{% endblocktrans %}{% endtimezone %}

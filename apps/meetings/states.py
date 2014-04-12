@@ -66,12 +66,18 @@ class MeetingStateMachine(StateMachine):
 
         def handler(self, instance):
             if instance.cancelled_by_mentor():
-                # TODO: Send message to protege
-                pass
+                # Send message to protege
+                notification.send(
+                    [instance.protege],
+                    'cancelled_by_mentor',
+                    {'meeting': instance})
 
             if instance.cancelled_by_protege():
-                # TODO: Send message to mentor
-                pass
+                # Send message to mentor
+                notification.send(
+                    [instance.mentor],
+                    'cancelled_by_protege',
+                    {'meeting': instance})
 
             instance.mentor.create_meeting_slot()
 

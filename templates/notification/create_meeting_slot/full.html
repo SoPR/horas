@@ -1,11 +1,14 @@
 {% load tz %}
-
-Hola {{ meeting.mentor.first_name }},
-
-<p>Acabamos de crear un espacio de reunión para ti. Ahora cualquier persona registrada en 1hora.org puede reservar ese espacio. Cuando alguien reserver esa reunión tendrás oportunidad de confirmar.</p>
+{% load i18n %}
 
 {% timezone meeting.mentor.timezone %}
-    <p>La reunión será el: {{ meeting.datetime|date }} @ {{ meeting.get_time_range_string }}.</p>
-{% endtimezone %}
+    {% blocktrans with the_date=meeting.datetime|date  the_time=meeting.get_time_range_string mentor_name=meeting.mentor.first_name %}
+        Hola {{ mentor_name }},
 
-<p>- <a href="https://1hora.org">1hora.org</a></p>
+        <p>Acabamos de crear un espacio de reunión para ti. Ahora cualquier persona registrada en 1hora.org puede reservar ese espacio. Cuando alguien reserve ese espacio tendrás oportunidad de confirmar si estas disponible.</p>
+
+        <p>La reunión será el: {{ the_date }} @ {{ the_time }}.</p>
+
+        <p>- <a href="https://1hora.org">1hora.org</a></p>
+    {% endblocktrans %}
+{% endtimezone %}
