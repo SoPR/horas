@@ -1,0 +1,14 @@
+{% load tz %}
+{% load i18n %}
+
+{% timezone meeting.mentor.timezone %}
+    {% blocktrans with mentor_name=meeting.mentor.first_name protege_name=meeting.protege.get_full_name the_date=meeting.datetime|date the_time=meeting.get_time_range_string meeting_url=meeting.get_url_with_domain %}
+        Hola {{ mentor_name }},
+
+        {{ protege_name }} acaba de reservar la reunión pautada para el {{ the_date }} @ {{ the_time }}.
+
+        Ahora tú tienes que confirmar o cancelar la reunión visitando: {{ meeting_url }}.
+
+        - 1hora.org
+    {% endblocktrans %}
+{% endtimezone %}

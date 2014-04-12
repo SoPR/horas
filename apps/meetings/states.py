@@ -58,6 +58,12 @@ class MeetingStateMachine(StateMachine):
     class reserved(StateDefinition):
         description = _('Reserved')
 
+        def handler(self, instance):
+            notification.send(
+                [instance.mentor],
+                'reserved_meeting_slot',
+                {'meeting': instance})
+
     class confirmed(StateDefinition):
         description = _('Confirmed')
 
@@ -111,11 +117,6 @@ class MeetingStateMachine(StateMachine):
         def handler(transition, instance, user):
             instance.protege = user
             instance.save()
-
-            notification.send(
-                [instance.mentor],
-                'reserved_meeting_slot',
-                {'meeting': instance})
 
         def has_permission(transition, instance, user):
             return instance.mentor != user

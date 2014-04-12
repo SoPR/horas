@@ -4,6 +4,9 @@ from datetime import timedelta
 from django.db import models
 from django.utils.timezone import get_current_timezone, now
 from django.utils.formats import date_format
+from django.core.urlresolvers import reverse_lazy
+from django.contrib.sites.models import Site
+from django.conf import settings
 
 from django_states.fields import StateField
 
@@ -31,6 +34,13 @@ class Meeting(BaseModel):
 
     def __str__(self):
         return '[{}] {} - {}'.format(self.pk, self.mentor, self.datetime)
+
+    def get_absolute_url(self):
+        return reverse_lazy('meeting_detail', args=[self.mentor.username, self.pk])
+
+    def get_url_with_domain(self):
+        domain = Site.objects.get_current().domain
+        return '{0}://{1}{2}'.format(settings.PROTOCOL, domain, self.get_absolute_url())
 
     def cancelled_by_mentor(self):
         if self.state == 'cancelled' and self.cancelled_by:

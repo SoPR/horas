@@ -9,7 +9,6 @@ from django.db.models.loading import get_model
 from django.utils.timezone import now, get_default_timezone, make_aware
 from django.core.urlresolvers import reverse_lazy
 from django.utils.translation import ugettext_lazy as _
-from django.db.models.signals import post_save
 
 from django.conf import settings
 
