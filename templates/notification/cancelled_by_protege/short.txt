@@ -1,1 +1,1 @@
-{% load i18n %}{% blocktrans with protege_name=meeting.protege.get_full_name %}Reunión cancelada por {{ protege_name }}.{% endblocktrans %}
+{% load i18n %}{% blocktrans %}Reunión cancelada.{% endblocktrans %}
