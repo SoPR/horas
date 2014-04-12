@@ -97,7 +97,7 @@ class User(AbstractUser):
             (self.skype, 'skype', _('Skype')),
             (self.google, 'google', _('Google')),
             (self.jitsi, 'jitsi', _('Jitsi')),
-            (self.address, 'inperson', _('En persona')),
+            (self.address, 'inperson', _('En persona') + ' ({0}, {1})'.format(self.city, self.state)),
         )
         return available_formats
 
