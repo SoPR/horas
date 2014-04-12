@@ -4,7 +4,6 @@ from datetime import timedelta
 from django.db import models
 from django.utils.timezone import get_current_timezone, now
 from django.utils.formats import date_format
-from django.utils.translation import ugettext_lazy as _
 
 from django_states.fields import StateField
 
@@ -31,7 +30,19 @@ class Meeting(BaseModel):
         ordering = ('-datetime',)
 
     def __str__(self):
-        return '{} - {}'.format(self.mentor, self.datetime)
+        return '[{}] {} - {}'.format(self.pk, self.mentor, self.datetime)
+
+    def cancelled_by_mentor(self):
+        if self.state == 'cancelled' and self.cancelled_by:
+            if self.cancelled_by == self.mentor:
+                return True
+        return False
+
+    def cancelled_by_protege(self):
+        if self.state == 'cancelled' and self.cancelled_by:
+            if self.cancelled_by == self.protege:
+                return True
+        return False
 
     def is_in_past(self):
         # I actually like this method name
