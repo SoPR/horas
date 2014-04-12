@@ -76,3 +76,5 @@ Sorry for the spanglish. If you want to contribute just pick a task and update i
 - :white_check_mark: - Setup and deploy [comunidad.1hora.org](https://comunidad.1hora.org) using [Discourse](http://www.discourse.org/). The idea is to have a place where people can share conversations around what happens on 1hora.org. Somewhere to go and talk about their 1hora.org experiences.
 
 - **[not started]** - Move forms to use [django-crispy-forms](http://django-crispy-forms.readthedocs.org/en/latest/). Remove django-bootstrap3.
+
+- **[not started]** - Get ready for translations. Translate all copy on repo to english, create Spanish language file.
