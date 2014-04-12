@@ -23,7 +23,8 @@ class ProfileDetailView(DetailView):
     def get_object(self, *args, **kwargs):
         profile_user = super(ProfileDetailView, self).get_object(*args, **kwargs)
         meetings = Meeting.objects.select_related(
-            'mentor', 'protege', 'cancelled_by').filter(Q(mentor=profile_user) | Q(protege=profile_user))
+            'mentor', 'protege', 'cancelled_by').filter(
+            Q(mentor=profile_user) | Q(protege=profile_user)).exclude(state='deleted')
 
         meetings_available = meetings.filter(state='available', datetime__gt=now())
 
