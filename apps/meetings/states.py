@@ -67,6 +67,12 @@ class MeetingStateMachine(StateMachine):
     class confirmed(StateDefinition):
         description = _('Confirmed')
 
+        def handler(self, instance):
+            notification.send(
+                [instance.protege],
+                'confirmed_meeting',
+                {'meeting': instance})
+
     class cancelled(StateDefinition):
         description = _('Cancelled')
 

@@ -1,0 +1,17 @@
+{% load tz %}
+{% load i18n %}
+
+{% timezone meeting.mentor.timezone %}
+    {% blocktrans with mentor_name=meeting.mentor.get_full_name protege_name=meeting.protege.first_name the_date=meeting.datetime|date the_time=meeting.get_time_range_string meeting_url=meeting.get_url_with_domain message=meeting.message %}
+        Hola {{ protege_name }},
+
+        {{ mentor_name }} acaba de confirmar la reunión pautada para el {{ the_date }} @ {{ the_time }}.
+
+        Para ver la información de contacto del mentor ve a la página de la reunión.
+        {{ meeting_url }}
+
+        Recuerda dedicar un poco de tiempo antes de la reunión para pensar de que van a hablar. Un buen punto de partida puede ser prepara una lista de 5 preguntas importantes que quieres que el mentor te ayude a contestar. El tiempo de todos es muy preciado y para que este proyecto funcione la mayoría debemos ser respetuosos del tiempo de los demás.
+
+        - 1hora.org
+    {% endblocktrans %}
+{% endtimezone %}
