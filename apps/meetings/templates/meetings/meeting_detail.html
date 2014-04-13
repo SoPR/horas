@@ -29,7 +29,7 @@
                             {% if meeting.format %}
                                 <p>
                                     <strong>{% trans "Formato" %}:</strong><br>
-                                    {{ meeting_format_name }} {% if meeting.state == 'confirmed' %}- {{ meeting_format_information }}{% endif %}
+                                    {{ meeting_format_name }} {% if meeting.state == 'confirmed' %}- <strong>{{ meeting_format_information }}</strong>{% endif %}
                                 </p>
                             {% endif %}
                             {% if meeting.message %}
