@@ -121,16 +121,15 @@ class ProfileUpdateForm(forms.ModelForm):
 
         self.fields['tags'].label = _('Lista de temas')
         self.fields['tags'].required = True
-        self.fields['tags'].widget = TagWidget(attrs={'rows': 3})
         self.fields['tags'].help_text = _('Separados por comas')
+        self.fields['tags'].widget = TagWidget(attrs={
+            'rows': 3,
+            'placeholder': _(u'Ejemplo: diseño, programación, arte, ' +
+                             u'música, educación, activismo, politica')
+        })
 
         self.fields['city'].label = _('Ciudad')
-        self.fields['city'].widget = forms.TextInput(
-            attrs={'placeholder': _('San Juan')})
-
         self.fields['state'].label = _('Estado')
-        self.fields['state'].widget = forms.TextInput(
-            attrs={'placeholder': _('Puerto Rico')})
 
         self.fields['skype'].widget = forms.TextInput(
             attrs={'placeholder': _('username')})
@@ -151,8 +150,8 @@ class ProfileUpdateForm(forms.ModelForm):
         self.fields['address'].widget = forms.Textarea(
             attrs={
                 'rows': 3,
-                'placeholder': _(u'Panadería Kasalta 1966 Calle McLeary, ' +
-                                 'San Juan, PR - http://maps.google.com/123')
+                'placeholder': _(u'Entra una dirección física ' +
+                                 '- http://maps.google.com/123')
                 })
 
         self.fields['day_of_week'].widget = forms.RadioSelect(
@@ -163,3 +162,7 @@ class ProfileUpdateForm(forms.ModelForm):
 
         self.fields['timezone'].label = _(u'Zona horaria')
         self.fields['timezone'].widget = forms.Select(choices=TIMEZONE_CHOICES)
+
+    def clean_tags(self, *args, **kwargs):
+        tags = self.cleaned_data['tags']
+        return [t.lower() for t in tags]
