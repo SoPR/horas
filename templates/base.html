@@ -1,4 +1,5 @@
 {% load staticfiles %}
+{% load cache_buster %}
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -13,7 +14,7 @@
 
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
         <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-        <link rel="stylesheet" href="{% static 'stylesheets/app.css' %}">
+        <link rel="stylesheet" href="{% static 'stylesheets/app.css' %}?{% cache_buster %}">
         {% block extra_head %}{% endblock %}
     </head>
     <body>
@@ -35,7 +36,7 @@
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-    <script src="{% static 'javascripts/app.js' %}"></script>
+    <script src="{% static 'javascripts/app.js' %}?{% cache_buster %}"></script>
     <script>require('initialize');</script>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->

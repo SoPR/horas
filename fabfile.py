@@ -33,7 +33,7 @@ def collectstatic():
     build()
     local('./manage.py collectstatic --noinput')
     if env.env != 'development':
-        commit_id = local('git rev-parse HEAD', capture=True)[:7]
+        commit_id = local('git rev-parse HEAD', capture=True)
         _config_set(key='HEAD_COMMIT_ID', value=commit_id)
 
 
