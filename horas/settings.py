@@ -196,7 +196,7 @@ class Production(Common):
     )
 
     STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-    STATIC_URL = 'https://org-1hora-static.s3.amazonaws.com/'
+    STATIC_URL = 'https://d2kmfhumajdz54.cloudfront.net/'
 
     MANDRILL_API_KEY = values.Value(environ_prefix=None)
     DEFAULT_FROM_EMAIL = values.Value(environ_prefix=None)
