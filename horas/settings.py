@@ -140,9 +140,6 @@ class Common(Configuration):
 
     DEFAULT_FILE_STORAGE = 'storages.backends.s3.S3Storage'
 
-    # un-comment line to collectstatic to S3
-    # STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-
     AWS_PRELOAD_METADATA = True
     AWS_ACCESS_KEY_ID = values.Value(environ_prefix=None)
     AWS_SECRET_ACCESS_KEY = values.Value(environ_prefix=None)
