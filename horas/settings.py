@@ -144,7 +144,6 @@ class Common(Configuration):
     AWS_ACCESS_KEY_ID = values.Value(environ_prefix=None)
     AWS_SECRET_ACCESS_KEY = values.Value(environ_prefix=None)
     AWS_STORAGE_BUCKET_NAME = values.Value(environ_prefix=None)
-    AWS_QUERYSTRING_AUTH = False
 
     STATIC_URL = '/static/dist/'
 
