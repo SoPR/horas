@@ -1,7 +1,6 @@
 import os
 
 from configurations import Configuration, values
-from boto.s3.connection import OrdinaryCallingFormat
 
 
 class Common(Configuration):
@@ -145,7 +144,6 @@ class Common(Configuration):
     AWS_ACCESS_KEY_ID = values.Value(environ_prefix=None)
     AWS_SECRET_ACCESS_KEY = values.Value(environ_prefix=None)
     AWS_STORAGE_BUCKET_NAME = values.Value(environ_prefix=None)
-    AWS_S3_CALLING_FORMAT = OrdinaryCallingFormat()
     AWS_QUERYSTRING_AUTH = False
 
     STATIC_URL = '/static/dist/'
