@@ -146,6 +146,9 @@ class MeetingStateMachine(StateMachine):
             instance.cancelled_by = user
             instance.save()
 
+        def has_permission(transition, instance, user):
+            return True
+
     class cancel_confirmed(StateTransition):
         from_state = 'confirmed'
         to_state = 'cancelled'
@@ -154,6 +157,9 @@ class MeetingStateMachine(StateMachine):
         def handler(transition, instance, user):
             instance.cancelled_by = user
             instance.save()
+
+        def has_permission(transition, instance, user):
+            return True
 
     class flag_waiting_reply_reserved(StateTransition):
         from_state = 'reserved'
