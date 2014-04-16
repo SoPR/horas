@@ -40,36 +40,36 @@ Sorry for the spanglish. If you want to contribute just pick a task and update i
 
 - :white_check_mark: - Profile view should display an "Edit Profile" button to the profile owner.
 
-- **[not started]** - Profile view should display a list of all meetings that user has scheduled as a mentor of apprentice.
+- :white_check_mark: - Profile view should display a list of all meetings that user has scheduled as a mentor of apprentice.
 
-- **[not started]** - User should be able to cancel a meeting by going to his/her profile and clicking the "Cancel Meeting" button.
+- :white_check_mark: - User should be able to cancel a meeting by going to his/her profile and clicking the "Cancel Meeting" button.
 
 - :white_check_mark: - Cancelling a meeting should trigger the creation of a new meeting slot for the host of the meeting.
 
 - **[not started]** - We need to setup something like Celery or simpler if possible to handle async operations like email notifications.
 
-- **[not started]** - Write HTML and plain text templates for email notifications
+- :white_check_mark: - Write HTML and plain text templates for email notifications
 
-- **[in progress: crm114]** - User should receive email notification when
+- **[in progress: gcollazo]** - User should receive email notification when
     - :white_check_mark: Meeting slots are created
     - :white_check_mark: Meeting is reserved / scheduled
     - :white_check_mark: Meeting is cancelled
     - 24 hrs before the meeting starts
-    - 3 hrs after the meeting start time to ask for feedback
+    - After the meeting start time to ask for feedback
 
 - **[not started]** - Add and configure DjangoRESTFramework to add a full REST API to the site using Sessions, oAuth2 and JWT (with user initiated expiration enabled) for auth. Make sure we are integrating correctly with allauth.
 
 - :white_check_mark: - Implement Search and Search Results page
 
-- **[in progress: crm114]** - Create a CONTRIBUTING.md file explaning how to contribute to the project. The document should have sections for developers, designers and everyone else. We can [use this as a guide](https://github.com/TryGhost/Ghost/blob/master/CONTRIBUTING.md).
+- **[not started]** - Create a CONTRIBUTING.md file explaning how to contribute to the project. The document should have sections for developers, designers and everyone else. We can [use this as a guide](https://github.com/TryGhost/Ghost/blob/master/CONTRIBUTING.md).
 
-- **[in progress: crm114]** - Create an AUTHORS.md file for listing all contributors for the project. We can [use this as a guide](https://github.com/kennethreitz/requests/blob/master/AUTHORS.rst).
+- **[not started]** - Create an AUTHORS.md file for listing all contributors for the project. We can [use this as a guide](https://github.com/kennethreitz/requests/blob/master/AUTHORS.rst).
 
-- **[not started]** - Signup flow: After user sign up from social media providers we must redirect the user to a form asking for all the required information like first and last name, email, bio ,etc. Some providers don't have all this info. We must also give the user a chance to connect more social networks to the account. Finally the user must choose their prefered "meeting hours".
+- :white_check_mark: - Signup flow: After user sign up from social media providers we must redirect the user to a form asking for all the required information like first and last name, email, bio ,etc. Some providers don't have all this info. We must also give the user a chance to connect more social networks to the account. Finally the user must choose their prefered "meeting hours".
 
 - **[not started]** - Hide header when user is not authenticated. Also define what to show, maybe a call to action.
 
-- **[not started]** - When the user has no available meetings what should we show? maybe a call to action to "subscribe" to that user, so when new meetings are available you get a notification.
+- :white_check_mark: - When the user has no available meetings what should we show? maybe a call to action to "subscribe" to that user, so when new meetings are available you get a notification.
 
 - :white_check_mark: - Migrate settings.py setup to use [jezdez/django-configurations](https://github.com/jezdez/django-configurations/). We can use [this example](https://gist.github.com/jpadilla/864f53b67efaf1c1dd1c) as a reference.
 
