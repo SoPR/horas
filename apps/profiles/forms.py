@@ -2,6 +2,7 @@
 import pytz
 
 from django import forms
+from django.forms.util import ErrorList
 from django.utils import six
 from django.utils.translation import ugettext_lazy as _
 
@@ -107,15 +108,12 @@ class ProfileUpdateForm(forms.ModelForm):
 
         self.fields['first_name'].label = _('Nombre')
         self.fields['first_name'].required = True
-        self.fields['first_name'].widget = forms.TextInput(
-            attrs={'placeholder': _('Juan')})
 
         self.fields['last_name'].label = _('Apellidos')
         self.fields['last_name'].required = True
-        self.fields['last_name'].widget = forms.TextInput(
-            attrs={'placeholder': _('Rivera Martinez')})
 
         self.fields['bio'].label = _(u'Biografía corta')
+        self.fields['bio'].required = True
         self.fields['bio'].widget = forms.Textarea(attrs={'rows': 3})
         self.fields['bio'].help_text = _('Maximo de 140 caracteres')
 
@@ -125,25 +123,21 @@ class ProfileUpdateForm(forms.ModelForm):
         self.fields['tags'].widget = TagWidget(attrs={
             'rows': 3,
             'placeholder': _(u'Ejemplo: diseño, programación, arte, ' +
-                             u'música, educación, activismo, politica')
+                             u'música, activismo, educación')
         })
 
         self.fields['city'].label = _('Ciudad')
+        self.fields['city'].required = True
+
         self.fields['state'].label = _('Estado')
+        self.fields['state'].required = True
 
         self.fields['skype'].widget = forms.TextInput(
             attrs={'placeholder': _('username')})
 
         self.fields['google'].label = _('Google Hangout')
-        self.fields['google'].widget = forms.TextInput(
-            attrs={'placeholder': _('juan@example.com')})
-
-        self.fields['jitsi'].widget = forms.TextInput(
-            attrs={'placeholder': _('juan@example.com')})
 
         self.fields['phone'].label = _(u'Teléfono')
-        self.fields['phone'].widget = forms.TextInput(
-            attrs={'placeholder': _('787-555-4321')})
 
         self.fields['address'].label = _(
             u'Dirección para reuniones en persona')
@@ -156,13 +150,48 @@ class ProfileUpdateForm(forms.ModelForm):
 
         self.fields['day_of_week'].widget = forms.RadioSelect(
             choices=DAYS_OF_WEEK)
+        self.fields['day_of_week'].required = True
 
         self.fields['start_time'].label = _(u'Hora del día')
+        self.fields['start_time'].required = True
         self.fields['start_time'].widget = forms.Select(choices=TIME_CHOICES)
+        self.initial['start_time'] = TIME_CHOICES[24][0]
 
         self.fields['timezone'].label = _(u'Zona horaria')
+        self.fields['timezone'].required = True
         self.fields['timezone'].widget = forms.Select(choices=TIMEZONE_CHOICES)
 
     def clean_tags(self, *args, **kwargs):
         tags = self.cleaned_data['tags']
         return [t.lower() for t in tags]
+
+    def clean_day_of_week(self, *args, **kwargs):
+        if self.cleaned_data['day_of_week'] == '':
+            raise forms.ValidationError(_('Debes escoger un día'))
+        return self.cleaned_data['day_of_week']
+
+    def clean(self):
+        cleaned_data = super(ProfileUpdateForm, self).clean()
+        formats = [
+            False if cleaned_data.get('phone') == '' else True,
+            False if cleaned_data.get('skype') == '' else True,
+            False if cleaned_data.get('google') == '' else True,
+            False if cleaned_data.get('jitsi') == '' else True,
+            False if cleaned_data.get('address') == '' else True
+        ]
+
+        print(formats)
+
+        if any(formats) == False:
+            self.errors['phone'] = ErrorList([u''])
+            self.errors['skype'] = ErrorList([u''])
+            self.errors['google'] = ErrorList([u''])
+            self.errors['jitsi'] = ErrorList([u''])
+            self.errors['address'] = ErrorList([u''])
+
+            raise forms.ValidationError(
+                _(u'Es necesario registrar por lo menos un formato ' +
+                u'de reunión. Teléfono, Skype, Google, Jitsi o ' +
+                u'En persona.'))
+
+        return cleaned_data

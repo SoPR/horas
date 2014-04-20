@@ -13,6 +13,14 @@
 {% block content %}
     <div class="container">
         <div class="row">
+            {% if form.errors %}
+                <div class="col-sm-12">
+                    <div class="alert alert-danger">
+                        <span class="glyphicon glyphicon-remove"></span> {% trans "Ups!" %}
+                        {{ form.non_field_errors.as_ul }}
+                    </div>
+                </div>
+            {% endif %}
             <div class="col-sm-3 profile-sidebar">
                 <img src="{{ object.gravatar_url }}?s=285" alt="Gravatar" class="img-responsive img-thumbnail">
                 <p class="margin-vertical-20 text-muted">
@@ -169,7 +177,7 @@
 
                         <div class="row">
                             <div class="col-sm-12">
-                                <div class="form-group">
+                                <div class="form-group{% if form.day_of_week.errors %} has-error has-feedback{% endif %}">
                                     <label class="control-label">{% trans "Día de la semana" %}</label><br>
 
                                     {% for radio in form.day_of_week %}
