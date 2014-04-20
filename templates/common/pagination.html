@@ -1,0 +1,23 @@
+<section class="row">
+    <div class="col-sm-12">
+        {% if is_paginated %}
+            <ul class="pagination">
+                {% if page_obj.has_previous %}
+                    <li><a href="?{% if search_term %}q={{ search_term }}&{% endif %}page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+                {% else %}
+                    <li class="disabled"><a href="#">&laquo;</a></li>
+                {% endif %}
+
+                {% for pn in page_obj.paginator.page_range %}
+                    <li {% if pn == page_obj.number %}class="active"{% endif %}><a href="?{% if search_term %}q={{ search_term }}&{% endif %}page={{ pn }}">{{ pn }}</a></li>
+                {% endfor %}
+
+                {% if page_obj.has_next %}
+                    <li><a href="?{% if search_term %}q={{ search_term }}&{% endif %}page={{ page_obj.next_page_number }}">&raquo;</a></li>
+                {% else %}
+                    <li class="disabled"><a href="#">&raquo;</a></li>
+                {% endif %}
+            </ul>
+        {% endif %}
+    </div>
+</section>
