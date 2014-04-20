@@ -37,7 +37,7 @@ class Command(BaseCommand):
         users = User.objects.filter(is_active=True)
 
         for u in users:
-            meeting, created = u.get_or_create_meeting_slot()
+            meeting, created = u.get_or_create_meeting()
             if created:
                 # TODO: send tweet saying meeting created
                 # TODO: send email to followers

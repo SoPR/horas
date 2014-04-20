@@ -91,7 +91,7 @@ class MeetingStateMachine(StateMachine):
                     'cancelled_by_protege',
                     {'meeting': instance})
 
-            instance.mentor.create_meeting_slot()
+            instance.mentor.get_or_create_meeting()
 
     class waiting_reply(StateDefinition):
         description = _('Waiting for reply')

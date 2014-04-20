@@ -85,7 +85,7 @@ class User(AbstractUser):
                 for meeting in available_meetings:
                     meeting.get_state_info().make_transition('delete')
 
-                self.create_meeting_slot()
+                self.get_or_create_meeting()
 
         super(User, self).save(*args, **kwargs)
 
@@ -160,7 +160,7 @@ class User(AbstractUser):
 
         return ', '.join(sorted(output))
 
-    def create_meeting_slot(self):
+    def get_or_create_meeting(self):
         if self.has_complete_profile() and self.is_active:
             Meeting = get_model('meetings', 'Meeting')
 
@@ -169,22 +169,25 @@ class User(AbstractUser):
             next_slot_local = make_aware(
                 datetime.combine(date, self.start_time), user_tz)
 
-            next_slot = next_slot_local.astimezone(get_default_timezone())
+            default_tz = get_default_timezone()
+            next_slot = next_slot_local.astimezone(default_tz)
 
             # Getto get_or_create
             try:
-                meeting_slot = Meeting.objects.get(state='available', mentor=self)
+                meeting_slot = Meeting.objects.get(mentor=self,
+                                                   state='available')
                 created = False
             except Meeting.DoesNotExist:
-                meeting_slot = Meeting.objects.create(mentor=self, datetime=next_slot)
+                meeting_slot = Meeting.objects.create(mentor=self,
+                                                      datetime=next_slot)
                 created = True
 
             # Notify user
             if created:
-                print('-> Created meeting_slot: {0}'.format(meeting_slot))
-                notification.send(
-                    [self], 'create_meeting_slot',
-                    {'meeting': meeting_slot})
+                print('-> Created meeting_slot:{0}'.format(meeting_slot))
+
+                notification.send([self], 'create_meeting_slot',
+                                  {'meeting': meeting_slot})
 
             return meeting_slot, created
 
