@@ -23,7 +23,6 @@ class Command(BaseCommand):
             if meeting.is_in_past():
                 trans_name = 'flag_waiting_reply_{}'.format(meeting.state)
                 meeting.get_state_info().make_transition(trans_name)
-                # TODO: send 'how was your meeting email'
 
 
         # 2. flag unused meetings
@@ -38,9 +37,11 @@ class Command(BaseCommand):
         users = User.objects.filter(is_active=True)
 
         for u in users:
-            u.create_meeting_slot()
-            # TODO: send tweet saying meeting created
-            # TODO: send email to followers
+            meeting, created = u.get_or_create_meeting_slot()
+            if created:
+                # TODO: send tweet saying meeting created
+                # TODO: send email to followers
+                pass
 
 
 
