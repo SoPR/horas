@@ -12,6 +12,7 @@ from ..profiles.models import User
 class SearchView(ListView):
     queryset = User.objects.all().order_by('-date_joined')
     template_name = 'search/search.html'
+    paginate_by = 9
 
     def get_context_data(self):
         context = super(SearchView, self).get_context_data()
