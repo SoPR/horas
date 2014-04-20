@@ -101,3 +101,21 @@ class MeetingCancelView(LoginRequiredMixin, UpdateView):
     def get_success_url(self):
         return reverse_lazy('profile_detail',
                             args=[self.kwargs['username']])
+
+class MeetingFeedbackView(LoginRequiredMixin, UpdateView):
+    model = Meeting
+    http_method_names = ['post']
+
+    def post(self, *args, **kwargs):
+        self.object = self.get_object()
+        action = self.request.POST.get('action', False)
+
+        if self.request.user == self.object.protege and action:
+            transition = 'flag_{0}_{1}'.format(action, self.object.state)
+            self.object.get_state_info().make_transition(transition, self.request.user)
+
+        return HttpResponseRedirect(self.get_success_url())
+
+    def get_success_url(self):
+        return reverse_lazy('meeting_detail',
+                            args=[self.kwargs['username'], self.object.id])

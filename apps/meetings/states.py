@@ -184,15 +184,32 @@ class MeetingStateMachine(StateMachine):
         to_state = 'didnt_happen'
         description = _('When the meetings is not held after being reserved')
 
+        def has_permission(transition, instance, user):
+            return user == instance.protege
+
     class flag_didnt_happen_confirmed(StateTransition):
         from_state = 'confirmed'
         to_state = 'didnt_happen'
         description = _('When the meetings is not held after being confirmed')
 
-    class flag_did_happen(StateTransition):
+        def has_permission(transition, instance, user):
+            return user == instance.protege
+
+    class flag_did_happen_waiting_reply(StateTransition):
+        from_state = 'waiting_reply'
+        to_state = 'did_happen'
+        description = _('When a protege confirms that the meeting was held')
+
+        def has_permission(transition, instance, user):
+            return user == instance.protege
+
+    class flag_did_happen_confirmed(StateTransition):
         from_state = 'confirmed'
         to_state = 'did_happen'
-        description = _('When mentor or protege confirms the meeting was held')
+        description = _('When a protege confirms that the meeting was held')
+
+        def has_permission(transition, instance, user):
+            return user == instance.protege
 
     class flag_unused(StateTransition):
         from_state = 'available'

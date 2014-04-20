@@ -45,12 +45,22 @@
 
                     <div class="row">
                         <div class="col-sm-12">
-                            {% if meeting.state != 'cancelled' and meeting.state != 'deleted' and meeting.state != 'unused' %}
+                            {% if meeting.state == 'reserved' or meeting.state == 'confirmed' %}
                                 <form action="{% url 'meeting_cancel' meeting.mentor.username meeting.id %}" method="post" class="form-inline">
                                     {% csrf_token %}
                                     <button type="submit" class="btn btn-default btn-grey">{% trans "Cancelar reunión" %}</button>
                                 </form>
                             {% endif %}
+
+                            {% if meeting.state == 'waiting_reply' and meeting.protege == user %}
+                                <h4>Confirma si la reunión se celebró</h4>
+                                <form action="{% url 'meeting_feedback' meeting.mentor.username meeting.id %}" method="post" class="form-inline">
+                                    {% csrf_token %}
+                                    <button type="submit" name="action" value="did_happen" class="btn btn-success">{% trans "Si, celebramos la reunión" %}</button>
+                                    <button type="submit" name="action" value="didnt_happen" class="btn btn-warning">{% trans "No celebramos la reunión" %}</button>
+                                </form>
+                            {% endif %}
+
                             {% if meeting.state == 'reserved' and meeting.mentor == user %}
                                 <form action="{% url 'meeting_confirm' meeting.mentor.username meeting.id %}" method="post" class="form-inline">
                                     {% csrf_token %}
