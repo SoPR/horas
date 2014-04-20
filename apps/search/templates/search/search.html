@@ -81,7 +81,7 @@
                     {% for user in object_list %}
                         <li class="media col-sm-4 home-media-wrapper">
                             <a href="{{ user.get_absolute_url }}" class="pull-left">
-                                <img src="{{ user.gravatar_url }}" alt="user gravatar" class="media-object">
+                                <img src="{{ user.gravatar_url }}?d=identicon" alt="user gravatar" class="media-object">
                             </a>
                             <div class="media-object">
                                 <h4 class="media-heading">
