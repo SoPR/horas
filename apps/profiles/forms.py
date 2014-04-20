@@ -155,7 +155,8 @@ class ProfileUpdateForm(forms.ModelForm):
         self.fields['start_time'].label = _(u'Hora del día')
         self.fields['start_time'].required = True
         self.fields['start_time'].widget = forms.Select(choices=TIME_CHOICES)
-        self.initial['start_time'] = TIME_CHOICES[24][0]
+        if not self.initial['start_time']:
+            self.initial['start_time'] = TIME_CHOICES[24][0]
 
         self.fields['timezone'].label = _(u'Zona horaria')
         self.fields['timezone'].required = True
