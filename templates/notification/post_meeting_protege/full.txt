@@ -1,0 +1,13 @@
+{% load tz %}
+{% load i18n %}
+
+{% blocktrans with mentor_name=meeting.mentor.get_full_name protege_name=meeting.protege.first_name %}
+    Hola {{ protege_name }},
+
+    Esperamos que la reunión con {{ mentor_name }} haya sido un éxito. Ahora necesitamos que confirmes que la reunión se celebró visitando:
+    ** TODO: url goes here **
+
+    Esta información se verá en tu perfil y en el perfil de {{ mentor_name }}.
+
+    - 1hora.org
+{% endblocktrans %}

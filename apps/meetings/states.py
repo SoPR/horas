@@ -97,9 +97,17 @@ class MeetingStateMachine(StateMachine):
         description = _('Waiting for reply')
 
         def handler(self, instance):
-            # TODO: Send "how was the meeting email" to protege
-            # TODO: Send "remind the protege to respond email" to mentor
-            pass
+            # Send "how was the meeting email" to protege
+            notification.send(
+                [instance.protege],
+                'post_meeting_protege',
+                {'meeting': instance})
+
+            # Send "remind the protege to respond email" to mentor
+            notification.send(
+                [instance.protege],
+                'post_meeting_mentor',
+                {'meeting': instance})
 
     class didnt_happen(StateDefinition):
         description = _('Meeting didn\'t happen')

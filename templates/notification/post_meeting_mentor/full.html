@@ -1,0 +1,12 @@
+{% load tz %}
+{% load i18n %}
+
+{% blocktrans with mentor_name=meeting.mentor.first_name protege_name=meeting.protege.get_full_name %}
+    Hola {{ mentor_name }},
+
+    Esperamos que la reunión con {{ protege_name }} haya sido un éxito. Acabamos de enviar un email a {{ protege_name }} para que confirme que la reunión se celebró. La información de la reunión se verá dentro de tú perfil así que es importante insistir para que se complete.
+
+    Si en 2 días ves que el estatus de la reunión no ha sido actualizado envia un mensaje de recordatorio a {{ protege_name }} para que lo haga.
+
+    - 1hora.org
+{% endblocktrans %}

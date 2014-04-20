@@ -39,7 +39,7 @@ class Command(BaseCommand):
         for u in users:
             meeting, created = u.get_or_create_meeting()
             if created:
-                # TODO: send tweet saying meeting created
+                # TODO: send tweet on @1horaorg saying meeting created
                 # TODO: send email to followers
                 pass
 
