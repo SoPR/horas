@@ -1,11 +1,11 @@
 {% load tz %}
 {% load i18n %}
 
-{% blocktrans with mentor_name=meeting.mentor.get_full_name protege_name=meeting.protege.first_name %}
+{% blocktrans with mentor_name=meeting.mentor.get_full_name protege_name=meeting.protege.first_name meeting_url=meeting.get_url_with_domain %}
     Hola {{ protege_name }},
 
     Esperamos que la reunión con {{ mentor_name }} haya sido un éxito. Ahora necesitamos que confirmes que la reunión se celebró visitando:
-    ** TODO: url goes here **
+    {{ meeting_url }}
 
     Esta información se verá en tu perfil y en el perfil de {{ mentor_name }}.
 
