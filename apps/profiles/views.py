@@ -65,5 +65,5 @@ class ProfileUpdateView(LoginRequiredMixin, UpdateView):
         return reverse_lazy('profile_detail', args=[self.object.username])
 
     def form_valid(self, *args, **kwargs):
-        messages.success(self.request, _('Perfil guardado con exito'))
+        messages.success(self.request, _('Perfil guardado exitosamente.'))
         return super(ProfileUpdateView, self).form_valid(*args, **kwargs)
