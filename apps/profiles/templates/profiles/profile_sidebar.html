@@ -17,7 +17,7 @@
         <h4>{% trans "Temas" %}</h4>
         <ul class="list-inline">
             {% for tag in profile_user.tags.all %}
-                <li><a href="{% url 'search_query' tag.slug %}">{{ tag }}</a></li>
+                <li><a href="{% url 'search_query' tag.name %}">{{ tag }}</a></li>
             {% endfor %}
         </ul>
     {% endif %}
