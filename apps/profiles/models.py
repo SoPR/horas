@@ -96,7 +96,9 @@ class User(AbstractUser):
         return '{0}. {1}'.format(self.first_name[0], self.last_name)
 
     def has_complete_profile(self):
-        dates = all([str(self.day_of_week), self.start_time, self.timezone])
+        dates = all([str(self.day_of_week), self.start_time, self.timezone,
+                    self.city, self.state, self.bio, self.first_name, self.last_name])
+
         contact = any([self.phone, self.skype,
                       self.google, self.jitsi, self.address])
 
@@ -180,9 +182,9 @@ class User(AbstractUser):
             # Notify user
             if created:
                 print('-> Created meeting_slot: {0}'.format(meeting_slot))
-                notification.send([self],
-                                  'create_meeting_slot',
-                                  {'meeting': meeting_slot})
+                notification.send(
+                    [self], 'create_meeting_slot',
+                    {'meeting': meeting_slot})
 
             return meeting_slot, created
 
