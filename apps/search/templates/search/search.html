@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load i18n %}
+{% load cache %}
 
 {% block app_scripts %}
   {# Don't include app.js #}
@@ -36,13 +37,15 @@
             <div class="row">
                 <div class="col-sm-12">
                     <ul class="list-inline search-link-list">
-                    {% for tag in tags %}
-                        <li>
-                            <a href="{% url "search_query" tag.name %}">
-                                {{ tag }}
-                            </a>
-                        </li>
-                    {% endfor %}
+                    {% cache 500 search.tags %}
+                        {% for tag in tags %}
+                            <li>
+                                <a href="{% url 'search_query' tag.name %}">
+                                    {{ tag }}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    {% endcache %}
                     </ul>
                 </div>
             </div>
@@ -59,13 +62,15 @@
             <div class="row">
                 <div class="col-sm-12">
                     <ul class="list-inline search-link-list">
-                    {% for city in cities %}
-                        <li>
-                            <a href="{% url "search_list" %}?q={{ city }}">
-                                {{ city }}
-                            </a>
-                        </li>
-                    {% endfor %}
+                    {% cache 500 search.cities %}
+                        {% for city in cities %}
+                            <li>
+                                <a href="{% url 'search_list' %}?q={{ city }}">
+                                    {{ city }}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    {% endcache %}
                     </ul>
                 </div>
             </div>
@@ -78,23 +83,46 @@
         <section class="row">
             {% if object_list %}
                 <ul class="media-list">
-                    {% for user in object_list %}
-                        <li class="media col-sm-4 home-media-wrapper">
-                            <a href="{{ user.get_absolute_url }}" class="pull-left">
-                                <img src="{{ user.gravatar_url }}?d=identicon" alt="user gravatar" class="media-object">
-                            </a>
-                            <div class="media-object">
-                                <h4 class="media-heading">
-                                    <a href="{{ user.get_absolute_url }}">
-                                        {{ user.get_full_name }}
+                    {# Had to check for search tearms to cache when possible #}
+                    {% if search_term %}
+                        {% for user in object_list %}
+                            <li class="media col-sm-4 home-media-wrapper">
+                                <a href="{{ user.get_absolute_url }}" class="pull-left">
+                                    <img src="{{ user.gravatar_url }}?d=identicon" alt="user gravatar" class="media-object">
+                                </a>
+                                <div class="media-object">
+                                    <h4 class="media-heading">
+                                        <a href="{{ user.get_absolute_url }}">
+                                            {{ user.get_full_name }}
+                                        </a>
+                                    </h4>
+                                    <div class="user-widget-small-bio text-muted">
+                                        {{ user.bio }}
+                                    </div> <!-- /.user-widget-small-bio text-muted -->
+                                </div>
+                            </li>
+                        {% endfor %}
+                    {% else %}
+                        {% cache 500 search.default.object_list %}
+                            {% for user in object_list %}
+                                <li class="media col-sm-4 home-media-wrapper">
+                                    <a href="{{ user.get_absolute_url }}" class="pull-left">
+                                        <img src="{{ user.gravatar_url }}?d=identicon" alt="user gravatar" class="media-object">
                                     </a>
-                                </h4>
-                                <div class="user-widget-small-bio text-muted">
-                                    {{ user.bio }}
-                                </div> <!-- /.user-widget-small-bio text-muted -->
-                            </div>
-                        </li>
-                    {% endfor %}
+                                    <div class="media-object">
+                                        <h4 class="media-heading">
+                                            <a href="{{ user.get_absolute_url }}">
+                                                {{ user.get_full_name }}
+                                            </a>
+                                        </h4>
+                                        <div class="user-widget-small-bio text-muted">
+                                            {{ user.bio }}
+                                        </div> <!-- /.user-widget-small-bio text-muted -->
+                                    </div>
+                                </li>
+                            {% endfor %}
+                        {% endcache %}
+                    {% endif %}
                 </ul>
             {% else %}
                 <div class="col-sm-12">

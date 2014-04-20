@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load i18n %}
+{% load cache %}
 
 {% block app_scripts %}
   {# Don't include app.js #}
@@ -80,31 +81,33 @@
             </div> <!-- /.col-sm-12 text-center -->
         </section> <!-- /.row -->
 
-        <section class="row">
-            <ul class="media-list">
-                {% for user in featured_users %}
-                    <li class="media col-sm-4 home-media-wrapper">
-                        <a href="{{ user.get_absolute_url }}" class="pull-left">
-                            <img src="{{ user.gravatar_url }}" alt="user gravatar" class="media-object">
-                        </a>
-                        <div class="media-object">
-                            <h4 class="media-heading">
-                                <a href="{{ user.get_absolute_url }}">
-                                    {{ user.get_full_name }}
-                                </a>
-                            </h4>
-                            <div class="user-widget-small-bio text-muted">
-                                {{ user.bio }}
-                            </div> <!-- /.user-widget-small-bio text-muted -->
-                        </div>
-                    </li>
-                {% endfor %}
-            </ul>
+        {% cache 500 'home.featured.users' %}
+            <section class="row">
+                <ul class="media-list">
+                    {% for user in featured_users %}
+                        <li class="media col-sm-4 home-media-wrapper">
+                            <a href="{{ user.get_absolute_url }}" class="pull-left">
+                                <img src="{{ user.gravatar_url }}" alt="user gravatar" class="media-object">
+                            </a>
+                            <div class="media-object">
+                                <h4 class="media-heading">
+                                    <a href="{{ user.get_absolute_url }}">
+                                        {{ user.get_full_name }}
+                                    </a>
+                                </h4>
+                                <div class="user-widget-small-bio text-muted">
+                                    {{ user.bio }}
+                                </div> <!-- /.user-widget-small-bio text-muted -->
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
 
-            <div class="col-sm-12 text-center featured-mentors-more-wrapper">
-                <a href="{% url 'search_list' %}" class="btn btn-default btn-lg btn-grey">{% trans "Ver más" %}</a> <span class="text-muted">{% blocktrans %}Tenemos {{ users_count }} mentores registrados{% endblocktrans %}</span>
-            </div>
-        </section>
+                <div class="col-sm-12 text-center featured-mentors-more-wrapper">
+                    <a href="{% url 'search_list' %}" class="btn btn-default btn-lg btn-grey">{% trans "Ver más" %}</a> <span class="text-muted">{% blocktrans %}Tenemos {{ users_count }} mentores registrados{% endblocktrans %}</span>
+                </div>
+            </section>
+        {% endcache %}
 
     </div> <!-- /.container -->
 {% endblock content %}
