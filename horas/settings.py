@@ -58,6 +58,7 @@ class Common(Configuration):
         'apps.profiles',
         'apps.search',
         'apps.meetings',
+        'apps.stats',
         'apps.sso',
     )
 

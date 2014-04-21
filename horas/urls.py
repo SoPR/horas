@@ -18,6 +18,8 @@ urlpatterns = patterns(
 
     url(r'^accounts/', include('allauth.urls')),
 
+    url(r'^stats/', include('apps.stats.urls')),
+
     url(r'^api/v1/', include('apps.sso.urls')),
 
 

@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}
+    {% trans "Estadísticas" %} - {{ block.super }}
+{% endblock title %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h2>{% trans "Estadísticas" %}</h2>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6">
+                <h4>{% trans "Usuarios" %}</h4>
+                <table class="table">
+                    <tr>
+                        <th>all</th>
+                        <th>completed profile</th>
+                        <th>recently joined</th>
+                    </tr>
+                    <tr>
+                        <td><h1>{{ users.all__count }}</h1></td>
+                        <td><h1>{{ users.complete__count }}</h1></td>
+                        <td>
+                            <ul class="list-unstyled">
+                                {% for user in users.recently_joined %}
+                                    <li><a href="{% url 'profile_detail' user.username %}">{{ user.username }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-sm-6">
+                <h4>{% trans "Reuniones" %}</h4>
+                <table class="table">
+                    <tr>
+                        {% for state in meetings %}
+                            <th>{{ state.state }}</th>
+                        {% endfor %}
+                    </tr>
+                    <tr>
+                        {% for state in meetings %}
+                            <td><h2>{{ state.state__count }}</h2></td>
+                        {% endfor %}
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+
+    </div>
+{% endblock content %}
