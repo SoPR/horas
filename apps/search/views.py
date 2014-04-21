@@ -53,4 +53,4 @@ class SearchView(ListView):
             return queryset.filter(
                 reduce(operator.or_, search_args)).distinct()
 
-        return queryset[:9]
+        return queryset
