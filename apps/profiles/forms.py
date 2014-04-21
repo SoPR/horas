@@ -162,6 +162,12 @@ class ProfileUpdateForm(forms.ModelForm):
         self.fields['timezone'].required = True
         self.fields['timezone'].widget = forms.Select(choices=TIMEZONE_CHOICES)
 
+    def clean_bio(self, *args, **kwargs):
+        bio = self.cleaned_data['bio']
+        if len(bio) > 140:
+            raise forms.ValidationError('')
+        return bio
+
     def clean_tags(self, *args, **kwargs):
         tags = self.cleaned_data['tags']
         return [t.lower() for t in tags]
@@ -180,8 +186,6 @@ class ProfileUpdateForm(forms.ModelForm):
             False if cleaned_data.get('jitsi') == '' else True,
             False if cleaned_data.get('address') == '' else True
         ]
-
-        print(formats)
 
         if any(formats) == False:
             self.errors['phone'] = ErrorList([u''])
