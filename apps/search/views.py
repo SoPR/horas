@@ -53,4 +53,4 @@ class SearchView(ListView):
             return queryset.filter(
                 reduce(operator.or_, search_args)).distinct()
 
-        return queryset
+        return [q for q in queryset if q.has_complete_profile()]
