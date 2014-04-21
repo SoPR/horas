@@ -77,7 +77,7 @@
             </div> <!-- /.col-sm-12 text-center -->
         </section> <!-- /.row -->
 
-        {% cache 500 'home.featured.users' %}
+        {% cache 300 'home.featured.users' %}
             <section class="row">
                 <ul class="media-list">
                     {% for user in featured_users %}

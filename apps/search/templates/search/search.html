@@ -37,7 +37,7 @@
             <div class="row">
                 <div class="col-sm-12">
                     <ul class="list-inline search-link-list">
-                    {% cache 500 search.tags %}
+                    {% cache 300 search.tags %}
                         {% for tag in tags %}
                             <li>
                                 <a href="{% url 'search_query' tag.name %}">
@@ -103,7 +103,7 @@
                             </li>
                         {% endfor %}
                     {% else %}
-                        {% cache 500 search.default.object_list %}
+                        {% cache 300 search.default.object_list %}
                             {% for user in object_list %}
                                 <li class="media col-sm-4 home-media-wrapper">
                                     <a href="{{ user.get_absolute_url }}" class="pull-left">
