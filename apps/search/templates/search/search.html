@@ -28,7 +28,7 @@
 
         <div class="col-sm-12 horizontal-line search-page-horizontal-line"></div>
 
-        {% if not search_term %}
+        {% if not search_term and page_obj.number == 1 %}
             <div class="row">
                 <div class="col-sm-12">
                     <h3>{% trans "Buscar por tema" %}</h3>
@@ -56,13 +56,13 @@
 
             <div class="row search-page-row">
                 <div class="col-sm-12">
-                    <h3>{% trans "Buscar por localidad" %}</h3>
+                    <h3>{% trans "Buscar por ciudad" %}</h3>
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-12">
                     <ul class="list-inline search-link-list">
-                    {% cache 500 search.cities %}
+                    {% cache 300 search.cities %}
                         {% for city in cities %}
                             <li>
                                 <a href="{% url 'search_list' %}?q={{ city }}">
