@@ -83,46 +83,23 @@
         <section class="row">
             {% if object_list %}
                 <ul class="media-list">
-                    {# Had to check for search tearms to cache when possible #}
-                    {% if search_term %}
-                        {% for user in object_list %}
-                            <li class="media col-sm-4 home-media-wrapper">
-                                <a href="{{ user.get_absolute_url }}" class="pull-left">
-                                    <img src="{{ user.gravatar_url }}?d=identicon" alt="user gravatar" class="media-object">
-                                </a>
-                                <div class="media-object">
-                                    <h4 class="media-heading">
-                                        <a href="{{ user.get_absolute_url }}">
-                                            {{ user.get_full_name }}
-                                        </a>
-                                    </h4>
-                                    <div class="user-widget-small-bio text-muted">
-                                        {{ user.bio }}
-                                    </div> <!-- /.user-widget-small-bio text-muted -->
-                                </div>
-                            </li>
-                        {% endfor %}
-                    {% else %}
-                        {% cache 300 search.default.object_list %}
-                            {% for user in object_list %}
-                                <li class="media col-sm-4 home-media-wrapper">
-                                    <a href="{{ user.get_absolute_url }}" class="pull-left">
-                                        <img src="{{ user.gravatar_url }}?d=identicon" alt="user gravatar" class="media-object">
+                    {% for user in object_list %}
+                        <li class="media col-sm-4 home-media-wrapper">
+                            <a href="{{ user.get_absolute_url }}" class="pull-left">
+                                <img src="{{ user.gravatar_url }}?d=identicon" alt="user gravatar" class="media-object">
+                            </a>
+                            <div class="media-object">
+                                <h4 class="media-heading">
+                                    <a href="{{ user.get_absolute_url }}">
+                                        {{ user.get_full_name }}
                                     </a>
-                                    <div class="media-object">
-                                        <h4 class="media-heading">
-                                            <a href="{{ user.get_absolute_url }}">
-                                                {{ user.get_full_name }}
-                                            </a>
-                                        </h4>
-                                        <div class="user-widget-small-bio text-muted">
-                                            {{ user.bio }}
-                                        </div> <!-- /.user-widget-small-bio text-muted -->
-                                    </div>
-                                </li>
-                            {% endfor %}
-                        {% endcache %}
-                    {% endif %}
+                                </h4>
+                                <div class="user-widget-small-bio text-muted">
+                                    {{ user.bio }}
+                                </div> <!-- /.user-widget-small-bio text-muted -->
+                            </div>
+                        </li>
+                    {% endfor %}
                 </ul>
             {% else %}
                 <div class="col-sm-12">
