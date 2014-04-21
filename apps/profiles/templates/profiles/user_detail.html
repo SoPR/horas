@@ -2,7 +2,7 @@
 {% load i18n %}
 
 {% block title %}
-    {% trans "Horas - Todos ayudando a todos" %}
+    {{ user.get_full_name }} - {{ block.super }}
 {% endblock title %}
 
 {% block content %}
