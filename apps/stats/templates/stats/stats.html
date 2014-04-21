@@ -28,7 +28,14 @@
                         <td>
                             <ul class="list-unstyled">
                                 {% for user in users.recently_joined %}
-                                    <li><a href="{% url 'profile_detail' user.username %}">{{ user.username }}</a></li>
+                                    <li>
+                                        <a href="{% url 'profile_detail' user.username %}">{{ user.username }}</a>
+                                        {% if user.has_complete_profile %}
+                                            <span class="label label-success" title="Completed Profile">:)</span>
+                                        {% else %}
+                                            <span class="label label-danger" title="Incomplete Profile">:(</span>
+                                        {% endif %}
+                                    </li>
                                 {% endfor %}
                             </ul>
                         </td>
