@@ -9,6 +9,7 @@ from django.db.models.loading import get_model
 from django.utils.timezone import now, get_default_timezone, make_aware
 from django.core.urlresolvers import reverse_lazy
 from django.utils.translation import ugettext_lazy as _
+from django.db.models import Q
 
 from django.conf import settings
 
@@ -174,8 +175,11 @@ class User(AbstractUser):
 
             # Getto get_or_create
             try:
-                meeting_slot = Meeting.objects.get(mentor=self,
-                                                   state='available')
+                meeting_slot = Meeting.objects.get(Q(state='available') |
+                                                   Q(state='reserved') |
+                                                   Q(state='confirmed'),
+                                                   mentor=self,
+                                                   datetime=next_slot)
                 created = False
             except Meeting.DoesNotExist:
                 meeting_slot = Meeting.objects.create(mentor=self,
