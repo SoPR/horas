@@ -19,7 +19,7 @@ class SearchView(ListView):
 
         tags = Tag.objects.all().annotate(
             num_times=Count('taggit_taggeditem_items')
-        ).filter(num_times__gt=0).order_by('name')
+        ).filter(num_times__gt=0).order_by('-num_times')
 
         cities = User.objects.exclude(
             city='').values_list('city', flat=True).distinct()
