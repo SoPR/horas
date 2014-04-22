@@ -7,7 +7,7 @@
         <strong>{{ meeting.datetime|date }} - {{ meeting.get_time_range_string }}</strong><br>
     {% endif %}
     {% if meeting.protege and meeting.mentor %}
-        <a href="{% url 'profile_detail' meeting.protege.username %}">{{ meeting.protege.get_full_name }}</a> con <a href="{% url 'profile_detail' meeting.mentor.username %}">{{ meeting.mentor.get_full_name }}</a><br>
+         <a href="{% url 'profile_detail' meeting.mentor.username %}">{{ meeting.mentor.get_full_name }}</a> con <a href="{% url 'profile_detail' meeting.protege.username %}">{{ meeting.protege.get_full_name }}</a><br>
     {% endif %}
     {% include "profiles/meeting_row_state.html" %}
 </div>
