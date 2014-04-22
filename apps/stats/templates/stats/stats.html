@@ -9,22 +9,26 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
-                <h2>{% trans "Estadísticas" %}</h2>
+                <h2>{% trans "Estadísticas" %} <small>{{ users.stats.0.date_created|time }} - {{ users.stats.0.date_created|date }}</small></h2><br>
             </div>
         </div>
 
         <div class="row">
             <div class="col-sm-6">
                 <h4>{% trans "Usuarios" %}</h4>
-                <table class="table">
+                <table class="table table-responsive table-striped">
                     <tr>
-                        <th>all</th>
-                        <th>completed profile</th>
-                        <th>recently joined</th>
+                        <th>Metric</th>
+                        <th>Count</th>
                     </tr>
+                    {% for stat in users.stats %}
+                        <tr>
+                            <td>{{ stat.name }}</td>
+                            <td>{{ stat.count }}</td>
+                        </tr>
+                    {% endfor %}
                     <tr>
-                        <td><h1>{{ users.all__count }}</h1></td>
-                        <td><h1>{{ users.complete__count }}</h1></td>
+                        <td>Last 5 joined</td>
                         <td>
                             <ul class="list-unstyled">
                                 {% for user in users.recently_joined %}
@@ -44,17 +48,19 @@
             </div>
             <div class="col-sm-6">
                 <h4>{% trans "Reuniones" %}</h4>
-                <table class="table">
+                <table class="table table-responsive table-striped">
                     <tr>
-                        {% for state in meetings %}
-                            <th>{{ state.state }}</th>
-                        {% endfor %}
+                        <th>Metric</th>
+                        <th>Count</th>
                     </tr>
-                    <tr>
-                        {% for state in meetings %}
-                            <td><h1>{{ state.state__count }}</h1></td>
-                        {% endfor %}
-                    </tr>
+                    {% for stat in meetings %}
+                        {% if stat %}
+                            <tr>
+                                <td>{{ stat.name }}</td>
+                                <td>{{ stat.count }}</td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
                 </table>
             </div>
         </div>
