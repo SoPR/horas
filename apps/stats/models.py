@@ -10,6 +10,10 @@ class StatManager(models.Manager):
         queryset = super(StatManager, self).get_query_set()
         return queryset.filter(name=name, date_created__range=last_n_hours)
 
+    def get_latest(self, name):
+        queryset = super(StatManager, self).get_query_set()
+        return queryset.filter(name=name)[0]
+
 class Stat(models.Model):
     date_created = models.DateTimeField(auto_now_add=True)
     name = models.CharField(max_length=50, db_index=True)
