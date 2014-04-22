@@ -8,11 +8,17 @@ class StatManager(models.Manager):
     def get_range(self, name, hours=24):
         last_n_hours = [now() - timedelta(hours=hours), now()]
         queryset = super(StatManager, self).get_query_set()
-        return queryset.filter(name=name, date_created__range=last_n_hours)
+        stats = queryset.filter(name=name, date_created__range=last_n_hours)
+        if stats.count() > 0:
+            return stats
+        return None
 
     def get_latest(self, name):
         queryset = super(StatManager, self).get_query_set()
-        return queryset.filter(name=name)[0]
+        stats = queryset.filter(name=name)
+        if stats.count() > 0:
+            return stats[0]
+        return None
 
 class Stat(models.Model):
     date_created = models.DateTimeField(auto_now_add=True)
