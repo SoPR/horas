@@ -17,6 +17,8 @@ class Command(BaseCommand):
         stats = []
 
         # Meeting
+        stats.append(Stat(name='meetings:all', count=Meeting.objects.all().count()))
+
         meetings = Meeting.objects.values(
             'state').order_by().annotate(Count('state'))
 
