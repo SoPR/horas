@@ -9,14 +9,14 @@ class StatManager(models.Manager):
         last_n_hours = [now() - timedelta(hours=hours), now()]
         queryset = super(StatManager, self).get_query_set()
         stats = queryset.filter(name=name, date_created__range=last_n_hours)
-        if stats.count() > 0:
+        if stats:
             return stats
         return None
 
     def get_latest(self, name):
         queryset = super(StatManager, self).get_query_set()
         stats = queryset.filter(name=name)
-        if stats.count() > 0:
+        if stats:
             return stats[0]
         return None
 
