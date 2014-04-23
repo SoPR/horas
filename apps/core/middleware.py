@@ -26,11 +26,15 @@ class TimezoneMiddleware(object):
 class EnsureCompleteProfileMiddleware(object):
     def process_request(self, request):
         if request.user.is_authenticated():
-            skip_urls = [str(reverse_lazy('profile_update', args=[request.user.username]))]
-            skip_urls.append('/admin')
-            skip_urls.append('/accounts/logout/')
+            skip_urls = [
+                str(reverse_lazy('profile_update', args=[request.user.username])),
+                str(reverse_lazy('account_logout')),
+                str(reverse_lazy('admin:index'))
+            ]
 
-            if not request.user.has_complete_profile() and request.path not in skip_urls:
+            is_skip_url = any([request.path.startswith(url) for url in skip_urls])
+
+            if not request.user.has_complete_profile() and not is_skip_url:
                 messages.info(request, _('Debes completar tu perfil para continuar'))
                 return HttpResponseRedirect(skip_urls[0])
 
