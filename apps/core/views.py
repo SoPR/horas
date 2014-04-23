@@ -19,19 +19,13 @@ class HomePageView(TemplateView):
     def get_context_data(self):
         context = super(HomePageView, self).get_context_data()
 
-        featured = cache.get('home:featured')
-        if featured is None:
-            featured = User.objects.filter(featured=True)
-            cache.set('home:featured', featured, 300)
+        featured_section = cache.get('home:featured:section')
+        if featured_section is None:
+            featured_section = {
+                'featured_users': User.objects.filter(featured=True),
+                'users_count': getattr(Stat.objects.get_latest('users:all'), 'count', 0)
+            }
+            cache.set('home:featured:section', featured_section, 300)
 
-        count = cache.get('home:count')
-        if count is None:
-            count = getattr(Stat.objects.get_latest('users:all'), 'count', 0)
-            cache.set('home:count', count, 300)
-
-        context.update({
-            'featured_users': featured,
-            'users_count': count
-        })
-
+        context.update(featured_section)
         return context
