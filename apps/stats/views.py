@@ -1,5 +1,4 @@
 from django.views.generic import TemplateView
-from django.db.models import Count
 
 from apps.profiles.models import User
 from .models import Stat
@@ -19,7 +18,7 @@ class StatsView(TemplateView):
             Stat.objects.get_latest('meetings:didnt_happen'),
             Stat.objects.get_latest('meetings:did_happen'),
             Stat.objects.get_latest('meetings:unused'),
-            Stat.objects.get_latest('meetings:waiting_for_reply'),
+            Stat.objects.get_latest('meetings:waiting_reply'),
             Stat.objects.get_latest('meetings:cancelled'),
         ]
 
