@@ -58,7 +58,7 @@
             {% if request.user.is_authenticated %}
                 <div class="btn-group pull-right">
                   <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                    <img src="{{ request.user.gravatar_url }}?s=20" alt="{{ request.user.get_full_name }}" title="{{ request.user.get_full_name }}"> {{ request.user.get_full_name }} <span class="caret"></span>
+                    <img src="{{ request.user.gravatar_url }}?s=20" alt="{{ request.user.get_full_name|title }}" title="{{ request.user.get_full_name|title }}"> {{ request.user.get_full_name|title }} <span class="caret"></span>
                   </button>
                   <ul class="dropdown-menu" role="menu">
                     <li><a href="{{ profile_update_url }}"><span class="glyphicon glyphicon-cog"></span> {% trans "Configuración" %}</a></li>

@@ -2,7 +2,7 @@
 {% load i18n %}
 
 {% block title %}
-    {{ profile_user.get_full_name }} - {{ block.super }}
+    {{ profile_user.get_full_name|title }} - {{ block.super }}
 {% endblock title %}
 
 {% block content %}
