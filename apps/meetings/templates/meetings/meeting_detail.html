@@ -28,8 +28,15 @@
                         <div class="col-sm-12">
                             {% if meeting.format %}
                                 <p>
-                                    <strong>{% trans "Formato" %}:</strong><br>
+                                    <strong>{% trans "Formato" %}</strong><br>
                                     {{ meeting_format_name }} {% if meeting.state == 'confirmed' %}- <strong>{{ meeting_format_information }}</strong>{% endif %}
+                                </p>
+                            {% endif %}
+                            {% if meeting.state == 'confirmed' %}
+                                <strong>{% trans "Información de contacto" %}</strong><br>
+                                <p>
+                                    {{ meeting.mentor.get_full_name}}: {{ meeting.mentor.email }}<br>
+                                    {{ meeting.protege.get_full_name}}: {{ meeting.protege.email }}
                                 </p>
                             {% endif %}
                             {% if meeting.message %}
