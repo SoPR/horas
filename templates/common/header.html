@@ -27,7 +27,7 @@
                 <li class="divider"></li>
                 {% if request.user.is_authenticated %}
                     <li><a href="{{ profile_update_url }}"><span class="glyphicon glyphicon-cog"></span> {% trans "Configuración" %}</a></li>
-                    <li><a href="webcal://{% url 'profile_calendar_feed' request.user.username %}"><span class="glyphicon glyphicon-calendar"></span> {% trans "Feed iCal" %}</a></li>
+                    <li><a href="webcal://{% url 'profile_calendar_feed' request.user.username %}"><span class="glyphicon glyphicon-calendar"></span> {% trans "Calendario" %}</a></li>
                     <li><a href="{% url 'account_logout' %}"><span class="glyphicon glyphicon-log-out"></span> {% trans "Logout" %}</a></li>
                 {% else %}
                     <li><a href="{% url 'account_login' %}"><span class="glyphicon glyphicon-log-in"></span> {% trans "Login" %}</a></li>
@@ -56,7 +56,7 @@
                   <ul class="dropdown-menu" role="menu">
                     <li><a href="{{ profile_update_url }}"><span class="glyphicon glyphicon-cog"></span> {% trans "Configuración" %}</a></li>
                     {{request}}
-                    <li><a href="webcal://{{ request.META.HTTP_HOST }}{% url 'profile_calendar_feed' request.user.username %}"><span class="glyphicon glyphicon-calendar"></span> {% trans "Feed iCal" %}</a></li>
+                    <li><a href="webcal://{{ request.META.HTTP_HOST }}{% url 'profile_calendar_feed' request.user.username %}"><span class="glyphicon glyphicon-calendar"></span> {% trans "Calendario" %}</a></li>
                     <li class="divider"></li>
                     <li><a href="{% url 'account_logout' %}"><span class="glyphicon glyphicon-log-out"></span> {% trans "Logout" %}</a></li>
                   </ul>
