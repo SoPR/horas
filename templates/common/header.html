@@ -24,7 +24,9 @@
         <div class="collapse navbar-collapse navbar-ex6-collapse">
             <ul class="nav navbar-nav">
                 <li><a href="{{ search_url }}">{% trans "Mentores" %}</a></li>
-                <li><a href="{{ profile_url }}">{% trans "Tus Horas" %}</a></li>
+                {% if profile_url %}
+                    <li><a href="{{ profile_url }}">{% trans "Tus Horas" %}</a></li>
+                {% endif %}
                 <li><a href="{{ stats_url }}">{% trans "Estadísticas" %}</a></li>
                 <li class="divider"></li>
                 {% if request.user.is_authenticated %}
@@ -45,7 +47,9 @@
             <h1 class="branding-medium inline-block"><a href="{% url 'home' %}">1hora</a></h1>
             <ul class="list-inline inline-block header-menu-list">
                 <li><a href="{{ search_url }}" class="header-menu-link {% active_link request search_url %}">{% trans "Mentores" %}</a></li>
-                <li><a href="{{ profile_url }}" class="header-menu-link {% active_link request profile_url %}">{% trans "Tus Horas" %}</a></li>
+                {% if profile_url %}
+                    <li><a href="{{ profile_url }}" class="header-menu-link {% active_link request profile_url %}">{% trans "Tus Horas" %}</a></li>
+                {% endif %}
                 <li><a href="{{ stats_url }}" class="header-menu-link {% active_link request stats_url %}">{% trans "Estadísticas" %}</a></li>
             </ul>
         </div> <!-- /.header-branding -->
