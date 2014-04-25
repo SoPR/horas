@@ -5,12 +5,13 @@
     {% blocktrans with mentor_name=meeting.mentor.first_name protege_name=meeting.protege.get_full_name the_date=meeting.datetime|date the_time=meeting.get_time_range_string meeting_url=meeting.get_url_with_domain message=meeting.message %}
         Hola {{ mentor_name }},
 
-        {{ protege_name }} acaba de reservar la reunión pautada para el {{ the_date }} @ {{ the_time }}.
+        {{ protege_name }} acaba de reservar el espacio de reunión pautado para el {{ the_date }} @ {{ the_time }}.
 
-        ---
-        Mensaje:
+        =======
+        Mensaje de {{ protege_name }}:
+
         {{ message }}
-        ---
+        =======
 
         Ahora tú tienes que confirmar o cancelar la reunión visitando: {{ meeting_url }}.
 
