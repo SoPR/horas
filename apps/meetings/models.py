@@ -54,9 +54,12 @@ class Meeting(BaseModel):
                 return True
         return False
 
+    def get_end_datetime(self):
+        return self.datetime + timedelta(hours=1)
+
     def is_in_past(self):
         # I actually like this method name
-        return now() > (self.datetime + timedelta(hours=1))
+        return now() > self.get_end_datetime()
 
     def get_time_range_string(self):
         tz = get_current_timezone()

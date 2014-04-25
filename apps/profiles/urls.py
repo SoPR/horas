@@ -1,4 +1,6 @@
 from django.conf.urls import patterns, url
+
+from .feeds import ProfileCalendarFeed
 from .views import ProfileDetailView, ProfileUpdateView
 
 urlpatterns = patterns(
@@ -12,5 +14,5 @@ urlpatterns = patterns(
         ProfileUpdateView.as_view(),
         name='profile_update'),
 
-    # url('^.(?P<format>ics|rss|atom)$', ProfileDetailView.as_view()),
+    url(r'^ical/$', ProfileCalendarFeed(), name='profile_calendar_feed'),
 )
