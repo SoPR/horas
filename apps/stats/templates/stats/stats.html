@@ -9,7 +9,8 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
-                <h2>{% trans "Estadísticas" %} <small>{{ users.stats.0.date_created|time }} - {{ users.stats.0.date_created|date }}</small></h2><br>
+                <h2>{% trans "Estadísticas" %}</h2>
+                <h5 class="text-muted">Actualizo el {{ users.stats.0.date_created|date }} @ {{ users.stats.0.date_created|time }}</h5><br>
             </div>
         </div>
 
