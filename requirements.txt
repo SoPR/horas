@@ -1,5 +1,5 @@
 Collectfast==0.1.14
-Django==1.6.3
+Django==1.6.4
 Fabric==1.8.3
 South==0.8.4
 Unidecode==0.04.14
