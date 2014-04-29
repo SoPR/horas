@@ -30,6 +30,7 @@ class CustomUserCreationForm(UserCreationForm):
 
 class CustomUserAdmin(UserAdmin):
     form = CustomUserChangeForm
+    list_filter = ('is_superuser', 'is_staff', 'is_active', 'featured')
     add_form = CustomUserCreationForm
     fieldsets = UserAdmin.fieldsets + (
         ('Profile', {
