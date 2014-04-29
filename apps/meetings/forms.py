@@ -24,7 +24,7 @@ class MeetingUpdateForm(ModelForm):
 
         self.fields['message'].required = True
         self.fields['message'].label = _('Mensaje')
-        self.fields['message'].help_text = _(u'En este mensaje, explica de que quieres hablar en la reunón, por qué escogiste a esta persona. Trata de dejarle saber al mentor los temas que quieres hablar durante la reunión. Piensa que el mentor se tiene que preparar y tu debes estar preparado antes de la reunión. Este mensaje debe ayudar a ambos a saber que esperar de la reunión.')
+        self.fields['message'].help_text = _(u'En este mensaje, explica de que quieres hablar en la reunión, por qué escogiste a esta persona. Trata de dejarle saber al mentor los temas que quieres hablar durante la reunión. Piensa que el mentor se tiene que preparar y tu debes estar preparado antes de la reunión. Este mensaje debe ayudar a ambos a saber que esperar de la reunión.')
 
     def save(self, *args, **kwargs):
         meeting = super(MeetingUpdateForm, self).save(commit=False, *args, **kwargs)
