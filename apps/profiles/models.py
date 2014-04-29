@@ -198,6 +198,7 @@ class User(AbstractUser):
                 notification.send([self], 'create_meeting_slot',
                                   {'meeting': meeting_slot})
                 meeting_slot.publish_on_twitter()
+                # TODO: Notify followers
 
             return meeting_slot, created
 
