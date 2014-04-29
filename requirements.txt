@@ -4,6 +4,7 @@ Fabric==1.8.3
 South==0.8.4
 Unidecode==0.04.14
 Werkzeug==0.9.4
+bitly-api==0.3
 boto==2.27.0
 dj-database-url==0.3.0
 django-allauth==0.15.0
@@ -38,6 +39,8 @@ pytz==2014.1
 raven==4.2.1
 requests==2.2.1
 requests-oauthlib==0.4.0
+simplejson==3.4.0
 six==1.5.2
 sqlparse==0.1.11
+tweepy==2.3.0
 wsgiref==0.1.2
