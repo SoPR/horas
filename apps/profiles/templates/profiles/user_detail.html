@@ -72,6 +72,19 @@
                     </section> <!-- /.row profile-content-section -->
                 {% endif %}
 
+                <section class="profile-content-section">
+                    <h3 class="text-section-header">{% trans "Comparte" %}</h3>
+                        <div class="row profile-meeting-row">
+                            <div class="col-xs-12">
+                                <ul class="list-inline list-unstyled social-buttons-list">
+                                    <li class="social-button-item social-button-twitter"><a href="https://twitter.com/share" class="twitter-share-button" data-related="1horaorg">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script></li>
+                                    <li class="social-button-item social-button-plus"><g:plusone size="medium" style="display:inline"></g:plusone><script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script></li>
+                                    <li class="social-button-item social-button-facebook"><iframe src="http://www.facebook.com/plugins/like.php?app_id=282469738575875&amp;href={{ profile_user.get_url_with_domain }}&amp;send=false&amp;layout=button_count&amp;width=100&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100px; height:21px;" allowTransparency="true"></iframe></li>
+                                    </ul>
+                            </div>
+                        </div> <!-- /.row profile-meeting-row -->
+                </section> <!-- /.row profile-content-section -->
             </div> <!-- /.profile-content-wrapper -->
 
         </div> <!-- /.row -->

@@ -8,6 +8,7 @@ from django.contrib.auth.models import AbstractUser
 from django.db.models.loading import get_model
 from django.utils.timezone import now, get_default_timezone, make_aware
 from django.core.urlresolvers import reverse_lazy
+from django.contrib.sites.models import Site
 from django.utils.translation import ugettext_lazy as _
 from django.db.models import Q
 
@@ -92,6 +93,10 @@ class User(AbstractUser):
 
     def get_absolute_url(self):
         return reverse_lazy('profile_detail', args=[self.username])
+
+    def get_url_with_domain(self):
+        domain = Site.objects.get_current().domain
+        return '{0}://{1}{2}'.format(settings.PROTOCOL, domain, self.get_absolute_url())
 
     def get_tiny_name(self):
         return '{0}. {1}'.format(self.first_name[0], self.last_name)
