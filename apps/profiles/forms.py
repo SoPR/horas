@@ -1,6 +1,4 @@
 # encoding: utf-8
-import pytz
-
 from django import forms
 from django.forms.util import ErrorList
 from django.utils import six
@@ -62,10 +60,6 @@ TIME_CHOICES = (
     ('23:00:00', '11:00 PM'),
     ('23:30:00', '11:30 PM'),
 )
-
-TIMEZONE_CHOICES = []
-for tz in pytz.common_timezones:
-    TIMEZONE_CHOICES.append((tz, tz))
 
 
 class TagWidget(forms.Textarea):
@@ -160,7 +154,6 @@ class ProfileUpdateForm(forms.ModelForm):
 
         self.fields['timezone'].label = _(u'Zona horaria')
         self.fields['timezone'].required = True
-        self.fields['timezone'].widget = forms.Select(choices=TIMEZONE_CHOICES)
 
     def clean_bio(self, *args, **kwargs):
         bio = self.cleaned_data['bio']

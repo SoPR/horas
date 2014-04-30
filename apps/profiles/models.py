@@ -31,7 +31,7 @@ class User(AbstractUser):
     for tz in pytz.common_timezones:
         now = datetime.now(pytz.timezone(tz))
         PRETTY_TIMEZONE_CHOICES.append(
-            (tz, ' %s (GMT%s)' % (tz, now.strftime('%z'))))
+            (tz, '%s (GMT %s)' % (tz, now.strftime('%z'))))
 
     # Public profile information
     featured = models.BooleanField(default=False)
