@@ -105,7 +105,7 @@ class MeetingStateMachine(StateMachine):
 
             # Send "remind the protege to respond email" to mentor
             notification.send(
-                [instance.protege],
+                [instance.mentor],
                 'post_meeting_mentor',
                 {'meeting': instance})
 
