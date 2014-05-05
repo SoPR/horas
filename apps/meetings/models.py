@@ -47,16 +47,10 @@ class Meeting(BaseModel):
         return '{0}://{1}{2}'.format(settings.PROTOCOL, domain, self.get_absolute_url())
 
     def cancelled_by_mentor(self):
-        if self.state == 'cancelled' and self.cancelled_by:
-            if self.cancelled_by == self.mentor:
-                return True
-        return False
+        return self.cancelled_by == self.mentor
 
     def cancelled_by_protege(self):
-        if self.state == 'cancelled' and self.cancelled_by:
-            if self.cancelled_by == self.protege:
-                return True
-        return False
+        return self.cancelled_by == self.protege
 
     def get_end_datetime(self):
         return self.datetime + timedelta(hours=1)
