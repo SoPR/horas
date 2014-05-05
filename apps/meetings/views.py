@@ -8,6 +8,7 @@ from braces.views import LoginRequiredMixin
 
 from .models import Meeting
 from .forms import MeetingUpdateForm
+from .mixins import RestrictToMentorMixin, RestrictToParticipantsMixin
 
 
 class MeetingDetailView(LoginRequiredMixin, DetailView):
@@ -16,7 +17,6 @@ class MeetingDetailView(LoginRequiredMixin, DetailView):
     def get_object(self, *args, **kwargs):
         return get_object_or_404(
             Meeting.objects.select_related('mentor', 'protege'),
-            Q(mentor=self.request.user) | Q(protege=self.request.user),
             pk=self.kwargs.get('pk'),
             mentor__username=self.kwargs['username'])
 
@@ -37,7 +37,7 @@ class MeetingUpdateView(LoginRequiredMixin, UpdateView):
         return get_object_or_404(
             Meeting.objects.select_related('mentor', 'protege'),
             pk=self.kwargs.get('pk'), state='available',
-            protege=None, mentor__username=self.kwargs['username'])
+            mentor__username=self.kwargs['username'])
 
     def get_form_kwargs(self, *args, **kwargs):
         kwargs = super(MeetingUpdateView, self).get_form_kwargs(*args, **kwargs)
@@ -55,16 +55,14 @@ class MeetingUpdateView(LoginRequiredMixin, UpdateView):
                             args=[self.kwargs['username']])
 
 
-class MeetingConfirmView(LoginRequiredMixin, UpdateView):
+class MeetingConfirmView(RestrictToMentorMixin, LoginRequiredMixin, UpdateView):
     model = Meeting
     http_method_names = ['post']
 
     def post(self, *args, **kwargs):
         self.object = self.get_object()
 
-        if self.request.user == self.object.mentor:
-            self.object.get_state_info().make_transition('confirm', self.request.user)
-
+        self.object.get_state_info().make_transition('confirm', self.request.user)
         return HttpResponseRedirect(self.get_success_url())
 
     def get_object(self, *args, **kwargs):
@@ -77,18 +75,15 @@ class MeetingConfirmView(LoginRequiredMixin, UpdateView):
                             args=[self.kwargs['username']])
 
 
-class MeetingCancelView(LoginRequiredMixin, UpdateView):
+class MeetingCancelView(RestrictToParticipantsMixin, LoginRequiredMixin, UpdateView):
     model = Meeting
     http_method_names = ['post']
 
     def post(self, *args, **kwargs):
         self.object = self.get_object()
 
-        if self.request.user == self.object.mentor or \
-            self.request.user == self.object.protege:
-
-            trans_name = 'cancel_{}'.format(self.object.state)
-            self.object.get_state_info().make_transition(trans_name, self.request.user)
+        trans_name = 'cancel_{}'.format(self.object.state)
+        self.object.get_state_info().make_transition(trans_name, self.request.user)
 
         return HttpResponseRedirect(self.get_success_url())
 
@@ -101,21 +96,3 @@ class MeetingCancelView(LoginRequiredMixin, UpdateView):
     def get_success_url(self):
         return reverse_lazy('profile_detail',
                             args=[self.kwargs['username']])
-
-class MeetingFeedbackView(LoginRequiredMixin, UpdateView):
-    model = Meeting
-    http_method_names = ['post']
-
-    def post(self, *args, **kwargs):
-        self.object = self.get_object()
-        action = self.request.POST.get('action', False)
-
-        if self.request.user == self.object.protege and action:
-            transition = 'flag_{0}_{1}'.format(action, self.object.state)
-            self.object.get_state_info().make_transition(transition, self.request.user)
-
-        return HttpResponseRedirect(self.get_success_url())
-
-    def get_success_url(self):
-        return reverse_lazy('meeting_detail',
-                            args=[self.kwargs['username'], self.object.id])

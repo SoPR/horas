@@ -12,22 +12,26 @@
 
             <div class="col-sm-9 profile-content-wrapper">
                 {% if object.meetings.available %}
-                    <section class="profile-content-section">
-                        <h3 class="text-section-header">{% trans "Hora disponible" %}</h3>
+                    <section class="jumbotron profile-content-section">
+                        <h3 class="text-section-header">{% trans "Disponible" %}</h3>
                         {% for meeting in object.meetings.available %}
                             <div class="row profile-meeting-row">
-                                <div class="col-xs-4 col-md-2">
-                                    <a href="{% url 'meeting_update' profile_user meeting.id %}" class="btn btn-lg btn-success">{% trans "Reservar" %}</a>
+                                <div class="col-sm-12">
+                                    <h2>{{ meeting.datetime|date }}</h2>
+                                    <p>{{ meeting.get_time_range_string }}</p>
                                 </div>
-                                <div class="col-xs-5">
-                                    <strong>{{ meeting.datetime|date }}</strong><br>
-                                    {{ meeting.get_time_range_string }}
-                                </div>
-                                <div class="col-xs-3">
-                                    <strong>{% trans "Formatos" %}</strong><br>
+                            </div>
+                            <div class="row profile-meeting-row">
+                                <div class="col-sm-12">
+                                    <h4>{% trans "Formatos" %}</h4>
                                     {{ profile_user.get_meeting_formats_string }}
                                 </div>
-                            </div> <!-- /.row profile-meeting-row -->
+                            </div>
+                            <div class="row profile-meeting-row">
+                                <div class="col-sm-12">
+                                    <a href="{% url 'meeting_update' profile_user meeting.id %}" class="btn btn-lg btn-success">{% trans "Reservar" %}</a>
+                                </div>
+                            </div><!-- /.row profile-meeting-row -->
                         {% endfor %}
                     </section> <!-- /.row profile-content-section -->
                 {% endif %}
