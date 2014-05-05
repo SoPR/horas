@@ -40,11 +40,13 @@ class Meeting(BaseModel):
         return '[{}] {} - {}'.format(self.pk, self.mentor, self.datetime)
 
     def get_absolute_url(self):
-        return reverse_lazy('meeting_detail', args=[self.mentor.username, self.pk])
+        return reverse_lazy('meeting_detail',
+                            args=[self.mentor.username, self.pk])
 
     def get_url_with_domain(self):
         domain = Site.objects.get_current().domain
-        return '{0}://{1}{2}'.format(settings.PROTOCOL, domain, self.get_absolute_url())
+        return '{0}://{1}{2}'.format(settings.PROTOCOL,
+                                     domain, self.get_absolute_url())
 
     def cancelled_by_mentor(self):
         return self.cancelled_by == self.mentor
@@ -69,10 +71,12 @@ class Meeting(BaseModel):
         start_time_fmt = date_format(start_time, 'TIME_FORMAT')
         end_time_fmt = date_format(end_time, 'TIME_FORMAT')
 
-        return '{0} - {1} ({2})'.format(start_time_fmt, end_time_fmt, start_datetime.tzname())
+        return '{0} - {1} ({2})'.format(start_time_fmt,
+                                        end_time_fmt, start_datetime.tzname())
 
     def get_short_url(self):
-        bitly = bitly_api.Connection(access_token=os.environ.get('BITLY_ACCESS_TOKEN'))
+        bitly = bitly_api.Connection(
+            access_token=os.environ.get('BITLY_ACCESS_TOKEN'))
         return bitly.shorten(self.get_url_with_domain())['url']
 
     def get_twitter_message(self):
