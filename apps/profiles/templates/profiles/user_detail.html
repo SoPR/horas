@@ -16,8 +16,14 @@
                         <h3 class="text-section-header">{% trans "Disponible" %}</h3>
                         {% for meeting in object.meetings.available %}
                             <div class="row profile-meeting-row">
-                                <div class="col-sm-12">
-                                    <h2>{{ meeting.datetime|date }}</h2>
+                                <div class="col-xs-4 col-md-3">
+                                    <div class="meeting-card-wrapper meeting-card-lg">
+                                        <div class="meeting-card-month">{{ meeting.datetime|date:"M"|upper }}</div>
+                                        <div class="meeting-card-number">{{ meeting.datetime|date:"d" }}</div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-8 col-md-9">
+                                    <h4>Hora</h4>
                                     <p>{{ meeting.get_time_range_string }}</p>
                                 </div>
                             </div>
