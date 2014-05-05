@@ -48,6 +48,7 @@
                                 <form method="post">
                                     {% csrf_token %}<br>
                                     {% bootstrap_form form %}
+                                    <hr> <!-- hr -->
                                     <button type="submit" class="btn btn-success">{% trans "Reservar" %}</button> <a href="{% url 'profile_detail' profile_user.username %}" class="btn btn-link">{% trans "Volver al perfil de" %} {{ profile_user.get_full_name|title }}</a>
                                 </form>
                             </div>

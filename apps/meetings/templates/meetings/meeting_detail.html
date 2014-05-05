@@ -24,59 +24,54 @@
                             {{ meeting.get_time_range_string }}</h2><br>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-sm-12">
-                            {% if meeting.format %}
-                                <p>
-                                    <strong>{% trans "Formato de reunión" %}</strong><br>
-                                    {{ meeting_format_name }}{% if meeting.state == 'confirmed' %}: {{ meeting_format_information }}{% endif %}
-                                </p>
-                            {% endif %}
-                            {% if meeting.state == 'confirmed' %}
-                                <strong>{% trans "Información de contacto" %}</strong><br>
-                                <p>
-                                    {{ meeting.mentor.get_full_name|title }}: <a href="mailto:{{ meeting.mentor.email }}?subject={% trans "Reunión" %} {{meeting.datetime|date}} @ {{ meeting.get_time_range_string }}">{{ meeting.mentor.email }}</a><br>
-                                    {{ meeting.protege.get_full_name|title }}: <a href="mailto:{{ meeting.protege.email }}?subject={% trans "Reunión" %} {{meeting.datetime|date}} @ {{ meeting.get_time_range_string }}">{{ meeting.protege.email }}</a>
-                                </p>
-                            {% endif %}
-                            {% if meeting.message %}
-                                <p>
-                                    <strong>{% trans "Mensaje" %}:</strong><br>
-                                    {{ meeting.message }}
-                                </p>
-                            {% endif %}
+
+                    {# Only show details to protege and mentor #}
+                    {% if user == meeting.mentor or user == meeting.protege %}
+                        <div class="row">
+                            <div class="col-sm-12">
+                                {% if meeting.format %}
+                                    <p>
+                                        <strong>{% trans "Formato de reunión" %}</strong><br>
+                                        {{ meeting_format_name }}{% if meeting.state == 'confirmed' %}: {{ meeting_format_information }}{% endif %}
+                                    </p>
+                                {% endif %}
+                                {% if meeting.state == 'confirmed' %}
+                                    <strong>{% trans "Información de contacto" %}</strong><br>
+                                    <p>
+                                        {{ meeting.mentor.get_full_name|title }}: <a href="mailto:{{ meeting.mentor.email }}?subject={% trans "Reunión" %} {{meeting.datetime|date}} @ {{ meeting.get_time_range_string }}">{{ meeting.mentor.email }}</a><br>
+                                        {{ meeting.protege.get_full_name|title }}: <a href="mailto:{{ meeting.protege.email }}?subject={% trans "Reunión" %} {{meeting.datetime|date}} @ {{ meeting.get_time_range_string }}">{{ meeting.protege.email }}</a>
+                                    </p>
+                                {% endif %}
+                                {% if meeting.message %}
+                                    <p><strong>{% trans "Mensaje" %}</strong></p>
+                                    <div class="well">
+                                        {{ meeting.message }}
+                                    </div>
+                                {% endif %}
+                            </div>
                         </div>
-                    </div>
 
-                    <hr> <!-- hr -->
+                        <hr> <!-- hr -->
 
-                    <div class="row">
-                        <div class="col-sm-12">
-                            {% if meeting.state == 'reserved' or meeting.state == 'confirmed' %}
-                                <form action="{% url 'meeting_cancel' meeting.mentor.username meeting.id %}" method="post" class="form-inline">
-                                    {% csrf_token %}
-                                    <button type="submit" class="btn btn-default btn-grey">{% trans "Cancelar reunión" %}</button>
-                                </form>
-                            {% endif %}
+                        <div class="row">
+                            <div class="col-sm-12">
+                                {% if meeting.state == 'reserved' or meeting.state == 'confirmed' %}
+                                    <form action="{% url 'meeting_cancel' meeting.mentor.username meeting.id %}" method="post" class="form-inline">
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn btn-default btn-grey">{% trans "Cancelar reunión" %}</button>
+                                    </form>
+                                {% endif %}
 
-                            {% if meeting.state == 'waiting_reply' and meeting.protege == user %}
-                                <h4>Confirma si la reunión se celebró</h4>
-                                <form action="{% url 'meeting_feedback' meeting.mentor.username meeting.id %}" method="post" class="form-inline">
-                                    {% csrf_token %}
-                                    <button type="submit" name="action" value="did_happen" class="btn btn-success">{% trans "Si, celebramos la reunión" %}</button>
-                                    <button type="submit" name="action" value="didnt_happen" class="btn btn-warning">{% trans "No celebramos la reunión" %}</button>
-                                </form>
-                            {% endif %}
-
-                            {% if meeting.state == 'reserved' and meeting.mentor == user %}
-                                <form action="{% url 'meeting_confirm' meeting.mentor.username meeting.id %}" method="post" class="form-inline">
-                                    {% csrf_token %}
-                                    <button type="submit" class="btn btn-default btn-success">{% trans "Confirmar" %}</button>
-                                </form>
-                            {% endif %}
-                            <a href="{% url 'profile_detail' meeting.mentor.username %}" class="btn btn-link">{% trans "Volver al perfil de " %} {{ meeting.mentor.get_full_name|title }}</a>
+                                {% if meeting.state == 'reserved' and meeting.mentor == user %}
+                                    <form action="{% url 'meeting_confirm' meeting.mentor.username meeting.id %}" method="post" class="form-inline">
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn btn-default btn-success">{% trans "Confirmar" %}</button>
+                                    </form>
+                                {% endif %}
+                                <a href="{% url 'profile_detail' meeting.mentor.username %}" class="btn btn-link">{% trans "Volver al perfil de " %} {{ meeting.mentor.get_full_name|title }}</a>
+                            </div>
                         </div>
-                    </div>
+                    {% endif %}
                 </section>
             </div>
         </div>
