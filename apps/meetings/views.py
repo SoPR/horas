@@ -8,10 +8,9 @@ from braces.views import LoginRequiredMixin
 
 from .models import Meeting
 from .forms import MeetingUpdateForm
-from .mixins import RestrictToMentorMixin, RestrictToParticipantsMixin
 
 
-class MeetingDetailView(LoginRequiredMixin, DetailView):
+class MeetingDetailView(DetailView):
     model = Meeting
 
     def get_object(self, *args, **kwargs):
@@ -55,7 +54,7 @@ class MeetingUpdateView(LoginRequiredMixin, UpdateView):
                             args=[self.kwargs['username']])
 
 
-class MeetingConfirmView(RestrictToMentorMixin, LoginRequiredMixin, UpdateView):
+class MeetingConfirmView(LoginRequiredMixin, UpdateView):
     model = Meeting
     http_method_names = ['post']
 
@@ -66,6 +65,9 @@ class MeetingConfirmView(RestrictToMentorMixin, LoginRequiredMixin, UpdateView):
         return HttpResponseRedirect(self.get_success_url())
 
     def get_object(self, *args, **kwargs):
+        '''
+        Only the mentor of the meeting can confirm
+        '''
         return get_object_or_404(
             Meeting.objects.select_related('mentor', 'protege'),
             pk=self.kwargs.get('pk'), mentor=self.request.user, state='reserved')
@@ -75,7 +77,7 @@ class MeetingConfirmView(RestrictToMentorMixin, LoginRequiredMixin, UpdateView):
                             args=[self.kwargs['username']])
 
 
-class MeetingCancelView(RestrictToParticipantsMixin, LoginRequiredMixin, UpdateView):
+class MeetingCancelView(LoginRequiredMixin, UpdateView):
     model = Meeting
     http_method_names = ['post']
 
@@ -88,6 +90,9 @@ class MeetingCancelView(RestrictToParticipantsMixin, LoginRequiredMixin, UpdateV
         return HttpResponseRedirect(self.get_success_url())
 
     def get_object(self, *args, **kwargs):
+        '''
+        Both mentor and protege can cancel a meeting
+        '''
         return get_object_or_404(
             Meeting.objects.select_related('mentor', 'protege'),
             Q(mentor=self.request.user) | Q(protege=self.request.user),
