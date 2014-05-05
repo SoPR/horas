@@ -12,19 +12,35 @@
             {% include "profiles/profile_sidebar.html" %}
 
             <div class="col-sm-9">
-                <section class="meeting-form-section">
+                <section class="jumbotron profile-content-section">
                     <h3 class="text-section-header">{% trans "Reunión" %}</h3>
-                    <h4>{% include "profiles/meeting_row_state.html" %}</h4>
-                    <div class="row">
+                    <div class="row profile-meeting-row">
                         <div class="col-sm-12">
-                            {% if meeting.protege and meeting.mentor %}
-                                <h4><a href="{% url 'profile_detail' meeting.protege.username %}">{{ meeting.protege.get_full_name|title }}</a> con <a href="{% url 'profile_detail' meeting.mentor.username %}">{{ meeting.mentor.get_full_name|title }}</a></h4>
-                            {% endif %}
-                            <h2>{{meeting.datetime|date}}<br>
-                            {{ meeting.get_time_range_string }}</h2><br>
+                            <h2>{{ meeting.datetime|date }}</h2>
+                            <p>{{ meeting.get_time_range_string }}</p>
                         </div>
                     </div>
 
+                    {% if meeting.state == 'available' %}
+                        <div class="row profile-meeting-row">
+                            <div class="col-sm-12">
+                                <h4>{% trans "Formatos" %}</h4>
+                                {{ profile_user.get_meeting_formats_string }}
+                            </div>
+                        </div>
+                    {% endif %}
+
+                    <div class="row profile-meeting-row">
+                        <div class="col-sm-12">
+                            {% if meeting.state == 'available' %}
+                                <a href="{% url 'meeting_update' profile_user meeting.id %}" class="btn btn-lg btn-success">{% trans "Reservar" %}</a>
+                            {% endif %}
+                            <h4>{% include "profiles/meeting_row_state.html" %}</h4>
+                        </div>
+                    </div><!-- /.row profile-meeting-row -->
+                </section> <!-- /.row profile-content-section -->
+
+                <section class="meeting-form-section">
                     {# Only show details to protege and mentor #}
                     {% if user == meeting.mentor or user == meeting.protege %}
                         <div class="row">
