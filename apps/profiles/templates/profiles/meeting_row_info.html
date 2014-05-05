@@ -1,11 +1,8 @@
 {% load i18n %}
 
 <div class="col-xs-offset-1 col-sm-offset-0 col-xs-5">
-    {% if meeting.mentor == user or meeting.protege == user %}
-        <strong><a href="{% url 'meeting_detail' meeting.mentor.username meeting.id %}">{{ meeting.datetime|date }} - {{ meeting.get_time_range_string }}</a></strong><br>
-    {% else %}
-        <strong>{{ meeting.datetime|date }} - {{ meeting.get_time_range_string }}</strong><br>
-    {% endif %}
+    <strong><a href="{% url 'meeting_detail' meeting.mentor.username meeting.id %}">{{ meeting.datetime|date }} - {{ meeting.get_time_range_string }}</a></strong>
+    <br>
     {% if meeting.protege and meeting.mentor %}
          <a href="{% url 'profile_detail' meeting.mentor.username %}">{{ meeting.mentor.get_full_name|title }}</a> con <a href="{% url 'profile_detail' meeting.protege.username %}">{{ meeting.protege.get_full_name|title }}</a><br>
     {% endif %}
