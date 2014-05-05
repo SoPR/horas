@@ -16,19 +16,6 @@ cancelled:
     A meeting that was either reserved or confirmed and
     then cancelled by the mentor or protege.
 
-waiting_reply:
-    At least 1 hour have passed from the meeting's start datetime
-    and mentor or protege have not replied to our how was the
-    meeting email.
-
-didnt_happen:
-    Mentor or protege replied to our how was the meeting email
-    saying the meeting did not happen.
-
-did_happen:
-    Mentor or protege replied to our how was the meeting email
-    saying the meeting did happen.
-
 unused:
     at least 1 hour have passed from the meeting's start datetime
     and the meeting is still in the available state, meaning
@@ -93,28 +80,6 @@ class MeetingStateMachine(StateMachine):
 
             instance.mentor.get_or_create_meeting()
 
-    class waiting_reply(StateDefinition):
-        description = _('Waiting for reply')
-
-        def handler(self, instance):
-            # Send "how was the meeting email" to protege
-            notification.send(
-                [instance.protege],
-                'post_meeting_protege',
-                {'meeting': instance})
-
-            # Send "remind the protege to respond email" to mentor
-            notification.send(
-                [instance.mentor],
-                'post_meeting_mentor',
-                {'meeting': instance})
-
-    class didnt_happen(StateDefinition):
-        description = _('Meeting didn\'t happen')
-
-    class did_happen(StateDefinition):
-        description = _('Meeting did happen')
-
     class unused(StateDefinition):
         description = _('Un-used')
 
@@ -151,7 +116,6 @@ class MeetingStateMachine(StateMachine):
         description = _('When mentor or protege cancels a reserved meeting')
 
         def handler(transition, instance, user):
-            instance.cancelled_by = user
             instance.save()
 
         def has_permission(transition, instance, user):
@@ -163,53 +127,10 @@ class MeetingStateMachine(StateMachine):
         description = _('When mentor or protege cancels a confirmed meeting')
 
         def handler(transition, instance, user):
-            instance.cancelled_by = user
             instance.save()
 
         def has_permission(transition, instance, user):
             return True
-
-    class flag_waiting_reply_reserved(StateTransition):
-        from_state = 'reserved'
-        to_state = 'waiting_reply'
-        description = _('')
-
-    class flag_waiting_reply_confirmed(StateTransition):
-        from_state = 'confirmed'
-        to_state = 'waiting_reply'
-        description = _('')
-
-    class flag_didnt_happen_reserved(StateTransition):
-        from_state = 'reserved'
-        to_state = 'didnt_happen'
-        description = _('When the meetings is not held after being reserved')
-
-        def has_permission(transition, instance, user):
-            return user == instance.protege
-
-    class flag_didnt_happen_confirmed(StateTransition):
-        from_state = 'confirmed'
-        to_state = 'didnt_happen'
-        description = _('When the meetings is not held after being confirmed')
-
-        def has_permission(transition, instance, user):
-            return user == instance.protege
-
-    class flag_did_happen_waiting_reply(StateTransition):
-        from_state = 'waiting_reply'
-        to_state = 'did_happen'
-        description = _('When a protege confirms that the meeting was held')
-
-        def has_permission(transition, instance, user):
-            return user == instance.protege
-
-    class flag_did_happen_confirmed(StateTransition):
-        from_state = 'confirmed'
-        to_state = 'did_happen'
-        description = _('When a protege confirms that the meeting was held')
-
-        def has_permission(transition, instance, user):
-            return user == instance.protege
 
     class flag_unused(StateTransition):
         from_state = 'available'
