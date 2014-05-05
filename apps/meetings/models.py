@@ -73,7 +73,7 @@ class Meeting(BaseModel):
 
     def get_short_url(self):
         bitly = bitly_api.Connection(access_token=os.environ.get('BITLY_ACCESS_TOKEN'))
-        return bitly.shorten(self.mentor.get_url_with_domain())['url']
+        return bitly.shorten(self.get_url_with_domain())['url']
 
     def get_twitter_message(self):
         message = _(u'{0} tiene un espacio de reunión disponible. {1}'.format(
