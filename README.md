@@ -100,7 +100,8 @@ $ npm install
 $ cd ../..
 $ cp .env.example .env
 $ pip install -r requirements.txt
-$ python manage.py syncdb --migrate
+$ python manage.py syncdb migrate
+$ python manage.py loaddata apps/profiles/fixtures/admin.json
 $ python manage.py brunchserver
 ```
 

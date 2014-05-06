@@ -154,6 +154,10 @@ class Common(Configuration):
         os.path.join(BASE_DIR, 'static', 'dist'),
     )
 
+    SOUTH_MIGRATION_MODULES = {
+        'taggit': 'taggit.south_migrations',
+    }
+
 
 class Development(Common):
     DEBUG = True
