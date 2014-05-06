@@ -25,7 +25,7 @@ class Migration(SchemaMigration):
 
     models = {
         u'stats.stat': {
-            'Meta': {'object_name': 'Stat'},
+            'Meta': {'ordering': "('-date_created',)", 'object_name': 'Stat'},
             'count': ('django.db.models.fields.IntegerField', [], {}),
             'date_created': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'blank': 'True'}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
