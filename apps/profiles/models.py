@@ -180,11 +180,8 @@ class User(AbstractUser):
 
             # Getto get_or_create
             try:
-                meeting_slot = Meeting.objects.get(Q(state='available') |
-                                                   Q(state='reserved') |
-                                                   Q(state='confirmed'),
-                                                   mentor=self,
-                                                   datetime=next_slot)
+                meeting_slot = Meeting.objects.get(state='available',
+                                                   mentor=self)
                 created = False
             except Meeting.DoesNotExist:
                 meeting_slot = Meeting.objects.create(mentor=self,
