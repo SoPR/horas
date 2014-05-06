@@ -12,14 +12,11 @@ class StatsView(TemplateView):
         context['meetings'] = [
             Stat.objects.get_latest('meetings:all'),
             Stat.objects.get_latest('meetings:available'),
-            Stat.objects.get_latest('meetings:confirmed'),
             Stat.objects.get_latest('meetings:reserved'),
-            Stat.objects.get_latest('meetings:deleted'),
-            Stat.objects.get_latest('meetings:didnt_happen'),
-            Stat.objects.get_latest('meetings:did_happen'),
-            Stat.objects.get_latest('meetings:unused'),
-            Stat.objects.get_latest('meetings:waiting_reply'),
+            Stat.objects.get_latest('meetings:confirmed'),
             Stat.objects.get_latest('meetings:cancelled'),
+            Stat.objects.get_latest('meetings:unused'),
+            Stat.objects.get_latest('meetings:deleted')
         ]
 
         context['users'] = {
