@@ -13,7 +13,7 @@
             <div class="col-sm-9 profile-content-wrapper">
                 {% if object.meetings.available %}
                     <section class="jumbotron profile-content-section">
-                        <h3 class="text-section-header">{% trans "Disponible" %}</h3>
+                        <h3 class="text-section-header available-meeting-header">{% trans "Disponible" %}</h3>
                         {% for meeting in object.meetings.available %}
                             <div class="row profile-meeting-row">
                                 <div class="col-xs-4 col-md-3">
@@ -38,6 +38,12 @@
                                     <a href="{% url 'meeting_update' profile_user meeting.id %}" class="btn btn-lg btn-success">{% trans "Reservar" %}</a>
                                 </div>
                             </div><!-- /.row profile-meeting-row -->
+
+                            {% if object.meetings.available|length > 1 %}
+                                {% if forloop.last == False %}
+                                    <hr class="meeting-divider">
+                                {% endif %}
+                            {% endif %}
                         {% endfor %}
                     </section> <!-- /.row profile-content-section -->
                 {% endif %}
