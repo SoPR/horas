@@ -107,6 +107,11 @@ $ python manage.py brunchserver
 
 Abre tu browser en [http://localhost:8000/](http://localhost:8000/). Para accesar la sección de administración ve a [http://localhost:8000/admin/](http://localhost:8000/admin/), y usa el username **admin** y el password **abc123**.
 
+#### Para correr tests
+```
+$ python manage.py test --configuration=Testing --verbosity=3 --noinput
+```
+
 ## Diseñadores
 
 Tenemos un branch dedicado para compartir y colaborar sobre el diseño de la plataforma. Mantendremos el diseño más reciente en ese branch.
