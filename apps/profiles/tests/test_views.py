@@ -1,27 +1,10 @@
 # -*- coding: utf-8 -*-
-
 from datetime import timedelta
 
-from django.test import TestCase
-from django.test import Client
 from django.utils.timezone import now
-from django.core.management import call_command
 
-from apps.profiles.models import User
+from apps.core.tests import BaseTestCase
 from apps.meetings.models import Meeting
-
-
-class BaseTestCase(TestCase):
-    fixtures = ['apps/profiles/fixtures/dude.json']
-
-    def setUp(self):
-        self.client = Client()
-        self.dude = User.objects.get(username='dude')
-        call_command('create_notice_types')
-
-    def _login_user(self):
-        credentials = {'login': 'dude', 'password': 'thedude'}
-        return self.client.post('/accounts/login/', credentials)
 
 
 class UserProfileCompletionTestCase(BaseTestCase):
