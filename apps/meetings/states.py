@@ -116,6 +116,7 @@ class MeetingStateMachine(StateMachine):
         description = _('When mentor or protege cancels a reserved meeting')
 
         def handler(transition, instance, user):
+            instance.cancelled_by = user
             instance.save()
 
         def has_permission(transition, instance, user):
@@ -129,6 +130,7 @@ class MeetingStateMachine(StateMachine):
         description = _('When mentor or protege cancels a confirmed meeting')
 
         def handler(transition, instance, user):
+            instance.cancelled_by = user
             instance.save()
 
         def has_permission(transition, instance, user):
