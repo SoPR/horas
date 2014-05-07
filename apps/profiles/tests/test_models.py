@@ -2,7 +2,6 @@
 from datetime import time, timedelta
 from django.test import TestCase
 from django.core.management import call_command
-from django.utils.timezone import now
 
 from apps.meetings.models import Meeting
 from apps.profiles.models import User
