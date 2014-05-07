@@ -180,6 +180,34 @@ class Development(Common):
     }
 
 
+class Testing(Common):
+    LOGGING_CONFIG = None
+
+    PROTOCOL = 'http'
+
+    # Remove social logins
+    INSTALLED_APPS =  [a for a in Common.INSTALLED_APPS
+                        if not a.startswith('allauth.socialaccount.')]
+
+    # Email Settings
+    EMAIL_BACKEND = 'django.core.mail.backends.dummy.EmailBackend'
+
+    # South
+    SOUTH_TESTS_MIGRATE = False
+
+    # Debug Toolbar
+    DEBUG_TOOLBAR_PATCH_SETTINGS = False
+
+    # Dummy cache for development
+    CACHES = {
+        'default': {
+            'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
+        }
+    }
+
+    ANNOUNCE_TEST_MODE = True
+
+
 class Production(Common):
     # django-secure settings
     PROTOCOL = 'https'

@@ -1,0 +1,39 @@
+[
+{
+    "pk": 2,
+    "model": "profiles.user",
+    "fields": {
+        "last_name": "Lebowski",
+        "date_updated": "2014-05-06T21:29:56.409Z",
+        "skype": "thedude",
+        "jitsi": "thedude@example.com",
+        "featured": false,
+        "is_staff": false,
+        "google": "thedude@example.com",
+        "github_username": "thedude",
+        "user_permissions": [],
+        "timezone": "America/Puerto_Rico",
+        "date_joined": "2014-05-06T21:27:16Z",
+        "city": "Los Angeles",
+        "first_name": "Jeffrey",
+        "gravatar_url": "https://secure.gravatar.com/avatar/d41d8cd98f00b204e9800998ecf8427e",
+        "facebook_username": "thedude",
+        "is_superuser": false,
+        "state": "California",
+        "last_login": "2014-05-06T21:27:16Z",
+        "email": "thedude@example.com",
+        "website_url": "http://yourdudeness.com/",
+        "username": "dude",
+        "bio": "A man who fits in perfectly with 1991 and enjoys a good White Russian.",
+        "start_time": "00:00:00",
+        "is_active": true,
+        "twitter_username": "thedude",
+        "phone": "123-123-1234",
+        "groups": [],
+        "address": "123 Dude Rd.\r\nLos Angeles, CA\r\n123123",
+        "password": "pbkdf2_sha256$12000$vt1XGpT2nYdf$fhHaCcokVv35QsQp0Lm0iVI0V1e7nJxp5iCjtvd9yKI=",
+        "is_gravatar_verified": false,
+        "day_of_week": 0
+    }
+}
+]
