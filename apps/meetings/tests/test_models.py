@@ -9,9 +9,9 @@ from apps.meetings.models import Meeting
 from apps.profiles.models import User
 
 
-class MeetingStatesTestCase(BaseTestCase):
+class MeetingBaseTestCase(BaseTestCase):
     def setUp(self):
-        super(MeetingStatesTestCase, self).setUp()
+        super(MeetingBaseTestCase, self).setUp()
 
         self.user2 = User.objects.create_user(
             username='user2', password='123', email='user2@example.com')
@@ -19,6 +19,8 @@ class MeetingStatesTestCase(BaseTestCase):
         self.meeting = Meeting.objects.create(
             mentor=self.dude, datetime=now() + timedelta(days=1))
 
+
+class MeetingStatesTestCase(MeetingBaseTestCase):
     def test_created_meeting_should_be_available(self):
         self.assertEqual(self.meeting.state, 'available')
 
@@ -115,6 +117,43 @@ class MeetingStatesTestCase(BaseTestCase):
                                                           user3)
 
 
+class MeetingModelMethodsTestCase(MeetingBaseTestCase):
+    def test_get_absolute_url(self):
+        url = self.meeting.get_absolute_url()
+        self.assertEqual(url, '/dude/meetings/1/')
 
-class MeetingModelTestCase(BaseTestCase):
-    pass
+    def test_get_url_with_domain(self):
+        url = self.meeting.get_url_with_domain()
+        self.assertEqual(url, 'http://example.com/dude/meetings/1/')
+
+    def test_cancelled_by_mentor(self):
+        self.meeting.protege = self.user2
+        self.meeting.cancelled_by = self.dude
+        self.meeting.save()
+
+        self.assertTrue(self.meeting.cancelled_by_mentor())
+        self.assertFalse(self.meeting.cancelled_by_protege())
+
+    def test_cancelled_by_protege(self):
+        self.meeting.protege = self.user2
+        self.meeting.cancelled_by = self.user2
+        self.meeting.save()
+
+        self.assertTrue(self.meeting.cancelled_by_protege())
+        self.assertFalse(self.meeting.cancelled_by_mentor())
+
+    def test_get_end_time(self):
+        self.assertTrue(
+            self.meeting.get_end_datetime() > self.meeting.datetime)
+
+    def test_is_in_past_false(self):
+        self.assertFalse(self.meeting.is_in_past())
+
+    def test_is_in_past_true(self):
+        self.meeting.datetime = now() - timedelta(days=1)
+        self.assertTrue(self.meeting.is_in_past())
+
+    def test_get_time_range_string(self):
+        self.assertEquals(type(self.meeting.get_time_range_string()), str)
+        self.assertTrue(len(self.meeting.get_time_range_string()) > 0)
+
