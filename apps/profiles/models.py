@@ -4,6 +4,7 @@ from datetime import datetime
 import pytz
 
 from django.db import models
+from django.db.models import Q
 from django.contrib.auth.models import AbstractUser
 from django.db.models.loading import get_model
 from django.utils.timezone import now, get_default_timezone, make_aware
@@ -16,7 +17,7 @@ from django.conf import settings
 from notification import models as notification
 from taggit.managers import TaggableManager
 
-from .utils import get_gravatar_url, next_weekday
+from .utils import get_gravatar_url, next_weekday, week_range
 from .fields import DaysOfWeekField
 
 
@@ -67,7 +68,7 @@ class User(AbstractUser):
             self.gravatar_url = get_gravatar_url(self.email)
 
         # Check if meeting availability changed
-        if self.pk and self.day_of_week and self.start_time and self.timezone:
+        if self.has_complete_profile():
             original = User.objects.get(pk=self.pk)
 
             checks = [
@@ -81,7 +82,8 @@ class User(AbstractUser):
             if any(checks):
                 print('---> meeting preferences changed')
                 Meeting = get_model('meetings', 'Meeting')
-                available_meetings = Meeting.objects.filter(state='available', mentor=self)
+                available_meetings = Meeting.objects.filter(state='available',
+                                                            mentor=self)
 
                 for meeting in available_meetings:
                     meeting.get_state_info().make_transition('delete')
@@ -176,11 +178,15 @@ class User(AbstractUser):
 
             default_tz = get_default_timezone()
             next_slot = next_slot_local.astimezone(default_tz)
+            week = week_range(next_slot)
 
             # Getto get_or_create
             try:
-                meeting_slot = Meeting.objects.get(state='available',
-                                                   mentor=self)
+                meeting_slot = Meeting.objects.get(Q(state='available') |
+                                                   Q(state='reserved') |
+                                                   Q(state='confirmed'),
+                                                   mentor=self,
+                                                   datetime__range=week)
                 created = False
             except Meeting.DoesNotExist:
                 meeting_slot = Meeting.objects.create(mentor=self,
@@ -193,7 +199,10 @@ class User(AbstractUser):
 
                 notification.send([self], 'create_meeting_slot',
                                   {'meeting': meeting_slot})
-                meeting_slot.publish_on_twitter()
+
+                if not settings.ANNOUNCE_TEST_MODE:
+                    meeting_slot.publish_on_twitter()
+
                 # TODO: Notify followers
 
             return meeting_slot, created
