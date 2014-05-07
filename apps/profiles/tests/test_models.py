@@ -1,18 +1,8 @@
 # -*- coding: utf-8 -*-
 from datetime import time, timedelta
-from django.test import TestCase
-from django.core.management import call_command
 
+from apps.core.tests import BaseTestCase
 from apps.meetings.models import Meeting
-from apps.profiles.models import User
-
-
-class BaseTestCase(TestCase):
-    fixtures = ['apps/profiles/fixtures/dude.json']
-
-    def setUp(self):
-        self.dude = User.objects.get(username='dude')
-        call_command('create_notice_types')
 
 
 class UseModelTestCase(BaseTestCase):
