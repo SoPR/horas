@@ -1,4 +1,4 @@
-﻿# :clock3: Horas
+﻿# Horas ![Build Status](https://travis-ci.org/SoPR/horas.svg)
 
 Una plataforma para facilitar la [mentoría](http://es.wikipedia.org/wiki/Mentoria).
 
@@ -48,7 +48,7 @@ Para que este sistema sea efectivo debemos plantear algunas reglas simples a las
 
 Si tienes una idea de como mejorar esta plataforma o si has encontrado algún error déjanos saber creando un "issue" en el repositorio.
 
-:beetle: [Issues](https://github.com/SoPR/horas/issues) - para reportar problemas, errores, sugerencias, etc.
+[Issues](https://github.com/SoPR/horas/issues) - para reportar problemas, errores, sugerencias, etc.
 
 ### Cómo usar "issues" en GitHub
 
@@ -64,7 +64,7 @@ Tenemos un [chat room](https://www.hipchat.com/g3IXLRctN) para facilitar la comu
 
 Si necesitas ideas de como ayudar puede ver la lista de tareas pendientes.
 
-:white_check_mark: [TO-DO](TODO.md)
+[TO-DO](TODO.md)
 
 
 ### Para correr el proyecto
@@ -116,7 +116,7 @@ $ python manage.py test --configuration=Testing --verbosity=3 --noinput
 
 Tenemos un branch dedicado para compartir y colaborar sobre el diseño de la plataforma. Mantendremos el diseño más reciente en ese branch.
 
-:art: [Design](https://github.com/SoPR/horas/tree/design) - Branch dedicado al diseño de este proyecto.
+[Design](https://github.com/SoPR/horas/tree/design) - Branch dedicado al diseño de este proyecto.
 
 
 ## Prensa
