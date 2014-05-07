@@ -10,7 +10,6 @@ from django.utils.timezone import now, get_default_timezone, make_aware
 from django.core.urlresolvers import reverse_lazy
 from django.contrib.sites.models import Site
 from django.utils.translation import ugettext_lazy as _
-from django.db.models import Q
 
 from django.conf import settings
 
