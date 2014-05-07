@@ -1,0 +1,20 @@
+language: python
+python:
+  - "2.6"
+  - "2.7"
+env:
+    - AWS_ACCESS_KEY_ID=''
+    - AWS_SECRET_ACCESS_KEY=''
+    - AWS_STORAGE_BUCKET_NAME=''
+    - SECRET_KEY='dont-tell-eve'
+    - SSO_SECRET_KEY='dont-tell-eve'
+    - HORAS_DEFAULT_TZ='America/Puerto_Rico'
+    - TWITTER_API_KEY=''
+    - TWITTER_API_SECRET=''
+    - TWITTER_ACCESS_TOKEN=''
+    - TWITTER_ACCESS_TOKEN_SECRET=''
+    - BITLY_ACCESS_TOKEN=''
+install:
+  - pip install -r requirements.txt --use-mirrors
+script:
+  - python manage.py test --configuration=Testing --verbosity=3 --noinput
