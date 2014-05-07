@@ -119,7 +119,9 @@ class MeetingStateMachine(StateMachine):
             instance.save()
 
         def has_permission(transition, instance, user):
-            return True
+            if user in [instance.mentor, instance.protege]:
+                return True
+            return False
 
     class cancel_confirmed(StateTransition):
         from_state = 'confirmed'
@@ -130,7 +132,9 @@ class MeetingStateMachine(StateMachine):
             instance.save()
 
         def has_permission(transition, instance, user):
-            return True
+            if user in [instance.mentor, instance.protege]:
+                return True
+            return False
 
     class flag_unused(StateTransition):
         from_state = 'available'
