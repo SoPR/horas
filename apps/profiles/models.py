@@ -102,7 +102,7 @@ class User(AbstractUser):
         return '{0}. {1}'.format(self.first_name[0], self.last_name)
 
     def has_complete_profile(self):
-        dates = all([str(self.day_of_week), self.start_time, self.timezone,
+        dates = all([str(self.day_of_week), str(self.start_time), self.timezone,
                     self.city, self.state, self.bio, self.first_name, self.last_name])
 
         contact = any([self.phone, self.skype,
