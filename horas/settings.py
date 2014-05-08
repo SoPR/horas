@@ -158,6 +158,8 @@ class Common(Configuration):
         'taggit': 'taggit.south_migrations',
     }
 
+    ANNOUNCE_TEST_MODE = False
+
 
 class Development(Common):
     DEBUG = True
