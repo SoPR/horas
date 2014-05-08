@@ -1,4 +1,4 @@
-﻿# Horas ![Build Status](https://travis-ci.org/SoPR/horas.svg)
+﻿# Horas [![Build Status](https://travis-ci.org/SoPR/horas.svg)](https://travis-ci.org/SoPR/horas)
 
 Una plataforma para facilitar la [mentoría](http://es.wikipedia.org/wiki/Mentoria).
 
@@ -123,6 +123,15 @@ Tenemos un branch dedicado para compartir y colaborar sobre el diseño de la pla
 [Mentoría gratis para la innovación boricua](http://www.elnuevodia.com/mentoriagratisparalainnovacionboricua-1731302.html) - El Nuevo Día
 
 
+## Donaciones
+
+100% de las donaciones hechas irán a pagar los gastos de hosting y mantenimiento de la plataforma que en este momento son **$29.00 USD mensual**. Pronosticamos que en poco tiempo este número debe subir así que por eso estamos apuntando a asegurar $40.00 mensual. La idea es que la comunidad que se beneficia del proyecto pueda financiar los gastos recurrentes.
+
+[![Support via Gittip](https://rawgithub.com/twolfson/gittip-badge/0.2.0/dist/gittip.png)](https://www.gittip.com/gcollazo/)
+
+[![Donate Bitcoins](http://i.imgur.com/bMKkFH4.png)](https://coinbase.com/checkouts/2c4c170ecd0e2981e7fe16ca3d3e994d)
+
+
 ## License
 
 All of "Horas" is licensed under the MIT license.
@@ -146,15 +155,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
-
-## Donaciones
-
-100% de las donaciones hechas irán a pagar los gastos de hosting y mantenimiento de la plataforma que en este momento son **$20.00 USD mensual**. Pronosticamos que en poco tiempo este número debe subir así que por eso estamos apuntando a asegurar $40.00 mensual. La idea es que la comunidad que se beneficia del proyecto pueda financiar los gastos recurrentes.
-
-[![Support via Gittip](https://rawgithub.com/twolfson/gittip-badge/0.2.0/dist/gittip.png)](https://www.gittip.com/gcollazo/)
-
-[![Donate Bitcoins](http://i.imgur.com/bMKkFH4.png)](https://coinbase.com/checkouts/2c4c170ecd0e2981e7fe16ca3d3e994d)
-
-
-
