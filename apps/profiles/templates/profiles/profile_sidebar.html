@@ -13,6 +13,24 @@
         {% endblocktrans %}
     </div>
 
+    {% if profile_user.has_social_links %}
+        <h4>{% trans "Social" %}</h4>
+        <ul class="list-unstyled">
+            {% if profile_user.linkedin_url %}
+                <li><a href="{{ profile_user.linkedin_url }}">LinkedIn</a></li>
+            {% endif %}
+            {% if profile_user.github_username %}
+                <li><a href="http://github.com/{{ profile_user.username }}">GitHub</a></li>
+            {% endif %}
+            {% if profile_user.twitter_username %}
+                <li><a href="http://twitter.com/{{ profile_user.username }}">Twitter</a></li>
+            {% endif %}
+            {% if profile_user.website_url %}
+                <li><a href="{{ profile_user.website_url }}">Website</a></li>
+            {% endif %}
+        </ul><br>
+    {% endif %}
+
     {% if profile_user.tags.all %}
         <h4>{% trans "Temas" %}</h4>
         <ul class="list-inline">

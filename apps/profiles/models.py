@@ -39,7 +39,8 @@ class User(AbstractUser):
     twitter_username = models.CharField(blank=True, max_length=50)
     facebook_username = models.CharField(blank=True, max_length=50)
     github_username = models.CharField(blank=True, max_length=50)
-    website_url = models.URLField(blank=True, max_length=50)
+    linkedin_url = models.URLField(blank=True)
+    website_url = models.URLField(blank=True)
     gravatar_url = models.URLField(blank=True)
     is_gravatar_verified = models.BooleanField(default=False)
     city = models.CharField(blank=True, max_length=50)
@@ -110,6 +111,10 @@ class User(AbstractUser):
                       self.google, self.jitsi, self.address])
 
         return all([dates, contact])
+
+    def has_social_links(self):
+        return any([self.twitter_username, self.github_username,
+                   self.linkedin_url, self.website_url])
 
     def get_location(self):
         if self.city and self.state:

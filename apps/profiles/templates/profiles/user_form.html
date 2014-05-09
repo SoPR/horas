@@ -112,6 +112,47 @@
 
                         <hr> <!-- hr -->
 
+                        <h4 class="text-section-header">{% trans "Enlaces sociales" %} <small>{% trans "Opcional" %}</small></h4><br>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group{% if form.twitter_username.errors %} has-error has-feedback{% endif %}">
+                                    {% bootstrap_field form.twitter_username label_class="control-label" %}
+                                    {% if form.twitter_username.errors %}
+                                        <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group{% if form.github_username.errors %} has-error has-feedback{% endif %}">
+                                    {% bootstrap_field form.github_username label_class="control-label" %}
+                                    {% if form.github_username.errors %}
+                                        <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group{% if form.linkedin_url.errors %} has-error has-feedback{% endif %}">
+                                    {% bootstrap_field form.linkedin_url label_class="control-label" %}
+                                    {% if form.linkedin_url.errors %}
+                                        <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group{% if form.website_url.errors %} has-error has-feedback{% endif %}">
+                                    {% bootstrap_field form.website_url label_class="control-label" %}
+                                    {% if form.website_url.errors %}
+                                        <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr> <!-- hr -->
+
                         <h4 class="text-section-header">{% trans "Formatos de reunión" %}</h4>
                         <p>{% trans "Usaremos esta información de contacto para tus reuniones. Completa todas las que apliquen o quieras usar. Esta información se mantendrá privada hasta que apruebes una reunión. Cuando apruebes una reunión compartiremos solo la información del formato que el usuario solicitó. Ejemplo si el usuario solicita Skype, solo compartiremos tu username de Skype con ese usuario. Todo lo demás se mantendrá privado." %}</p>
 

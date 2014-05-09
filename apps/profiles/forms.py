@@ -94,8 +94,9 @@ class ProfileUpdateForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ('first_name', 'last_name', 'bio', 'tags', 'city', 'state',
-                  'skype', 'google', 'jitsi', 'phone', 'address',
-                  'day_of_week', 'start_time', 'timezone')
+                  'twitter_username', 'github_username', 'linkedin_url',
+                  'website_url', 'skype', 'google', 'jitsi', 'phone',
+                  'address', 'day_of_week', 'start_time', 'timezone')
 
     def __init__(self, *args, **kwargs):
         super(ProfileUpdateForm, self).__init__(*args, **kwargs)
