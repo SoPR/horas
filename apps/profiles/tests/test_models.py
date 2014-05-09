@@ -203,4 +203,21 @@ class UseModelTestCase(BaseTestCase):
         meeting, created = self.dude.get_or_create_meeting()
         self.assertEqual(Meeting.objects.all().count(), 3)
 
+    def test_has_social_links_returns_true_if_any_completed(self):
+        self.assertTrue(self.dude.has_social_links())
 
+        self.dude.twitter_username = ''
+        self.dude.github_username = ''
+        self.dude.linkedin_url = ''
+        self.dude.save()
+
+        self.assertTrue(self.dude.has_social_links())
+
+    def test_has_social_links_returns_false_if_all_empty(self):
+        self.dude.twitter_username = ''
+        self.dude.github_username = ''
+        self.dude.linkedin_url = ''
+        self.dude.website_url = ''
+        self.dude.save()
+
+        self.assertFalse(self.dude.has_social_links())
