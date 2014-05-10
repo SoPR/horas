@@ -60,6 +60,7 @@ class Common(Configuration):
         'apps.meetings',
         'apps.stats',
         'apps.sso',
+        'apps.comments',
     )
 
     MIDDLEWARE_CLASSES = (
