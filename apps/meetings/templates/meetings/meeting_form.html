@@ -16,40 +16,12 @@
                     <h3 class="text-section-header">{% trans "Reservar reunión" %}</h3>
 
                     {% if user != meeting.mentor %}
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <h4><a href="{% url 'profile_detail' user.username %}">{{ user.get_full_name|title }}</a> con <a href="{% url 'profile_detail' meeting.mentor.username %}">{{ meeting.mentor.get_full_name|title }}</a></h4>
-                                <h2>{{meeting.datetime|date}}<br>
-                                {{ meeting.get_time_range_string }}</h2><br>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <p>
-                                    {% blocktrans with meeting.mentor.first_name as mentor %}
-                                        Una vez reserves la reunión, {{ mentor }} tiene que confirmar su disponibilidad. Cuando {{ mentor }} confirme la reunión te enviaremos un correo electrónico con más detalles.
-                                    {% endblocktrans %}
-                                </p>
-                                <p>
-                                    {% blocktrans %}
-                                        Selecciona el formato que prefieres para reunión y entra un mensaje para el mentor.
-                                    {% endblocktrans %}
-                                </p>
-                            </div>
-                        </div>
                         <div class="row meeting-form-wrapper">
                             <div class="col-sm-12">
-                                {% if meeting.mentor.tags.all %}
-                                    <strong>{% trans "Temas" %}</strong>
-                                    {% for tag in meeting.mentor.tags.all %}
-                                        {{ tag }}
-                                    {% endfor %}
-                                {% endif %}
                                 <form method="post">
                                     {% csrf_token %}<br>
                                     {% bootstrap_form form %}
-                                    <hr> <!-- hr -->
-                                    <button type="submit" class="btn btn-success">{% trans "Reservar" %}</button> <a href="{% url 'profile_detail' profile_user.username %}" class="btn btn-link">{% trans "Volver al perfil de" %} {{ profile_user.get_full_name|title }}</a>
+                                    <button type="submit" class="btn btn-lg btn-success">{% trans "Reservar" %}</button>
                                 </form>
                             </div>
                         </div>
