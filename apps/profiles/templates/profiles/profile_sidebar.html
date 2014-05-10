@@ -3,17 +3,30 @@
     <img src="{{ profile_user.gravatar_url }}?s=285&d=identicon" alt="Gravatar" class="img-responsive img-thumbnail">
     <h3>{{ profile_user.get_full_name|title }}</h3>
     <div class="text-muted">{{ profile_user.bio }}</div>
-    <div class="margin-vertical-50">
+
+    {% if profile_user.get_location and profile_user.date_joined %}
+        <hr>
         <div>{{ profile_user.get_location }}</div>
-        {% if profile_user.website_url %}
-            <div><a href="{{ profile_user.website_url }}">{{ profile_user.website_url }}</a></div>
-        {% endif %}
         {% blocktrans with profile_user.date_joined|date:"N j, o" as date %}
             <div>Mentor desde {{ date }}</div>
         {% endblocktrans %}
-    </div>
+    {% endif %}
+
+
+    {% if profile_user.tags.all %}
+        <hr>
+
+        <h4>{% trans "Temas" %}</h4>
+        <ul class="list-inline">
+            {% for tag in profile_user.tags.all %}
+                <li><a href="{% url 'search_query' tag.name %}">{{ tag }}</a></li>
+            {% endfor %}
+        </ul>
+    {% endif %}
 
     {% if profile_user.has_social_links %}
+        <hr>
+
         <h4>{% trans "Social" %}</h4>
         <ul class="list-unstyled">
             {% if profile_user.linkedin_url %}
@@ -26,17 +39,8 @@
                 <li><a href="http://twitter.com/{{ profile_user.username }}">Twitter</a></li>
             {% endif %}
             {% if profile_user.website_url %}
-                <li><a href="{{ profile_user.website_url }}">Website</a></li>
+                <li><a href="{{ profile_user.website_url }}">{{ profile_user.website_url }}</a></li>
             {% endif %}
-        </ul><br>
-    {% endif %}
-
-    {% if profile_user.tags.all %}
-        <h4>{% trans "Temas" %}</h4>
-        <ul class="list-inline">
-            {% for tag in profile_user.tags.all %}
-                <li><a href="{% url 'search_query' tag.name %}">{{ tag }}</a></li>
-            {% endfor %}
         </ul>
     {% endif %}
 </div> <!-- /.profile-sidebar -->

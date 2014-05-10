@@ -52,6 +52,7 @@ class Common(Configuration):
         'collectfast',
         'djangosecure',
         'bootstrap3',
+        'markdown_deux',
 
         # Local apps
         'apps.core',

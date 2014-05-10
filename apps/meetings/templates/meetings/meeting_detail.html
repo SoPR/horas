@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load i18n %}
 {% load bootstrap3 %}
+{% load markdown_deux_tags %}
 
 {% block title %}
     {% trans "Reunión" %} - {{ block.super }}
@@ -9,86 +10,140 @@
 {% block content %}
     <div class="container">
         <div class="row">
-            {% include "profiles/profile_sidebar.html" %}
+            {% include "profiles/meeting_sidebar.html" %}
 
             <div class="col-sm-9">
-                <section class="jumbotron profile-content-section">
-                    <h3 class="text-section-header">{% trans "Reunión" %}</h3>
-                    <div class="row profile-meeting-row">
-                        <div class="col-sm-12">
-                            <h2>{{ meeting.datetime|date }}</h2>
-                            <p>{{ meeting.get_time_range_string }}</p>
+                {% if meeting.state != 'available' and meeting.state != 'unused' %}
+                    <h4>{% trans "Reservada por" %}</h4>
+                    <div class="media">
+                        <a class="pull-left" href="{{ meeting.protege.get_absolute_url }}">
+                            <img class="media-object" src="{{ meeting.protege.gravatar_url }}?s=120&d=identicon">
+                        </a>
+                        <div class="media-body">
+                            <h4 class="media-heading"><a href="{{ meeting.protege.get_absolute_url }}">{{ meeting.protege.get_full_name|title }}</a></h4>
+                            <p>{{ meeting.protege.bio }}</p>
                         </div>
                     </div>
 
-                    {% if meeting.state == 'available' %}
-                        <div class="row profile-meeting-row">
-                            <div class="col-sm-12">
-                                <h4>{% trans "Formatos" %}</h4>
-                                {{ profile_user.get_meeting_formats_string }}
-                            </div>
-                        </div>
-                    {% endif %}
-
-                    <div class="row profile-meeting-row">
-                        <div class="col-sm-12">
-                            {% if meeting.state == 'available' %}
-                                <a href="{% url 'meeting_update' profile_user meeting.id %}" class="btn btn-lg btn-success">{% trans "Reservar" %}</a>
-                            {% endif %}
-                            <h4>{% include "profiles/meeting_row_state.html" %}</h4>
-                        </div>
-                    </div><!-- /.row profile-meeting-row -->
-                </section> <!-- /.row profile-content-section -->
-
-                <section class="meeting-form-section">
-                    {# Only show details to protege and mentor #}
                     {% if user == meeting.mentor or user == meeting.protege %}
-                        <div class="row">
-                            <div class="col-sm-12">
-                                {% if meeting.format %}
-                                    <p>
-                                        <strong>{% trans "Formato de reunión" %}</strong><br>
-                                        {{ meeting_format_name }}{% if meeting.state == 'confirmed' %}: {{ meeting_format_information }}{% endif %}
-                                    </p>
-                                {% endif %}
-                                {% if meeting.state == 'confirmed' %}
-                                    <strong>{% trans "Información de contacto" %}</strong><br>
-                                    <p>
-                                        {{ meeting.mentor.get_full_name|title }}: <a href="mailto:{{ meeting.mentor.email }}?subject={% trans "Reunión" %} {{meeting.datetime|date}} @ {{ meeting.get_time_range_string }}">{{ meeting.mentor.email }}</a><br>
-                                        {{ meeting.protege.get_full_name|title }}: <a href="mailto:{{ meeting.protege.email }}?subject={% trans "Reunión" %} {{meeting.datetime|date}} @ {{ meeting.get_time_range_string }}">{{ meeting.protege.email }}</a>
-                                    </p>
-                                {% endif %}
-                                {% if meeting.message %}
-                                    <p><strong>{% trans "Mensaje" %}</strong></p>
-                                    <div class="well">
-                                        {{ meeting.message }}
-                                    </div>
-                                {% endif %}
+                        <div class="meeting-detail-private-section margin-vertical-50 panel panel-info">
+                            <div class="panel-heading">
+                                <h4>
+                                    {% trans "Detalles" %}
+                                    <span class="pull-right meeting-detail-private-small-text">
+                                        <span class="glyphicon glyphicon-eye-close" title="{% trans "Visible sólo para los participantes de la reunión" %}"></span>
+                                        <span class="hidden-xs">
+                                            {% trans "Visible sólo para los participantes de la reunión" %}
+                                        </span>
+                                    </span>
+                                </h4>
                             </div>
-                        </div>
+                            <div class="panel-body">
 
-                        <hr> <!-- hr -->
+                                <div>
+                                    <h5>{% trans "Emails" %}</h5>
+                                    <table class="table">
+                                        <tr>
+                                            <td>{{ meeting.mentor.get_full_name|title }}</td>
+                                            <td><a href="mailto:{{ meeting.mentor.email }}">{{ meeting.mentor.email }}</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>{{ meeting.protege.get_full_name|title }}</td>
+                                            <td><a href="mailto:{{ meeting.protege.email }}">{{ meeting.protege.email }}</a></td>
+                                        </tr>
+                                    </table>
+                                </div>
 
-                        <div class="row">
-                            <div class="col-sm-12">
-                                {% if meeting.state == 'reserved' or meeting.state == 'confirmed' %}
-                                    <form action="{% url 'meeting_cancel' meeting.mentor.username meeting.id %}" method="post" class="form-inline">
-                                        {% csrf_token %}
-                                        <button type="submit" class="btn btn-default btn-grey">{% trans "Cancelar reunión" %}</button>
-                                    </form>
-                                {% endif %}
+                                <div>
+                                    <h5>{% trans "Formato" %}</h5>
+                                    <table class="table">
+                                        <tr>
+                                            <td>{{ meeting_format_name }}</td>
+                                            <td>{{ meeting_format_information }}</td>
+                                        </tr>
+                                    </table>
+                                </div>
 
-                                {% if meeting.state == 'reserved' and meeting.mentor == user %}
-                                    <form action="{% url 'meeting_confirm' meeting.mentor.username meeting.id %}" method="post" class="form-inline">
-                                        {% csrf_token %}
-                                        <button type="submit" class="btn btn-default btn-success">{% trans "Confirmar" %}</button>
-                                    </form>
-                                {% endif %}
-                                <a href="{% url 'profile_detail' meeting.mentor.username %}" class="btn btn-link">{% trans "Volver al perfil de " %} {{ meeting.mentor.get_full_name|title }}</a>
+                                <div>
+                                    <h5>{% trans "Mensage" %}</h5>
+                                    <table class="table">
+                                        <tr>
+                                            <td>
+                                                {{ meeting.message|markdown }}
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                                <div>
+                                    <hr>
+                                    {% if meeting.state == 'reserved' and meeting.mentor == user %}
+                                        <form action="{% url 'meeting_confirm' meeting.mentor.username meeting.id %}" method="post" class="form-inline">
+                                            {% csrf_token %}
+                                            <button type="submit" class="btn btn-default btn-info">{% trans "Confirmar reunión" %}</button>
+                                        </form>
+                                    {% endif %}
+                                    {% if meeting.state == 'reserved' or meeting.state == 'confirmed' %}
+                                        <form action="{% url 'meeting_cancel' meeting.mentor.username meeting.id %}" method="post" class="form-inline">
+                                            {% csrf_token %}
+                                            <button type="submit" class="btn btn-default btn-warning">{% trans "Cancelar reunión" %}</button>
+                                        </form>
+                                    {% endif %}
+                                </div>
+
                             </div>
                         </div>
                     {% endif %}
-                </section>
+
+                {% else %}
+                    {% if meeting.state == 'unused' %}
+                        <h4>{% trans "Esta reunión no fué reservada" %}</h4>
+                    {% endif %}
+
+                    {% if meeting.state == 'available' %}
+                        <h4>{% trans "Reunión disponible" %}</h4>
+                        <a href="{% url 'meeting_update' profile_user meeting.id %}" class="btn btn-lg btn-success">{% trans "Reservar" %}</a>
+                    {% endif %}
+                {% endif %}
+
+                {% if comments %}
+                    <div class="meeting-detail-comment-section margin-vertical-50">
+                        <h4>{% trans "Comentarios de los participantes" %}</h4>
+                        <ul class="media-list">
+
+                            {% for comment in comments %}
+                                <li class="media">
+                                    <a class="pull-left" href="{{ comment.user.get_absolute_url }}">
+                                        <img class="media-object" src="{{ comment.user.gravatar_url }}?s=40&d=identicon">
+                                    </a>
+                                    <div class="media-body">
+                                        <h5 class="media-heading"><a href="{{ comment.user.get_absolute_url }}">{{ comment.user.get_full_name|title }}</a> <small>• {{ comment.date_created }}</small></h5>
+                                        <p>{{ comment.comment|markdown }}</p>
+                                    </div>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+
+                {% if user == meeting.mentor or user == meeting.protege %}
+                    <div class="meeting-detail-comment-form-section margin-vertical-20">
+                        <h4>{% trans "Dejar comentario público" %}</h4>
+                        <div class="media">
+                            <a class="pull-left" href="{{ user.get_absolute_url }}">
+                                <img class="media-object" src="{{ user.gravatar_url }}?s=40&d=identicon">
+                            </a>
+                            <div class="media-body">
+                                <form action="{% url 'meeting_comment' meeting.mentor.username meeting.id %}" method="post" class="form">
+                                    {% csrf_token %}
+                                    <textarea class="form-control" name="comment" rows="5"></textarea><br>
+                                    <button type="submit" class="btn btn-primary">{% trans "Publicar" %}</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+
             </div>
         </div>
     </div>
