@@ -1,0 +1,27 @@
+{% load i18n %}
+
+<tr>
+    <td class="meeting-cell-calendar">
+        <div class="meeting-card-wrapper meeting-card-xs">
+            <div class="meeting-card-month">{{ meeting.datetime|date:"M"|upper }}</div>
+            <div class="meeting-card-bottom-part-wrapper">
+                <div class="meeting-card-number">{{ meeting.datetime|date:"d" }}</div>
+            </div>
+        </div>
+    </td>
+    <td class="meeting-cell-avatar">
+        <a href="{% url 'profile_detail' meeting.mentor.username %}"><img src="{{ meeting.mentor.gravatar_url }}?s=64&d=identicon" alt="" class="" title="{% trans "Mentor:" %} {{ meeting.mentor.get_full_name|title }} - {{ meeting.mentor }}"></a>
+    </td>
+    <td class="meeting-cell-avatar">
+        {% if meeting.protege %}
+            <a href="{% url 'profile_detail' meeting.protege.username %}"><img src="{{ meeting.protege.gravatar_url }}?s=64&d=identicon" alt="" class="" title="{% trans "Aprendiz:" %} {{ meeting.protege.get_full_name|title }} - {{ meeting.protege }}"></a>
+        {% else %}
+            <div class="gravatar-placeholder-grey" title="{% trans "Nadie reservó esta reunión" %}"></div>
+        {% endif %}
+    </td>
+    <td>
+        {% url 'meeting_detail' meeting.mentor.username meeting.id as meeting_url %}
+        {% include "profiles/meeting_row_state.html" %}<br>
+        <a href="{{ meeting_url }}">{% trans "Detalles" %}</a>
+    </td>
+</tr>

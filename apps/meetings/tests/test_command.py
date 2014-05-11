@@ -11,15 +11,17 @@ class UpdateMeetingsCommandTestCase(MeetingBaseTestCase):
         m = Meeting.objects.create(state='available',
             mentor=self.dude, datetime=now() - timedelta(hours=1, seconds=1))
 
+        self.assertEquals(Meeting.objects.filter(state='unused').count(), 0)
         self.assertEquals(Meeting.objects.filter(state='available').count(), 2)
 
         self.call_command('update_meetings')
 
         self.assertEquals(Meeting.objects.get(pk=m.id).state, 'unused')
-        self.assertEquals(Meeting.objects.filter(state='available').count(), 2)
         self.assertEquals(Meeting.objects.filter(state='unused').count(), 1)
+        self.assertEquals(Meeting.objects.filter(state='available').count(), 1)
 
     def test_should_create_missing_meetings(self):
-        self.assertEquals(Meeting.objects.filter(state='available').count(), 1)
+        Meeting.objects.all().delete()
+        self.assertEquals(Meeting.objects.filter(state='available').count(), 0)
         self.call_command('update_meetings')
-        self.assertEquals(Meeting.objects.filter(state='available').count(), 2)
+        self.assertEquals(Meeting.objects.filter(state='available').count(), 1)

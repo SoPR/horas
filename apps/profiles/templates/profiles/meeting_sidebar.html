@@ -1,0 +1,33 @@
+{% load i18n %}
+<div class="col-sm-3 profile-sidebar">
+    <div class="meeting-card-wrapper meeting-card-xl">
+        <div class="meeting-card-month">{{ meeting.datetime|date:"M"|upper }}</div>
+        <div class="meeting-card-bottom-part-wrapper">
+            <div class="meeting-card-number">{{ meeting.datetime|date:"d" }}</div>
+            <div class="meeting-card-time">{{ meeting.get_time_range_string }}</div>
+        </div>
+    </div>
+
+    {% if meeting.state != 'available' %}
+        <h4>{% trans "Estatus" %}</h4>
+        {% include "profiles/meeting_row_state.html" %}
+        <hr>
+    {% endif %}
+
+    <h4>{% trans "Mentor" %}</h4>
+    <div class="media">
+        <a class="pull-left" href="{{ meeting.mentor.get_absolute_url }}">
+            <img class="media-object" src="{{ meeting.mentor.gravatar_url }}?s=40&d=identicon">
+        </a>
+        <div class="media-body">
+            <h5 class="media-heading meeting-sidebar-mentor-name"><a href="{{ meeting.mentor.get_absolute_url }}">{{ meeting.mentor.get_full_name|title }}</a></h5>
+        </div>
+    </div>
+
+    {% if meeting.state == 'available' %}
+        <hr>
+
+        <h4>{% trans "Formatos" %}</h4>
+        <p>{{ profile_user.get_meeting_formats_string }}</p>
+    {% endif %}
+</div> <!-- /.profile-sidebar -->

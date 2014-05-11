@@ -52,6 +52,7 @@ class Common(Configuration):
         'collectfast',
         'djangosecure',
         'bootstrap3',
+        'markdown_deux',
 
         # Local apps
         'apps.core',
@@ -60,6 +61,7 @@ class Common(Configuration):
         'apps.meetings',
         'apps.stats',
         'apps.sso',
+        'apps.comments',
     )
 
     MIDDLEWARE_CLASSES = (

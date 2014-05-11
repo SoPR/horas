@@ -12,79 +12,55 @@
 
             <div class="col-sm-9 profile-content-wrapper">
                 {% if object.meetings.available %}
-                    <section class="jumbotron profile-content-section">
-                        <h3 class="text-section-header available-meeting-header">{% trans "Disponible" %}</h3>
-                        {% for meeting in object.meetings.available %}
-                            <div class="row profile-meeting-row">
-                                <div class="col-xs-4 col-md-3">
-                                    <div class="meeting-card-wrapper meeting-card-lg">
-                                        <div class="meeting-card-month">{{ meeting.datetime|date:"M"|upper }}</div>
-                                        <div class="meeting-card-number">{{ meeting.datetime|date:"d" }}</div>
+                    <div class="panel panel-info">
+                        <div class="panel-heading"><h3>{% trans "Disponible" %}</h3></div>
+                        <div class="panel-body">
+                            {% for meeting in object.meetings.available %}
+                                <div class="row">
+                                    <div class="col-xs-6 col-md-3">
+                                        <div class="meeting-card-wrapper meeting-card-lg">
+                                            <div class="meeting-card-month">{{ meeting.datetime|date:"M"|upper }}</div>
+                                            <div class="meeting-card-bottom-part-wrapper">
+                                                <div class="meeting-card-number">{{ meeting.datetime|date:"d" }}</div>
+                                                <div class="meeting-card-time">{{ meeting.get_time_range_string }}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 col-md-9">
+                                        <h4>{% trans "Formatos" %}</h4>
+                                        <p>{{ profile_user.get_meeting_formats_string }}</p>
+                                        <a href="{% url 'meeting_update' profile_user meeting.id %}" class="btn btn-lg btn-success">{% trans "Reservar" %}</a>
                                     </div>
                                 </div>
-                                <div class="col-xs-8 col-md-9">
-                                    <h4>{% trans "Hora" %}</h4>
-                                    <p>{{ meeting.get_time_range_string }}</p>
-                                </div>
-                            </div>
-                            <div class="row profile-meeting-row">
-                                <div class="col-sm-12">
-                                    <h4>{% trans "Formatos" %}</h4>
-                                    {{ profile_user.get_meeting_formats_string }}
-                                </div>
-                            </div>
-                            <div class="row profile-meeting-row">
-                                <div class="col-sm-12">
-                                    <a href="{% url 'meeting_update' profile_user meeting.id %}" class="btn btn-lg btn-success">{% trans "Reservar" %}</a>
-                                </div>
-                            </div><!-- /.row profile-meeting-row -->
-
-                            {% if object.meetings.available|length > 1 %}
-                                {% if forloop.last == False %}
-                                    <hr class="meeting-divider">
+                                {% if object.meetings.available|length > 1 %}
+                                    {% if forloop.last == False %}
+                                        <hr class="meeting-divider">
+                                    {% endif %}
                                 {% endif %}
-                            {% endif %}
-                        {% endfor %}
-                    </section> <!-- /.row profile-content-section -->
+                            {% endfor %}
+                        </div>
+                    </div>
                 {% endif %}
 
                 {% if object.meetings.next %}
                     <section class="profile-content-section">
                         <h3 class="text-section-header">{% trans "Próximas reuniones" %}</h3>
-                        {% for meeting in object.meetings.next %}
-                            <div class="row profile-meeting-row">
-                                {% include "profiles/meeting_row_gravatars.html" %}
-                                {% include "profiles/meeting_row_info.html" %}
-                                <div class="col-sm-3 pull-right">
-                                    {% if meeting.state == 'reserved' or meeting.state == 'confirmed' %}
-                                        {% if user == meeting.mentor or user == meeting.protege %}
-                                            <form action="{% url 'meeting_cancel' meeting.mentor.username meeting.id %}" method="post" class="form-inline">
-                                                {% csrf_token %}
-                                                <button type="submit" class="btn btn-default btn-grey btn-sm">{% trans "Cancelar" %}</button>
-                                            </form>
-                                        {% endif %}
-                                    {% endif %}
-                                    {% if meeting.state == 'reserved' and user == meeting.mentor %}
-                                        <form action="{% url 'meeting_confirm' meeting.mentor.username meeting.id %}" method="post" class="form-inline">
-                                            {% csrf_token %}
-                                            <button type="submit" class="btn btn-default btn-success btn-sm">{% trans "Confirmar" %}</button>
-                                        </form>
-                                    {% endif %}
-                                </div>
-                            </div> <!-- /.row profile-meeting-row -->
-                        {% endfor %}
+                        <table class="table">
+                            {% for meeting in object.meetings.next %}
+                                {% include "profiles/meeting_row.html" %}
+                            {% endfor %}
+                        </table>
                     </section> <!-- /.row profile-content-section -->
                 {% endif %}
 
                 {% if object.meetings.past %}
                     <section class="profile-content-section">
                         <h3 class="text-section-header">{% trans "Historia" %}</h3>
-                        {% for meeting in object.meetings.past %}
-                            <div class="row profile-meeting-row">
-                                {% include "profiles/meeting_row_gravatars.html" %}
-                                {% include "profiles/meeting_row_info.html" %}
-                            </div> <!-- /.row profile-meeting-row -->
-                        {% endfor %}
+                        <table class="table">
+                            {% for meeting in object.meetings.past %}
+                                {% include "profiles/meeting_row.html" %}
+                            {% endfor %}
+                        </table>
                     </section> <!-- /.row profile-content-section -->
                 {% endif %}
 

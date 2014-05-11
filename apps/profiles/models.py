@@ -207,13 +207,8 @@ class User(AbstractUser):
             if created:
                 print('-> Created meeting_slot:{0}'.format(meeting_slot))
 
-                notification.send([self], 'create_meeting_slot',
-                                  {'meeting': meeting_slot})
-
                 if not settings.ANNOUNCE_TEST_MODE:
                     meeting_slot.publish_on_twitter()
-
-                # TODO: Notify followers
 
             return meeting_slot, created
 

@@ -1,13 +1,17 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
-from django.views.generic import UpdateView, DetailView
+from django.views.generic import UpdateView, DetailView, FormView
 from django.core.urlresolvers import reverse_lazy
+from django.utils.translation import ugettext_lazy as _
+from django.contrib import messages
 from django.db.models import Q
 
 from braces.views import LoginRequiredMixin
+from django.contrib.contenttypes.models import ContentType
 
+from apps.comments.models import Comment
 from .models import Meeting
-from .forms import MeetingUpdateForm
+from .forms import MeetingUpdateForm, MeetingCommentCreationForm
 
 
 class MeetingDetailView(DetailView):
@@ -25,6 +29,11 @@ class MeetingDetailView(DetailView):
         ctx['meeting_format_information'] = self.object.mentor.get_meeting_format_information(self.object.format)
         ctx['meeting_format_name'] = self.object.mentor.get_meeting_format_name(self.object.format)
         ctx['profile_user'] = user
+
+        comment_type = ContentType.objects.get(model='meeting')
+        ctx['comments'] = Comment.objects.select_related('user').filter(
+            content_type=comment_type, object_id=self.object.id)
+
         return ctx
 
 
@@ -101,3 +110,33 @@ class MeetingCancelView(LoginRequiredMixin, UpdateView):
     def get_success_url(self):
         return reverse_lazy('profile_detail',
                             args=[self.kwargs['username']])
+
+
+class MeetingCommentView(FormView):
+    form_class = MeetingCommentCreationForm
+
+    def form_valid(self, form):
+        form.save()
+        messages.success(self.request, _('Comentario publicado'))
+        return HttpResponseRedirect(self.get_success_url())
+
+    def form_invalid(self, form):
+        messages.error(self.request, _('Fomulario de comentario incomleto'))
+        return HttpResponseRedirect(self.get_success_url())
+
+    def get_form_kwargs(self, *args, **kwargs):
+        kwargs = super(MeetingCommentView, self).get_form_kwargs(*args, **kwargs)
+
+        self.meeting = Meeting.objects.get(
+            mentor__username=self.kwargs['username'], pk=self.kwargs['pk'])
+
+        kwargs.update({
+            'meeting': self.meeting,
+            'user': self.request.user
+        })
+
+        return kwargs
+
+    def get_success_url(self):
+        return reverse_lazy('meeting_detail',
+                            args=[self.kwargs['username'], self.kwargs['pk']])
