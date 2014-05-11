@@ -1,24 +1,18 @@
 {% load i18n %}
-{% if meeting.state == 'reserved' and meeting.protege %}
+{% if meeting.state == 'reserved' %}
     <span class="glyphicon glyphicon-ok-circle icon-warning"></span>
-    {% if short %}
         {% trans "Reunión reservada" %}
-    {% else %}
-        {% trans "Reservada por" %} <a href="{% url 'profile_detail' meeting.protege.username %}">{{ meeting.protege.get_full_name|title }}</a>
-    {% endif %}
-{% elif meeting.state == 'confirmed' and meeting.protege %}
+{% elif meeting.state == 'confirmed' %}
     <span class="glyphicon glyphicon-ok-circle icon-success"></span>
-    {% if short %}
-        {% trans "Reunión confirmada" %}
-    {% else %}
-        {% trans "Confirmada con" %} <a href="{% url 'profile_detail' meeting.protege.username %}">{{ meeting.protege.get_full_name|title }}</a>
-    {% endif %}
+    {% trans "Reunión confirmada" %}
 {% elif meeting.state == 'confirmed' %}
     <span class="glyphicon glyphicon-ok-circle icon-success"></span>
     {% trans "Reunión confirmada" %}
 {% elif meeting.state == 'cancelled' %}
-    <span class="glyphicon glyphicon-remove-circle icon-cancelled"></span> {% trans "Reunión cancelada" %}
+    <span class="glyphicon glyphicon-remove-circle icon-cancelled"></span>
+    {% trans "Reunión cancelada" %}
 {% elif meeting.state == 'unused' %}
-    <span class="glyphicon glyphicon-remove-circle icon-cancelled"></span> {% trans "No fue reservada" %}
+    <span class="glyphicon glyphicon-remove-circle icon-cancelled"></span>
+    {% trans "No fue reservada" %}
 {% endif %}
 

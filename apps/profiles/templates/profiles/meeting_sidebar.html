@@ -10,7 +10,7 @@
 
     {% if meeting.state != 'available' %}
         <h4>{% trans "Estatus" %}</h4>
-        {% include "profiles/meeting_row_state.html" with short=True %}
+        {% include "profiles/meeting_row_state.html" %}
         <hr>
     {% endif %}
 
