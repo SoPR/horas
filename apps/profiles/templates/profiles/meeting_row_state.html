@@ -1,18 +1,28 @@
 {% load i18n %}
-{% if meeting.state == 'reserved' %}
+
+{% if meeting.state == 'available' %}
+    <span class="glyphicon glyphicon-ok-circle icon-info"></span>
+    {% trans "Reunión disponible" %}
+
+{% elif meeting.state == 'reserved' %}
     <span class="glyphicon glyphicon-ok-circle icon-warning"></span>
-        {% trans "Reunión reservada" %}
+    {% trans "Reunión reservada" %}
+
 {% elif meeting.state == 'confirmed' %}
     <span class="glyphicon glyphicon-ok-circle icon-success"></span>
     {% trans "Reunión confirmada" %}
-{% elif meeting.state == 'confirmed' %}
-    <span class="glyphicon glyphicon-ok-circle icon-success"></span>
-    {% trans "Reunión confirmada" %}
+
 {% elif meeting.state == 'cancelled' %}
     <span class="glyphicon glyphicon-remove-circle icon-cancelled"></span>
     {% trans "Reunión cancelada" %}
+
 {% elif meeting.state == 'unused' %}
     <span class="glyphicon glyphicon-remove-circle icon-cancelled"></span>
     {% trans "No fue reservada" %}
+
+{% else %}
+    <span class="glyphicon glyphicon-remove-circle icon-cancelled"></span>
+    {% trans "Reunión borrada" %}
+
 {% endif %}
 
