@@ -6,4 +6,10 @@ urlpatterns = patterns(
 
     url('^$', SearchView.as_view(), name='search_list'),
     url('^\?q=(?P<query>[-\w]+)', SearchView.as_view(), name='search_query'),
+
+    url('^\?q=tag:(?P<query>[-\w]+)', SearchView.as_view(),
+        name='tag_search_query'),
+
+    url('^\?q=city:(?P<query>[-\w]+)', SearchView.as_view(),
+        name='city_search_query'),
 )

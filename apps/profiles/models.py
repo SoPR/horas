@@ -11,14 +11,15 @@ from django.utils.timezone import now, get_default_timezone, make_aware
 from django.core.urlresolvers import reverse_lazy
 from django.contrib.sites.models import Site
 from django.utils.translation import ugettext_lazy as _
-
 from django.conf import settings
 
 from notification import models as notification
 from taggit.managers import TaggableManager
+from djorm_pgfulltext.fields import VectorField
 
 from .utils import get_gravatar_url, next_weekday, week_range
 from .fields import DaysOfWeekField
+from .managers import UserSearchManager
 
 
 class User(AbstractUser):
@@ -63,6 +64,10 @@ class User(AbstractUser):
     tags = TaggableManager(blank=True)
 
     date_updated = models.DateTimeField(auto_now=True)
+
+    search_index = VectorField()
+
+    objects = UserSearchManager()
 
     def save(self, *args, **kwargs):
         if not self.gravatar_url:
