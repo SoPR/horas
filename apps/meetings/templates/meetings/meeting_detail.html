@@ -76,7 +76,9 @@
                                 </div>
 
                                 <div>
-                                    <hr>
+                                    {% if meeting.state == 'reserved' or meeting.state == 'confirmed' %}
+                                        <hr>
+                                    {% endif %}
                                     {% if meeting.state == 'reserved' and meeting.mentor == user %}
                                         <form action="{% url 'meeting_confirm' meeting.mentor.username meeting.id %}" method="post" class="form-inline">
                                             {% csrf_token %}
