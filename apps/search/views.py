@@ -16,27 +16,32 @@ class SearchView(ListView):
 
     def get_context_data(self):
         context = super(SearchView, self).get_context_data()
-
-        tags = Tag.objects.all().annotate(
-            num_times=Count('taggit_taggeditem_items')
-        ).filter(num_times__gt=0).order_by('-num_times')
-
-        cities = User.objects.exclude(
-            city='').values_list('city', flat=True).distinct()
-
-        urlencoded_cities = []
-
-        for city in cities[:20]:
-            urlencoded_cities.append({
-                'value': city,
-                'term': urlquote_plus(city)
-            })
+        search_term = self.request.GET.get('q', '')
 
         context.update({
-            'tags': tags[:20],
-            'cities': urlencoded_cities,
-            'search_term': urllib.unquote_plus(self.request.GET.get('q', ''))
+            'search_term': urllib.unquote_plus(search_term)
         })
+
+        if not search_term:
+            tags = Tag.objects.all().annotate(
+                num_times=Count('taggit_taggeditem_items')
+            ).filter(num_times__gt=0).order_by('-num_times')
+
+            cities = User.objects.exclude(
+                city='').values_list('city', flat=True).distinct()
+
+            urlencoded_cities = []
+
+            for city in cities[:20]:
+                urlencoded_cities.append({
+                    'value': city,
+                    'term': urlquote_plus(city)
+                })
+
+            context.update({
+                'tags': tags[:20],
+                'cities': urlencoded_cities,
+            })
 
         return context
 
