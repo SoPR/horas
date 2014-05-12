@@ -15,7 +15,7 @@ class UserSearchManager(search_models.SearchManagerMixIn, UserManager):
             fields=('first_name', 'last_name'),
             config='pg_catalog.spanish',
             search_field='search_index',
-            auto_update_search_field=True
+            auto_update_search_field=(connection.vendor == 'postgresql')
         )
 
     def contribute_to_class(self, cls, name):
@@ -71,14 +71,21 @@ class UserSearchManager(search_models.SearchManagerMixIn, UserManager):
         city_term = token_dict.get('city')
 
         if name_token:
-            name_term = ' '.join(name_token)
-
             if connection.vendor == 'postgresql':
+                name_term = ' '.join(name_token)
                 queryset = super(UserSearchManager, self).search(
                     name_term, **kwargs)
             else:
-                query = Q(first_name__istartswith=name_term)
-                query = query | Q(last_name__istartswith=name_term)
+                for term in name_token:
+                    name_query = (
+                        Q(first_name__istartswith=term) |
+                        Q(last_name__istartswith=term)
+                    )
+
+                    if query:
+                        query = query & name_query
+                    else:
+                        query = name_query
 
         if tag_term:
             tag_q = Q(tags__name__in=tag_term)
