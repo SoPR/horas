@@ -1,13 +1,12 @@
 import urllib
 
 from django.views.generic import ListView
-from django.db.models import Q, Count
+from django.db.models import Count
 from django.utils.http import urlquote_plus
 
 from taggit.models import Tag
 
 from ..profiles.models import User
-from .utils import normalize_query
 
 
 class SearchView(ListView):
