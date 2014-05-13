@@ -107,6 +107,37 @@ $ python manage.py brunchserver
 
 Abre tu browser en [http://localhost:8000/](http://localhost:8000/). Para accesar la sección de administración ve a [http://localhost:8000/admin/](http://localhost:8000/admin/), y usa el username **admin** y el password **abc123**.
 
+##### Para los usuarios de Mac OSX
+Durante la instalacion de los requerimientos con pip:
+
+```bash
+$ pip install -r requirements.txt
+```
+Es posible que se encuentren con este error:
+
+```
+src/_pylibmcmodule.h:42:10: fatal error: 'libmemcached/memcached.h' file not found
+    #include <libmemcached/memcached.h>
+             ^
+    1 error generated.
+```
+
+Esto se puede dar cuando __libmemcached__ no esta instalada en su sistema. La solucion es instalar __libmemcached__ de una de las siguientes maneras:
+
+__Homebrew__
+
+```bash
+$ brew install libmemcached
+```
+
+__Ports__
+
+```bash
+$ sudo port install libmemcached
+```
+
+Una vez hecho esto pueden volver al paso ```$ pip install -r requirements.txt``` y continuar con las instrucciones.
+
 #### Para correr tests
 ```
 $ python manage.py test --configuration=Testing --verbosity=3 --noinput
