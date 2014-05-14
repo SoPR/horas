@@ -37,7 +37,8 @@ class Meeting(BaseModel):
         ordering = ('-datetime',)
 
     def __str__(self):
-        return '[{}] {} - {}'.format(self.pk, self.mentor, self.datetime)
+        return '{0}-{1}-{2}-{3}'.format(self.pk, self.mentor,
+                                        self.datetime, self.state)
 
     def get_absolute_url(self):
         return reverse_lazy('meeting_detail',
