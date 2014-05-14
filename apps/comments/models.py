@@ -27,13 +27,13 @@ def comment_saved(sender, instance, created, **kwargs):
     protege = instance.content_object.protege
     meeting_url = instance.content_object.get_url_with_domain()
 
-    if created:
-        if instance.user == mentor:
-            recipient = protege
+    if instance.user == mentor:
+        recipient = protege
 
-        elif instance.user == protege:
-            recipient = mentor
+    elif instance.user == protege:
+        recipient = mentor
 
+    if created and recipient:
         notification.send(
             [recipient],
             'comment',
