@@ -14,7 +14,6 @@ from django.utils.translation import ugettext_lazy as _
 
 from django.conf import settings
 
-from notification import models as notification
 from taggit.managers import TaggableManager
 
 from .utils import get_gravatar_url, next_weekday, week_range
