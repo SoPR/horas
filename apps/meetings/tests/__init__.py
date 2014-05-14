@@ -13,7 +13,7 @@ class MeetingBaseTestCase(BaseTestCase):
         # Incomplete user missing date settings
         self.user2 = User.objects.create_user(
             username='user2', password='123', email='user2@example.com',
-            first_name='User', last_name='Dos', skype='user2')
+            first_name='User', last_name='Dos', skype='user2skype')
 
         self.meeting = Meeting.objects.create(
             mentor=self.dude, datetime=now() + timedelta(days=1))

@@ -63,12 +63,35 @@ class MeetingDetailViewTestCase(MeetingBaseTestCase):
         response = self.client.get('/dude/meetings/1/')
         self.assertContains(response, 'Detalles', status_code=200)
 
+
     def test_details_visible(self):
         self._login_user()
         self.meeting.state = 'reserved'
         self.meeting.save()
         response = self.client.get('/dude/meetings/1/')
         self.assertContains(response, 'Detalles', status_code=200)
+
+    def test_meeting_details_not_visible_if_reserved(self):
+        '''
+        Participant emails and meeting.format details should
+        only be visible after the meeting is confirmed
+        '''
+        self._login_user()
+        self.meeting.state = 'reserved'
+        self.meeting.format = 'skype'
+        self.meeting.save()
+        response = self.client.get('/dude/meetings/1/')
+        self.assertNotContains(response, 'dudeskype', status_code=200)
+        self.assertNotContains(response, 'thedude@example.com', status_code=200)
+
+    def test_meeting_details_visible_if_confirmed(self):
+        self._login_user()
+        self.meeting.state = 'confirmed'
+        self.meeting.format = 'skype'
+        self.meeting.save()
+        response = self.client.get('/dude/meetings/1/')
+        self.assertContains(response, 'dudeskype', status_code=200)
+        self.assertContains(response, 'thedude@example.com', status_code=200)
 
     def test_comments_visible(self):
         ctype = ContentType.objects.get(name='meeting')
