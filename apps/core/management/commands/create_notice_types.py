@@ -34,4 +34,8 @@ class Command(BaseCommand):
                                         _('Let us know'),
                                         _('how did your meeting go?'))
 
+        notification.create_notice_type('comment',
+                                        _('New comment'),
+                                        _('you have a new comment'))
+
         self.stdout.write('--> Created notice types')
