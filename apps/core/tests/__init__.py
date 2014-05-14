@@ -11,7 +11,6 @@ class BaseTestCase(TestCase):
     def setUp(self):
         self.dude = User.objects.get(username='dude')
         self.call_command = call_command
-        self.call_command('create_notice_types')
 
     def _login_user(self):
         credentials = {'login': 'dude', 'password': 'thedude'}

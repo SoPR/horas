@@ -13,6 +13,7 @@ class MeetingStatesTestCase(MeetingBaseTestCase):
         self.assertEqual(self.meeting.state, 'available')
 
     def test_available_can_become_reserved_by_other_user(self):
+        self.call_command('create_notice_types')
         self.meeting.get_state_info().make_transition('reserve', self.user2)
         self.assertEqual(self.meeting.state, 'reserved')
 
@@ -21,10 +22,12 @@ class MeetingStatesTestCase(MeetingBaseTestCase):
             self.meeting.get_state_info().make_transition('reserve', self.dude)
 
     def test_reserving_a_meeting_should_set_the_protege(self):
+        self.call_command('create_notice_types')
         self.meeting.get_state_info().make_transition('reserve', self.user2)
         self.assertEqual(self.meeting.protege, self.user2)
 
     def test_mentor_can_confirm_meeting(self):
+        self.call_command('create_notice_types')
         self.meeting.state = 'reserved'
         self.meeting.protege = self.user2
         self.meeting.save()
@@ -41,6 +44,7 @@ class MeetingStatesTestCase(MeetingBaseTestCase):
                                                           self.user2)
 
     def test_protege_can_cancel_reserved_meeting(self):
+        self.call_command('create_notice_types')
         self.meeting.state = 'reserved'
         self.meeting.protege = self.user2
         self.meeting.save()
@@ -51,6 +55,7 @@ class MeetingStatesTestCase(MeetingBaseTestCase):
         self.assertEqual(self.meeting.cancelled_by, self.user2)
 
     def test_mentor_can_cancel_reserved_meeting(self):
+        self.call_command('create_notice_types')
         self.meeting.state = 'reserved'
         self.meeting.protege = self.user2
         self.meeting.save()
@@ -61,6 +66,7 @@ class MeetingStatesTestCase(MeetingBaseTestCase):
         self.assertEqual(self.meeting.cancelled_by, self.dude)
 
     def test_protege_can_cancel_confirmed_meeting(self):
+        self.call_command('create_notice_types')
         self.meeting.state = 'confirmed'
         self.meeting.protege = self.user2
         self.meeting.save()
@@ -71,6 +77,7 @@ class MeetingStatesTestCase(MeetingBaseTestCase):
         self.assertEqual(self.meeting.cancelled_by, self.user2)
 
     def test_mentor_can_cancel_confirmed_meeting(self):
+        self.call_command('create_notice_types')
         self.meeting.state = 'confirmed'
         self.meeting.protege = self.user2
         self.meeting.save()
