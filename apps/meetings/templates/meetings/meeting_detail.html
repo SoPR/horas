@@ -44,12 +44,12 @@
                                         <h5>{% trans "Emails" %}</h5>
                                         <table class="table">
                                             <tr>
-                                                <td class="col-md-4">{{ meeting.mentor.get_full_name|title }}</td>
-                                                <td class="col-md-8"><a href="mailto:{{ meeting.mentor.email }}">{{ meeting.mentor.email }}</a></td>
+                                                <td class="col-xs-4 col-md-4">{{ meeting.mentor.get_full_name|title }}</td>
+                                                <td class="col-xs-8 col-md-8"><a href="mailto:{{ meeting.mentor.email }}">{{ meeting.mentor.email }}</a></td>
                                             </tr>
                                             <tr>
-                                                <td class="col-md-4">{{ meeting.protege.get_full_name|title }}</td>
-                                                <td class="col-md-8"><a href="mailto:{{ meeting.protege.email }}">{{ meeting.protege.email }}</a></td>
+                                                <td class="col-xs-4 col-md-4">{{ meeting.protege.get_full_name|title }}</td>
+                                                <td class="col-xs-8 col-md-8"><a href="mailto:{{ meeting.protege.email }}">{{ meeting.protege.email }}</a></td>
                                             </tr>
                                         </table>
                                     </div>
@@ -59,9 +59,9 @@
                                     <h5>{% trans "Formato" %}</h5>
                                     <table class="table">
                                         <tr>
-                                            <td class="col-md-4">{{ meeting_format_name }}</td>
+                                            <td class="col-xs-4 col-md-4">{{ meeting_format_name }}</td>
                                             {% if meeting.state == 'confirmed' %}
-                                                <td class="col-md-8">{{ meeting_format_information }}</td>
+                                                <td class="col-xs-8 col-md-8">{{ meeting_format_information }}</td>
                                             {% endif %}
                                         </tr>
                                     </table>
