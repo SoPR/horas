@@ -120,7 +120,7 @@ class UserModelTestCase(BaseTestCase):
         self.assertEqual(formats[0][0], '123-123-1234')
         self.assertEqual(formats[0][1], 'phone')
 
-        self.assertEqual(formats[1][0], 'thedude')
+        self.assertEqual(formats[1][0], 'dudeskype')
         self.assertEqual(formats[1][1], 'skype')
 
         self.assertEqual(formats[2][0], 'thedude@example.com')

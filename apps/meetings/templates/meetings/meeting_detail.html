@@ -39,33 +39,36 @@
                                 </h4>
                             </div>
                             <div class="panel-body">
-
-                                <div>
-                                    <h5>{% trans "Emails" %}</h5>
-                                    <table class="table">
-                                        <tr>
-                                            <td>{{ meeting.mentor.get_full_name|title }}</td>
-                                            <td><a href="mailto:{{ meeting.mentor.email }}">{{ meeting.mentor.email }}</a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>{{ meeting.protege.get_full_name|title }}</td>
-                                            <td><a href="mailto:{{ meeting.protege.email }}">{{ meeting.protege.email }}</a></td>
-                                        </tr>
-                                    </table>
-                                </div>
+                                {% if meeting.state == 'confirmed' %}
+                                    <div>
+                                        <h5>{% trans "Emails" %}</h5>
+                                        <table class="table">
+                                            <tr>
+                                                <td class="col-xs-4 col-md-4">{{ meeting.mentor.get_full_name|title }}</td>
+                                                <td class="col-xs-8 col-md-8"><a href="mailto:{{ meeting.mentor.email }}">{{ meeting.mentor.email }}</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="col-xs-4 col-md-4">{{ meeting.protege.get_full_name|title }}</td>
+                                                <td class="col-xs-8 col-md-8"><a href="mailto:{{ meeting.protege.email }}">{{ meeting.protege.email }}</a></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                {% endif %}
 
                                 <div>
                                     <h5>{% trans "Formato" %}</h5>
                                     <table class="table">
                                         <tr>
-                                            <td>{{ meeting_format_name }}</td>
-                                            <td>{{ meeting_format_information }}</td>
+                                            <td class="col-xs-4 col-md-4">{{ meeting_format_name }}</td>
+                                            {% if meeting.state == 'confirmed' %}
+                                                <td class="col-xs-8 col-md-8">{{ meeting_format_information }}</td>
+                                            {% endif %}
                                         </tr>
                                     </table>
                                 </div>
 
                                 <div>
-                                    <h5>{% trans "Mensage" %}</h5>
+                                    <h5>{% trans "Mensaje" %}</h5>
                                     <table class="table">
                                         <tr>
                                             <td>

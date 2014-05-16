@@ -1,0 +1,17 @@
+{% load i18n %}
+
+{% blocktrans with recipient_name=recipient.get_full_name comenter_full_name=comment.user.get_full_name commenter_first_name=comment.user.first_name comment_markdown=comment.comment %}
+    Hola {{ recipient_name }},
+
+    {{ comenter_full_name }} acaba de dejar un comentario.
+
+    =======
+    Comentario de {{ commenter_first_name }}:
+
+    {{ comment_markdown }}
+    =======
+
+    Ver en website: {{ meeting_url }}
+
+    - 1hora.org
+{% endblocktrans %}

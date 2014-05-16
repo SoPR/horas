@@ -33,10 +33,10 @@
                 <li><a href="{{ profile_user.linkedin_url }}">LinkedIn</a></li>
             {% endif %}
             {% if profile_user.github_username %}
-                <li><a href="http://github.com/{{ profile_user.username }}">GitHub</a></li>
+                <li><a href="http://github.com/{{ profile_user.github_username }}">GitHub</a></li>
             {% endif %}
             {% if profile_user.twitter_username %}
-                <li><a href="http://twitter.com/{{ profile_user.username }}">Twitter</a></li>
+                <li><a href="http://twitter.com/{{ profile_user.twitter_username }}">Twitter</a></li>
             {% endif %}
             {% if profile_user.website_url %}
                 <li><a href="{{ profile_user.website_url }}">{{ profile_user.website_url }}</a></li>
