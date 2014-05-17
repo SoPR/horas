@@ -232,9 +232,10 @@ class Production(Common):
     STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
     STATIC_URL = 'https://d2kmfhumajdz54.cloudfront.net/'
 
-    MANDRILL_API_KEY = values.Value(environ_prefix=None)
     DEFAULT_FROM_EMAIL = values.Value(environ_prefix=None)
-    EMAIL_BACKEND = 'djrill.mail.backends.djrill.DjrillBackend'
+    EMAIL_BACKEND = 'sgbackend.SendGridBackend'
+    SENDGRID_USER = values.Value(environ_prefix=None)
+    SENDGRID_PASSWORD = values.Value(environ_prefix=None)
 
     # cached sessions
     SESSION_ENGINE = 'django.contrib.sessions.backends.cached_db'
