@@ -86,13 +86,12 @@ class Meeting(BaseModel):
         return message.encode('utf-8')
 
     def publish_on_twitter(self):
-        auth = tweepy.OAuthHandler(os.environ.get('TWITTER_API_KEY'),
-                                   os.environ.get('TWITTER_API_SECRET'))
+        pass
+        # auth = tweepy.OAuthHandler(os.environ.get('TWITTER_API_KEY'),
+        #                            os.environ.get('TWITTER_API_SECRET'))
 
-        auth.set_access_token(os.environ.get('TWITTER_ACCESS_TOKEN'),
-                              os.environ.get('TWITTER_ACCESS_TOKEN_SECRET'))
+        # auth.set_access_token(os.environ.get('TWITTER_ACCESS_TOKEN'),
+        #                       os.environ.get('TWITTER_ACCESS_TOKEN_SECRET'))
 
-        api = tweepy.API(auth)
-        api.update_status(self.get_twitter_message())
-
-
+        # api = tweepy.API(auth)
+        # api.update_status(self.get_twitter_message())
