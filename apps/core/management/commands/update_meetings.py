@@ -20,7 +20,6 @@ class Command(BaseCommand):
             if meeting.is_in_past():
                 meeting.get_state_info().make_transition('flag_unused')
 
-
         # 2. create all missing meetings
         users = User.objects.filter(is_active=True)
 
