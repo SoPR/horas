@@ -23,7 +23,6 @@ django-secure==1.0
 django-states==1.6.2
 django-storages==1.1.8
 django-taggit==0.12
-djrill==1.0.0
 ecdsa==0.11
 gunicorn==18.0
 icalendar==3.6.2
@@ -41,6 +40,7 @@ pytz==2014.2
 raven==4.2.1
 requests==2.2.1
 requests-oauthlib==0.4.0
+sendgrid-django==0.0.1
 simplejson==3.4.1
 six==1.6.1
 sqlparse==0.1.11

@@ -91,7 +91,7 @@ Abre tu browser en [http://localhost:8000/](http://localhost:8000/). Para accesa
 
 
 #### Opción 2: Local
-Para esta opción debes tener instalado **Python 2.7** en tu máquina y [Brunch](http://brunch.io). También es recomendado que crees un [virtualevn](http://www.virtualenv.org/) para el proyecto pero no es un requisito.
+Para esta opción debes tener instalado **Python 2.7** en tu máquina y [Brunch](http://brunch.io). También es recomendado que crees un [virtualenv](http://www.virtualenv.org/) para el proyecto pero no es un requisito.
 
 ```bash
 $ git clone https://github.com/SoPR/horas.git
