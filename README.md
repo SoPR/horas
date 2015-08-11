@@ -5,7 +5,7 @@ Una plataforma para facilitar la [mentoría](http://es.wikipedia.org/wiki/Mentor
 [![Regístrate](http://i.imgur.com/dN5Qz4w.png)](http://eepurl.com/OFTOv)
 
 
-![Horas Screenshot](https://raw2.github.com/SoPR/horas/design/png/01.png)
+![Horas Screenshot](http://x.gcollazo.com/SRn3emY834.png)
 
 ## Idea
 
