@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-import os
 from datetime import timedelta
 
 from django.db import models
@@ -8,10 +7,7 @@ from django.utils.formats import date_format
 from django.core.urlresolvers import reverse_lazy
 from django.contrib.sites.models import Site
 from django.conf import settings
-from django.utils.translation import ugettext_lazy as _
 
-import tweepy
-import bitly_api
 from django_states.fields import StateField
 
 from ..core.models import BaseModel
@@ -74,24 +70,3 @@ class Meeting(BaseModel):
 
         return '{0} - {1} ({2})'.format(start_time_fmt,
                                         end_time_fmt, start_datetime.tzname())
-
-    def get_short_url(self):
-        bitly = bitly_api.Connection(
-            access_token=os.environ.get('BITLY_ACCESS_TOKEN'))
-        return bitly.shorten(self.get_url_with_domain())['url']
-
-    def get_twitter_message(self):
-        message = _(u'{0} tiene un espacio de reunión disponible. {1}'.format(
-                    self.mentor.get_full_name(), self.get_short_url()))
-        return message.encode('utf-8')
-
-    def publish_on_twitter(self):
-        pass
-        # auth = tweepy.OAuthHandler(os.environ.get('TWITTER_API_KEY'),
-        #                            os.environ.get('TWITTER_API_SECRET'))
-
-        # auth.set_access_token(os.environ.get('TWITTER_ACCESS_TOKEN'),
-        #                       os.environ.get('TWITTER_ACCESS_TOKEN_SECRET'))
-
-        # api = tweepy.API(auth)
-        # api.update_status(self.get_twitter_message())

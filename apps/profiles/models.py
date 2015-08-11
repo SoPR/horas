@@ -201,9 +201,6 @@ class User(AbstractUser):
             if created:
                 print('-> Created meeting_slot:{0}'.format(meeting_slot))
 
-                if not settings.ANNOUNCE_TEST_MODE:
-                    meeting_slot.publish_on_twitter()
-
             return meeting_slot, created
 
         return None, False
