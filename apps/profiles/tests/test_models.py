@@ -3,9 +3,10 @@ from datetime import time, timedelta
 
 from apps.core.tests import BaseTestCase
 from apps.meetings.models import Meeting
+from apps.profiles.models import User
 
 
-class UseModelTestCase(BaseTestCase):
+class UserModelTestCase(BaseTestCase):
     def test_change_settings_creates_meeting(self):
         self.assertEqual(Meeting.objects.all().count(), 0)
 
@@ -221,3 +222,71 @@ class UseModelTestCase(BaseTestCase):
         self.dude.save()
 
         self.assertFalse(self.dude.has_social_links())
+
+
+class UserSearchModelTestCase(BaseTestCase):
+    """
+    TODO: Test full-text search for first and last name on postgresql.
+    """
+    def setUp(self):
+        self.users = []
+
+        self.user1 = User.objects.create(
+            username='user1', email='user1@example.com', city='San Juan',
+            first_name='John', last_name='Doe')
+
+        self.user2 = User.objects.create(
+            username='user2', email='user2@example.com', city='Bayamón',
+            first_name='Juan', last_name='Pueblo')
+
+        self.user3 = User.objects.create(
+            username='user3', email='user3@example.com', city='Miami',
+            first_name='John', last_name='Henderson')
+
+        self.user1.tags.add(*['python', 'startups', 'javascript'])
+        self.user2.tags.add(*['diseño', 'startups', 'javascript'])
+        self.user3.tags.add(*['programación', 'startups', 'arte'])
+
+        self.users.extend([self.user1, self.user2, self.user3])
+
+    def test_search_with_tag(self):
+        results = User.objects.search('tag:python')
+
+        self.assertEqual(results.count(), 1)
+        self.assertEqual(results[0], self.user1)
+
+    def test_search_with_multiple_tags(self):
+        results = User.objects.search('tag:python,startups')
+
+        self.assertEqual(results.count(), 3)
+        self.assertEqual(list(results), self.users)
+
+    def test_search_with_city(self):
+        results = User.objects.search('city:San+Juan')
+
+        self.assertEqual(results.count(), 1)
+        self.assertEqual(results[0], self.user1)
+
+    def test_search_with_multiple_cities(self):
+        results = User.objects.search('city:San+Juan,Miami,Bayamón')
+
+        self.assertEqual(results.count(), 3)
+        self.assertEqual(list(results), self.users)
+
+    def test_search_with_tag_and_city(self):
+        results = User.objects.search('tag:startups city:Miami')
+
+        self.assertEqual(results.count(), 1)
+        self.assertEqual(results[0], self.user3)
+
+    def test_search_with_name(self):
+        results = User.objects.search('Juan Pueblo')
+
+        self.assertEqual(results.count(), 1)
+        self.assertEqual(results[0], self.user2)
+
+    def test_search_with_name_and_tag(self):
+        results = User.objects.search('tag:startups John')
+
+        self.assertEqual(results.count(), 2)
+        self.assertEqual(list(results), [self.user1, self.user3])

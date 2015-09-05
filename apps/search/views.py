@@ -1,8 +1,8 @@
-import operator
-from functools import reduce
+import urllib
 
 from django.views.generic import ListView
-from django.db.models import Q, Count
+from django.db.models import Count
+from django.utils.http import urlquote_plus
 
 from taggit.models import Tag
 
@@ -16,19 +16,32 @@ class SearchView(ListView):
 
     def get_context_data(self):
         context = super(SearchView, self).get_context_data()
-
-        tags = Tag.objects.all().annotate(
-            num_times=Count('taggit_taggeditem_items')
-        ).filter(num_times__gt=0).order_by('-num_times')
-
-        cities = User.objects.exclude(
-            city='').values_list('city', flat=True).distinct()
+        search_term = self.request.GET.get('q', '')
 
         context.update({
-            'tags': tags[:20],
-            'cities': cities[:20],
-            'search_term': self.request.GET.get('q', '')
+            'search_term': urllib.unquote_plus(search_term)
         })
+
+        if not search_term:
+            tags = Tag.objects.all().annotate(
+                num_times=Count('taggit_taggeditem_items')
+            ).filter(num_times__gt=0).order_by('-num_times')
+
+            cities = User.objects.exclude(
+                city='').values_list('city', flat=True).distinct()
+
+            urlencoded_cities = []
+
+            for city in cities[:20]:
+                urlencoded_cities.append({
+                    'value': city,
+                    'term': urlquote_plus(city)
+                })
+
+            context.update({
+                'tags': tags[:20],
+                'cities': urlencoded_cities,
+            })
 
         return context
 
@@ -37,20 +50,6 @@ class SearchView(ListView):
         search_term = self.request.GET.get('q')
 
         if search_term:
-            search_args = []
-            queries = (
-                'first_name__istartswith',
-                'last_name__istartswith',
-                'tags__name__icontains',
-                'city__icontains',
-                'state__icontains',
-            )
-
-            for term in search_term.split():
-                for query in queries:
-                    search_args.append(Q(**{query: term}))
-
-            return queryset.filter(
-                reduce(operator.or_, search_args)).distinct()
+            return User.objects.search(search_term).order_by('-date_joined')
 
         return [q for q in queryset if q.has_complete_profile()]

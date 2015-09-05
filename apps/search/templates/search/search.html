@@ -40,7 +40,7 @@
                     {% cache 300 search.tags %}
                         {% for tag in tags %}
                             <li>
-                                <a href="{% url 'search_query' tag.name %}">
+                                <a href="{% url 'tag_search_query' tag.name %}">
                                     {{ tag }}
                                 </a>
                             </li>
@@ -65,8 +65,8 @@
                     {% cache 300 search.cities %}
                         {% for city in cities %}
                             <li>
-                                <a href="{% url 'search_list' %}?q={{ city }}">
-                                    {{ city }}
+                                <a href="{% url 'city_search_query' city.term %}">
+                                    {{ city.value }}
                                 </a>
                             </li>
                         {% endfor %}
