@@ -23,7 +23,6 @@ django-secure==1.0
 django-states==1.6.2
 django-storages==1.1.8
 django-taggit==0.12
-djrill==1.0.0
 ecdsa==0.11
 gunicorn==18.0
 icalendar==3.6.2

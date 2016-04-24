@@ -190,8 +190,10 @@ class Testing(Common):
     PROTOCOL = 'http'
 
     # Remove social logins
-    INSTALLED_APPS =  [a for a in Common.INSTALLED_APPS
-                        if not a.startswith('allauth.socialaccount.')]
+    INSTALLED_APPS = [
+        a for a in Common.INSTALLED_APPS
+        if not a.startswith('allauth.socialaccount.')
+    ]
 
     # Email Settings
     EMAIL_BACKEND = 'django.core.mail.backends.dummy.EmailBackend'
@@ -213,6 +215,10 @@ class Testing(Common):
 
 
 class Production(Common):
+    INSTALLED_APPS = Common.INSTALLED_APPS + (
+        'raven.contrib.django.raven_compat',
+    )
+
     # django-secure settings
     PROTOCOL = 'https'
     SESSION_COOKIE_SECURE = True
@@ -224,17 +230,16 @@ class Production(Common):
     SECURE_BROWSER_XSS_FILTER = True
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
-    INSTALLED_APPS = Common.INSTALLED_APPS + (
-        'djrill',
-        'raven.contrib.django.raven_compat'
-    )
-
     STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
     STATIC_URL = 'https://d2kmfhumajdz54.cloudfront.net/'
 
-    MANDRILL_API_KEY = values.Value(environ_prefix=None)
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_HOST = values.Value()
+    EMAIL_HOST_USER = values.Value()
+    EMAIL_HOST_PASSWORD = values.SecretValue()
+    EMAIL_PORT = values.IntegerValue()
+    EMAIL_USE_TLS = values.BooleanValue(True)
     DEFAULT_FROM_EMAIL = values.Value(environ_prefix=None)
-    EMAIL_BACKEND = 'djrill.mail.backends.djrill.DjrillBackend'
 
     # cached sessions
     SESSION_ENGINE = 'django.contrib.sessions.backends.cached_db'
