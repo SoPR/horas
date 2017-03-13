@@ -32,5 +32,5 @@ urlpatterns = [
     url(r'^(?P<username>[^/]+)/meetings/', include('apps.meetings.urls')),
     url(r'^(?P<username>[^/]+)/', include('apps.profiles.urls')),
 
-    url(r'^$', include('apps.core.urls')),
+    url(r'^', include('apps.core.urls')),
 ]
