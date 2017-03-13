@@ -1,8 +1,8 @@
-from django.conf.urls import patterns, url
+from django.conf.urls import url
 from .views import HomePageView
 
-urlpatterns = patterns(
+urlpatterns = [
     '',  # Empty string as prefix
 
     url(r'^$', HomePageView.as_view(), name='home')
-)
+]

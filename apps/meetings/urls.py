@@ -1,9 +1,9 @@
-from django.conf.urls import patterns, url
+from django.conf.urls import url
 from .views import (MeetingUpdateView, MeetingConfirmView,
                     MeetingDetailView, MeetingCancelView,
                     MeetingCommentView)
 
-urlpatterns = patterns(
+urlpatterns = [
     '',  # Empty string as prefix
 
     url('^(?P<pk>\d+)/$', MeetingDetailView.as_view(),
@@ -20,4 +20,4 @@ urlpatterns = patterns(
 
     url('^(?P<pk>\d+)/comment/$', MeetingCommentView.as_view(),
         name='meeting_comment'),
-)
+]

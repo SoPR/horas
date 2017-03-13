@@ -1,11 +1,11 @@
-from django.conf.urls import patterns, include, url
+from django.conf.urls import include, url
 from django.views.generic.base import TemplateView, RedirectView
 from django.conf import settings
 from django.contrib import admin
 
 admin.autodiscover()
 
-urlpatterns = patterns(
+urlpatterns = [
     '',  # Empty string as prefix
 
     url(r'^favicon.ico/$', RedirectView.as_view(
@@ -35,4 +35,4 @@ urlpatterns = patterns(
     url(r'^(?P<username>[^/]+)/', include('apps.profiles.urls')),
 
     url(r'^$', include('apps.core.urls')),
-)
+]

@@ -1,9 +1,9 @@
-from django.conf.urls import patterns, url
+from django.conf.urls import url
 
 from .feeds import ProfileCalendarFeed
 from .views import ProfileDetailView, ProfileUpdateView
 
-urlpatterns = patterns(
+urlpatterns = [
     '',  # Empty string as prefix
 
     url(r'^$',
@@ -15,4 +15,4 @@ urlpatterns = patterns(
         name='profile_update'),
 
     url(r'^ical/$', ProfileCalendarFeed(), name='profile_calendar_feed'),
-)
+]
