@@ -6,8 +6,6 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = [
-    '',  # Empty string as prefix
-
     url(r'^favicon.ico/$', RedirectView.as_view(
         url=settings.STATIC_URL + 'images/favicon.ico')),
 

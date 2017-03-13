@@ -4,8 +4,6 @@ from .views import (MeetingUpdateView, MeetingConfirmView,
                     MeetingCommentView)
 
 urlpatterns = [
-    '',  # Empty string as prefix
-
     url('^(?P<pk>\d+)/$', MeetingDetailView.as_view(),
         name='meeting_detail'),
 

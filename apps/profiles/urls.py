@@ -4,8 +4,6 @@ from .feeds import ProfileCalendarFeed
 from .views import ProfileDetailView, ProfileUpdateView
 
 urlpatterns = [
-    '',  # Empty string as prefix
-
     url(r'^$',
         ProfileDetailView.as_view(),
         name='profile_detail'),
