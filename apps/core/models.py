@@ -17,15 +17,6 @@ class DateTimeCreatedField(models.DateTimeField):
     def get_internal_type(self):
         return "DateTimeField"
 
-    def south_field_triple(self):
-        "Returns a suitable description of this field for South."
-        from south.modelsinspector import introspector
-
-        field_class = "django.db.models.fields.DateTimeField"
-        args, kwargs = introspector(self)
-
-        return (field_class, args, kwargs)
-
 
 class DateTimeModifiedField(DateTimeCreatedField):
     """
