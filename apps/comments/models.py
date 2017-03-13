@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.contenttypes.models import ContentType
-from django.contrib.contenttypes import generic
+from django.contrib.contenttypes.fields import GenericForeignKey
 from django.db.models.signals import post_save
 from notification import models as notification
 
@@ -11,7 +11,7 @@ class Comment(BaseModel):
     user = models.ForeignKey('profiles.User', related_name='users')
     content_type = models.ForeignKey(ContentType)
     object_id = models.PositiveIntegerField()
-    content_object = generic.GenericForeignKey('content_type', 'object_id')
+    content_object = GenericForeignKey('content_type', 'object_id')
     comment = models.TextField()
 
     def __unicode__(self):
