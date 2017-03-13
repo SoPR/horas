@@ -14,7 +14,7 @@ class StatManager(models.Manager):
         return None
 
     def get_latest(self, name):
-        queryset = super(StatManager, self).get_query_set()
+        queryset = super(StatManager, self).get_queryset()
         stats = queryset.filter(name=name)
         if stats:
             return stats[0]
