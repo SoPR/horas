@@ -57,19 +57,6 @@ def migrate():
             print('\nMIGRATE DATABASE aborted')
 
 
-# === DB ===
-def syncdb():
-    if env.env == 'development':
-        local('./manage.py syncdb'.format(**env))
-    else:
-        if raw_input('\nDo you really want to SYNCDB DATABASE of \
-            {heroku_app}? YES or [NO]: '.format(**env)) == 'YES':
-            local('heroku run python manage.py syncdb \
-                --app {heroku_app}'.format(**env))
-        else:
-            print('\nSYNCDB DATABASE aborted')
-
-
 # === Heroku ===
 def ps():
     local('heroku ps --app {heroku_app}'.format(**env))
