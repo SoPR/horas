@@ -12,8 +12,6 @@ class Common(Configuration):
 
     DEBUG = False
 
-    TEMPLATE_DEBUG = DEBUG
-
     SECRET_KEY = values.SecretValue(environ_prefix=None)
     SSO_SECRET_KEY = values.SecretValue(environ_prefix=None)
 
@@ -36,7 +34,6 @@ class Common(Configuration):
         'django.contrib.sites',
 
         # Third-party
-        'south',
         'django_extensions',
         'allauth',
         'allauth.account',
@@ -74,25 +71,29 @@ class Common(Configuration):
         'django.middleware.clickjacking.XFrameOptionsMiddleware',
         'apps.core.middleware.TimezoneMiddleware',
         'apps.core.middleware.EnsureCompleteProfileMiddleware',
+        'debug_toolbar.middleware.DebugToolbarMiddleware',
     )
 
-    TEMPLATE_CONTEXT_PROCESSORS = (
-        'django.contrib.auth.context_processors.auth',
-        'django.core.context_processors.debug',
-        'django.core.context_processors.i18n',
-        'django.core.context_processors.media',
-        'django.core.context_processors.static',
-        'django.core.context_processors.tz',
-        'django.contrib.messages.context_processors.messages',
-        'django.core.context_processors.request',
-
-        'allauth.account.context_processors.account',
-        'allauth.socialaccount.context_processors.socialaccount',
-    )
-
-    TEMPLATE_DIRS = (
-        os.path.join(BASE_DIR, 'templates'),
-    )
+    TEMPLATES = [
+        {
+            'BACKEND': 'django.template.backends.django.DjangoTemplates',
+            'DIRS': [os.path.join(BASE_DIR, 'templates'),],
+            'APP_DIRS': True,
+            'OPTIONS': {
+                'debug': DEBUG,
+                'context_processors': [
+                    'django.contrib.auth.context_processors.auth',
+                    'django.template.context_processors.debug',
+                    'django.template.context_processors.i18n',
+                    'django.template.context_processors.media',
+                    'django.template.context_processors.static',
+                    'django.template.context_processors.tz',
+                    'django.contrib.messages.context_processors.messages',
+                    'django.template.context_processors.request',
+                ],
+            },
+        },
+    ]
 
     AUTHENTICATION_BACKENDS = (
         'django.contrib.auth.backends.ModelBackend',
@@ -156,17 +157,11 @@ class Common(Configuration):
         os.path.join(BASE_DIR, 'static', 'dist'),
     )
 
-    SOUTH_MIGRATION_MODULES = {
-        'taggit': 'taggit.south_migrations',
-    }
-
     ANNOUNCE_TEST_MODE = False
 
 
 class Development(Common):
     DEBUG = True
-
-    TEMPLATE_DEBUG = DEBUG
 
     PROTOCOL = 'http'
 
@@ -197,9 +192,6 @@ class Testing(Common):
 
     # Email Settings
     EMAIL_BACKEND = 'django.core.mail.backends.dummy.EmailBackend'
-
-    # South
-    SOUTH_TESTS_MIGRATE = False
 
     # Debug Toolbar
     DEBUG_TOOLBAR_PATCH_SETTINGS = False
