@@ -1,4 +1,4 @@
-﻿# Horas [![Build Status](https://travis-ci.org/SoPR/horas.svg)](https://travis-ci.org/SoPR/horas)
+﻿# Horas [![Build Status](https://travis-ci.org/SoPR/horas.svg)](https://travis-ci.org/SoPR/horas) [![Can I Use Python 3?](https://caniusepython3.com/check/8ec27297-1f0c-4d40-a4d3-8503eda3debe.svg)](https://caniusepython3.com/check/8ec27297-1f0c-4d40-a4d3-8503eda3debe)
 
 Una plataforma para facilitar la [mentoría](http://es.wikipedia.org/wiki/Mentoria).
 
