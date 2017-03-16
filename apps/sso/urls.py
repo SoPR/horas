@@ -1,8 +1,7 @@
-from django.conf.urls import patterns, url
+from django.conf.urls import url
 
-urlpatterns = patterns(
-    '',  # Empty string as prefix
+from . import views
 
-    url('^sso/$', 'apps.sso.views.single_sign_on', name='single_sign_on'),
-
-)
+urlpatterns = [
+    url('^sso/$', views.single_sign_on, name='single_sign_on'),
+]

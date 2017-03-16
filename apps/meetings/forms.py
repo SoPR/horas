@@ -45,7 +45,7 @@ class MeetingCommentCreationForm(Form):
         super(MeetingCommentCreationForm, self).__init__(*args, **kwargs)
 
     def save(self):
-        ctype = ContentType.objects.get(name='meeting')
+        ctype = ContentType.objects.get(app_label='meetings', model='meeting')
         comment = Comment.objects.create(
             user=self.user, comment=self.cleaned_data['comment'],
             content_type=ctype, object_id=self.meeting.id)

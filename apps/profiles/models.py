@@ -6,7 +6,7 @@ import pytz
 from django.db import models
 from django.db.models import Q
 from django.contrib.auth.models import AbstractUser
-from django.db.models.loading import get_model
+from django.apps import apps
 from django.utils.timezone import now, get_default_timezone, make_aware
 from django.core.urlresolvers import reverse_lazy
 from django.contrib.sites.models import Site
@@ -81,7 +81,7 @@ class User(AbstractUser):
             # delete meetings and create a new one
             if any(checks):
                 print('---> meeting preferences changed')
-                Meeting = get_model('meetings', 'Meeting')
+                Meeting = apps.get_model('meetings', 'Meeting')
                 available_meetings = Meeting.objects.filter(state='available',
                                                             mentor=self)
 
@@ -173,7 +173,7 @@ class User(AbstractUser):
 
     def get_or_create_meeting(self):
         if self.has_complete_profile() and self.is_active:
-            Meeting = get_model('meetings', 'Meeting')
+            Meeting = apps.get_model('meetings', 'Meeting')
 
             user_tz = pytz.timezone(self.timezone)
             date = next_weekday(now(), self.day_of_week)

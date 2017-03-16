@@ -1,13 +1,11 @@
-from django.conf.urls import patterns, include, url
+from django.conf.urls import include, url
 from django.views.generic.base import TemplateView, RedirectView
 from django.conf import settings
 from django.contrib import admin
 
 admin.autodiscover()
 
-urlpatterns = patterns(
-    '',  # Empty string as prefix
-
+urlpatterns = [
     url(r'^favicon.ico/$', RedirectView.as_view(
         url=settings.STATIC_URL + 'images/favicon.ico')),
 
@@ -34,5 +32,5 @@ urlpatterns = patterns(
     url(r'^(?P<username>[^/]+)/meetings/', include('apps.meetings.urls')),
     url(r'^(?P<username>[^/]+)/', include('apps.profiles.urls')),
 
-    url(r'^$', include('apps.core.urls')),
-)
+    url(r'^', include('apps.core.urls')),
+]

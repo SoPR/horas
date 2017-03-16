@@ -1,6 +1,6 @@
 # encoding: utf-8
 from django import forms
-from django.forms.util import ErrorList
+from django.forms.utils import ErrorList
 from django.utils import six
 from django.utils.translation import ugettext_lazy as _
 

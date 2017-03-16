@@ -1,8 +1,9 @@
 from django.db import models
 from django.contrib.contenttypes.models import ContentType
-from django.contrib.contenttypes import generic
+from django.contrib.contenttypes.fields import GenericForeignKey
 from django.db.models.signals import post_save
-from notification import models as notification
+
+from pinax.notifications import models as notifications
 
 from ..core.models import BaseModel
 
@@ -11,7 +12,7 @@ class Comment(BaseModel):
     user = models.ForeignKey('profiles.User', related_name='users')
     content_type = models.ForeignKey(ContentType)
     object_id = models.PositiveIntegerField()
-    content_object = generic.GenericForeignKey('content_type', 'object_id')
+    content_object = GenericForeignKey('content_type', 'object_id')
     comment = models.TextField()
 
     def __unicode__(self):
@@ -19,7 +20,6 @@ class Comment(BaseModel):
 
     class Meta:
         ordering = ('date_created',)
-
 
 
 def comment_saved(sender, instance, created, **kwargs):
@@ -34,11 +34,12 @@ def comment_saved(sender, instance, created, **kwargs):
         recipient = mentor
 
     if created and recipient:
-        notification.send(
+        notifications.send(
             [recipient],
             'comment',
             {'comment': instance,
              'recipient': recipient,
              'meeting_url': meeting_url})
+
 
 post_save.connect(comment_saved, sender=Comment)

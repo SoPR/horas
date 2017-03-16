@@ -6,6 +6,7 @@ from django.http import HttpResponseRedirect
 from django.contrib import messages
 from django.utils.translation import ugettext_lazy as _
 
+
 class TimezoneMiddleware(object):
     def process_request(self, request):
         tzname = request.session.get('django_timezone')
@@ -25,17 +26,20 @@ class TimezoneMiddleware(object):
 
 class EnsureCompleteProfileMiddleware(object):
     def process_request(self, request):
-        if request.user.is_authenticated():
+        user = request.user
+
+        if user.is_authenticated():
             skip_urls = [
-                str(reverse_lazy('profile_update', args=[request.user.username])),
+                str(reverse_lazy('profile_update', args=[user.username])),
                 str(reverse_lazy('account_logout')),
                 str(reverse_lazy('admin:index'))
             ]
 
-            is_skip_url = any([request.path.startswith(url) for url in skip_urls])
+            is_skip_url = any([
+                request.path.startswith(url) for url in skip_urls
+            ])
 
-            if not request.user.has_complete_profile() and not is_skip_url:
-                messages.info(request, _('Debes completar tu perfil para continuar'))
+            if not user.has_complete_profile() and not is_skip_url:
+                message = _('Debes completar tu perfil para continuar')
+                messages.info(request, message)
                 return HttpResponseRedirect(skip_urls[0])
-
-
