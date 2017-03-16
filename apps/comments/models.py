@@ -2,7 +2,8 @@ from django.db import models
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.db.models.signals import post_save
-from notification import models as notification
+
+from pinax.notifications import models as notifications
 
 from ..core.models import BaseModel
 
@@ -21,7 +22,6 @@ class Comment(BaseModel):
         ordering = ('date_created',)
 
 
-
 def comment_saved(sender, instance, created, **kwargs):
     mentor = instance.content_object.mentor
     protege = instance.content_object.protege
@@ -34,11 +34,12 @@ def comment_saved(sender, instance, created, **kwargs):
         recipient = mentor
 
     if created and recipient:
-        notification.send(
+        notifications.send(
             [recipient],
             'comment',
             {'comment': instance,
              'recipient': recipient,
              'meeting_url': meeting_url})
+
 
 post_save.connect(comment_saved, sender=Comment)

@@ -31,7 +31,7 @@ deleted:
 from django.utils.translation import ugettext_lazy as _
 
 from django_states.machine import StateMachine, StateDefinition, StateTransition
-from notification import models as notification
+from pinax.notifications import models as notifications
 
 
 class MeetingStateMachine(StateMachine):
@@ -46,7 +46,7 @@ class MeetingStateMachine(StateMachine):
         description = _('Reserved')
 
         def handler(self, instance):
-            notification.send(
+            notifications.send(
                 [instance.mentor],
                 'reserved_meeting_slot',
                 {'meeting': instance})
@@ -55,7 +55,7 @@ class MeetingStateMachine(StateMachine):
         description = _('Confirmed')
 
         def handler(self, instance):
-            notification.send(
+            notifications.send(
                 [instance.protege],
                 'confirmed_meeting',
                 {'meeting': instance})
@@ -66,14 +66,14 @@ class MeetingStateMachine(StateMachine):
         def handler(self, instance):
             if instance.cancelled_by_mentor():
                 # Send message to protege
-                notification.send(
+                notifications.send(
                     [instance.protege],
                     'cancelled_by_mentor',
                     {'meeting': instance})
 
             if instance.cancelled_by_protege():
                 # Send message to mentor
-                notification.send(
+                notifications.send(
                     [instance.mentor],
                     'cancelled_by_protege',
                     {'meeting': instance})

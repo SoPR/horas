@@ -42,7 +42,7 @@ class Common(Configuration):
         'allauth.socialaccount.providers.facebook',
         'allauth.socialaccount.providers.google',
         'taggit',
-        'notification',
+        'pinax.notifications',
         'gunicorn',
         'storages',
         'collectfast',
