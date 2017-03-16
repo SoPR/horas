@@ -30,7 +30,7 @@ class MeetingDetailView(DetailView):
         ctx['meeting_format_name'] = self.object.mentor.get_meeting_format_name(self.object.format)
         ctx['profile_user'] = user
 
-        comment_type = ContentType.objects.get(model='meeting')
+        comment_type = ContentType.objects.get(app_label='meetings', model='meeting')
         ctx['comments'] = Comment.objects.select_related('user').filter(
             content_type=comment_type, object_id=self.object.id)
 

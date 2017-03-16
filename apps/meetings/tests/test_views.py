@@ -58,11 +58,10 @@ class MeetingDetailViewTestCase(MeetingBaseTestCase):
     def test_details_not_visible_to_non_participants(self):
         self._login_user()
         self.meeting.state = 'reserved'
-        self.meeting.state = self.user2
+        self.meeting.protege = self.user2
         self.meeting.save()
         response = self.client.get('/dude/meetings/1/')
         self.assertContains(response, 'Detalles', status_code=200)
-
 
     def test_details_visible(self):
         self._login_user()
@@ -94,7 +93,7 @@ class MeetingDetailViewTestCase(MeetingBaseTestCase):
         self.assertContains(response, 'thedude@example.com', status_code=200)
 
     def test_comments_visible(self):
-        ctype = ContentType.objects.get(name='meeting')
+        ctype = ContentType.objects.get(app_label='meetings', model='meeting')
         Comment.objects.create(
             user=self.dude, comment='This is a test comment',
             content_type=ctype, object_id=self.meeting.id)
@@ -107,7 +106,7 @@ class MeetingDetailViewTestCase(MeetingBaseTestCase):
         data = {'comment': 'New test comment'}
         response = self.client.post('/dude/meetings/1/comment/', data)
         self.assertEqual(response.status_code, 302)
-        self.assertEqual(response.url, 'http://testserver/dude/meetings/1/')
+        self.assertEqual(response.url, '/dude/meetings/1/')
 
         response = self.client.get('/dude/meetings/1/')
         self.assertContains(response, 'New test comment', status_code=200)

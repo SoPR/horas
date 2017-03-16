@@ -11,18 +11,18 @@ class UserProfileCompletionTestCase(BaseTestCase):
     def test_login_should_redirect_to_profile(self):
         response = self._login_user()
         self.assertEqual(response.status_code, 302)
-        self.assertEqual(response.url, 'http://testserver/dude/')
+        self.assertEqual(response.url, '/dude/')
 
     def test_incomplete_profile_should_redirect_to_profile(self):
-        self._login_user()
-
         # make user incomplete
         self.dude.first_name = ''
         self.dude.save()
 
+        self._login_user()
+
         response = self.client.get('/stats/')
         self.assertEqual(response.status_code, 302)
-        self.assertEqual(response.url, 'http://testserver/dude/update/')
+        self.assertEqual(response.url, '/dude/update/')
 
     def test_complete_profile_shouldnt_redirect_to_profile(self):
         self._login_user()
@@ -34,7 +34,7 @@ class UserProfileCompletionTestCase(BaseTestCase):
         self._login_user()
         response = self.client.get('/')
         self.assertEqual(response.status_code, 302)
-        self.assertEqual(response.url, 'http://testserver/search/')
+        self.assertEqual(response.url, '/search/')
 
 
 class UserUpdateViewTestCase(BaseTestCase):
@@ -42,7 +42,7 @@ class UserUpdateViewTestCase(BaseTestCase):
         self._login_user()
         response = self.client.post('/dude/update/', {})
         self.assertContains(response,
-                            '<ul class="errorlist">',
+                            '<ul class="errorlist nonfield">',
                             status_code=200)
 
     def test_submit_complete_form_should_redirect_to_profile_with_msg(self):
@@ -61,7 +61,7 @@ class UserUpdateViewTestCase(BaseTestCase):
         }
         response = self.client.post('/dude/update/', data)
         self.assertEqual(response.status_code, 302)
-        self.assertEqual(response.url, 'http://testserver/dude/')
+        self.assertEqual(response.url, '/dude/')
 
         response =  self.client.get('/dude/')
         self.assertContains(response,
