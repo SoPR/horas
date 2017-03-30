@@ -5,6 +5,7 @@ Collectfast==0.2.0
 dj-database-url==0.3.0
 Django==1.10.6
 django-allauth==0.31.0
+django-appconf==1.0.2
 django-autoslug==1.7.2
 django-bootstrap3==8.2.1
 django-braces==1.4.0
