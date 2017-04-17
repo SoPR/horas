@@ -17,7 +17,7 @@ class Common(Configuration):
 
     DISCOURSE_SSO_REDIRECT_URL = 'http://comunidad.1hora.org/session/sso_login?'
 
-    ALLOWED_HOSTS = ['localhost', 'unahora.herokuapp.com', '1hora.org']
+    ALLOWED_HOSTS = ['unahora.herokuapp.com', '1hora.org']
 
     SITE_ID = 1
 
@@ -163,6 +163,8 @@ class Development(Common):
     DEBUG = True
 
     PROTOCOL = 'http'
+
+    Common.ALLOWED_HOSTS += ['127.0.0.1', 'localhost',]
 
     INSTALLED_APPS = Common.INSTALLED_APPS + (
         'debug_toolbar',
