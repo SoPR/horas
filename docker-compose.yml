@@ -1,11 +1,28 @@
-
-version: '2'
-
+version: '3'
 services:
-  horas:
-    image: horas:latest
+  db:
+    image: postgres
+    container_name: horas_db
+  web:
+    image: froi/horas:latest
+    container_name: horas
     build:
       context: .
       dockerfile: Dockerfile
     ports:
-      - 8000:8000
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      ENVIRONMENT: 'development'
+      SECRET_KEY: 'dont-tell-eve'
+      SSO_SECRET_KEY: 'dont-tell-eve'
+      HORAS_DEFAULT_TZ: 'America/Puerto_Rico'
+      DEFAULT_FROM_EMAIL: 'admin@example.com'
+      DATABASE_URL: 'postgresql://postgres:postgres@db:5432/postgres'
+      AWS_ACCESS_KEY_ID: ''
+      AWS_SECRET_ACCESS_KEY: ''
+      AWS_STORAGE_BUCKET_NAME: ''
+      MEMCACHIER_SERVERS: ''
+      MEMCACHIER_USERNAME: ''
+      MEMCACHIER_PASSWORD: ''
