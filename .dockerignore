@@ -1,0 +1,17 @@
+.git
+.gitignore
+
+.ipynb_checkpoints/*
+Dockerfile
+.DS_Store
+
+.env
+.env.*
+
+Procfile
+TODO.md
+Vagrantfile
+
+*.db
+*.sqlite3
+.travis*
