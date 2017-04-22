@@ -13,7 +13,7 @@
     "watch": "webpack --progress --colors --watch",
     "postinstall": "npm run build"
   },
-  "dependencies": {
+  "devDependencies": {
     "autoprefixer": "^6.7.7",
     "babel-core": "^6.24.1",
     "babel-loader": "^7.0.0",
