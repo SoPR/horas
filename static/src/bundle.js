@@ -4,9 +4,8 @@
 require.context('./img/', true, /\.(jpe?g|png|gif|svg)$/i);
 
 // styles
-import 'bootstrap/dist/css/bootstrap.css';
-import './styles/index.styl';
+import './css/app.styl';
 
 // js
-import App from './main';
+import App from './app/index';
 App();

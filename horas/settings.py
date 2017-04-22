@@ -143,9 +143,6 @@ class Common(Configuration):
     USE_TZ = True
 
     # Static files (CSS, JavaScript, Images)
-    # https://docs.djangoproject.com/en/dev/howto/static-files/
-    BRUNCH_DIR = os.path.join(BASE_DIR, 'static', 'src')
-
     DEFAULT_FILE_STORAGE = 'storages.backends.s3.S3Storage'
 
     AWS_PRELOAD_METADATA = True
@@ -153,12 +150,12 @@ class Common(Configuration):
     AWS_SECRET_ACCESS_KEY = values.Value(environ_prefix=None)
     AWS_STORAGE_BUCKET_NAME = values.Value(environ_prefix=None)
 
-    STATIC_URL = '/static/dist/'
+    STATIC_URL = '/static/public/'
 
-    STATIC_ROOT = os.path.join(BASE_DIR, 'static', 'public')
+    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
     STATICFILES_DIRS = (
-        os.path.join(BASE_DIR, 'static', 'dist'),
+        os.path.join(BASE_DIR, 'static', 'public'),
     )
 
     ANNOUNCE_TEST_MODE = False
