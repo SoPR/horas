@@ -11,10 +11,10 @@ from django.contrib.staticfiles.management.commands.runserver import Command \
 class Command(StaticfilesRunserverCommand):
 
     def inner_run(self, *args, **options):
-        self.start_brunch()
+        self.start_webpack()
         return super(Command, self).inner_run(*args, **options)
 
-    def start_brunch(self):
+    def start_webpack(self):
         self.stdout.write('--> Starting webpack')
         self.webpack_process = subprocess.Popen(
             ['cd {0} && npm run watch'.format(settings.STATIC_ROOT)],
