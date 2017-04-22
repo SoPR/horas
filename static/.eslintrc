@@ -1,0 +1,6 @@
+{
+  "extends": ["blimp"],
+  "rules": {
+    // your overrides
+  }
+}

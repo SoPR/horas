@@ -91,18 +91,34 @@ Abre tu browser en [http://localhost:8000/](http://localhost:8000/). Para accesa
 
 
 #### Opción 2: Local
-Para esta opción debes tener instalado **Python 2.7** en tu máquina y [Brunch](http://brunch.io). También es recomendado que crees un [virtualevn](http://www.virtualenv.org/) para el proyecto pero no es un requisito.
+
+**Requisitos**
+
+- [Python 2.7](https://www.python.org/)
+- [Node.js LTS](https://nodejs.org) (incluye npm)
+- [Yarn](https://yarnpkg.com) (opcional)
 
 ```bash
+# Clonear repositorio
 $ git clone https://github.com/SoPR/horas.git
-$ cd horas/static/src
-$ npm install
-$ cd ../..
+
+# Instalar dependencias para el build de JS / CSS
+$ cd horas/static
+$ npm install  # 'yarn' si lo tienes instalado
+
+# Copiar archivo de variables de ambiente
+$ cd ..
 $ cp .env.example .env
+
+# Instalar dependencias python
 $ pip install -r requirements.txt
-$ python manage.py syncdb migrate
+
+# Migración y data inicial
+$ python manage.py migrate
 $ python manage.py loaddata apps/profiles/fixtures/admin.json
-$ python manage.py brunchserver
+
+# Correr server de django y webpack --watch
+$ python manage.py webpackserver
 ```
 
 Abre tu browser en [http://localhost:8000/](http://localhost:8000/). Para accesar la sección de administración ve a [http://localhost:8000/admin/](http://localhost:8000/admin/), y usa el username **admin** y el password **abc123**.

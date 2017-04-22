@@ -6,10 +6,6 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = [
-    url(r'^favicon.ico/$', RedirectView.as_view(
-        url=settings.STATIC_URL + 'images/favicon.ico')),
-
-
     url(r'^admin/', include(admin.site.urls)),
 
     url(r'^search/', include('apps.search.urls')),

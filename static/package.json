@@ -1,0 +1,37 @@
+{
+  "name": "horas",
+  "description": "Una plataforma para facilitar la mentoría.",
+  "author": "@gcollazo",
+  "version": "1.0.0",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SoPR/horas.git"
+  },
+  "scripts": {
+    "clean": "rm -rf public",
+    "build": "npm-run-all clean webpack:build",
+    "watch": "webpack --progress --colors --watch",
+    "webpack:build": "webpack --progress --colors --optimize-minimize",
+    "postinstall": "npm-run-all build"
+  },
+  "devDependencies": {
+    "autoprefixer": "^6.7.7",
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
+    "babel-preset-es2015": "^6.24.1",
+    "css-loader": "^0.28.0",
+    "eslint": "^3.19.0",
+    "eslint-config-blimp": "^4.0.1",
+    "eslint-loader": "^1.7.1",
+    "extract-text-webpack-plugin": "^2.1.0",
+    "file-loader": "^0.11.1",
+    "image-webpack-loader": "^3.3.0",
+    "postcss-loader": "^1.3.3",
+    "style-loader": "^0.16.1",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.1",
+    "webpack": "^2.4.1",
+    "npm-run-all": "^4.0.2"
+  }
+}
