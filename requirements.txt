@@ -3,7 +3,7 @@ bitly-api==0.3
 boto==2.28.0
 Collectfast==0.2.0
 dj-database-url==0.3.0
-Django==1.10.6
+Django==1.10.7
 django-allauth==0.31.0
 django-appconf==1.0.2
 django-autoslug==1.7.2
