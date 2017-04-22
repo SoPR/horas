@@ -39,8 +39,8 @@ def collectstatic():
 
 def build():
     # delete old dist folder
-    local('rm -rf static/dist/')
-    local('cd static/src && brunch build --production')
+    local('rm -rf static/public/')
+    local('cd static && npm run build')
 
 
 # === DB ===
