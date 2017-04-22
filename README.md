@@ -102,7 +102,7 @@ $ cp .env.example .env
 $ pip install -r requirements.txt
 $ python manage.py migrate
 $ python manage.py loaddata apps/profiles/fixtures/admin.json
-$ python manage.py brunchserver
+$ python manage.py webpackserver
 ```
 
 Abre tu browser en [http://localhost:8000/](http://localhost:8000/). Para accesar la sección de administración ve a [http://localhost:8000/admin/](http://localhost:8000/admin/), y usa el username **admin** y el password **abc123**.

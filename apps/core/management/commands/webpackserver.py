@@ -4,7 +4,7 @@ import atexit
 import signal
 
 from django.conf import settings
-from django.contrib.staticfiles.management.commands.runserver import Command\
+from django.contrib.staticfiles.management.commands.runserver import Command \
     as StaticfilesRunserverCommand
 
 
@@ -15,19 +15,19 @@ class Command(StaticfilesRunserverCommand):
         return super(Command, self).inner_run(*args, **options)
 
     def start_brunch(self):
-        self.stdout.write('--> Starting brunch')
-        self.brunch_process = subprocess.Popen(
-            ['cd {0} && brunch watch --server'.format(settings.BRUNCH_DIR)],
+        self.stdout.write('--> Starting webpack')
+        self.webpack_process = subprocess.Popen(
+            ['cd {0} && npm run watch'.format(settings.STATIC_ROOT)],
             shell=True,
             stdin=subprocess.PIPE,
             stdout=self.stdout,
             stderr=self.stderr,
         )
 
-        self.stdout.write('--> Brunch process on pid {0}'.format(self.brunch_process.pid))
+        self.stdout.write('--> webpack process on pid {0}'.format(self.webpack_process.pid))
 
-        def kill_brunch_process(pid):
-            self.stdout.write('--> Closing brunch process')
+        def kill_webpack_process(pid):
+            self.stdout.write('--> Closing webpack process')
             os.kill(pid, signal.SIGTERM)
 
-        atexit.register(kill_brunch_process, self.brunch_process.pid)
+        atexit.register(kill_webpack_process, self.webpack_process.pid)
