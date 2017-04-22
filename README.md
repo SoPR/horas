@@ -91,7 +91,12 @@ Abre tu browser en [http://localhost:8000/](http://localhost:8000/). Para accesa
 
 
 #### Opción 2: Local
-Para esta opción debes tener instalado **Python 2.7** en tu máquina y [Node.js](https://nodejs.org). También es recomendado que crees un [virtualevn](http://www.virtualenv.org/) para el proyecto pero no es un requisito.
+
+**Requisitos**
+
+- [Python 2.7](https://www.python.org/)
+- [Node.js LTS](https://nodejs.org) (incluye npm)
+- [Yarn](https://yarnpkg.com) (opcional)
 
 ```bash
 # Clonear repositorio
@@ -99,7 +104,7 @@ $ git clone https://github.com/SoPR/horas.git
 
 # Instalar dependencias para el build de JS / CSS
 $ cd horas/static
-$ yarn  # 'npm install' también funciona
+$ npm install  # 'yarn' si lo tienes instalado
 
 # Copiar archivo de variables de ambiente
 $ cd ..
