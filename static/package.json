@@ -9,9 +9,10 @@
     "url": "https://github.com/SoPR/horas.git"
   },
   "scripts": {
+    "clean": "rm -rf public",
     "build": "webpack --progress --colors --optimize-minimize",
     "watch": "webpack --progress --colors --watch",
-    "postinstall": "npm run build"
+    "postinstall": "npm-run-all clean build"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.7",
@@ -29,6 +30,7 @@
     "style-loader": "^0.16.1",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.1",
-    "webpack": "^2.4.1"
+    "webpack": "^2.4.1",
+    "npm-run-all": "^4.0.2"
   }
 }
