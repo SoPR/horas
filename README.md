@@ -94,14 +94,25 @@ Abre tu browser en [http://localhost:8000/](http://localhost:8000/). Para accesa
 Para esta opción debes tener instalado **Python 2.7** en tu máquina y [Brunch](http://brunch.io). También es recomendado que crees un [virtualevn](http://www.virtualenv.org/) para el proyecto pero no es un requisito.
 
 ```bash
+# Clonear repositorio
 $ git clone https://github.com/SoPR/horas.git
-$ cd horas/static/src
-$ npm install
-$ cd ../..
+
+# Instalar dependencias para el build de JS / CSS
+$ cd horas/static
+$ yarn  # 'npm install' también funciona
+
+# Copiar archivo de variables de ambiente
+$ cd ..
 $ cp .env.example .env
+
+# Instalar dependencias python
 $ pip install -r requirements.txt
+
+# Migración y data inicial
 $ python manage.py migrate
 $ python manage.py loaddata apps/profiles/fixtures/admin.json
+
+# Correr server de django y webpack --watch
 $ python manage.py webpackserver
 ```
 
