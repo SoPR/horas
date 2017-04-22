@@ -39,7 +39,6 @@ def collectstatic():
 
 def build():
     # delete old dist folder
-    local('rm -rf static/public/')
     local('cd static && npm run build')
 
 

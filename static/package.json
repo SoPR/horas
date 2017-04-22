@@ -10,9 +10,10 @@
   },
   "scripts": {
     "clean": "rm -rf public",
-    "build": "webpack --progress --colors --optimize-minimize",
+    "build": "npm-run-all clean webpack:build",
     "watch": "webpack --progress --colors --watch",
-    "postinstall": "npm-run-all clean build"
+    "webpack:build": "webpack --progress --colors --optimize-minimize",
+    "postinstall": "npm-run-all build"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.7",
