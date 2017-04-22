@@ -17,7 +17,12 @@ class Common(Configuration):
 
     DISCOURSE_SSO_REDIRECT_URL = 'http://comunidad.1hora.org/session/sso_login?'
 
-    ALLOWED_HOSTS = ['localhost', 'unahora.herokuapp.com', '1hora.org']
+    ALLOWED_HOSTS = [
+        'localhost',
+        '127.0.0.1',
+        'unahora.herokuapp.com',
+        '1hora.org'
+    ]
 
     SITE_ID = 1
 
