@@ -4,7 +4,7 @@ import atexit
 import signal
 
 from django.conf import settings
-from django.contrib.staticfiles.management.commands.runserver import Command \
+from django_extensions.management.commands.runserver_plus import Command \
     as StaticfilesRunserverCommand
 
 
