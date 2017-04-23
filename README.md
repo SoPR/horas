@@ -90,7 +90,58 @@ $ runhoras
 Abre tu browser en [http://localhost:8000/](http://localhost:8000/). Para accesar la sección de administración ve a [http://localhost:8000/admin/](http://localhost:8000/admin/), y usa el username **admin** y el password **abc123**.
 
 
-#### Opción 2: Local
+#### Opción 3: Docker
+
+**Instalación**
+
+**Linux**
+
+Puedes encontrar instrucciones de como instalar Docker para diferentes distribuciones de Linux [aqui](https://docs.docker.com/engine/installation/#docker-editions).
+
+Distribuciones populares:
+
+- [Ubuntu](https://docs.docker.com/engine/installation/linux/ubuntu/)
+- [Debian](https://docs.docker.com/engine/installation/linux/debian/)
+- [Fedora](https://docs.docker.com/engine/installation/linux/fedora/)
+
+**Mac OS**
+
+La mejor manera de utilizar Docker en Mac Os es utilizando [Docker for Mac](https://www.docker.com/docker-mac).
+
+**Windows**
+
+La mejor manera de utilizar Docker en Mac Os es utilizando [Docker for Windows](https://www.docker.com/docker-windows).
+
+** Como crear imagenes de Horas con Docker **
+
+```bash
+# Clonear repositorio
+$ git clone https://github.com/SoPR/horas.git
+
+# Instalar dependencias para el build de JS / CSS
+$ cd horas/static
+$ npm install  # 'yarn' si lo tienes instalado
+
+# Crear la imagen de Docker.
+$ cd ..
+$ docker-compose build
+
+# Once the image is created you can create the container
+$ docker-compose up -d
+
+# When the containers are created and running you can then run Django manage commands
+$ docker-compose exec web python manage.py collectstatic
+
+# Migración y data inicial
+$ python manage.py migrate
+$ python manage.py loaddata apps/profiles/fixtures/admin.json
+```
+
+El archivo docker-compose.yml contiene toda la configuración de los servicios de Docker necesarios tener una instancia de Horas corriendo.
+
+Abre tu browser en [http://localhost:8000/](http://localhost:8000/). Para accesar la sección de administración ve a [http://localhost:8000/admin/](http://localhost:8000/admin/), y usa el username **admin** y el password **abc123**.
+
+#### Opción 3: Local
 
 **Requisitos**
 
