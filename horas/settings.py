@@ -4,6 +4,10 @@ from configurations import Configuration, values
 
 
 class Common(Configuration):
+    LOCALE_PATHS = [
+        os.path.join(os.path.dirname(__file__), 'locale'),
+    ]
+
     BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
     ENVIRONMENT = values.Value(environ_prefix=None, default='development')
@@ -68,6 +72,7 @@ class Common(Configuration):
     MIDDLEWARE_CLASSES = (
         'djangosecure.middleware.SecurityMiddleware',
         'django.contrib.sessions.middleware.SessionMiddleware',
+        'django.middleware.locale.LocaleMiddleware',
         'django.middleware.common.CommonMiddleware',
         'django.middleware.csrf.CsrfViewMiddleware',
         'django.contrib.auth.middleware.AuthenticationMiddleware',

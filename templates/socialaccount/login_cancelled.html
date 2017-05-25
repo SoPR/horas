@@ -3,15 +3,15 @@
 {% load url from future %}
 {% load i18n %}
 
-{% block head_title %}{% trans "Login Cancelled" %}{% endblock %}
+{% block head_title %}{% trans "Inicio de Sesión Cancelada" %}{% endblock %}
 
 {% block content %}
     
-<h1>{% trans "Login Cancelled" %}</h1>
+<h1>{% trans "Inicio de Sesión Cancelada" %}</h1>
 
 {% url 'account_login' as login_url %}
 
-<p>{% blocktrans %}You decided to cancel logging in to our site using one of your existing accounts. If this was a mistake, please proceed to <a href="{{login_url}}">sign in</a>.{% endblocktrans %}</p>
+<p>{% blocktrans %}Cancelaste el inicio a tú sesión a nuestra pagina. Si esto fue hecho por error por favor proceda a el siguiente enlace <a href=\"%(login_url)s\">iniciar sesión</a>.{% endblocktrans %}</p>
 
 {% endblock %}
 

@@ -13,11 +13,11 @@
 
                 {% url 'account_email' as email_url %}
 
-                <p>{% blocktrans %}Este site require que verifique su dirección de email.{% endblocktrans %}</p>
+                <p>{% blocktrans %}Esta pagina require que verifique su dirección de correo electrónico.{% endblocktrans %}</p>
 
-                <p>{% blocktrans %}Le enviamos un mensaje a su email para verificar que usted es controla esa dirección.{% endblocktrans %}</p>
+                <p>{% blocktrans %}Le enviamos un mensaje a su correo electrónico para verificar que usted controla esa dirección.{% endblocktrans %}</p>
 
-                <p>{% blocktrans %}<strong>Nota:</strong> puede <a href="{{email_url}}">cambiar su dirección de email</a>.{% endblocktrans %}</p>
+                <p>{% blocktrans %}<strong>Nota:</strong> puede <a href=\"%(email_url)s\">cambiar su dirección de correo electrónico</a>.{% endblocktrans %}</p>
             </div>
         </div>
     </div>

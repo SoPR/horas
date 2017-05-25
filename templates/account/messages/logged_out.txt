@@ -1,2 +1,2 @@
 {% load i18n %}
-{% blocktrans %}You have signed out.{% endblocktrans %}
+{% blocktrans %}Has cerrado su sessión.{% endblocktrans %}

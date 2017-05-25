@@ -11,7 +11,7 @@
             <div class="col-sm-5">
                 <h3>{% trans "Perfiles sociales" %}</h3>
                 {% if form.accounts %}
-                    <p>{% blocktrans %}Puedes login a tu cuenta usando cualquiera de esto proveedores:{% endblocktrans %}</p>
+                    <p>{% blocktrans %}Puedes iniciar una session a tu cuenta usando cualquiera de estos proveedores:{% endblocktrans %}</p>
 
                     <form method="post" action="{% url 'socialaccount_connections' %}">
                         {% csrf_token %}
@@ -34,14 +34,14 @@
                         </div>
                     </form>
                 {% else %}
-                    <p>{% trans 'No tienes ningún perfil social conectado a esta cuenta.' %}</p>
+                    <p>{% trans 'No tienes un perfil social conectado a esta cuenta.' %}</p>
                 {% endif %}
 
                 <br>
                 <hr> <!-- hr -->
                 <br>
 
-                <h3>{% trans 'Conecta perfiles sociales' %}</h3>
+                <h3>{% trans 'Conecta Perfiles Sociales' %}</h3>
 
                 <ul class="list-unstyled socialaccount_providers show-small-buttons">
                     {% include "socialaccount/snippets/provider_list.html" with process="connect" %}

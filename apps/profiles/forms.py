@@ -72,10 +72,10 @@ class TagWidget(forms.Textarea):
 
 class SignupForm(forms.Form):
     full_name = forms.CharField(
-        label=_("Full name"),
+        label=_("Nombre Completo"),
         max_length=60,
         widget=forms.TextInput(attrs={
-            'placeholder': _('Full name'),
+            'placeholder': _('Nombre Completo'),
             'autofocus': 'autofocus'}))
 
     def __init__(self, *args, **kwargs):
@@ -128,7 +128,7 @@ class ProfileUpdateForm(forms.ModelForm):
         self.fields['state'].required = True
 
         self.fields['skype'].widget = forms.TextInput(
-            attrs={'placeholder': _('username')})
+            attrs={'placeholder': _('usuario')})
 
         self.fields['google'].label = _('Google Hangout')
 

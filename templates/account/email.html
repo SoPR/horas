@@ -3,16 +3,16 @@
 {% load bootstrap3 %}
 
 {% block title %}
-    {% trans "Dirección de email" %}
+    {% trans "Dirección de correo electrónico" %}
 {% endblock title %}
 
 {% block content %}
     <div class="container">
         <div class="row">
             <div class="col-sm-5">
-                <h3>{% trans "Direcciones de email" %}</h3>
+                <h3>{% trans "Correo electrónico" %}</h3>
                 {% if user.emailaddress_set.all %}
-                    <p>{% trans 'Estas direcciones de email está asociadas a tu cuenta:' %}</p>
+                    <p>{% trans 'Estas direcciones de correo electrónico están asociadas a tu cuenta:' %}</p>
                     <form action="{% url 'account_email' %}" class="email_list" method="post">
                         {% csrf_token %}
                         <div class="form-group">
@@ -43,20 +43,20 @@
                         </div>
                     </form>
                 {% else %}
-                    <p><strong>{% trans 'Warning:'%}</strong> {% trans "No tienes ninguna dirección de email registrada en la aplicación. Debes registrar por lo menos una dirección para poder hacer reset de tu password y para recibir notificaciones." %}</p>
+                    <p><strong>{% trans 'Alerta:'%}</strong> {% trans "No tienes ninguna dirección de correo electrónico registrada en la aplicación. Debes registrar por lo menos una dirección para poder reiniciar tu contraseña y para recibir notificaciones." %}</p>
                 {% endif %}
 
                 <br>
                 <hr> <!-- hr -->
                 <br>
 
-                <h3>{% trans "Añadir direcciones de email" %}</h3>
+                <h3>{% trans "Añadir direcciones de correo electrónico" %}</h3>
 
                 <form method="post" action="{% url 'account_email' %}" class="add_email">
                     {% csrf_token %}
                     {% bootstrap_form form %}
                     {% buttons %}
-                        <button type="submit" name="action_add" class="btn btn-primary">{% trans "Añadir email" %}</button>
+                        <button type="submit" name="action_add" class="btn btn-primary">{% trans "Añadir correo electrónico" %}</button>
                         <a href="{% url 'profile_update' request.user.username %}" class="btn btn-link">{% trans "Volver a configuración" %}</a>
                     {% endbuttons %}
                 </form>
@@ -69,7 +69,7 @@
 {% block extra_body %}
     <script type="text/javascript">
         (function() {
-          var message = "{% trans 'Do you really want to remove the selected e-mail address?' %}";
+          var message = "{% trans '¿Estas seguro que quieres remover el correo electrónico seleccionado?' %}";
           var actions = document.getElementsByName('action_remove');
           if (actions.length) {
             actions[0].addEventListener("click", function(e) {

@@ -3,14 +3,14 @@
 {% load bootstrap3 %}
 
 {% block title %}
-    {% trans "Sign in" %}
+    {% trans "Iniciar Sesión" %}
 {% endblock title %}
 
 {% block content %}
     <div class="container">
         <div class="row">
             <div class="col-sm-6">
-                <h3>{% trans "Sign in" %}</h3>
+                <h3>{% trans "Iniciar Sesión" %}</h3>
                 {% if socialaccount.providers %}
                     <p>{% blocktrans with site.name as site_name %}Puedes registrarte usando una de tus cuentas de redes sociales, pero si esa idea no te gusta puedes <a href="{{ signup_url }}">crear una cuenta tradicional</a>.{% endblocktrans %}</p>
 
@@ -36,7 +36,7 @@
                     {% bootstrap_form form %}
                     {% buttons %}
                         <button class="btn btn-primary primaryAction" type="submit">{% trans "Entrar" %}</button>
-                        <a class="btn btn-link secondaryAction" href="{% url 'account_reset_password' %}">{% trans "¿Olvidaste tu password?" %}</a>
+                        <a class="btn btn-link secondaryAction" href="{% url 'account_reset_password' %}">{% trans "¿Olvidaste tu contraseña?" %}</a>
                     {% endbuttons %}
 
                     {% if redirect_field_value %}
