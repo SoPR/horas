@@ -116,7 +116,7 @@ msgstr "Enter now, it only takes a minute"
 
 #: apps/core/templates/home.html:62
 #, python-format
-msgid "Puedes registrarte usando una de tus cuentas de redes sociales, pero si esa idea no te gusta puedes <a href=\"%(account_signup)s\">crear una cuenta tradicional</a>, si ya la tienes <a href=\"%(account_login)s\">inicia tu sesión</a>."                "
+msgid "Puedes registrarte usando una de tus cuentas de redes sociales, pero si esa idea no te gusta puedes <a href=\"%(account_signup)s\">crear una cuenta tradicional</a>, si ya la tienes <a href=\"%(account_login)s\">inicia tu sesión</a>."
 msgstr "You can register using your social media accounts, but if you do not like that idea you can <a href=\"%(account_signup)s\"create an account</a> or <a href=\"%(account_login)s\">login</a> if you already have one."
 
 #: apps/core/templates/home.html:74
@@ -153,10 +153,6 @@ msgstr "Message"
 #: apps/meetings/forms.py:30
 msgid "En este mensaje, explica de que quieres hablar en la reunión, por qué escogiste a esta persona. Trata de dejarle saber al mentor los temas que quieres hablar durante la reunión. Piensa que el mentor se tiene que preparar y tu debes estar preparado antes de la reunión. Este mensaje debe ayudar a ambos a saber que esperar de la reunión."
 msgstr "Take the opportunity to explain what you want to talk about and why you picked this mentor. Try to let the mentor know the topics that you want to talk about in the meeting. Keep in mind that the mentor needs to prepare for this meeting and you should too. This message should help both of set expectations for this meeting"
-
-#: apps/meetings/states.py:42
-msgid "Disponible"
-msgstr "Available"
 
 #: apps/meetings/states.py:46
 msgid "Reservado"
@@ -478,6 +474,7 @@ msgid "Social"
 msgstr "Social"
 
 #: apps/profiles/templates/profiles/user_detail.html:16
+#: apps/meetings/states.py:42
 msgid "Disponible"
 msgstr "Available"
 
@@ -629,12 +626,9 @@ msgid "Reuniones"
 msgstr "Meetings"
 
 #: templates/account/account_inactive.html:5
-msgid "Cuanta inactiva"
-msgstr "Inactive account"
-
 #: templates/account/account_inactive.html:12
 msgid "Cuanta inactiva"
-msgstr "Account Inactive"
+msgstr "Inactive account"
 
 #: templates/account/account_inactive.html:13
 msgid "This account is inactive."
@@ -729,7 +723,7 @@ msgid ""
 "\n"
 "Si olvido su usuario el mismo es: %(username)s.\n"
 "\n"
-"Gracias por utilizar 1hora.org!"
+"Gracias por utilizar 1hora.org!\n"
 msgstr ""
 "You're receiving this e-mail because you or someone else has requested a password for your user account at %(site_domain)s.\n"
 "It can be safely ignored if you did not request a password reset.\n"
@@ -774,6 +768,7 @@ msgid "Has confirmado que <a href=\"mailto:%(email)s\">%(email)s</a> es el corre
 msgstr "You've confirmed that <a href=\"mailto:%(email)s\">%(email)s</a> is a valid email for user: %(user_display)s."
 
 #: templates/account/login.html:6 templates/account/login.html:13
+#: templates/common/header.html:37 templates/common/header.html:72
 msgid "Iniciar Sesión"
 msgstr "Sign in"
 
@@ -988,10 +983,6 @@ msgstr "Calendar"
 #: templates/common/header.html:35 templates/common/header.html:67
 msgid "Logout"
 msgstr "Salir"
-
-#: templates/common/header.html:37 templates/common/header.html:72
-msgid "Iniciar Sesión"
-msgstr "Login"
 
 #: templates/pinax/notifications/cancelled_by_mentor/full.html:5
 #, python-format
@@ -1361,10 +1352,6 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"        <p>- <a href=\"https://1hora.org\">1hora.org</a></p>\n"
-"    "
-msgstr ""
-"\n"
 "        Hello %(mentor_name)s,\n"
 "\n"
 "        %(protege_name)s just reserved a meeting for para el %(the_date)s @ %(the_time)s.\n"
@@ -1375,7 +1362,7 @@ msgstr ""
 "        %(message)s\n"
 "        =======\n"
 "\n"
-"        Now you have to confirm or cancel the meeting visiting: %(meeting_url)\n"
+"        Now you have to confirm or cancel the meeting visiting: %(meeting_url)s.\n"
 "\n"
 "        - 1hora.org\n"
 "    "
