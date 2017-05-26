@@ -4,7 +4,7 @@
 {% load bootstrap3 %}
 
 {% block title %}
-    {% trans "Confirmar email" %}
+    {% trans "Confirmar correo electrónico" %}
 {% endblock title %}}
 
 
@@ -12,11 +12,11 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-6">
-                <h3>{% trans "Confirmar email" %}</h3>
+                <h3>{% trans "Confirmar correo electrónico" %}</h3>
 
                 {% user_display email_address.user as user_display %}
 
-                <p>{% blocktrans with email_address.email as email %}Has confirmado que <a href="mailto:{{email}}">{{ email }}</a> es el email del usuario {{ user_display }}.{% endblocktrans %}</p>
+                <p>{% blocktrans with email_address.email as email %}Has confirmado que <a href="mailto:{{email}}">{{ email }}</a> es el correo electrónico del usuario {{ user_display }}.{% endblocktrans %}</p>
             </div>
         </div>
     </div>

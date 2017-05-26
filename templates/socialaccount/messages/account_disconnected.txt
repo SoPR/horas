@@ -1,2 +1,2 @@
 {% load i18n %}
-{% blocktrans %}The social account has been disconnected.{% endblocktrans %}
+{% blocktrans %}La cuenta social a sido desconectada.{% endblocktrans %}

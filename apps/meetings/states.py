@@ -6,20 +6,20 @@ available:
     A new meeting.
 
 reserved:
-    A meeting that was available and reserved by protege.
+    A meeting that was available and reserved by mentee.
 
 confirmed:
-    A meeting that was reserved by a protege and later accepted
+    A meeting that was reserved by a mentee and later accepted
     by the meeting's mentor.
 
 cancelled:
     A meeting that was either reserved or confirmed and
-    then cancelled by the mentor or protege.
+    then cancelled by the mentor or mentee.
 
 unused:
     at least 1 hour have passed from the meeting's start datetime
     and the meeting is still in the available state, meaning
-    it was not reserved by a protege.
+    it was not reserved by a mentee.
 
 deleted:
     A meeting in available state can be transitioned to deleted
@@ -65,7 +65,7 @@ class MeetingStateMachine(StateMachine):
 
         def handler(self, instance):
             if instance.cancelled_by_mentor():
-                # Send message to protege
+                # Send message to mentee
                 notifications.send(
                     [instance.protege],
                     'cancelled_by_mentor',
@@ -91,7 +91,7 @@ class MeetingStateMachine(StateMachine):
     class reserve(StateTransition):
         from_state = 'available'
         to_state = 'reserved'
-        description = _('When a protege asks for the meeting')
+        description = _('When a mentee asks for the meeting')
 
         def handler(transition, instance, user):
             instance.protege = user
@@ -113,7 +113,7 @@ class MeetingStateMachine(StateMachine):
     class cancel_reserved(StateTransition):
         from_state = 'reserved'
         to_state = 'cancelled'
-        description = _('When mentor or protege cancels a reserved meeting')
+        description = _('When mentor or mentee cancels a reserved meeting')
 
         def handler(transition, instance, user):
             instance.cancelled_by = user
@@ -127,7 +127,7 @@ class MeetingStateMachine(StateMachine):
     class cancel_confirmed(StateTransition):
         from_state = 'confirmed'
         to_state = 'cancelled'
-        description = _('When mentor or protege cancels a confirmed meeting')
+        description = _('When mentor or mentee cancels a confirmed meeting')
 
         def handler(transition, instance, user):
             instance.cancelled_by = user
@@ -141,7 +141,7 @@ class MeetingStateMachine(StateMachine):
     class flag_unused(StateTransition):
         from_state = 'available'
         to_state = 'unused'
-        description = _('When a meeting was never reserved by a protege')
+        description = _('When a meeting was never reserved by a mentee')
 
     class delete(StateTransition):
         from_state = 'available'

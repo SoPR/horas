@@ -32,9 +32,9 @@
                 {% if request.user.is_authenticated %}
                     <li><a href="{{ profile_update_url }}"><span class="glyphicon glyphicon-cog"></span> {% trans "Configuración" %}</a></li>
                     <li><a href="webcal://{% url 'profile_calendar_feed' request.user.username %}"><span class="glyphicon glyphicon-calendar"></span> {% trans "Calendario" %}</a></li>
-                    <li><a href="{% url 'account_logout' %}"><span class="glyphicon glyphicon-log-out"></span> {% trans "Logout" %}</a></li>
+                    <li><a href="{% url 'account_logout' %}"><span class="glyphicon glyphicon-log-out"></span> {% trans "Salir" %}</a></li>
                 {% else %}
-                    <li><a href="{% url 'account_login' %}"><span class="glyphicon glyphicon-log-in"></span> {% trans "Login" %}</a></li>
+                    <li><a href="{% url 'account_login' %}"><span class="glyphicon glyphicon-log-in"></span> {% trans "Iniciar Sesión" %}</a></li>
                 {% endif %}
             </ul>
         </div><!-- .navbar-collapse -->
@@ -64,12 +64,12 @@
                     <li><a href="{{ profile_update_url }}"><span class="glyphicon glyphicon-cog"></span> {% trans "Configuración" %}</a></li>
                     <li><a href="webcal://{{ request.META.HTTP_HOST }}{% url 'profile_calendar_feed' request.user.username %}"><span class="glyphicon glyphicon-calendar"></span> {% trans "Calendario" %}</a></li>
                     <li class="divider"></li>
-                    <li><a href="{% url 'account_logout' %}"><span class="glyphicon glyphicon-log-out"></span> {% trans "Logout" %}</a></li>
+                    <li><a href="{% url 'account_logout' %}"><span class="glyphicon glyphicon-log-out"></span> {% trans "Salir" %}</a></li>
                   </ul>
                 </div>
             {% else %}
                 <div class="btn-group pull-right">
-                    <a href="{% url 'account_login' %}" class="btn btn-default"><span class="glyphicon glyphicon-log-in"></span> {% trans "Login" %}</a>
+                    <a href="{% url 'account_login' %}" class="btn btn-default"><span class="glyphicon glyphicon-log-in"></span> {% trans "Iniciar Sesión" %}</a>
                 </div>
             {% endif %}
         </div> <!-- /.header-user-menu -->

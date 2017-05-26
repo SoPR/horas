@@ -1,2 +1,2 @@
 {% load i18n %}
-{% blocktrans %}Primary e-mail address set.{% endblocktrans %}
+{% blocktrans %}Correo electrónico primario apllicado.{% endblocktrans %}

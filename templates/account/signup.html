@@ -11,7 +11,7 @@
         <div class="row">
             <div class="col-sm-5">
                 <h3>{% trans "Regístrate" %}</h3>
-                <p>{% blocktrans %}¿Ya tienes una cuenta? En ese caso <a href="{{ login_url }}">login</a>.{% endblocktrans %}</p>
+                <p>{% blocktrans %}¿Ya tienes una cuenta? En ese caso <a href="{{ login_url }}">iniciar sessión</a>.{% endblocktrans %}</p>
 
                 <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
                     {% csrf_token %}

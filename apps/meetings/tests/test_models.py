@@ -115,11 +115,11 @@ class MeetingStatesTestCase(MeetingBaseTestCase):
 class MeetingModelMethodsTestCase(MeetingBaseTestCase):
     def test_get_absolute_url(self):
         url = self.meeting.get_absolute_url()
-        self.assertEqual(url, '/dude/meetings/1/')
+        self.assertEqual(url, '/es/dude/meetings/1/')
 
     def test_get_url_with_domain(self):
         url = self.meeting.get_url_with_domain()
-        self.assertEqual(url, 'http://example.com/dude/meetings/1/')
+        self.assertEqual(url, 'http://example.com/es/dude/meetings/1/')
 
     def test_cancelled_by_mentor(self):
         self.meeting.protege = self.user2

@@ -21,9 +21,7 @@
         <div class="row home-branding-subtitle-wrapper">
             <div class="col-sm-12">
                 <h4 class="branding-subtitle text-muted text-center">
-                    {% blocktrans %}
-                        El mejor lugar para compartir lo que sabes y aprender<br>de quienes han estado donde quieres llegar.
-                    {% endblocktrans %}
+                    {% blocktrans %}El mejor lugar para compartir lo que sabes y aprender<br>de quienes han estado donde quieres llegar.{% endblocktrans %}
                 </h4>
             </div>
         </div> <!-- /.row col-sm-6 col-sm-offset-3 -->
@@ -59,9 +57,7 @@
             <div class="col-sm-6 col-sm-offset-3 text-muted margin-vertical-10 text-help-small">
                 {% url 'account_signup' as account_signup %}
                 {% url 'account_login' as account_login %}
-                {% blocktrans %}
-                    Puedes registrarte usando una de tus cuentas de redes sociales, pero si esa idea no te gusta puedes <a href="{{ account_signup }}">crear una cuenta tradicional</a>, si ya la tienes haz <a href="{{ account_login }}">login</a>.
-                {% endblocktrans %}
+                {% blocktrans %}Puedes registrarte usando una de tus cuentas de redes sociales, pero si esa idea no te gusta puedes <a href="{{ account_signup }}">crear una cuenta tradicional</a>, si ya la tienes <a href="{{ account_login }}">inicia tu sesión</a>.{% endblocktrans %}
             </div>
         </section> <!-- /.row col-sm-12 text-center home-login-area -->
 

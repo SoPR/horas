@@ -1,0 +1,1437 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-05-20 22:08+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: apps/core/management/commands/create_notice_types.py:12
+msgid "Periodo de reunion creada"
+msgstr "Meeting slot created"
+
+#: apps/core/management/commands/create_notice_types.py:13
+msgid "tu periodo de reunion esta lista"
+msgstr "your new slot is ready"
+
+#: apps/core/management/commands/create_notice_types.py:18
+msgid "Reunion aceptada"
+msgstr "Meeting has been accepted"
+
+#: apps/core/management/commands/create_notice_types.py:19
+msgid "tu reunion ha sido aceptada"
+msgstr "your meeting has accepted"
+
+#: apps/core/management/commands/create_notice_types.py:24
+msgid "Reunion cancelada por el mentor"
+msgstr "Meeting cancelled by mentor"
+
+#: apps/core/management/commands/create_notice_types.py:25
+#: apps/core/management/commands/create_notice_types.py:31
+msgid "tu reunion ha sido cancelada"
+msgstr "your meeting has been cancelled"
+
+#: apps/core/management/commands/create_notice_types.py:30
+msgid "Reunion cacelada por aprendiz"
+msgstr "Meeting cancelled by mentee"
+
+#: apps/core/management/commands/create_notice_types.py:36
+msgid "Reunion confirmada"
+msgstr "Meeting confirmed"
+
+#: apps/core/management/commands/create_notice_types.py:37
+msgid "su reunion ha sido confirmada"
+msgstr "your meeting reservation was confirmed"
+
+#: apps/core/management/commands/create_notice_types.py:42
+#: apps/core/management/commands/create_notice_types.py:48
+msgid "Dejenos saber"
+msgstr "Let us know"
+
+#: apps/core/management/commands/create_notice_types.py:43
+#: apps/core/management/commands/create_notice_types.py:49
+msgid "como le fue en su reunion?"
+msgstr "how did your meeting go?"
+
+#: apps/core/management/commands/create_notice_types.py:54
+msgid "Comentario nuevo"
+msgstr "New comment"
+
+#: apps/core/management/commands/create_notice_types.py:55
+msgid "tienes un nuevo comentario"
+msgstr "you have a new comment"
+
+#: apps/core/middleware.py:43
+msgid "Debes completar tu perfil para continuar"
+msgstr "You have to complete your profile to continue"
+
+#: apps/core/templates/home.html:17
+msgid "1hora"
+msgstr "1hora"
+
+#: apps/core/templates/home.html:24
+msgid "El mejor lugar para compartir lo que sabes y aprender<br>de quienes han estado donde quieres llegar."
+msgstr "The best place to share what you konw and learn<br>from those that are where you want to be."
+
+#: apps/core/templates/home.html:35 templates/account/signup.html:13
+#: templates/socialaccount/signup.html:6 templates/socialaccount/signup.html:13
+msgid "Regístrate"
+msgstr "Register"
+
+#: apps/core/templates/home.html:36
+msgid ""
+"Regístrate para ser mentor y para poder reservar reuniones con otros mentores."
+msgstr "Register to be a mentor and to reserver meetings with others."
+
+#: apps/core/templates/home.html:40 templates/common/social_sharing.html:2
+msgid "Comparte"
+msgstr "Share"
+
+#: apps/core/templates/home.html:41
+msgid "Comparte las horas que estarás disponible para dar reuniones a otros en la comunidad."
+msgstr "Share with the community the hours that you will be available for meetings."
+
+#: apps/core/templates/home.html:45
+msgid "Reúnete"
+msgstr "Meet"
+
+#: apps/core/templates/home.html:46
+msgid "Busca un mentor con el que te quieras reunir y reserva un espacio."
+msgstr "Look for a mentor and schedule a meeting."
+
+#: apps/core/templates/home.html:53
+msgid "Entra ahora, sólo toma un minuto"
+msgstr "Enter now, it only takes a minute"
+
+#: apps/core/templates/home.html:62
+#, python-format
+msgid "Puedes registrarte usando una de tus cuentas de redes sociales, pero si esa idea no te gusta puedes <a href=\"%(account_signup)s\">crear una cuenta tradicional</a>, si ya la tienes <a href=\"%(account_login)s\">inicia tu sesión</a>."
+msgstr "You can register using your social media accounts, but if you do not like that idea you can <a href=\"%(account_signup)s\">create an account</a> or <a href=\"%(account_login)s\">login</a> if you already have one."
+
+#: apps/core/templates/home.html:74
+msgid "Mentores Destacados"
+msgstr "Featured Mentors"
+
+#: apps/core/templates/home.html:100
+msgid "Ver más"
+msgstr "See more"
+
+#: apps/core/templates/home.html:100
+#, python-format
+msgid "Tenemos %(users_count)s mentores registrados"
+msgstr "We have %(users_count)s registered mentors"
+
+#: apps/core/templates/legal.html:5 templates/common/footer.html:16
+msgid "Legal"
+msgstr "Legal"
+
+#: apps/meetings/forms.py:22 apps/profiles/models.py:28
+msgid "--- Selecciona ---"
+msgstr "--- Select ---"
+
+#: apps/meetings/forms.py:26
+#: apps/meetings/templates/meetings/meeting_detail.html:59
+msgid "Formato"
+msgstr "Format"
+
+#: apps/meetings/forms.py:29
+#: apps/meetings/templates/meetings/meeting_detail.html:71
+msgid "Mensaje"
+msgstr "Message"
+
+#: apps/meetings/forms.py:30
+msgid "En este mensaje, explica de que quieres hablar en la reunión, por qué escogiste a esta persona. Trata de dejarle saber al mentor los temas que quieres hablar durante la reunión. Piensa que el mentor se tiene que preparar y tu debes estar preparado antes de la reunión. Este mensaje debe ayudar a ambos a saber que esperar de la reunión."
+msgstr "Take the opportunity to explain what you want to talk about and why you picked this mentor. Try to let the mentor know the topics that you want to talk about in the meeting. Keep in mind that the mentor needs to prepare for this meeting and you should too. This message should help both of set expectations for this meeting"
+
+#: apps/meetings/states.py:46
+msgid "Reservado"
+msgstr "Reserved"
+
+#: apps/meetings/states.py:55
+msgid "Confirmado"
+msgstr "Confirmed"
+
+#: apps/meetings/states.py:64
+msgid "Cancelado"
+msgstr "Cancelled"
+
+#: apps/meetings/states.py:84
+msgid "No usado"
+msgstr "Un-used"
+
+#: apps/meetings/states.py:87
+msgid "Borrado"
+msgstr "Deleted"
+
+#: apps/meetings/states.py:94
+msgid "Cuando un aprendiz pide una reunion"
+msgstr "When a mentee asks for the meeting"
+
+#: apps/meetings/states.py:106
+msgid "Cunado el mentor acepta la reunion"
+msgstr "When the mentor accepts the meeting"
+
+#: apps/meetings/states.py:116
+msgid "Cuando el mentor o el aprendiz cancela la reunion"
+msgstr "When mentor or mentee cancels a reserved meeting"
+
+#: apps/meetings/states.py:130
+msgid "Cuando el mentor o el aprendiz cancela la reunion confirmada"
+msgstr "When mentor or mentee cancels a confirmed meeting"
+
+#: apps/meetings/states.py:144
+msgid "Cuando una reunion nunca fue reservada por el aprendiz"
+msgstr "When a meeting was never reserved by a mentee"
+
+#: apps/meetings/states.py:149
+msgid "Cuando el usuario cambio su configuracion destruimos sus reuniones disponibles"
+msgstr "When the user change settings we destroy available meetings"
+
+#: apps/meetings/templates/meetings/meeting_detail.html:7
+#: apps/meetings/templates/meetings/meeting_form.html:6
+msgid "Reunión"
+msgstr "Meeting"
+
+#: apps/meetings/templates/meetings/meeting_detail.html:17
+msgid "Reservada por"
+msgstr "Reserved by"
+
+#: apps/meetings/templates/meetings/meeting_detail.html:32
+#: apps/profiles/templates/profiles/meeting_row.html:25
+msgid "Detalles"
+msgstr "Details"
+
+#: apps/meetings/templates/meetings/meeting_detail.html:34
+#: apps/meetings/templates/meetings/meeting_detail.html:36
+msgid "Visible sólo para los participantes de la reunión"
+msgstr "Only visible to meeting participants"
+
+#: apps/meetings/templates/meetings/meeting_detail.html:44
+msgid "Emails"
+msgstr "Emails"
+
+#: apps/meetings/templates/meetings/meeting_detail.html:88
+msgid "Confirmar reunión"
+msgstr "Confirm meeting"
+
+#: apps/meetings/templates/meetings/meeting_detail.html:94
+msgid "Cancelar reunión"
+msgstr "Cancel meeting"
+
+#: apps/meetings/templates/meetings/meeting_detail.html:105
+msgid "Esta reunión no fué reservada"
+msgstr "This meeting was not reserved"
+
+#: apps/meetings/templates/meetings/meeting_detail.html:109
+#: apps/profiles/templates/profiles/meeting_row_state.html:5
+msgid "Reunión disponible"
+msgstr "Available meeting"
+
+#: apps/meetings/templates/meetings/meeting_detail.html:110
+#: apps/meetings/templates/meetings/meeting_form.html:24
+#: apps/profiles/templates/profiles/user_detail.html:32
+msgid "Reservar"
+msgstr "Reserve"
+
+#: apps/meetings/templates/meetings/meeting_detail.html:116
+msgid "Comentarios de los participantes"
+msgstr "Participant comments"
+
+#: apps/meetings/templates/meetings/meeting_detail.html:136
+msgid "Dejar comentario público"
+msgstr "Leave a public comment"
+
+#: apps/meetings/templates/meetings/meeting_detail.html:145
+msgid "Publicar"
+msgstr "Post"
+
+#: apps/meetings/templates/meetings/meeting_form.html:16
+msgid "Reservar reunión"
+msgstr "Reserve meeting"
+
+#: apps/meetings/templates/meetings/meeting_form.html:31
+msgid "No puedes reservar una reunión contigo mismo."
+msgstr "You can not reserve a meeting with yourself"
+
+#: apps/meetings/templates/meetings/meeting_form.html:32
+#: apps/profiles/templates/profiles/user_form.html:262
+msgid "Volver a tu perfil"
+msgstr "Return to your profile"
+
+#: apps/meetings/views.py:120
+msgid "Comentario publicado"
+msgstr "Comment posted"
+
+#: apps/meetings/views.py:124
+msgid "Fomulario de comentario incomleto"
+msgstr "Comment form incomplete"
+
+#: apps/profiles/feeds.py:10
+msgid "1hora.org"
+msgstr "1hora.org"
+
+#: apps/profiles/feeds.py:11
+msgid "Calendario de reuniones de 1hora.org."
+msgstr "1hora.org meeting calendar"
+
+#: apps/profiles/feeds.py:23
+msgid "Confirmada"
+msgstr "Confirmed"
+
+#: apps/profiles/feeds.py:25
+msgid "Reservada"
+msgstr "Reserved"
+
+#: apps/profiles/fields.py:7
+msgid "Lunes"
+msgstr "Monday"
+
+#: apps/profiles/fields.py:8
+msgid "Martes"
+msgstr "Tuesday"
+
+#: apps/profiles/fields.py:9
+msgid "Miércoles"
+msgstr "Wednesday"
+
+#: apps/profiles/fields.py:10
+msgid "Jueves"
+msgstr "Thursday"
+
+#: apps/profiles/fields.py:11
+msgid "Viernes"
+msgstr "Friday"
+
+#: apps/profiles/fields.py:12
+msgid "Sábado"
+msgstr "Saturday"
+
+#: apps/profiles/fields.py:13
+msgid "Domingo"
+msgstr "Sunday"
+
+#: apps/profiles/forms.py:75 apps/profiles/forms.py:78
+msgid "Nombre Completo"
+msgstr "Full name"
+
+#: apps/profiles/forms.py:104
+msgid "Nombre"
+msgstr "Name"
+
+#: apps/profiles/forms.py:107
+msgid "Apellidos"
+msgstr "Last Name(s)"
+
+#: apps/profiles/forms.py:110
+msgid "Biografía corta"
+msgstr "Short biography"
+
+#: apps/profiles/forms.py:113
+msgid "Maximo de 140 caracteres"
+msgstr "Max 140 characters"
+
+#: apps/profiles/forms.py:115
+msgid "Lista de temas"
+msgstr "Topics list"
+
+#: apps/profiles/forms.py:117
+msgid "Separados por comas"
+msgstr "Separated by comas"
+
+#: apps/profiles/forms.py:120
+msgid "Ejemplo: diseño, programación, arte, música, activismo, educación"
+msgstr "Example: design, programming, art, music, activism, education"
+
+#: apps/profiles/forms.py:124
+msgid "Ciudad"
+msgstr "City"
+
+#: apps/profiles/forms.py:127
+msgid "Estado"
+msgstr "State"
+
+#: apps/profiles/forms.py:131
+msgid "usuario"
+msgstr "username"
+
+#: apps/profiles/forms.py:133
+msgid "Google Hangout"
+msgstr "Google Hangout"
+
+#: apps/profiles/forms.py:135 apps/profiles/models.py:128
+msgid "Teléfono"
+msgstr "Telephone"
+
+#: apps/profiles/forms.py:138
+msgid "Dirección para reuniones en persona"
+msgstr "Address for in person meetings"
+
+#: apps/profiles/forms.py:142
+msgid "Entra una dirección física - http://maps.google.com/123"
+msgstr "Enter a physical address"
+
+#: apps/profiles/forms.py:150
+msgid "Hora del día"
+msgstr "Time of day"
+
+#: apps/profiles/forms.py:156
+msgid "Zona horaria"
+msgstr "Timezone"
+
+#: apps/profiles/forms.py:171
+msgid "Debes escoger un día"
+msgstr "You must pick a day"
+
+#: apps/profiles/forms.py:192
+msgid ""
+"Es necesario registrar por lo menos un formato de reunión. Teléfono, Skype, "
+"Google, Jitsi o En persona."
+msgstr "At least one meeting format must be registered. Eg. Telephone, Skype, Google, Jitsi, or in person."
+
+#: apps/profiles/models.py:129
+msgid "Skype"
+msgstr "Skype"
+
+#: apps/profiles/models.py:130
+msgid "Google"
+msgstr "Google"
+
+#: apps/profiles/models.py:131
+msgid "Jitsi"
+msgstr "Jitsi"
+
+#: apps/profiles/models.py:134
+msgid "En persona"
+msgstr "In person"
+
+#: apps/profiles/templates/profiles/meeting_row.html:13
+msgid "Mentor:"
+msgstr "Mentor:"
+
+#: apps/profiles/templates/profiles/meeting_row.html:17
+msgid "Aprendiz:"
+msgstr "Mentee:"
+
+#: apps/profiles/templates/profiles/meeting_row.html:19
+msgid "Nadie reservó esta reunión"
+msgstr "Nobody reserved this meeting"
+
+#: apps/profiles/templates/profiles/meeting_row_state.html:9
+msgid "Reunión reservada"
+msgstr "Meeting reserved"
+
+#: apps/profiles/templates/profiles/meeting_row_state.html:13
+msgid "Reunión confirmada"
+msgstr "Meeting confirmed"
+
+#: apps/profiles/templates/profiles/meeting_row_state.html:17
+msgid "Reunión cancelada"
+msgstr "Meeting canceled"
+
+#: apps/profiles/templates/profiles/meeting_row_state.html:21
+msgid "No fue reservada"
+msgstr "Was not reserved"
+
+#: apps/profiles/templates/profiles/meeting_row_state.html:25
+msgid "Reunión borrada"
+msgstr "Meeting deleted"
+
+#: apps/profiles/templates/profiles/meeting_sidebar.html:12
+msgid "Estatus"
+msgstr "Status"
+
+#: apps/profiles/templates/profiles/meeting_sidebar.html:17
+msgid "Mentor"
+msgstr "Mentor"
+
+#: apps/profiles/templates/profiles/meeting_sidebar.html:30
+#: apps/profiles/templates/profiles/user_detail.html:30
+msgid "Formatos"
+msgstr "Formats"
+
+#: apps/profiles/templates/profiles/profile_sidebar.html:10
+#, python-format
+msgid "<div>Mentor desde %(date)s</div>"
+msgstr "<div>Mentor since %(date)s</div>"
+
+#: apps/profiles/templates/profiles/profile_sidebar.html:19
+msgid "Temas"
+msgstr "Topics"
+
+#: apps/profiles/templates/profiles/profile_sidebar.html:30
+msgid "Social"
+msgstr "Social"
+
+#: apps/profiles/templates/profiles/user_detail.html:16
+#: apps/meetings/states.py:42
+msgid "Disponible"
+msgstr "Available"
+
+#: apps/profiles/templates/profiles/user_detail.html:47
+msgid "Próximas reuniones"
+msgstr "Next meetings"
+
+#: apps/profiles/templates/profiles/user_detail.html:58
+msgid "Historia"
+msgstr "History"
+
+#: apps/profiles/templates/profiles/user_form.html:10
+#: templates/common/header.html:33 templates/common/header.html:64
+msgid "Configuración"
+msgstr "Settings"
+
+#: apps/profiles/templates/profiles/user_form.html:19
+msgid "Ups!"
+msgstr "Oops!"
+
+#: apps/profiles/templates/profiles/user_form.html:27
+msgid "Para modificar tu foto de perfil debes hacerlo en <a href=\"http://gravatar.com\">gravatar.com</a>"
+msgstr "You have to edit your picture at <a href=\"http://gravatar.com\">gravatar.com</a> to change your profile pic."
+
+#: apps/profiles/templates/profiles/user_form.html:32
+msgid "Otras configuraciones"
+msgstr "Other settings"
+
+#: apps/profiles/templates/profiles/user_form.html:34
+msgid "Cambiar correo electrónico"
+msgstr "Change email"
+
+#: apps/profiles/templates/profiles/user_form.html:35
+#: templates/account/password_change.html:6
+#: templates/account/password_reset.html:6
+#: templates/account/password_reset.html:13
+#: templates/account/password_reset.html:24
+#: templates/account/password_reset_done.html:6
+#: templates/account/password_reset_done.html:13
+#: templates/account/password_reset_from_key.html:6
+#: templates/account/password_reset_from_key.html:13
+#: templates/account/password_reset_from_key.html:24
+#: templates/account/password_reset_from_key_done.html:5
+#: templates/account/password_reset_from_key_done.html:12
+msgid "Cambiar contraseña"
+msgstr "Change password"
+
+#: apps/profiles/templates/profiles/user_form.html:36
+#: templates/socialaccount/connections.html:12
+msgid "Perfiles sociales"
+msgstr "Social accounts"
+
+#: apps/profiles/templates/profiles/user_form.html:37
+msgid "Borrar mi cuenta"
+msgstr "Delete my account"
+
+#: apps/profiles/templates/profiles/user_form.html:44
+msgid "Editar perfil"
+msgstr "Edit profile"
+
+#: apps/profiles/templates/profiles/user_form.html:115
+msgid "Enlaces sociales"
+msgstr "Social links"
+
+#: apps/profiles/templates/profiles/user_form.html:115
+msgid "Opcional"
+msgstr "Optional"
+
+#: apps/profiles/templates/profiles/user_form.html:156
+msgid "Formatos de reunión"
+msgstr "Meeting formats"
+
+#: apps/profiles/templates/profiles/user_form.html:157
+msgid ""
+"Usaremos esta información de contacto para tus reuniones. Completa todas las "
+"que apliquen o quieras usar. Esta información se mantendrá privada hasta que "
+"apruebes una reunión. Cuando apruebes una reunión compartiremos solo la "
+"información del formato que el usuario solicitó. Ejemplo si el usuario "
+"solicita Skype, solo compartiremos tu username de Skype con ese usuario. "
+"Todo lo demás se mantendrá privado."
+msgstr ""
+"We will use your contact information for your meetings. Please fill out all that information you want to share."
+"All this information will remain private until you comfir a meeting. When you confirm a meeting we will only share "
+"the information that is applicable for the meeting format. For example if the user asks for a meeting using Skype "
+"we will only share your Skype contact information."
+"All other information will remain private." 
+
+#: apps/profiles/templates/profiles/user_form.html:214
+msgid "Tus horas"
+msgstr "Your hours"
+
+#: apps/profiles/templates/profiles/user_form.html:215
+msgid ""
+"En esta sección escogerás qué día de la semana y a qué hora estarás "
+"disponible para ofrecer reuniones a los usuarios de 1hora.org. Cada semana "
+"haremos disponible un (1) espacio usando estas preferencias."
+msgstr "Please pick the day and hour you will be available for meetings with 1hora.org users. "
+"Every week we will make one (1) meeting space available using these settings."
+
+#: apps/profiles/templates/profiles/user_form.html:222
+msgid "Día de la semana"
+msgstr "Day of the week"
+
+#: apps/profiles/templates/profiles/user_form.html:241
+msgid "las reuniones duran <strong>1 hora</strong>."
+msgstr "meetings last <strong>1 hour</strong>."
+
+#: apps/profiles/views.py:68
+msgid "Perfil guardado exitosamente."
+msgstr "Profile saved successfully."
+
+#: apps/search/templates/search/search.html:10 templates/common/header.html:26
+#: templates/common/header.html:49
+msgid "Mentores"
+msgstr "Mentors"
+
+#: apps/search/templates/search/search.html:19
+msgid "Buscar por nombre de mentor o tema"
+msgstr "Search by topic or mentor's name"
+
+#: apps/search/templates/search/search.html:22
+msgid "Buscar"
+msgstr "Search"
+
+#: apps/search/templates/search/search.html:34
+msgid "Buscar por tema"
+msgstr "Search by topic"
+
+#: apps/search/templates/search/search.html:59
+msgid "Buscar por ciudad"
+msgstr "Search by city"
+
+#: apps/search/templates/search/search.html:107
+msgid "No hay resultados para esta busqueda"
+msgstr "No results were returned for this search"
+
+#: apps/stats/templates/stats/stats.html:5
+#: apps/stats/templates/stats/stats.html:12 templates/common/header.html:30
+#: templates/common/header.html:53
+msgid "Estadísticas"
+msgstr "Stats"
+
+#: apps/stats/templates/stats/stats.html:19
+msgid "Usuarios"
+msgstr "Users"
+
+#: apps/stats/templates/stats/stats.html:51
+msgid "Reuniones"
+msgstr "Meetings"
+
+#: templates/account/account_inactive.html:5
+#: templates/account/account_inactive.html:12
+msgid "Cuanta inactiva"
+msgstr "Inactive account"
+
+#: templates/account/account_inactive.html:13
+msgid "This account is inactive."
+msgstr "Esta cuenta está inactiva."
+
+#: templates/account/email.html:6
+msgid "Dirección de correo electrónico"
+msgstr "Email Address"
+
+#: templates/account/email.html:13
+msgid "Direcciones de correo electrónico"
+msgstr "Email Addresses"
+
+#: templates/account/email.html:15
+msgid "Estas direcciones de correo electrónico están asociadas a tu cuenta:"
+msgstr "These email addresses are associated with your account:"
+
+#: templates/account/email.html:25
+msgid "Verificada"
+msgstr "Verified"
+
+#: templates/account/email.html:27
+msgid "No-verificada"
+msgstr "Not-verified"
+
+#: templates/account/email.html:30
+msgid "Primaria"
+msgstr "Primary"
+
+#: templates/account/email.html:40
+msgid "Hacer primario"
+msgstr "make primary"
+
+#: templates/account/email.html:41
+msgid "Re-enviar verificación"
+msgstr "Resend verification"
+
+#: templates/account/email.html:42 templates/socialaccount/connections.html:33
+msgid "Remover"
+msgstr "Remove"
+
+#: templates/account/email.html:46
+msgid "Warning:"
+msgstr "Alerta:"
+
+#: templates/account/email.html:46
+msgid "No tienes ninguna dirección de correo electrónico registrada en la aplicación. Debes registrar por lo menos una dirección para poder reiniciar tu contraseña y para recibir notificaciones."
+msgstr "You do not have an email address associated with your account. You need to associate at least one email address to receive notifications and reset your password."
+
+#: templates/account/email.html:53
+msgid "Añadir direcciones de correo electrónico"
+msgstr "Add email addresses"
+
+#: templates/account/email.html:59
+msgid "Añadir email"
+msgstr ""
+
+#: templates/account/email.html:60 templates/account/password_change.html:20
+#: templates/account/password_set.html:20
+#: templates/socialaccount/connections.html:52
+msgid "Volver a configuración"
+msgstr "Return to settings"
+
+#: templates/account/email.html:72
+msgid "¿Estas seguro que quieres remover el correo electronico seleccionado?"
+msgstr "Do you really want to remove the selected e-mail address?"
+
+#: templates/account/email/email_confirmation_message.txt:1
+#, python-format
+msgid ""
+"El usuario %(user_display)s en %(site_name)s esta utilizando este correo electrónico.\n"
+"\n"
+"Para confirmar que esto es correcto, acceda este enlace %(activate_url)s\n"
+msgstr ""
+"User %(user_display)s at %(site_name)s has given this as an email address.\n"
+"\n"
+"To confirm this is correct, go to %(activate_url)s\n"
+
+
+#: templates/account/email/email_confirmation_subject.txt:3
+msgid "Confirmación de Correo Electrónico"
+msgstr "Confirm E-mail Address"
+
+#: templates/account/email/password_reset_key_message.txt:1
+#, python-format
+msgid ""
+"Estas recibiendo este correo electrónico por que alguien solicito una contraseña para tu cuenta de usuario en la pagina %(site_domain)s.\n"
+"Puedes ignorar este mensaje si no pediste este cambio.\n"
+"Si pediste este cambio visite el siguiente enlace para cambiar tu contraseña:\n"
+"\n"
+"%(password_reset_url)s\n"
+"\n"
+"Si olvido su usuario el mismo es: %(username)s.\n"
+"\n"
+"Gracias por utilizar 1hora.org!\n"
+msgstr ""
+"You're receiving this e-mail because you or someone else has requested a password for your user account at %(site_domain)s.\n"
+"It can be safely ignored if you did not request a password reset.\n"
+"Click the link below to reset your password.\n"
+"\n"
+"%(password_reset_url)s\n"
+"\n"
+"In case you forgot, your username is: %(username)s.\n"
+"\n"
+"Thanks for using 1hora.org!\n"
+
+
+#: templates/account/email/password_reset_key_subject.txt:3
+msgid "Reinico de Contraseña"
+msgstr "Password Reset E-mail"
+
+#: templates/account/email_confirm.html:6
+#: templates/account/email_confirm.html:14
+#: templates/account/email_confirmed.html:7
+#: templates/account/email_confirmed.html:15
+msgid "Confirmar correo electrónico"
+msgstr "Confirm email"
+
+#: templates/account/email_confirm.html:18
+#, python-format
+msgid ""
+"Confirme que <a href=\"mailto:%(email)s\">%(email)s</a> es un correo electrónico para el usuario %(user_display)s."
+msgstr "Please confirm that <a href=\"mailto:%(email)s\">%(email)s</a> is a valid email for the user %(user_display)s."
+
+#: templates/account/email_confirm.html:22
+msgid "Confirmar"
+msgstr "Confirm"
+
+#: templates/account/email_confirm.html:27
+#, python-format
+msgid "Este enlace de confirmación ha expirado. <a href=\"%(email_url)s\">Solicite un correo electrónico de confirmación</a>."
+msgstr "This confirmation link has expired. <a href=\"%(email_url)s\">Resend comfirmation email</a>"
+
+#: templates/account/email_confirmed.html:19
+#, python-format
+msgid "Has confirmado que <a href=\"mailto:%(email)s\">%(email)s</a> es el correo electrónico del usuario %(user_display)s."
+msgstr "You've confirmed that <a href=\"mailto:%(email)s\">%(email)s</a> is a valid email for user: %(user_display)s."
+
+#: templates/account/login.html:6 templates/account/login.html:13
+#: templates/common/header.html:37 templates/common/header.html:72
+msgid "Iniciar Sesión"
+msgstr "Sign in"
+
+#: templates/account/login.html:15
+#, python-format
+msgid "Puedes registrarte usando una de tus cuentas de redes sociales, pero si esa idea no te gusta puedes <a href=\"%(signup_url)s\">crear una cuenta tradicional</a>."
+msgstr "You can register using one of your social media accounts, but if you don't like that idea then you can <a href=\"%(signup_url)s\">create a traditional account</a>."
+
+#: templates/account/login.html:24
+#, python-format
+msgid "Si no has creado una cuenta por favor <a href=\"%(signup_url)s\">registrese</a>"
+msgstr "If you haven't created an account yet please <a href=\"%(signup_url)s\">register</a>"
+
+#: templates/account/login.html:38
+msgid "Entrar"
+msgstr "Enter"
+
+#: templates/account/login.html:39
+msgid "¿Olvidaste tu contraseña?"
+msgstr "Forgot your password?"
+
+#: templates/account/logout.html:6 templates/account/logout.html:13
+#: templates/account/logout.html:22
+msgid "Salir"
+msgstr "Log out"
+
+#: templates/account/logout.html:14
+msgid "¿Estas seguro que quieres salir?"
+msgstr "Are you sure you want to sign out?"
+
+#: templates/account/messages/cannot_delete_primary_email.txt:2
+#, python-format
+msgid "No puedes eliminar tu correo electrónico primario (%(email)s)."
+msgstr "You cannot remove your primary e-mail address (%(email)s)."
+
+#: templates/account/messages/email_confirmation_sent.txt:2
+#, python-format
+msgid "El correo electrónico de confirmación fue enviado a %(email)s."
+msgstr "Confirmation e-mail sent to %(email)s."
+
+#: templates/account/messages/email_confirmed.txt:2
+#, python-format
+msgid "Has confirmado %(email)s."
+msgstr "You have confirmed %(email)s."
+
+#: templates/account/messages/email_deleted.txt:2
+#, python-format
+msgid "%(email)s ha sido eliminado."
+msgstr "Removed e-mail address %(email)s."
+
+#: templates/account/messages/logged_in.txt:4
+#, python-format
+msgid "Ha iniciado su sessión como %(name)s exitosamente."
+msgstr "Successfully signed in as %(name)s."
+
+#: templates/account/messages/logged_out.txt:2
+msgid "Has cerrado su sesión."
+msgstr "You have signed out."
+
+#: templates/account/messages/password_changed.txt:2
+msgid "Su contraseña ha sido cambiada exitosamente."
+msgstr "Password successfully changed."
+
+#: templates/account/messages/password_set.txt:2
+msgid "Contraseña aplicada exitosamente."
+msgstr "Password successfully set."
+
+#: templates/account/messages/primary_email_set.txt:2
+msgid "Correo electrónico primario apllicado."
+msgstr "Primary e-mail address set."
+
+#: templates/account/messages/unverified_primary_email.txt:2
+msgid "Tu correo electrónico primario debe ser verificado."
+msgstr "Your primary e-mail address must be verified."
+
+#: templates/account/password_change.html:13
+msgid "Cambiar Contraseña"
+msgstr "Change Password"
+
+#: templates/account/password_change.html:19
+#: templates/account/password_set.html:19
+msgid "Guardar"
+msgstr "Save"
+
+#: templates/account/password_reset.html:18
+msgid ""
+"¿Olvidaste tu contraseña? Entra tu dirección de correo electrónico abajo y te enviaremos un correo electrónico que te permitirá cambiarlo."
+msgstr "Did you forget your password? Enter your email bellow and we will send you an email to change it."
+
+#: templates/account/password_reset.html:28
+msgid "Contactanos si tienes problemas cambiando tu contraseña."
+msgstr "Contact us if you have any issues changing your password."
+
+#: templates/account/password_reset_done.html:18
+msgid "Te enviamos un correo electrónico. Contactanos si no lo recibes después de unos minutos."
+msgstr "We sent you an email. Contact us if you do not receive it after a couple of minutes."
+
+#: templates/account/password_reset_from_key.html:13
+msgid "Token invalido"
+msgstr "Invalid token"
+
+#: templates/account/password_reset_from_key.html:17
+#, python-format
+msgid "El enlace para cambiar contraseña es invalido. Quizás ya lo utilizaste antes. <a href=\"%(passwd_reset_url)s\">Solicita otro enlance</a> para camiar contraseña."
+msgstr "The link to change your password is invalid. Maybe you already used it. <a href=\"%(passwd_reset_url)s\">Click here</a> to get another link."
+
+#: templates/account/password_reset_from_key.html:28
+msgid "Contraseña actualizada."
+msgstr "Password updated."
+
+#: templates/account/password_reset_from_key_done.html:13
+msgid "Tu contraseña fué actualizada."
+msgstr "Your password was updated."
+
+#: templates/account/password_set.html:6
+#: templates/account/password_set.html:13
+msgid "Definir Contraseña"
+msgstr "Define Password"
+
+#: templates/account/signup.html:6
+msgid "Registro"
+msgstr "Register"
+
+#: templates/account/signup.html:14
+#, python-format
+msgid "¿Ya tienes una cuenta? En ese caso <a href=\"%(login_url)s\">iniciar sessión</a>."
+msgstr "Already have an account? In that case <a href=\"%(login_url)s\">login</a>."
+
+#: templates/account/signup.html:23 templates/socialaccount/signup.html:25
+msgid "Registrar"
+msgstr "Register"
+
+#: templates/account/signup_closed.html:6
+#: templates/account/signup_closed.html:13
+msgid "Registro cerrado"
+msgstr "Register closed"
+
+#: templates/account/signup_closed.html:14
+msgid "Disculpe, el registro está temporeramente cerrado."
+msgstr "Sorry, the register is temporarily closed."
+
+#: templates/account/snippets/already_logged_in.html:5
+msgid "Ojo"
+msgstr "Note"
+
+#: templates/account/snippets/already_logged_in.html:5
+#, python-format
+msgid "ya tienes una sessión iniciada con el usuario %(user_display)s."
+msgstr "you are already logged in as %(user_display)s."
+
+#: templates/account/verification_sent.html:5
+#: templates/account/verification_sent.html:12
+#: templates/account/verified_email_required.html:5
+msgid "Verifica tu correo electrónico"
+msgstr "Verify your email"
+
+#: templates/account/verification_sent.html:13
+msgid ""
+"Te enviamos un mensaje para verificar tu correo electrónico. Abre tu correo electrónico y presiona el "
+"enlace que te enviamos para completar el proceso. Si no recibes el correo electrónico en "
+"unos minutos contactanos para ayudarte."
+msgstr ""
+"We have sent you a mesage to verify your email. Please open the email and "
+"click on the link to complete the process. If you have not received the email in "
+"a fue minutes please contact us to help you."
+
+#: templates/account/verified_email_required.html:12
+msgid "Verica tu correo electrónico"
+msgstr "Verify your email"
+
+#: templates/account/verified_email_required.html:16
+msgid "Esta pagina require que verifique su dirección de correo electrónico."
+msgstr "This site needs you to verify your email address."
+
+#: templates/account/verified_email_required.html:18
+msgid ""
+"Le enviamos un mensaje a su correo electrónico para verificar que usted controla esa dirección."
+msgstr ""
+"We have sent you an email message to verify that you own this email address."
+
+#: templates/account/verified_email_required.html:20
+#, python-format
+msgid ""
+"<strong>Nota:</strong> puede <a href=\"%(email_url)s\">cambiar su dirección de correo electrónico</a>."
+msgstr "<strong>Note:</strong> you can <a href=\"%(email_url)s\">change your email address</a>."
+
+#: templates/common/footer.html:8
+msgid "<li><a href=\"https://creativecommons.org/licenses/by-sa/3.0/deed.es_ES\" class=\"text-muted\">Algunos derechos reservados</a></li>"
+msgstr "<li><a href=\"https://creativecommons.org/licenses/by-sa/3.0/deed.en\" class=\"text-muted\">Some rights reserved</a></li>"
+
+#: templates/common/footer.html:15
+msgid "Sobre 1hora"
+msgstr "About 1hora"
+
+#: templates/common/footer.html:17
+msgid "Contacto"
+msgstr "Contact"
+
+#: templates/common/footer.html:18
+msgid "Source"
+msgstr "Source"
+
+#: templates/common/header.html:28 templates/common/header.html:51
+msgid "Tus Horas"
+msgstr "Your Hours"
+
+#: templates/common/header.html:34 templates/common/header.html:65
+msgid "Calendario"
+msgstr "Calendar"
+
+#: templates/common/header.html:35 templates/common/header.html:67
+msgid "Logout"
+msgstr "Salir"
+
+#: templates/pinax/notifications/cancelled_by_mentor/full.html:5
+#, python-format
+msgid ""
+"\n"
+"        Hola %(protege_name)s,\n"
+"\n"
+"        <p>%(mentor_name)s acaba de cancelar la reunión pautada para el "
+"%(the_date)s @ %(the_time)s.</p>\n"
+"\n"
+"        <p>- <a href=\"https://1hora.org\">1hora.org</a></p>\n"
+"    "
+msgstr ""
+"\n"
+"        Hello %(protege_name)s,\n"
+"\n"
+"        <p>%(mentor_name)s just canceled your meeting that was scheduled for "
+"%(the_date)s @ %(the_time)s.</p>\n"
+"\n"
+"        <p>- <a href=\"https://1hora.org\">1hora.org</a></p>\n"
+"    "
+
+#: templates/pinax/notifications/cancelled_by_mentor/full.txt:5
+#, python-format
+msgid ""
+"\n"
+"        Hola %(protege_name)s,\n"
+"\n"
+"        %(mentor_name)s acaba de cancelar la reunión pautada para el "
+"%(the_date)s @ %(the_time)s.\n"
+"\n"
+"        - 1hora.org\n"
+"    "
+msgstr ""
+"\n"
+"        Hello %(protege_name)s,\n"
+"\n"
+"        %(mentor_name)s just canceled your meeting that was scheduled for "
+"%(the_date)s @ %(the_time)s.\n"
+"\n"
+"        - 1hora.org\n"
+"    "
+
+#: templates/pinax/notifications/cancelled_by_mentor/notice.html:1
+#, python-format
+msgid "%(mentor_name)s acaba de cancelar la reunión que tenian pautada."
+msgstr "%(mentor_name)s just cancled the meeting you had scheduled."
+
+#: templates/pinax/notifications/cancelled_by_mentor/short.txt:1
+#: templates/pinax/notifications/cancelled_by_protege/short.txt:1
+msgid "Reunión cancelada."
+msgstr "Meeting cancled."
+
+#: templates/pinax/notifications/cancelled_by_protege/full.html:5
+#, python-format
+msgid ""
+"\n"
+"        Hola %(mentor_name)s,\n"
+"\n"
+"        <p>%(protege_name)s acaba de cancelar la reunión pautada para el "
+"%(the_date)s @ %(the_time)s. Pronto recibirás notificación de un nuevo "
+"espacio de reunión que crearemos para ti.</p>\n"
+"\n"
+"        <p>- <a href=\"https://1hora.org\">1hora.org</a></p>\n"
+"    "
+msgstr ""
+"\n"
+"        Hello %(mentor_name)s,\n"
+"\n"
+"        <p>%(protege_name)s just cancled the meeting you had scheduled for "
+"%(the_date)s @ %(the_time)s. You will receive a notification with the new "
+"meeeting space that we will create for you.</p>\n"
+"\n"
+"        <p>- <a href=\"https://1hora.org\">1hora.org</a></p>\n"
+"    "
+
+#: templates/pinax/notifications/cancelled_by_protege/full.txt:5
+#, python-format
+msgid ""
+"\n"
+"        Hola %(mentor_name)s,\n"
+"\n"
+"        %(protege_name)s acaba de cancelar la reunión pautada para el "
+"%(the_date)s @ %(the_time)s. Pronto recibirás notificación de un nuevo "
+"espacio de reunión que crearemos para ti.\n"
+"\n"
+"        - 1hora.org\n"
+"    "
+msgstr ""
+"\n"
+"        Hello %(mentor_name)s,\n"
+"\n"
+"        %(protege_name)s just cancled the meeting you had scheduled for "
+"%(the_date)s @ %(the_time)s. You will receive a notification with the new "
+"meeeting space that we will create for you.\n"
+"\n"
+"        - 1hora.org\n"
+"    "
+
+#: templates/pinax/notifications/cancelled_by_protege/notice.html:1
+#, python-format
+msgid "%(protege_name)s acaba de cancelar la reunión que tenian pautada."
+msgstr "%(protege_name)s just canceld the meeting that you had scheduled."
+
+#: templates/pinax/notifications/comment/full.txt:3
+#, python-format
+msgid ""
+"\n"
+"    Hola %(recipient_name)s,\n"
+"\n"
+"    %(comenter_full_name)s acaba de dejar un comentario.\n"
+"\n"
+"    =======\n"
+"    Comentario de %(commenter_first_name)s:\n"
+"\n"
+"    %(comment_markdown)s\n"
+"    =======\n"
+"\n"
+"    Ver en website: %(meeting_url)s\n"
+"\n"
+"    - 1hora.org\n"
+msgstr ""
+"\n"
+"    Hello %(recipient_name)s,\n"
+"\n"
+"    %(comenter_full_name)s just left a comment.\n"
+"\n"
+"    =======\n"
+"    %(commenter_first_name)s comment:\n"
+"\n"
+"    %(comment_markdown)s\n"
+"    =======\n"
+"\n"
+"    View in website: %(meeting_url)s\n"
+"\n"
+"    - 1hora.org\n"
+
+#: templates/pinax/notifications/confirmed_meeting/full.html:5
+#, python-format
+msgid ""
+"\n"
+"        <p>Hola %(protege_name)s,</p>\n"
+"\n"
+"        <p>%(mentor_name)s acaba de confirmar la reunión pautada para el %(the_date)s @ %(the_time)s.</p>\n"
+"\n"
+"        <p>Para ver la información de contacto del mentor ve a <a href=\"%(meeting_url)s\">la página de la reunión</a>.</p>\n"
+"\n"
+"        <p>Recuerda dedicar un poco de tiempo antes de la reunión para pensar de que van a hablar. Un buen punto de partida puede ser preparar una lista de 5 preguntas importantes que quieres que el mentor te ayude a contestar. El tiempo de todos es muy preciado y para que este proyecto funcione la mayoría debemos ser respetuosos del tiempo de los demás.</p>\n"
+"\n"
+"        <p>- <a href=\"https://1hora.org\">1hora.org</a></p>\n"
+"    "
+msgstr ""
+"\n"
+"        <p>Hello %(protege_name)s,</p>\n"
+"\n"
+"        <p>%(mentor_name)s just confirmed the meeting scheduled for %(the_date)s @ %(the_time)s.</p>\n"
+"\n"
+"        <p>To view the mentor's contact information go to <a href=\"%(meeting_url)s\">the meeting page</a>.</p>\n"
+"\n"
+"        <p>Remember to dedicate a bit of time before the meeting to thinking what you are going to talk about. A good starting point could be to prepare a list of 5 important questions that you want the mentor to help you answer. Everybody's time is valuable. We all have to respect each other's time for this project to work.</p>\n"
+"\n"
+"        <p>- <a href=\"https://1hora.org\">1hora.org</a></p>\n"
+"    "
+
+#: templates/pinax/notifications/confirmed_meeting/full.txt:5
+#, python-format
+msgid ""
+"\n"
+"        Hola %(protege_name)s,\n"
+"\n"
+"        %(mentor_name)s acaba de confirmar la reunión pautada para el %(the_date)s @ %(the_time)s.\n"
+"\n"
+"        Para ver la información de contacto del mentor ve a la página de la reunión.\n"
+"        %(meeting_url)s\n"
+"\n"
+"        Recuerda dedicar un poco de tiempo antes de la reunión para pensar de que van a hablar. Un buen punto de partida puede ser preparar una lista de 5 preguntas importantes que quieres que el mentor te ayude a contestar. El tiempo de todos es muy preciado y para que este proyecto funcione la mayoría debemos ser respetuosos del tiempo de los demás.\n"
+"\n"
+"        - 1hora.org\n"
+"    "
+msgstr ""
+"\n"
+"        Hello %(protege_name)s,\n"
+"\n"
+"        %(mentor_name)s just confirmed the meeting scheduled for %(the_date)s @ %(the_time)s.</p>\n"
+"\n"
+"        To view the mentor's contact information go to the meeting page.\n"
+"        %(meeting_url)s\n"
+"\n"
+"        Remember to dedicate a bit of time before the meeting to thinking what you are going to talk about. A good starting point could be to prepare a list of 5 important questions that you want the mentor to help you answer. Everybody's time is valuable. We all have to respect each other's time for this project to work.\n"
+"\n"
+"        - 1hora.org\n"
+"    "
+
+#: templates/pinax/notifications/confirmed_meeting/notice.html:1
+#, python-format
+msgid "%(mentor_name)s acaba de confirmar la reunión que reservaste."
+msgstr "%(mentor_name)s just confirmed the meeting you scheduled."
+
+#: templates/pinax/notifications/confirmed_meeting/short.txt:1
+msgid "Reunión confirmada."
+msgstr "Meeting confirmed."
+
+#: templates/pinax/notifications/create_meeting_slot/full.html:5
+#, python-format
+msgid ""
+"\n"
+"        Hola %(mentor_name)s,\n"
+"\n"
+"        <p>Acabamos de crear un \"espacio de reunión\" para ti. Ahora cualquier persona registrada en 1hora.org puede reservar ese espacio. Cuando alguien reserve tendrás oportunidad de confirmar si estas disponible.</p>\n"
+"\n"
+"        <p>El espacio disponible es el: %(the_date)s @ %(the_time)s.</p>\n"
+"\n"
+"        <p>- <a href=\"https://1hora.org\">1hora.org</a></p>\n"
+"    "
+msgstr ""
+"\n"
+"        Hello %(mentor_name)s,\n"
+"\n"
+"        <p>We just created a \"meeting space\" for you. Now any registed user in 1hora.org can reserve that meeting space. When somebody make the meeting reservation you will have the opportunity to confirm if you will be available.</p>\n"
+"\n"
+"        <p>The available meeting space is: %(the_date)s @ %(the_time)s.</p>\n"
+"\n"
+"        <p>- <a href=\"https://1hora.org\">1hora.org</a></p>\n"
+"    "
+
+#: templates/pinax/notifications/create_meeting_slot/full.txt:5
+#, python-format
+msgid ""
+"\n"
+"        Hola %(mentor_name)s,\n"
+"\n"
+"        Acabamos de crear un \"espacio de reunión\" para ti. Ahora cualquier persona registrada en 1hora.org puede reservar ese espacio. Cuando alguien reserve tendrás oportunidad de confirmar si estas disponible.\n"
+"\n"
+"        El espacio disponible es el: %(the_date)s @ %(the_time)s.\n"
+"\n"
+"        - 1hora.org\n"
+"    "
+msgstr ""
+"\n"
+"        Hello %(mentor_name)s,\n"
+"\n"
+"        We just created a \"meeting space\" for you. Now any registed user in 1hora.org can reserve that meeting space. When somebody make the meeting reservation you will have the opportunity to confirm if you will be available.\n"
+"\n"
+"        The available meeting space is: %(the_date)s @ %(the_time)s.\n"
+"\n"
+"        - 1hora.org\n"
+"    "
+
+#: templates/pinax/notifications/create_meeting_slot/notice.html:1
+#, python-format
+msgid "Se ha creado un espacio de reunión para el %(the_date)s @ %(the_time)s."
+msgstr "A meeting space has been created for the %(the_date)s @ %(the_time)s."
+
+#: templates/pinax/notifications/create_meeting_slot/short.txt:1
+msgid "Espacio de reunión creado."
+msgstr "Meeting space created."
+
+#: templates/pinax/notifications/email_subject.txt:1
+#, python-format
+msgid "[%(current_site)s] %(message)s"
+msgstr "[%(current_site)s] %(message)s"
+
+#: templates/pinax/notifications/post_meeting_mentor/full.html:4
+#: templates/pinax/notifications/post_meeting_mentor/full.txt:4
+#, python-format
+msgid ""
+"\n"
+"    Hola %(mentor_name)s,\n"
+"\n"
+"    Esperamos que la reunión con %(protege_name)s haya sido un éxito. "
+"Acabamos de enviar un email a %(protege_name)s para que confirme que la "
+"reunión se celebró. La información de la reunión se verá dentro de tú perfil "
+"así que es importante insistir para que se complete.\n"
+"\n"
+"    Si en 2 días ves que el estatus de la reunión no ha sido actualizado "
+"envia un mensaje de recordatorio a %(protege_name)s para que lo haga.\n"
+"\n"
+"    - 1hora.org\n"
+msgstr ""
+"\n"
+"    Hello %(mentor_name)s,\n"
+"\n"
+"    We hope that the meeting with %(protege_name)s went well. We've just sent an email to  %(protege_name)s to confirm that the meeting took place. The meeting information will be viewable in your profile so it's important to have it completed.\n"
+"\n"
+"    If you see that the meeting status has not been updated in  2 days please send %(protege_name)s a reminder for them to complete it.\n"
+"\n"
+"    - 1hora.org\n"
+
+#: templates/pinax/notifications/post_meeting_protege/full.html:4
+#: templates/pinax/notifications/post_meeting_protege/full.txt:4
+#, python-format
+msgid ""
+"\n"
+"    Hola %(protege_name)s,\n"
+"\n"
+"    Esperamos que la reunión con %(mentor_name)s haya sido un éxito. Ahora "
+"necesitamos que confirmes que la reunión se celebró visitando:\n"
+"    %(meeting_url)s\n"
+"\n"
+"    Esta información se verá en tu perfil y en el perfil de "
+"%(mentor_name)s.\n"
+"\n"
+"    - 1hora.org\n"
+msgstr ""
+"\n"
+"    Hello %(protege_name)s,\n"
+"\n"
+"    We hope that the meeting with %(mentor_name)s went well. We now need for you to confirm that the meeting took place by visiting:\n"
+"    %(meeting_url)s\n"
+"\n"
+"    This information will be viewable in your profile as well as %(mentor_name)s profile.\n"
+"\n"
+"    - 1hora.org\n"
+
+#: templates/pinax/notifications/reserved_meeting_slot/full.html:5
+#, python-format
+msgid ""
+"\n"
+"        Hola %(mentor_name)s,\n"
+"\n"
+"        <p>%(protege_name)s acaba de reservar el espacio de reunión pautado "
+"para el %(the_date)s @ %(the_time)s.</p>\n"
+"\n"
+"        <p>=======</p>\n"
+"        <h4>Mensaje de %(protege_name)s:</h4>\n"
+"        <p>%(message)s</p>\n"
+"        <p>=======</p>\n"
+"\n"
+"        <p>Ahora tú tienes que <a href=\"%(meeting_url)s\">confirmar o "
+"cancelar la reunión</a>.</p>\n"
+"\n"
+"        <p>- <a href=\"https://1hora.org\">1hora.org</a></p>\n"
+"    "
+msgstr ""
+"\n"
+"        Hello %(mentor_name)s,\n"
+"\n"
+"        <p>%(protege_name)s just reserved a meeting for para el %(the_date)s @ %(the_time)s.</p>\n"
+"\n"
+"        <p>=======</p>\n"
+"        <h4>Mentee message %(protege_name)s:</h4>\n"
+"        <p>%(message)s</p>\n"
+"        <p>=======</p>\n"
+"\n"
+"        <p>Now you have to <a href=\"%(meeting_url)s\">confirm or cancel the meeting</a>.</p>\n"
+"\n"
+"        <p>- <a href=\"https://1hora.org\">1hora.org</a></p>\n"
+"    "
+
+#: templates/pinax/notifications/reserved_meeting_slot/full.txt:5
+#, python-format
+msgid ""
+"\n"
+"        Hola %(mentor_name)s,\n"
+"\n"
+"        %(protege_name)s acaba de reservar el espacio de reunión pautado para el %(the_date)s @ %(the_time)s.\n"
+"\n"
+"        =======\n"
+"        Mensaje de %(protege_name)s:\n"
+"\n"
+"        %(message)s\n"
+"        =======\n"
+"\n"
+"        Ahora tú tienes que confirmar o cancelar la reunión visitando: %(meeting_url)s.\n"
+"\n"
+"        - 1hora.org\n"
+"    "
+msgstr ""
+"\n"
+"        Hello %(mentor_name)s,\n"
+"\n"
+"        %(protege_name)s just reserved a meeting for para el %(the_date)s @ %(the_time)s.\n"
+"\n"
+"        =======\n"
+"        Mentee message %(protege_name)s:\n"
+"\n"
+"        %(message)s\n"
+"        =======\n"
+"\n"
+"        Now you have to confirm or cancel the meeting visiting: %(meeting_url)s.\n"
+"\n"
+"        - 1hora.org\n"
+"    "
+
+#: templates/pinax/notifications/reserved_meeting_slot/notice.html:1
+#, python-format
+msgid "%(protege_name)s acaba de reservar tu próximo espacio de reunión."
+msgstr "%(protege_name)s just reserved your next meeting space."
+
+#: templates/pinax/notifications/reserved_meeting_slot/short.txt:1
+msgid "Reunión reservada."
+msgstr "Meeting scheduled"
+
+#: templates/socialaccount/authentication_error.html:5
+msgid "Error"
+msgstr "Error"
+
+#: templates/socialaccount/authentication_error.html:11
+msgid "Error Iniciando Sesión con Red Social"
+msgstr "Social Network Login Failure"
+
+#: templates/socialaccount/authentication_error.html:13
+msgid ""
+"Ocurrió un error al intentar iniciar su sesión con la red social escogida."
+msgstr ""
+"An error occurred while attempting to login via your social network account."
+
+#: templates/socialaccount/connections.html:5
+msgid "Conectar Perfiles Sociales"
+msgstr "Connect Social Profiles"
+
+#: templates/socialaccount/connections.html:14
+msgid "Puedes iniciar una sesión a tu cuenta usando cualquiera de estos proveedores:"
+msgstr "You can login to your account using any of the following providers:"
+
+#: templates/socialaccount/connections.html:37
+msgid "No tienes un perfil social conectado a esta cuenta."
+msgstr "You do not have a social network profile associated to this account."
+
+#: templates/socialaccount/connections.html:44
+msgid "Conecta Perfiles Sociales"
+msgstr "Connect Social Network Profiles"
+
+#: templates/socialaccount/login_cancelled.html:6
+#: templates/socialaccount/login_cancelled.html:10
+msgid "Inicio de Sesión Cancelada"
+msgstr "Login Cancelled"
+
+#: templates/socialaccount/login_cancelled.html:14
+#, python-format
+msgid ""
+"Cancelaste el inicio a tú sesión a nuestra pagina. Si esto fue hecho por error por favor proceda a el siguiente enlace <a href=\"%(login_url)s\">iniciar sesión</a>."
+msgstr ""
+"You decided to cancel logging in to our site using one of your existing accounts. If this was a mistake, please proceed to <a href=\"%(login_url)s"
+"\">sign in</a>."
+
+#: templates/socialaccount/messages/account_connected.txt:2
+msgid "La cuenta social a sido conectada."
+msgstr "The social account has been connected."
+
+#: templates/socialaccount/messages/account_connected_other.txt:2
+msgid "La cuenta social ya fue conectada a otra cuenta."
+msgstr "The social account is already connected to a different account."
+
+#: templates/socialaccount/messages/account_disconnected.txt:2
+msgid "La cuenta social a sido desconectada."
+msgstr "The social account has been disconnected."
+
+#: templates/socialaccount/signup.html:15
+#, python-format
+msgid ""
+"Estas usando tu cuenta de %(provider_name)s para registrarte en %(site_name)s. Para completar el registro debes llenar este formulario:"
+msgstr "You are using your %(provider_name)s account to register in %(site_name)s. To complete the registration you have to fill out the following form:"

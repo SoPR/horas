@@ -14,4 +14,4 @@ class BaseTestCase(TestCase):
 
     def _login_user(self):
         credentials = {'login': 'dude', 'password': 'thedude'}
-        return self.client.post('/accounts/login/', credentials)
+        return self.client.post('/es/accounts/login/', credentials)

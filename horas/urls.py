@@ -2,20 +2,21 @@ from django.conf.urls import include, url
 from django.views.generic.base import TemplateView, RedirectView
 from django.conf import settings
 from django.contrib import admin
+from django.conf.urls.i18n import i18n_patterns
 
 admin.autodiscover()
 
 urlpatterns = [
-    url(r'^admin/', include(admin.site.urls)),
+    url(r'^api/v1/', include('apps.sso.urls')),
+    url(r'^i18n/', include('django.conf.urls.i18n')),
+]
 
+urlpatterns += i18n_patterns(
+    url(r'^admin/', include(admin.site.urls)),
+    url(r'^accounts/', include('allauth.urls')),
     url(r'^search/', include('apps.search.urls')),
 
-    url(r'^accounts/', include('allauth.urls')),
-
     url(r'^stats/', include('apps.stats.urls')),
-
-    url(r'^api/v1/', include('apps.sso.urls')),
-
 
     # This pages are in apps/core/templates
     url(r'^legal/$', TemplateView.as_view(
@@ -29,4 +30,4 @@ urlpatterns = [
     url(r'^(?P<username>[^/]+)/', include('apps.profiles.urls')),
 
     url(r'^', include('apps.core.urls')),
-]
+)

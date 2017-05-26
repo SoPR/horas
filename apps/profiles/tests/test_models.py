@@ -46,11 +46,11 @@ class UseModelTestCase(BaseTestCase):
 
     def test_get_absolute_url(self):
         url = self.dude.get_absolute_url()
-        self.assertEqual(url, '/dude/')
+        self.assertEqual(url, '/es/dude/')
 
     def test_get_url_with_domain(self):
         url = self.dude.get_url_with_domain()
-        self.assertEqual(url, 'http://example.com/dude/')
+        self.assertEqual(url, 'http://example.com/es/dude/')
 
     def test_get_tiny_name(self):
         self.assertEqual(self.dude.get_tiny_name(), 'J. Lebowski')
