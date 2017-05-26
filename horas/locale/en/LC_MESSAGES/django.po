@@ -117,7 +117,7 @@ msgstr "Enter now, it only takes a minute"
 #: apps/core/templates/home.html:62
 #, python-format
 msgid "Puedes registrarte usando una de tus cuentas de redes sociales, pero si esa idea no te gusta puedes <a href=\"%(account_signup)s\">crear una cuenta tradicional</a>, si ya la tienes <a href=\"%(account_login)s\">inicia tu sesión</a>."
-msgstr "You can register using your social media accounts, but if you do not like that idea you can <a href=\"%(account_signup)s\"create an account</a> or <a href=\"%(account_login)s\">login</a> if you already have one."
+msgstr "You can register using your social media accounts, but if you do not like that idea you can <a href=\"%(account_signup)s\">create an account</a> or <a href=\"%(account_login)s\">login</a> if you already have one."
 
 #: apps/core/templates/home.html:74
 msgid "Mentores Destacados"
@@ -779,8 +779,7 @@ msgstr "You can register using one of your social media accounts, but if you don
 
 #: templates/account/login.html:24
 #, python-format
-msgid ""
-"Si no has creado una cuenta por favor <a href=\"%(signup_url)s\">registrese</a>"
+msgid "Si no has creado una cuenta por favor <a href=\"%(signup_url)s\">registrese</a>"
 msgstr "If you haven't created an account yet please <a href=\"%(signup_url)s\">register</a>"
 
 #: templates/account/login.html:38
@@ -826,7 +825,7 @@ msgid "Ha iniciado su sessión como %(name)s exitosamente."
 msgstr "Successfully signed in as %(name)s."
 
 #: templates/account/messages/logged_out.txt:2
-msgid "Has cerrado su sessión."
+msgid "Has cerrado su sesión."
 msgstr "You have signed out."
 
 #: templates/account/messages/password_changed.txt:2
@@ -958,7 +957,7 @@ msgstr "<strong>Note:</strong> you can <a href=\"%(email_url)s\">change your ema
 
 #: templates/common/footer.html:8
 msgid "<li><a href=\"https://creativecommons.org/licenses/by-sa/3.0/deed.es_ES\" class=\"text-muted\">Algunos derechos reservados</a></li>"
-msgstr "<li><a href=\"https://creativecommons.org/licenses/by-sa/3.0/deed.en\" class=\"text-muted\">Some right reserved</a></li>"
+msgstr "<li><a href=\"https://creativecommons.org/licenses/by-sa/3.0/deed.en\" class=\"text-muted\">Some rights reserved</a></li>"
 
 #: templates/common/footer.html:15
 msgid "Sobre 1hora"

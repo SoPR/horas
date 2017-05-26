@@ -2,12 +2,9 @@ import os
 
 from configurations import Configuration, values
 
+from django.utils.translation import ugettext_lazy as _
 
 class Common(Configuration):
-    LOCALE_PATHS = [
-        os.path.join(os.path.dirname(__file__), 'locale'),
-    ]
-
     BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
     ENVIRONMENT = values.Value(environ_prefix=None, default='development')
@@ -136,7 +133,15 @@ class Common(Configuration):
 
     # Internationalization
     # https://docs.djangoproject.com/en/dev/topics/i18n/
-    LANGUAGE_CODE = 'en-us'
+    LANGUAGE_CODE = 'es'
+
+    LOCALE_PATHS = [
+        os.path.join(os.path.dirname(__file__), 'locale'),
+    ]
+    LANGUAGES = (
+        ('es', _('Spanish')),
+        ('en', _('English')),
+    )
 
     TIME_ZONE = 'UTC'
     HORAS_DEFAULT_TZ = os.environ.get('HORAS_DEFAULT_TZ')
