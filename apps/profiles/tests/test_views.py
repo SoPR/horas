@@ -20,27 +20,27 @@ class UserProfileCompletionTestCase(BaseTestCase):
 
         self._login_user()
 
-        response = self.client.get('/stats/')
+        response = self.client.get('/es/stats/')
         self.assertEqual(response.status_code, 302)
-        self.assertEqual(response.url, '/dude/update/')
+        self.assertEqual(response.url, '/es/dude/update/')
 
     def test_complete_profile_shouldnt_redirect_to_profile(self):
         self._login_user()
-        response = self.client.get('/stats/')
+        response = self.client.get('/es/stats/')
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.template_name, ['stats/stats.html'])
 
     def test_complete_profile_should_redirect_from_home_to_search(self):
         self._login_user()
-        response = self.client.get('/')
+        response = self.client.get('/es/')
         self.assertEqual(response.status_code, 302)
-        self.assertEqual(response.url, '/search/')
+        self.assertEqual(response.url, '/es/search/')
 
 
 class UserUpdateViewTestCase(BaseTestCase):
     def test_submit_incomplete_form_should_display_error(self):
         self._login_user()
-        response = self.client.post('/dude/update/', {})
+        response = self.client.post('/es/dude/update/', {})
         self.assertContains(response,
                             '<ul class="errorlist nonfield">',
                             status_code=200)
@@ -59,11 +59,11 @@ class UserUpdateViewTestCase(BaseTestCase):
             'start_time': '00:00:00',
             'timezone': 'America/Puerto_Rico'
         }
-        response = self.client.post('/dude/update/', data)
+        response = self.client.post('/es/dude/update/', data)
         self.assertEqual(response.status_code, 302)
-        self.assertEqual(response.url, '/dude/')
+        self.assertEqual(response.url, '/es/dude/')
 
-        response =  self.client.get('/dude/')
+        response =  self.client.get('/es/dude/')
         self.assertContains(response,
                             'alert alert-success alert-dismissable',
                             status_code=200)
@@ -86,7 +86,7 @@ class UserDetailViewTestCase(BaseTestCase):
                                state='unused')
 
     def test_correct_meetings_in_context_data(self):
-        response = self.client.get('/dude/')
+        response = self.client.get('/es/dude/')
         meetings = response.context_data['object']['meetings']
 
         self.assertEqual(len(meetings['available']), 1)
@@ -98,6 +98,6 @@ class UserDetailViewTestCase(BaseTestCase):
         self.assertEqual(meetings['past'][0].state, 'unused')
 
     def test_profile_user_in_context_data(self):
-        response = self.client.get('/dude/')
+        response = self.client.get('/es/dude/')
         profile_user = response.context_data['object']['profile_user']
         self.assertEqual(profile_user, self.dude)

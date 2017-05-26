@@ -6,13 +6,13 @@ from apps.comments.models import Comment
 
 class MeetingDetailViewTestCase(MeetingBaseTestCase):
     def test_meeting_should_be_under_the_username_of_the_mentor(self):
-        response = self.client.get('/dude/meetings/1/')
+        response = self.client.get('/es/dude/meetings/1/')
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.template_name,
                          ['meetings/meeting_detail.html'])
 
     def test_available_meeting(self):
-        response = self.client.get('/dude/meetings/1/')
+        response = self.client.get('/es/dude/meetings/1/')
         self.assertContains(response, u'Reunión disponible', status_code=200)
         self.assertContains(response, 'Reservar', status_code=200)
 
@@ -21,7 +21,7 @@ class MeetingDetailViewTestCase(MeetingBaseTestCase):
         self.meeting.protege = self.user2
         self.meeting.save()
 
-        response = self.client.get('/dude/meetings/1/')
+        response = self.client.get('/es/dude/meetings/1/')
         self.assertContains(response, u'Reunión reservada', status_code=200)
         self.assertContains(response, 'icon-warning', status_code=200)
 
@@ -30,7 +30,7 @@ class MeetingDetailViewTestCase(MeetingBaseTestCase):
         self.meeting.protege = self.user2
         self.meeting.save()
 
-        response = self.client.get('/dude/meetings/1/')
+        response = self.client.get('/es/dude/meetings/1/')
         self.assertContains(response, u'Reunión confirmada', status_code=200)
         self.assertContains(response, 'icon-success', status_code=200)
 
@@ -39,7 +39,7 @@ class MeetingDetailViewTestCase(MeetingBaseTestCase):
         self.meeting.protege = self.user2
         self.meeting.save()
 
-        response = self.client.get('/dude/meetings/1/')
+        response = self.client.get('/es/dude/meetings/1/')
         self.assertContains(response, u'Reunión cancelada', status_code=200)
         self.assertContains(response, 'icon-cancelled"', status_code=200)
 
@@ -47,12 +47,12 @@ class MeetingDetailViewTestCase(MeetingBaseTestCase):
         self.meeting.state = 'unused'
         self.meeting.save()
 
-        response = self.client.get('/dude/meetings/1/')
+        response = self.client.get('/es/dude/meetings/1/')
         self.assertContains(response, 'No fue reservada', status_code=200)
         self.assertContains(response, 'icon-cancelled"', status_code=200)
 
     def test_details_not_visible(self):
-        response = self.client.get('/dude/meetings/1/')
+        response = self.client.get('/es/dude/meetings/1/')
         self.assertNotContains(response, 'Detalles', status_code=200)
 
     def test_details_not_visible_to_non_participants(self):
@@ -60,14 +60,14 @@ class MeetingDetailViewTestCase(MeetingBaseTestCase):
         self.meeting.state = 'reserved'
         self.meeting.protege = self.user2
         self.meeting.save()
-        response = self.client.get('/dude/meetings/1/')
+        response = self.client.get('/es/dude/meetings/1/')
         self.assertContains(response, 'Detalles', status_code=200)
 
     def test_details_visible(self):
         self._login_user()
         self.meeting.state = 'reserved'
         self.meeting.save()
-        response = self.client.get('/dude/meetings/1/')
+        response = self.client.get('/es/dude/meetings/1/')
         self.assertContains(response, 'Detalles', status_code=200)
 
     def test_meeting_details_not_visible_if_reserved(self):
@@ -79,7 +79,7 @@ class MeetingDetailViewTestCase(MeetingBaseTestCase):
         self.meeting.state = 'reserved'
         self.meeting.format = 'skype'
         self.meeting.save()
-        response = self.client.get('/dude/meetings/1/')
+        response = self.client.get('/es/dude/meetings/1/')
         self.assertNotContains(response, 'dudeskype', status_code=200)
         self.assertNotContains(response, 'thedude@example.com', status_code=200)
 
@@ -88,7 +88,7 @@ class MeetingDetailViewTestCase(MeetingBaseTestCase):
         self.meeting.state = 'confirmed'
         self.meeting.format = 'skype'
         self.meeting.save()
-        response = self.client.get('/dude/meetings/1/')
+        response = self.client.get('/es/dude/meetings/1/')
         self.assertContains(response, 'dudeskype', status_code=200)
         self.assertContains(response, 'thedude@example.com', status_code=200)
 
@@ -98,15 +98,15 @@ class MeetingDetailViewTestCase(MeetingBaseTestCase):
             user=self.dude, comment='This is a test comment',
             content_type=ctype, object_id=self.meeting.id)
 
-        response = self.client.get('/dude/meetings/1/')
+        response = self.client.get('/es/dude/meetings/1/')
         self.assertContains(response, 'This is a test comment', status_code=200)
 
     def test_create_comment(self):
         self._login_user()
         data = {'comment': 'New test comment'}
-        response = self.client.post('/dude/meetings/1/comment/', data)
+        response = self.client.post('/es/dude/meetings/1/comment/', data)
         self.assertEqual(response.status_code, 302)
-        self.assertEqual(response.url, '/dude/meetings/1/')
+        self.assertEqual(response.url, '/es/dude/meetings/1/')
 
-        response = self.client.get('/dude/meetings/1/')
+        response = self.client.get('/es/dude/meetings/1/')
         self.assertContains(response, 'New test comment', status_code=200)
