@@ -1,7 +1,7 @@
-from django.views.generic.base import TemplateView
-from django.http import HttpResponseRedirect
-from django.core.urlresolvers import reverse_lazy
 from django.core.cache import cache
+from django.core.urlresolvers import reverse_lazy
+from django.http import HttpResponseRedirect
+from django.views.generic.base import TemplateView
 
 from ..profiles.models import User
 from ..stats.models import Stat

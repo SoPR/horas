@@ -29,8 +29,9 @@ deleted:
 '''
 
 from django.utils.translation import ugettext_lazy as _
-
-from django_states.machine import StateMachine, StateDefinition, StateTransition
+from django_states.machine import (
+    StateDefinition, StateMachine, StateTransition
+)
 from pinax.notifications import models as notifications
 
 

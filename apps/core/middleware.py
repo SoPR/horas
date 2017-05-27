@@ -1,9 +1,8 @@
 import pytz
-
-from django.utils import timezone
+from django.contrib import messages
 from django.core.urlresolvers import reverse_lazy
 from django.http import HttpResponseRedirect
-from django.contrib import messages
+from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
 
 

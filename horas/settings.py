@@ -1,8 +1,8 @@
 import os
 
 from configurations import Configuration, values
-
 from django.utils.translation import ugettext_lazy as _
+
 
 class Common(Configuration):
     BASE_DIR = os.path.dirname(os.path.dirname(__file__))

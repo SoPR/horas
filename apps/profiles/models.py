@@ -1,23 +1,21 @@
 # -*- coding: utf-8 -*-
 
 from datetime import datetime
-import pytz
 
+import pytz
+from django.apps import apps
+from django.conf import settings
+from django.contrib.auth.models import AbstractUser
+from django.contrib.sites.models import Site
+from django.core.urlresolvers import reverse_lazy
 from django.db import models
 from django.db.models import Q
-from django.contrib.auth.models import AbstractUser
-from django.apps import apps
-from django.utils.timezone import now, get_default_timezone, make_aware
-from django.core.urlresolvers import reverse_lazy
-from django.contrib.sites.models import Site
+from django.utils.timezone import get_default_timezone, make_aware, now
 from django.utils.translation import ugettext_lazy as _
-
-from django.conf import settings
-
 from taggit.managers import TaggableManager
 
-from .utils import get_gravatar_url, next_weekday, week_range
 from .fields import DaysOfWeekField
+from .utils import get_gravatar_url, next_weekday, week_range
 
 
 class User(AbstractUser):

@@ -1,13 +1,12 @@
 # -*- coding: utf-8 -*-
 from datetime import timedelta
 
-from django.db import models
-from django.utils.timezone import get_current_timezone, now
-from django.utils.formats import date_format
-from django.core.urlresolvers import reverse_lazy
-from django.contrib.sites.models import Site
 from django.conf import settings
-
+from django.contrib.sites.models import Site
+from django.core.urlresolvers import reverse_lazy
+from django.db import models
+from django.utils.formats import date_format
+from django.utils.timezone import get_current_timezone, now
 from django_states.fields import StateField
 
 from ..core.models import BaseModel

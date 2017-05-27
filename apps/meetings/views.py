@@ -1,17 +1,17 @@
+from braces.views import LoginRequiredMixin
+from django.contrib import messages
+from django.contrib.contenttypes.models import ContentType
+from django.core.urlresolvers import reverse_lazy
+from django.db.models import Q
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
-from django.views.generic import UpdateView, DetailView, FormView
-from django.core.urlresolvers import reverse_lazy
 from django.utils.translation import ugettext_lazy as _
-from django.contrib import messages
-from django.db.models import Q
-
-from braces.views import LoginRequiredMixin
-from django.contrib.contenttypes.models import ContentType
+from django.views.generic import DetailView, FormView, UpdateView
 
 from apps.comments.models import Comment
+
+from .forms import MeetingCommentCreationForm, MeetingUpdateForm
 from .models import Meeting
-from .forms import MeetingUpdateForm, MeetingCommentCreationForm
 
 
 class MeetingDetailView(DetailView):

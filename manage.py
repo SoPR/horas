@@ -3,6 +3,7 @@ import os
 import sys
 
 import dotenv
+
 dotenv.read_dotenv()
 
 if __name__ == "__main__":

@@ -4,6 +4,7 @@ from django_ical.views import ICalFeed
 
 from apps.meetings.models import Meeting
 
+
 class ProfileCalendarFeed(ICalFeed):
     product_id = '-//1hora.org//1hora//EN'
     timezone = 'UTC'
@@ -41,4 +42,3 @@ class ProfileCalendarFeed(ICalFeed):
 
     def item_guid(self, item):
         return '{0}@meetings.{1}'.format(item.id, '1hora.org')
-

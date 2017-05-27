@@ -1,11 +1,11 @@
 import hmac
-from hashlib import sha256
 from base64 import b64decode, b64encode
+from hashlib import sha256
 
+from django.conf import settings
+from django.core.urlresolvers import reverse
 from django.http import HttpResponseNotFound, HttpResponseRedirect
 from django.utils.http import urlencode
-from django.core.urlresolvers import reverse
-from django.conf import settings
 
 
 def single_sign_on(request):

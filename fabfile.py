@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import os
-from fabric.api import local, env
+
+from fabric.api import env, local
 
 # Get current Git branch
 current_git_branch = local('git rev-parse --abbrev-ref HEAD', capture=True)

@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 from django.contrib.contenttypes.models import ContentType
-from apps.meetings.tests import MeetingBaseTestCase
+
 from apps.comments.models import Comment
+from apps.meetings.tests import MeetingBaseTestCase
 
 
 class MeetingDetailViewTestCase(MeetingBaseTestCase):

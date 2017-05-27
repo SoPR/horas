@@ -1,7 +1,9 @@
 from django.views.generic import TemplateView
 
 from apps.profiles.models import User
+
 from .models import Stat
+
 
 class StatsView(TemplateView):
     template_name = 'stats/stats.html'
