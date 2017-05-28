@@ -1,6 +1,5 @@
 from django.core.management.base import BaseCommand
 from django.utils.translation import ugettext_noop as _
-
 from pinax.notifications.models import NoticeType
 
 

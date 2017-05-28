@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from datetime import timedelta
-from django.utils.timezone import now
 
+from django.utils.timezone import now
 from django_states.exceptions import PermissionDenied
 
 from apps.meetings.tests import MeetingBaseTestCase
@@ -151,4 +151,3 @@ class MeetingModelMethodsTestCase(MeetingBaseTestCase):
     def test_get_time_range_string(self):
         self.assertEquals(type(self.meeting.get_time_range_string()), str)
         self.assertTrue(len(self.meeting.get_time_range_string()) > 0)
-

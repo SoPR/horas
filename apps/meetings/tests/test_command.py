@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 from datetime import timedelta
+
 from django.utils.timezone import now
 
-from apps.meetings.tests import MeetingBaseTestCase
 from apps.meetings.models import Meeting
+from apps.meetings.tests import MeetingBaseTestCase
 
 
 class UpdateMeetingsCommandTestCase(MeetingBaseTestCase):

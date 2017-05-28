@@ -1,11 +1,11 @@
-import os
-import subprocess
 import atexit
+import os
 import signal
+import subprocess
 
 from django.conf import settings
-from django_extensions.management.commands.runserver_plus import Command \
-    as StaticfilesRunserverCommand
+from django_extensions.management.commands.runserver_plus import \
+    Command as StaticfilesRunserverCommand
 
 
 class Command(StaticfilesRunserverCommand):

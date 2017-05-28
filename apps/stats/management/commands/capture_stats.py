@@ -36,6 +36,3 @@ class Command(BaseCommand):
 
         print('-> CaptureStats', now(), stats)
         Stat.objects.bulk_create(stats)
-
-
-

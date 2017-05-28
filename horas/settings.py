@@ -1,8 +1,8 @@
 import os
 
 from configurations import Configuration, values
-
 from django.utils.translation import ugettext_lazy as _
+
 
 class Common(Configuration):
     BASE_DIR = os.path.dirname(os.path.dirname(__file__))
@@ -83,7 +83,9 @@ class Common(Configuration):
     TEMPLATES = [
         {
             'BACKEND': 'django.template.backends.django.DjangoTemplates',
-            'DIRS': [os.path.join(BASE_DIR, 'templates'),],
+            'DIRS': [
+                os.path.join(BASE_DIR, 'templates')
+            ],
             'APP_DIRS': True,
             'OPTIONS': {
                 'debug': DEBUG,

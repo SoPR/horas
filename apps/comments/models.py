@@ -1,8 +1,7 @@
-from django.db import models
-from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericForeignKey
+from django.contrib.contenttypes.models import ContentType
+from django.db import models
 from django.db.models.signals import post_save
-
 from pinax.notifications import models as notifications
 
 from ..core.models import BaseModel

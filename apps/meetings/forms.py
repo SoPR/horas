@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
-from django.forms import ModelForm, Form, CharField, Textarea
-from django.forms import Select
-from django.utils.translation import ugettext_lazy as _
 from django.contrib.contenttypes.models import ContentType
+from django.forms import CharField, Form, ModelForm, Select, Textarea
+from django.utils.translation import ugettext_lazy as _
+
+from apps.comments.models import Comment
 
 from .models import Meeting
-from apps.comments.models import Comment
 
 
 class MeetingUpdateForm(ModelForm):

@@ -1,7 +1,9 @@
 from django.conf.urls import url
-from .views import (MeetingUpdateView, MeetingConfirmView,
-                    MeetingDetailView, MeetingCancelView,
-                    MeetingCommentView)
+
+from .views import (
+    MeetingCancelView, MeetingCommentView, MeetingConfirmView,
+    MeetingDetailView, MeetingUpdateView
+)
 
 urlpatterns = [
     url('^(?P<pk>\d+)/$', MeetingDetailView.as_view(),

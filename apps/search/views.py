@@ -1,9 +1,8 @@
 import operator
 from functools import reduce
 
+from django.db.models import Count, Q
 from django.views.generic import ListView
-from django.db.models import Q, Count
-
 from taggit.models import Tag
 
 from ..profiles.models import User
