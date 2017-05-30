@@ -40,7 +40,7 @@
                     {% cache 300 search.tags %}
                         {% for tag in tags %}
                             <li>
-                                <a href="{% url 'search_query' tag.name %}">
+                                <a href="{% url 'search_list' %}?q={{ tag.name }}">
                                     {{ tag }}
                                 </a>
                             </li>
