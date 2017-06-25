@@ -75,6 +75,7 @@ coverage.xml
 docs/_build/
 
 static/dist
+static/public
 
 .env
 /venv/
