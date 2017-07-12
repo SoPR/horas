@@ -2,9 +2,10 @@
 
 Este proyecto no sería posible sin la colaboración de otros developers que han donado su tiempo para crear esta aplicación. Si encuentras un error por favor crea un [issue](https://github.com/SoPR/horas/issues) y si puedes arreglarlo te invitamos a hacer y someter un pull request.
 
-Tenemos un [chat room](https://startupsofpr.slack.com/messages/C4HAXGZL5) para facilitar la comunicación y coordinación del equipo.
+Tenemos un [chat room - #horas-project](https://startupsofpr.slack.com/messages/C4HAXGZL5) para facilitar la comunicación y coordinación del equipo. Si necesitas una cuenta puedes [crearla aqui](https://bit.ly/sopr-slack).
 
-[Chat Room](https://startupsofpr.slack.com/messages/C4HAXGZL5)
+* [Creación de Cuenta para Slack de SoPR](https://bit.ly/sopr-slack)
+* [Chat Room - #horas-project](https://startupsofpr.slack.com/messages/C4HAXGZL5)
 
 Si necesitas ideas de como ayudar puede ver la lista de tareas pendientes.
 
