@@ -29,7 +29,6 @@ __pycache__/
 *.so
 
 # Distribution / packaging
-bin/
 build/
 develop-eggs/
 dist/
@@ -80,4 +79,3 @@ static/dist
 /venv/
 /src
 /env/
-
