@@ -54,6 +54,10 @@ Si tienes una idea de como mejorar esta plataforma o si has encontrado algún er
 
 Aquí un [vídeo](http://www.youtube.com/watch?v=TJlYiMp8FuY) que explica como crear "issues". Recuerda que primero necesitas [crear una cuenta de GitHub](https://github.com/join), es gratis.
 
+## Eres un Diseñador o Desarrollador?
+
+Si eres un diseñador o un desarrollador y quieres contribuir a este projecto por favor lea el [README pars Diseñadores y Desarrolladores](README-devs-design-es.md).
+
 ## Prensa
 
 ### En Puerto Rico
