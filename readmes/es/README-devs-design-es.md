@@ -1,14 +1,14 @@
 ## Developers
 
-Este proyecto no sería posible sin la colaboración de otros developers que han donado su tiempo para crear esta aplicación. Si  encuentras un error por favor crea un [issue](https://github.com/SoPR/horas/issues) y si puedes arreglarlo te invitamos a hacer y someter un pull request.
+Este proyecto no sería posible sin la colaboración de otros developers que han donado su tiempo para crear esta aplicación. Si encuentras un error por favor crea un [issue](https://github.com/SoPR/horas/issues) y si puedes arreglarlo te invitamos a hacer y someter un pull request.
 
-Tenemos un [chat room](https://www.hipchat.com/g3IXLRctN) para facilitar la comunicación y coordinación del equipo.
+Tenemos un [chat room](https://startupsofpr.slack.com/messages/C4HAXGZL5) para facilitar la comunicación y coordinación del equipo.
 
-[Chat Room](https://www.hipchat.com/g3IXLRctN)
+[Chat Room](https://startupsofpr.slack.com/messages/C4HAXGZL5)
 
 Si necesitas ideas de como ayudar puede ver la lista de tareas pendientes.
 
-[TO-DO](TODO.md)
+[Github issues](https://github.com/SoPR/horas/issues)
 
 
 ### Para correr el proyecto
