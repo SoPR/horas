@@ -56,7 +56,7 @@ Aquí un [vídeo](http://www.youtube.com/watch?v=TJlYiMp8FuY) que explica como c
 
 ## Eres un Diseñador o Desarrollador?
 
-Si eres un diseñador o un desarrollador y quieres contribuir a este projecto por favor lea el [README pars Diseñadores y Desarrolladores](README-devs-design-es.md).
+Si eres un diseñador o un desarrollador y quieres contribuir a este projecto por favor lea el [README para Diseñadores y Desarrolladores](README-devs-design-es.md).
 
 ## Prensa
 
