@@ -4,6 +4,6 @@
 
 This doc is in progress. Maybe you can help us complete it :blush:
 
-Take a look at [es/README-devs-design-es.md](../es/README-devs-design-es.md) for the original spanish text.
+Take a look at [es/README-devs-design-es.md](../es/README-devs-design-es.md) for the original Spanish text.
 
 **Thanks!!!**
