@@ -30,7 +30,8 @@
         "description": "AWS bucket to save your static assets"
     },
     "BITLY_ACCESS_TOKEN": {
-        "description": "Bitly access token. More info here https://support.bitly.com/hc/en-us/articles/230647907-How-do-I-find-my-OAuth-access-token-"
+        "description": "Bitly access token. More info here https://support.bitly.com/hc/en-us/articles/230647907-How-do-I-find-my-OAuth-access-token-",
+        "required": false 
     },
     "DATABASE_URL": {
         "description": "Database URL. Ei. postgres://user:pass@somewhere.com:5432/your_db"
@@ -53,13 +54,16 @@
         "description": "URL for your prefered email provider."
     },
     "DJANGO_EMAIL_HOST_PASSWORD": {
-        "description": "Password for your user at your prefred email provider."
+        "description": "Password for your user at your prefred email provider.",
+        "required": false
     },
     "DJANGO_EMAIL_HOST_USER": {
-        "description": "User at your prefred email provider."
+        "description": "User at your prefred email provider.",
+        "required": false
     },
     "DJANGO_EMAIL_PORT": {
-        "description": "Port for your prefred email provider."
+        "description": "Port for your prefred email provider.",
+        "required": false
     },
     "DJANGO_EMAIL_USE_TLS": {
         "description": "Specify the use of TSL (encrypted communication) with your prefered email provider",
@@ -74,32 +78,40 @@
         "value": "Testing"
     },
     "HEAD_COMMIT_ID": {
-        "description": "Commit hash that you wish to use. This is primarily for caching."
+        "description": "Commit hash that you wish to use. This is primarily for caching.",
+        "required": false
     },
     "HORAS_DEFAULT_TZ": {
         "description": "Time zone for your instance. Ei. America/Puerto_Rico",
         "value": "America/Puerto_Rico"
     },
     "MANDRILL_API_KEY": {
-        "description": "Your API key for Mandrill."
+        "description": "Your API key for Mandrill.",
+        "required": false
     },
     "SECRET_KEY": {
-        "description": "Your secret key. Be wise with this value it is used to provide cryptographic signing, and should be set to a unique, unpredictable value."
+        "description": "Your secret key. Be wise with this value it is used to provide cryptographic signing, and should be set to a unique, unpredictable value.",
+        "generator": "secret"
     },
     "SSO_SECRET_KEY": {
-        "description": "Your single signon secret key."
+        "description": "Your single signon secret key.",
+        "required": false
     },
     "TWITTER_ACCESS_TOKEN": {
-        "description": "Your Twitter access token. More information here: https://dev.twitter.com/oauth/overview"
+        "description": "Your Twitter access token. More information here: https://dev.twitter.com/oauth/overview",
+        "required": false
     },
     "TWITTER_ACCESS_TOKEN_SECRET": {
-        "description": "Your Twitter access token secret. More information here: https://dev.twitter.com/oauth/overview"
+        "description": "Your Twitter access token secret. More information here: https://dev.twitter.com/oauth/overview",
+        "required": false
     },
     "TWITTER_API_KEY": {
-        "description": "Your Twitter API key. More information here: https://dev.twitter.com/oauth/overview"
+        "description": "Your Twitter API key. More information here: https://dev.twitter.com/oauth/overview",
+        "required": false
     },
     "TWITTER_API_SECRET": {
-        "description": "Your Twitter API secret. More information here: https://dev.twitter.com/oauth/overview"
+        "description": "Your Twitter API secret. More information here: https://dev.twitter.com/oauth/overview",
+        "required": false
     }
   }
 }
