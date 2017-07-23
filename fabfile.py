@@ -10,7 +10,7 @@ current_git_branch = local('git rev-parse --abbrev-ref HEAD', capture=True)
 def development():
     env.env = 'development'
     os.environ['ENVIRONMENT'] = env.env
-    os.environ['DJANGO_CONFIGURATION'] = 'Develoment'
+    os.environ['DJANGO_CONFIGURATION'] = 'Development'
     env.domain = 'localhost:8000'
 
 

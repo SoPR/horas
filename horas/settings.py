@@ -16,9 +16,9 @@ class Common(Configuration):
     SECRET_KEY = values.SecretValue(environ_prefix=None)
     SSO_SECRET_KEY = values.SecretValue(environ_prefix=None)
 
-    DISCOURSE_SSO_REDIRECT_URL = 'http://comunidad.1hora.org/session/sso_login?'
+    DISCOURSE_SSO_REDIRECT_URL = values.URLValue(environ_prefix=None)
 
-    ALLOWED_HOSTS = ['unahora.herokuapp.com', '1hora.org']
+    ALLOWED_HOSTS = str(values.Value(environ_prefix=None)).split(',')
 
     SITE_ID = 1
 

@@ -1,0 +1,105 @@
+{
+  "name": "Horas",
+  "description": "A platform to facilitate mentorship.",
+  "keywords": [
+    "mentorship",
+    "community"
+  ],
+  "author": "Giovanni Collazo @ Startups of Puerto Rico",
+  "website": "https://1hora.org/",
+  "repository": "https://github.com/SoPR/horas",
+  "logo": "https://i.imgur.com/9mvF88Y.png",
+  "addons": [
+    "heroku-postgresql:hobby-dev",
+    "scheduler:standard",
+    "newrelic:wayne",
+    "sentry:f1",
+    "memcachier:dev"
+  ],
+  "env": {
+    "ALLOWED_HOSTS": {
+        "description": "Comma separated values of the allowed hosts. Ei. 1hora.org,1hora.herokuapp.com"
+    },
+    "AWS_ACCESS_KEY_ID": {
+        "description": "Your AWS access key"
+    },
+    "AWS_SECRET_ACCESS_KEY": {
+        "description": "Your AWS secret key"
+    },
+    "AWS_STORAGE_BUCKET_NAME": {
+        "description": "AWS bucket to save your static assets"
+    },
+    "BITLY_ACCESS_TOKEN": {
+        "description": "Bitly access token. More info here https://support.bitly.com/hc/en-us/articles/230647907-How-do-I-find-my-OAuth-access-token-"
+    },
+    "DATABASE_URL": {
+        "description": "Database URL. Ei. postgres://user:pass@somewhere.com:5432/your_db"
+    },
+    "DEFAULT_FROM_EMAIL": {
+        "description": "Default email address to send notifications from"
+    },
+    "DISABLE_COLLECTSTATIC": {
+        "description": "Whether or not to disable Django's collectstatic command.",
+        "value": "1"
+    },
+    "DJANGO_CONFIGURATION": {
+        "description": "App configuration environment: Development, Testing, or Production.",
+        "value": "Testing"
+    },
+    "DJANGO_DEFAULT_FROM_EMAIL": {
+        "description": "Default email address to send notifications from"
+    },
+    "DJANGO_EMAIL_HOST": {
+        "description": "URL for your prefered email provider."
+    },
+    "DJANGO_EMAIL_HOST_PASSWORD": {
+        "description": "Password for your user at your prefred email provider."
+    },
+    "DJANGO_EMAIL_HOST_USER": {
+        "description": "User at your prefred email provider."
+    },
+    "DJANGO_EMAIL_PORT": {
+        "description": "Port for your prefred email provider."
+    },
+    "DJANGO_EMAIL_USE_TLS": {
+        "description": "Specify the use of TSL (encrypted communication) with your prefered email provider",
+        "value": "yes"
+    },
+    "DJANGO_SETTINGS_MODULE": {
+        "description": "Location of the project's Django settings",
+        "value": "horas.settings"
+    },
+    "ENVIRONMENT": {
+        "description": "Current runtime environment. Production, Testing, or Development",
+        "value": "Testing"
+    },
+    "HEAD_COMMIT_ID": {
+        "description": "Commit hash that you wish to use. This is primarily for caching."
+    },
+    "HORAS_DEFAULT_TZ": {
+        "description": "Time zone for your instance. Ei. America/Puerto_Rico",
+        "value": "America/Puerto_Rico"
+    },
+    "MANDRILL_API_KEY": {
+        "description": "Your API key for Mandrill."
+    },
+    "SECRET_KEY": {
+        "description": "Your secret key. Be wise with this value it is used to provide cryptographic signing, and should be set to a unique, unpredictable value."
+    },
+    "SSO_SECRET_KEY": {
+        "description": "Your single signon secret key."
+    },
+    "TWITTER_ACCESS_TOKEN": {
+        "description": "Your Twitter access token. More information here: https://dev.twitter.com/oauth/overview"
+    },
+    "TWITTER_ACCESS_TOKEN_SECRET": {
+        "description": "Your Twitter access token secret. More information here: https://dev.twitter.com/oauth/overview"
+    },
+    "TWITTER_API_KEY": {
+        "description": "Your Twitter API key. More information here: https://dev.twitter.com/oauth/overview"
+    },
+    "TWITTER_API_SECRET": {
+        "description": "Your Twitter API secret. More information here: https://dev.twitter.com/oauth/overview"
+    }
+  }
+}
