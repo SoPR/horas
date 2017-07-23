@@ -16,6 +16,14 @@
     "sentry:f1",
     "memcachier:dev"
   ],
+  "buildpacks": [
+      {
+          "url": "https://github.com/piotras/heroku-buildpack-gettext.git"
+      },
+      {
+          "url": "heroku/python"
+      }
+  ],
   "env": {
     "ALLOWED_HOSTS": {
         "description": "Comma separated values of the allowed hosts. Ei. 1hora.org,1hora.herokuapp.com"
