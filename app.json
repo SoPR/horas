@@ -33,9 +33,6 @@
         "description": "Bitly access token. More info here https://support.bitly.com/hc/en-us/articles/230647907-How-do-I-find-my-OAuth-access-token-",
         "required": false 
     },
-    "DATABASE_URL": {
-        "description": "Database URL. Ei. postgres://user:pass@somewhere.com:5432/your_db"
-    },
     "DEFAULT_FROM_EMAIL": {
         "description": "Default email address to send notifications from"
     },
