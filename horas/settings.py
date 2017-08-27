@@ -14,9 +14,9 @@ class Common(Configuration):
     DEBUG = False
 
     SECRET_KEY = values.SecretValue(environ_prefix=None)
-    SSO_SECRET_KEY = values.SecretValue(environ_prefix=None)
+    SSO_SECRET_KEY = values.SecretValue('', environ_prefix=None)
 
-    DISCOURSE_SSO_REDIRECT_URL = values.URLValue(environ_prefix=None)
+    DISCOURSE_SSO_REDIRECT_URL = values.URLValue('', environ_prefix=None)
 
     ALLOWED_HOSTS = str(values.Value(environ_prefix=None)).split(',')
 
