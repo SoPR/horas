@@ -82,7 +82,7 @@ msgstr "1hora"
 
 #: apps/core/templates/home.html:24
 msgid "El mejor lugar para compartir lo que sabes y aprender<br>de quienes han estado donde quieres llegar."
-msgstr "The best place to share what you konw and learn<br>from those that are where you want to be."
+msgstr "The best place to share what you know and learn<br>from those that are where you want to be."
 
 #: apps/core/templates/home.html:35 templates/account/signup.html:13
 #: templates/socialaccount/signup.html:6 templates/socialaccount/signup.html:13
