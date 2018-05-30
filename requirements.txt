@@ -30,7 +30,7 @@ oauthlib==2.0.1
 packaging==16.8
 paramiko==1.12.4
 pinax-notifications==4.0.0
-psycopg2==2.5.3
+psycopg2==2.7.4
 pycrypto==2.6.1
 pylibmc==1.5.2
 pyparsing==2.2.0
