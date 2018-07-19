@@ -80,3 +80,5 @@ static/public
 /venv/
 /src
 /env/
+
+.vscode
