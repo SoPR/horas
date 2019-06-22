@@ -1,9 +1,9 @@
 language: python
 sudo: false
 python:
-  - "2.7"
+  - "3.7"
 env:
-  - AWS_ACCESS_KEY_ID='' AWS_SECRET_ACCESS_KEY='' AWS_STORAGE_BUCKET_NAME='' SECRET_KEY='dont-tell-eve' SSO_SECRET_KEY='dont-tell-eve' HORAS_DEFAULT_TZ='America/Puerto_Rico' TWITTER_API_KEY='' TWITTER_API_SECRET='' TWITTER_ACCESS_TOKEN='' TWITTER_ACCESS_TOKEN_SECRET='' BITLY_ACCESS_TOKEN=''
+  - AWS_ACCESS_KEY_ID='' AWS_SECRET_ACCESS_KEY='' AWS_STORAGE_BUCKET_NAME='' SECRET_KEY='dont-tell-eve' SSO_SECRET_KEY='dont-tell-eve' HORAS_DEFAULT_TZ='America/Puerto_Rico' TWITTER_API_KEY='' TWITTER_API_SECRET='' TWITTER_ACCESS_TOKEN='' TWITTER_ACCESS_TOKEN_SECRET=''
 install:
   - pip install -r requirements.txt
   - pip install flake8 isort

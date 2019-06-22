@@ -1,4 +1,7 @@
-FROM python:2.7
+FROM python:3.7-slim
+
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
 
 RUN apt-get update && apt-get install -y \
         libmemcached11 \
