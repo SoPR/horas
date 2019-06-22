@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.contrib.contenttypes.models import ContentType
 from django.forms import CharField, Form, ModelForm, Select, Textarea
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 from apps.comments.models import Comment
 

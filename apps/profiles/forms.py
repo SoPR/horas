@@ -2,7 +2,7 @@
 from django import forms
 from django.forms.utils import ErrorList
 from django.utils import six
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from taggit.utils import edit_string_for_tags
 
 from .fields import DAYS_OF_WEEK

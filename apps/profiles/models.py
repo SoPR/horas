@@ -7,11 +7,11 @@ from django.apps import apps
 from django.conf import settings
 from django.contrib.auth.models import AbstractUser
 from django.contrib.sites.models import Site
-from django.core.urlresolvers import reverse_lazy
+from django.urls import reverse_lazy
 from django.db import models
 from django.db.models import Q
 from django.utils.timezone import get_default_timezone, make_aware, now
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from taggit.managers import TaggableManager
 
 from .fields import DaysOfWeekField

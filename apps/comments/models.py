@@ -8,8 +8,8 @@ from ..core.models import BaseModel
 
 
 class Comment(BaseModel):
-    user = models.ForeignKey('profiles.User', related_name='users')
-    content_type = models.ForeignKey(ContentType)
+    user = models.ForeignKey('profiles.User', related_name='users', on_delete=models.CASCADE)
+    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
     object_id = models.PositiveIntegerField()
     content_object = GenericForeignKey('content_type', 'object_id')
     comment = models.TextField()

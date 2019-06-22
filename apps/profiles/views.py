@@ -1,9 +1,9 @@
 from braces.views import LoginRequiredMixin
 from django.contrib import messages
-from django.core.urlresolvers import reverse_lazy
+from django.urls import reverse_lazy
 from django.db.models import Q
 from django.utils.timezone import now
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from django.views.generic import DetailView, UpdateView
 
 from ..meetings.models import Meeting

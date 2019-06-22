@@ -1,11 +1,11 @@
 from braces.views import LoginRequiredMixin
 from django.contrib import messages
 from django.contrib.contenttypes.models import ContentType
-from django.core.urlresolvers import reverse_lazy
+from django.urls import reverse_lazy
 from django.db.models import Q
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from django.views.generic import DetailView, FormView, UpdateView
 
 from apps.comments.models import Comment

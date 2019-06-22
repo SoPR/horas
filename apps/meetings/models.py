@@ -3,7 +3,7 @@ from datetime import timedelta
 
 from django.conf import settings
 from django.contrib.sites.models import Site
-from django.core.urlresolvers import reverse_lazy
+from django.urls import reverse_lazy
 from django.db import models
 from django.utils.formats import date_format
 from django.utils.timezone import get_current_timezone, now
@@ -14,11 +14,11 @@ from .states import MeetingStateMachine
 
 
 class Meeting(BaseModel):
-    mentor = models.ForeignKey('profiles.User', related_name='mentors')
+    mentor = models.ForeignKey('profiles.User', related_name='mentors', on_delete=models.CASCADE)
     protege = models.ForeignKey('profiles.User', blank=True, null=True,
-                                related_name='proteges')
+                                related_name='proteges', on_delete=models.CASCADE)
     cancelled_by = models.ForeignKey('profiles.User', blank=True, null=True,
-                                     related_name='+')
+                                     related_name='+', on_delete=models.CASCADE)
 
     format = models.CharField(blank=True, max_length=50)
     message = models.TextField(blank=True)
