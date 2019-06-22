@@ -25,21 +25,21 @@ class ProfileDetailView(DetailView):
         meetings = (
             Meeting.objects.select_related("mentor", "protege", "cancelled_by")
             .filter(Q(mentor=profile_user) | Q(protege=profile_user))
-            .exclude(state=Meeting.STATES.DELETED)
+            .exclude(state=Meeting.STATES.DELETED.value)
         )
 
         meetings_available = meetings.filter(
-            state=Meeting.STATES.AVAILABLE, datetime__gt=now()
+            state=Meeting.STATES.AVAILABLE.value, datetime__gt=now()
         )
 
         meetings_next = meetings.filter(
-            state__in=[Meeting.STATES.RESERVED, Meeting.STATES.CONFIRMED],
+            state__in=[Meeting.STATES.RESERVED.value, Meeting.STATES.CONFIRMED.value],
             datetime__gt=now(),
         )
 
         meetings_past = meetings.filter(
             Q(datetime__lt=now())
-            | Q(state__in=[Meeting.STATES.CANCELLED, Meeting.STATES.UNUSED])
+            | Q(state__in=[Meeting.STATES.CANCELLED.value, Meeting.STATES.UNUSED.value])
         )
 
         response_object = {

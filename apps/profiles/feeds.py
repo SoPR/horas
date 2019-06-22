@@ -16,7 +16,8 @@ class ProfileCalendarFeed(ICalFeed):
             Meeting.objects.select_related("mentor", "protege")
             .filter(Q(protege__username=username) | Q(mentor__username=username))
             .filter(
-                Q(state=Meeting.STATES.RESERVED) | Q(state=Meeting.STATES.CONFIRMED)
+                Q(state=Meeting.STATES.RESERVED.value)
+                | Q(state=Meeting.STATES.CONFIRMED.value)
             )
         )
 
@@ -24,9 +25,9 @@ class ProfileCalendarFeed(ICalFeed):
         return objects
 
     def item_title(self, item):
-        if item.state == Meeting.STATES.CONFIRMED:
+        if item.state == Meeting.STATES.CONFIRMED.value:
             state = _("Confirmada")
-        elif item.state == Meeting.STATES.RESERVED:
+        elif item.state == Meeting.STATES.RESERVED.value:
             state = _("Reservada")
 
         return f"[1hora.org: {state}]: {item.mentor.get_full_name()} con {item.protege.get_full_name()}"

@@ -46,7 +46,6 @@ raven==6.10.0
 requests==2.22.0
 requests-oauthlib==1.2.0
 simplejson==3.16.0
-six==1.12.0
 sqlparse==0.3.0
 toml==0.10.0
 tweepy==3.7.0

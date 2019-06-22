@@ -4,10 +4,10 @@ from django.utils.translation import gettext_lazy as _
 DAYS_OF_WEEK = (
     (0, _("Lunes")),
     (1, _("Martes")),
-    (2, _(u"Miércoles")),
+    (2, _("Miércoles")),
     (3, _("Jueves")),
     (4, _("Viernes")),
-    (5, _(u"Sábado")),
+    (5, _("Sábado")),
     (6, _("Domingo")),
 )
 

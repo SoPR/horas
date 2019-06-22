@@ -43,7 +43,7 @@ class MeetingStatesTestCase(MeetingBaseTestCase):
         self.meeting.save()
 
         with self.assertRaises(TransitionNotAllowed):
-            self.meeting.confirm(confirmed_by=self.dude2)
+            self.meeting.confirm(confirmed_by=self.user2)
             self.meeting.save()
 
     def test_protege_can_cancel_reserved_meeting(self):
@@ -52,7 +52,7 @@ class MeetingStatesTestCase(MeetingBaseTestCase):
         self.meeting.protege = self.user2
         self.meeting.save()
 
-        self.meeting.cancel()
+        self.meeting.cancel(cancelled_by=self.user2)
         self.meeting.save()
 
         self.assertEqual(self.meeting.cancelled_by, self.user2)
@@ -63,7 +63,7 @@ class MeetingStatesTestCase(MeetingBaseTestCase):
         self.meeting.protege = self.user2
         self.meeting.save()
 
-        self.meeting.cancel()
+        self.meeting.cancel(cancelled_by=self.dude)
         self.meeting.save()
 
         self.assertEqual(self.meeting.cancelled_by, self.dude)
@@ -74,7 +74,7 @@ class MeetingStatesTestCase(MeetingBaseTestCase):
         self.meeting.protege = self.user2
         self.meeting.save()
 
-        self.meeting.cancel()
+        self.meeting.cancel(cancelled_by=self.user2)
         self.meeting.save()
 
         self.assertEqual(self.meeting.cancelled_by, self.user2)
@@ -85,7 +85,7 @@ class MeetingStatesTestCase(MeetingBaseTestCase):
         self.meeting.protege = self.user2
         self.meeting.save()
 
-        self.meeting.cancel()
+        self.meeting.cancel(cancelled_by=self.dude)
         self.meeting.save()
 
         self.assertEqual(self.meeting.cancelled_by, self.dude)
@@ -100,7 +100,7 @@ class MeetingStatesTestCase(MeetingBaseTestCase):
         )
 
         with self.assertRaises(TransitionNotAllowed):
-            self.meeting.cancel()
+            self.meeting.cancel(cancelled_by=user3)
             self.meeting.save()
 
     def test_other_user_cant_cancel_confirmed_meeting(self):
@@ -113,7 +113,7 @@ class MeetingStatesTestCase(MeetingBaseTestCase):
         )
 
         with self.assertRaises(TransitionNotAllowed):
-            self.meeting.cancel()
+            self.meeting.cancel(cancelled_by=user3)
             self.meeting.save()
 
 

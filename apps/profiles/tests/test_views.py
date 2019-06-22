@@ -48,7 +48,7 @@ class UserUpdateViewTestCase(BaseTestCase):
         self._login_user()
         data = {
             "first_name": "Juan",
-            "last_name": u"Áéíóú",
+            "last_name": "Áéíóú",
             "bio": "Bio",
             "tags": "one, two, three",
             "city": "San Juan",
@@ -76,19 +76,20 @@ class UserDetailViewTestCase(BaseTestCase):
         Meeting.objects.create(
             mentor=self.dude, protege=self.dude, datetime=now() + timedelta(days=1)
         )
+
         # Next
         Meeting.objects.create(
             mentor=self.dude,
             protege=self.dude,
             datetime=now() + timedelta(days=1),
-            state="confirmed",
+            state=Meeting.STATES.CONFIRMED.value,
         )
         # Past
         Meeting.objects.create(
             mentor=self.dude,
             protege=self.dude,
             datetime=now() - timedelta(days=1),
-            state="unused",
+            state=Meeting.STATES.UNUSED.value,
         )
 
     def test_correct_meetings_in_context_data(self):

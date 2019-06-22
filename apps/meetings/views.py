@@ -56,7 +56,7 @@ class MeetingUpdateView(LoginRequiredMixin, UpdateView):
         return get_object_or_404(
             Meeting.objects.select_related("mentor", "protege"),
             pk=self.kwargs.get("pk"),
-            state=Meeting.STATES.AVAILABLE,
+            state=Meeting.STATES.AVAILABLE.value,
             mentor__username=self.kwargs["username"],
         )
 
@@ -98,7 +98,7 @@ class MeetingConfirmView(LoginRequiredMixin, UpdateView):
             Meeting.objects.select_related("mentor", "protege"),
             pk=self.kwargs.get("pk"),
             mentor=self.request.user,
-            state=Meeting.STATES.RESERVED,
+            state=Meeting.STATES.RESERVED.value,
         )
 
     def get_success_url(self):
@@ -115,7 +115,7 @@ class MeetingCancelView(LoginRequiredMixin, UpdateView):
         if not has_transition_perm(meeting.cancel, self.request.user):
             raise PermissionDenied
 
-        meeting.cancel()
+        meeting.cancel(cancelled_by=self.request.user)
         meeting.save()
 
         return HttpResponseRedirect(self.get_success_url())
@@ -127,7 +127,8 @@ class MeetingCancelView(LoginRequiredMixin, UpdateView):
         return get_object_or_404(
             Meeting.objects.select_related("mentor", "protege"),
             Q(mentor=self.request.user) | Q(protege=self.request.user),
-            Q(state=Meeting.STATES.RESERVED) | Q(state=Meeting.STATES.CONFIRMED),
+            Q(state=Meeting.STATES.RESERVED.value)
+            | Q(state=Meeting.STATES.CONFIRMED.value),
             pk=self.kwargs.get("pk"),
         )
 

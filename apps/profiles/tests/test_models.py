@@ -113,7 +113,7 @@ class UseModelTestCase(BaseTestCase):
         self.assertEqual(self.dude.get_location(), "Los Angeles, California")
 
     def test_get_all_meeting_formats(self):
-        formats = self.dude.get_all_meeting_fromats()
+        formats = self.dude.get_all_meeting_formats()
 
         self.assertEqual(formats[0][0], "123-123-1234")
         self.assertEqual(formats[0][1], "phone")
@@ -136,8 +136,8 @@ class UseModelTestCase(BaseTestCase):
         self.assertEqual(phone, "123-123-1234")
 
     def test_get_meeting_format_name(self):
-        phone_name = self.dude.get_meeting_format_name("phone").encode("utf8")
-        self.assertEqual(phone_name, u"Teléfono".encode("utf8"))
+        phone_name = self.dude.get_meeting_format_name("phone")
+        self.assertEqual(phone_name, "Teléfono")
 
     def test_get_meeting_formats(self):
         formats = self.dude.get_meeting_formats()
@@ -147,12 +147,10 @@ class UseModelTestCase(BaseTestCase):
 
     def test_get_meeting_formats_string(self):
         expected = (
-            u"En persona (Los Angeles, California), " u"Google, Jitsi, Skype, Teléfono"
+            "En persona (Los Angeles, California), " "Google, Jitsi, Skype, Teléfono"
         )
 
-        self.assertEqual(
-            self.dude.get_meeting_formats_string(), expected.encode("utf8")
-        )
+        self.assertEqual(self.dude.get_meeting_formats_string(), expected)
 
     def test_get_or_create_meeting_should_create_if_no_meetings(self):
         self.assertEqual(Meeting.objects.all().count(), 0)

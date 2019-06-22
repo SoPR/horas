@@ -14,7 +14,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **kwargs):
         # 1. flag unused meetings
-        unused_meetings = Meeting.objects.filter(state=Meeting.STATES.AVAILABLE)
+        unused_meetings = Meeting.objects.filter(state=Meeting.STATES.AVAILABLE.value)
 
         for meeting in unused_meetings:
             if meeting.is_in_past():

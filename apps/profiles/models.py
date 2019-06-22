@@ -9,7 +9,7 @@ from django.db import models
 from django.db.models import Q
 from django.urls import reverse_lazy
 from django.utils.timezone import get_default_timezone, make_aware, now
-from django.utils.translation import gettext_lazy as _
+from django.utils.translation import gettext as _
 from taggit.managers import TaggableManager
 
 from .fields import DaysOfWeekField
@@ -80,7 +80,7 @@ class User(AbstractUser):
                 print("---> meeting preferences changed")
                 Meeting = apps.get_model("meetings", "Meeting")
                 available_meetings = Meeting.objects.filter(
-                    state=Meeting.STATES.AVAILABLE, mentor=self
+                    state=Meeting.STATES.AVAILABLE.value, mentor=self
                 )
 
                 for meeting in available_meetings:
@@ -137,7 +137,7 @@ class User(AbstractUser):
         elif self.state:
             return self.state
 
-    def get_all_meeting_fromats(self):
+    def get_all_meeting_formats(self):
         available_formats = (
             (self.phone, "phone", _("Teléfono")),
             (self.skype, "skype", _("Skype")),
@@ -152,26 +152,26 @@ class User(AbstractUser):
         return available_formats
 
     def get_meeting_format_information(self, key):
-        all_formats = self.get_all_meeting_fromats()
+        all_formats = self.get_all_meeting_formats()
         for format in all_formats:
             if key == format[1]:
                 return format[0]
         return False
 
     def get_meeting_format_name(self, key):
-        all_formats = self.get_all_meeting_fromats()
+        all_formats = self.get_all_meeting_formats()
         for format in all_formats:
             if key == format[1]:
                 return format[2]
         return False
 
     def get_meeting_formats(self):
-        all_formats = self.get_all_meeting_fromats()
+        all_formats = self.get_all_meeting_formats()
 
         output = []
         for format in all_formats:
             if format[0]:
-                output.append((format[1], format[2].encode("utf-8")))
+                output.append((format[1], format[2]))
 
         return output
 
@@ -201,9 +201,9 @@ class User(AbstractUser):
             # Getto get_or_create
             try:
                 meeting_slot = Meeting.objects.get(
-                    Q(state=Meeting.STATES.AVAILABLE)
-                    | Q(state=Meeting.STATES.RESERVED)
-                    | Q(state=Meeting.STATES.CONFIRMED),
+                    Q(state=Meeting.STATES.AVAILABLE.value)
+                    | Q(state=Meeting.STATES.RESERVED.value)
+                    | Q(state=Meeting.STATES.CONFIRMED.value),
                     mentor=self,
                     datetime__range=week,
                 )

@@ -12,7 +12,7 @@ class MeetingDetailViewTestCase(MeetingBaseTestCase):
 
     def test_available_meeting(self):
         response = self.client.get("/es/dude/meetings/1/")
-        self.assertContains(response, u"Reunión disponible", status_code=200)
+        self.assertContains(response, "Reunión disponible", status_code=200)
         self.assertContains(response, "Reservar", status_code=200)
 
     def test_reserved_meeting(self):
@@ -21,7 +21,7 @@ class MeetingDetailViewTestCase(MeetingBaseTestCase):
         self.meeting.save()
 
         response = self.client.get("/es/dude/meetings/1/")
-        self.assertContains(response, u"Reunión reservada", status_code=200)
+        self.assertContains(response, "Reunión reservada", status_code=200)
         self.assertContains(response, "icon-warning", status_code=200)
 
     def test_confirmed_meeting(self):
@@ -30,7 +30,7 @@ class MeetingDetailViewTestCase(MeetingBaseTestCase):
         self.meeting.save()
 
         response = self.client.get("/es/dude/meetings/1/")
-        self.assertContains(response, u"Reunión confirmada", status_code=200)
+        self.assertContains(response, "Reunión confirmada", status_code=200)
         self.assertContains(response, "icon-success", status_code=200)
 
     def test_cancelled_meeting(self):
@@ -39,7 +39,7 @@ class MeetingDetailViewTestCase(MeetingBaseTestCase):
         self.meeting.save()
 
         response = self.client.get("/es/dude/meetings/1/")
-        self.assertContains(response, u"Reunión cancelada", status_code=200)
+        self.assertContains(response, "Reunión cancelada", status_code=200)
         self.assertContains(response, 'icon-cancelled"', status_code=200)
 
     def test_unused_meeting(self):

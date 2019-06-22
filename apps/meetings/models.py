@@ -118,13 +118,13 @@ class Meeting(BaseModel):
     # state machine transitions
     @transition(
         field=state,
-        source=STATES.AVAILABLE,
-        target=STATES.RESERVED,
-        # permission=lambda instance, user: instance.mentor != user,
+        source=STATES.AVAILABLE.value,
+        target=STATES.RESERVED.value,
+        permission=lambda instance, user: instance.mentor != user,
     )
     def reserve(self, reserved_by):
-        # if reserved_by == self.mentor:
-        #     raise TransitionNotAllowed
+        if reserved_by == self.mentor:
+            raise TransitionNotAllowed
 
         self.protege = reserved_by
 
@@ -132,9 +132,8 @@ class Meeting(BaseModel):
 
     @transition(
         field=state,
-        # source=STATES.RESERVED,
-        source="*",
-        target=STATES.CONFIRMED,
+        source=STATES.RESERVED.value,
+        target=STATES.CONFIRMED.value,
         permission=lambda instance, user: instance.mentor == user,
     )
     def confirm(self, confirmed_by):
@@ -145,13 +144,15 @@ class Meeting(BaseModel):
 
     @transition(
         field=state,
-        # source=[STATES.RESERVED, STATES.CONFIRMED],
-        source="*",
-        target=STATES.CANCELLED,
+        source=[STATES.RESERVED.value, STATES.CONFIRMED.value],
+        target=STATES.CANCELLED.value,
         permission=lambda instance, user: user in [instance.mentor, instance.protege],
     )
-    def cancel(self, user):
-        self.cancelled_by = user
+    def cancel(self, cancelled_by):
+        if cancelled_by not in [self.mentor, self.protege]:
+            raise TransitionNotAllowed
+
+        self.cancelled_by = cancelled_by
 
         if self.cancelled_by_mentor():
             # Send message to mentee
@@ -163,10 +164,10 @@ class Meeting(BaseModel):
 
         self.mentor.get_or_create_meeting()
 
-    @transition(field=state, source=STATES.AVAILABLE, target=STATES.UNUSED)
+    @transition(field=state, source=STATES.AVAILABLE.value, target=STATES.UNUSED.value)
     def flag_unused(self):
         pass
 
-    @transition(field=state, source=STATES.AVAILABLE, target=STATES.DELETED)
+    @transition(field=state, source=STATES.AVAILABLE.value, target=STATES.DELETED.value)
     def flag_deleted(self):
         pass
