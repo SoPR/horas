@@ -61,7 +61,7 @@ class Common(Configuration):
         'apps.comments',
     )
 
-    MIDDLEWARE_CLASSES = (
+    MIDDLEWARE = [
         'djangosecure.middleware.SecurityMiddleware',
         'django.contrib.sessions.middleware.SessionMiddleware',
         'django.middleware.locale.LocaleMiddleware',
@@ -73,7 +73,7 @@ class Common(Configuration):
         'apps.core.middleware.TimezoneMiddleware',
         'apps.core.middleware.EnsureCompleteProfileMiddleware',
         'debug_toolbar.middleware.DebugToolbarMiddleware',
-    )
+    ]
 
     TEMPLATES = [
         {

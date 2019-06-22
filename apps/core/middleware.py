@@ -1,19 +1,20 @@
 import pytz
 from django.contrib import messages
-from django.core.urlresolvers import reverse_lazy
+from django.urls import reverse_lazy
 from django.http import HttpResponseRedirect
 from django.utils import timezone
-from django.utils.translation import ugettext_lazy as _
+from django.utils.deprecation import MiddlewareMixin
+from django.utils.translation import gettext_lazy as _
 
 
-class TimezoneMiddleware(object):
+class TimezoneMiddleware(MiddlewareMixin):
     def process_request(self, request):
         tzname = request.session.get('django_timezone')
 
         if tzname:
             timezone.activate(pytz.timezone(tzname))
 
-        elif request.user.is_authenticated():
+        elif request.user.is_authenticated:
             try:
                 tzname = request.user.timezone
                 timezone.activate(pytz.timezone(tzname))
@@ -23,11 +24,11 @@ class TimezoneMiddleware(object):
             timezone.deactivate()
 
 
-class EnsureCompleteProfileMiddleware(object):
+class EnsureCompleteProfileMiddleware(MiddlewareMixin):
     def process_request(self, request):
         user = request.user
 
-        if user.is_authenticated():
+        if user.is_authenticated:
             skip_urls = [
                 str(reverse_lazy('profile_update', args=[user.username])),
                 str(reverse_lazy('account_logout')),

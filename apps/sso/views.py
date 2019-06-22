@@ -20,7 +20,7 @@ def single_sign_on(request):
         if payload_sig == sig:
             # sig is valid
 
-            if request.user.is_authenticated():
+            if request.user.is_authenticated:
                 # user is authenticated
                 user = request.user
 

@@ -1,5 +1,5 @@
 from django.core.cache import cache
-from django.core.urlresolvers import reverse_lazy
+from django.urls import reverse_lazy
 from django.http import HttpResponseRedirect
 from django.views.generic.base import TemplateView
 
@@ -11,7 +11,7 @@ class HomePageView(TemplateView):
     template_name = 'home.html'
 
     def dispatch(self, *args, **kwargs):
-        if self.request.user.is_authenticated():
+        if self.request.user.is_authenticated:
             return HttpResponseRedirect(reverse_lazy('search_list'))
 
         return super(HomePageView, self).dispatch(*args, **kwargs)
