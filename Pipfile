@@ -4,6 +4,8 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
+black = "*"
+flake8 = "*"
 
 [packages]
 appdirs = "==1.4.3"
@@ -62,3 +64,6 @@ Werkzeug = "==0.15.4"
 
 [requires]
 python_version = "3.7"
+
+[pipenv]
+allow_prereleases = true
