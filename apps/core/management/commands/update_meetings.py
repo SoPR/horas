@@ -10,15 +10,16 @@ from apps.profiles.models import User
 
 
 class Command(BaseCommand):
-    help = 'Updates meeting state.'
+    help = "Updates meeting state."
 
     def handle(self, *args, **kwargs):
         # 1. flag unused meetings
-        unused_meetings = Meeting.objects.filter(state='available')
+        unused_meetings = Meeting.objects.filter(state=Meeting.STATES.AVAILABLE)
 
         for meeting in unused_meetings:
             if meeting.is_in_past():
-                meeting.get_state_info().make_transition('flag_unused')
+                meeting.flag_unused()
+                meeting.save()
 
         # 2. create all missing meetings
         users = User.objects.filter(is_active=True)

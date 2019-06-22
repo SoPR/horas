@@ -1,32 +1,28 @@
-from django.conf.urls import include, url
 from django.conf.urls.i18n import i18n_patterns
 from django.contrib import admin
+from django.urls import include, path
 from django.views.generic.base import TemplateView
 
 admin.autodiscover()
 
 urlpatterns = [
-    url(r'^api/v1/', include('apps.sso.urls')),
-    url(r'^i18n/', include('django.conf.urls.i18n')),
+    path("api/v1/", include("apps.sso.urls")),
+    path("i18n/", include("django.conf.urls.i18n")),
 ]
 
 urlpatterns += i18n_patterns(
-    url(r'^admin/', include(admin.site.urls)),
-    url(r'^accounts/', include('allauth.urls')),
-    url(r'^search/', include('apps.search.urls')),
+    path("admin/", admin.site.urls),
+    path("accounts/", include("allauth.urls")),
+    path("search/", include("apps.search.urls")),
+    path("stats/", include("apps.stats.urls")),
 
-    url(r'^stats/', include('apps.stats.urls')),
+    path("legal/", TemplateView.as_view(template_name="legal.html"), name="legal"),
+    path("about/", TemplateView.as_view(template_name="about.html"), name="about"),
+    path(
+        "contact/", TemplateView.as_view(template_name="contact.html"), name="contact"
+    ),
 
-    # This pages are in apps/core/templates
-    url(r'^legal/$', TemplateView.as_view(
-        template_name='legal.html'), name='legal'),
-    url(r'^about/$', TemplateView.as_view(
-        template_name='about.html'), name='about'),
-    url(r'^contact/$', TemplateView.as_view(
-        template_name='contact.html'), name='contact'),
-
-    url(r'^(?P<username>[^/]+)/meetings/', include('apps.meetings.urls')),
-    url(r'^(?P<username>[^/]+)/', include('apps.profiles.urls')),
-
-    url(r'^', include('apps.core.urls')),
+    path("<str:username>/", include("apps.profiles.urls")),
+    path("<str:username>/meetings/", include("apps.meetings.urls")),
+    path("", include("apps.core.urls")),
 )

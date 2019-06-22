@@ -7,18 +7,19 @@ from django.utils.timezone import now
 class StatManager(models.Manager):
     def get_range(self, name, hours=24):
         last_n_hours = [now() - timedelta(hours=hours), now()]
-        queryset = super(StatManager, self).get_query_set()
+        queryset = super().get_query_set()
         stats = queryset.filter(name=name, date_created__range=last_n_hours)
         if stats:
             return stats
         return None
 
     def get_latest(self, name):
-        queryset = super(StatManager, self).get_queryset()
+        queryset = super().get_queryset()
         stats = queryset.filter(name=name)
         if stats:
             return stats[0]
         return None
+
 
 class Stat(models.Model):
     date_created = models.DateTimeField(auto_now_add=True)
@@ -28,7 +29,7 @@ class Stat(models.Model):
     objects = StatManager()
 
     class Meta:
-        ordering = ('-date_created',)
+        ordering = ("-date_created",)
 
-    def __unicode__(self):
-        return '{0}: {1}'.format(self.name, self.count)
+    def __str__(self):
+        return "{self.name}: {self.count}"

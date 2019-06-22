@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 from datetime import datetime
 
 import pytz
@@ -7,9 +5,9 @@ from django.apps import apps
 from django.conf import settings
 from django.contrib.auth.models import AbstractUser
 from django.contrib.sites.models import Site
-from django.urls import reverse_lazy
 from django.db import models
 from django.db.models import Q
+from django.urls import reverse_lazy
 from django.utils.timezone import get_default_timezone, make_aware, now
 from django.utils.translation import gettext_lazy as _
 from taggit.managers import TaggableManager
@@ -19,16 +17,15 @@ from .utils import get_gravatar_url, next_weekday, week_range
 
 
 class User(AbstractUser):
-    '''
+    """
     Defines our custom user model.
-    '''
+    """
 
-    PRETTY_TIMEZONE_CHOICES = [('', _('--- Selecciona ---'))]
+    PRETTY_TIMEZONE_CHOICES = [("", _("--- Selecciona ---"))]
 
     for tz in pytz.common_timezones:
         now = datetime.now(pytz.timezone(tz))
-        PRETTY_TIMEZONE_CHOICES.append(
-            (tz, '%s (GMT %s)' % (tz, now.strftime('%z'))))
+        PRETTY_TIMEZONE_CHOICES.append((tz, "%s (GMT %s)" % (tz, now.strftime("%z"))))
 
     # Public profile information
     featured = models.BooleanField(default=False)
@@ -46,9 +43,11 @@ class User(AbstractUser):
     # Meeting availability
     day_of_week = DaysOfWeekField(blank=True, null=True, db_index=True)
     start_time = models.TimeField(null=True, blank=True)
-    timezone = models.CharField(max_length=255,
-                                default=settings.HORAS_DEFAULT_TZ,
-                                choices=PRETTY_TIMEZONE_CHOICES)
+    timezone = models.CharField(
+        max_length=255,
+        default=settings.HORAS_DEFAULT_TZ,
+        choices=PRETTY_TIMEZONE_CHOICES,
+    )
 
     # Kept private until meeting
     phone = models.CharField(blank=True, max_length=50)
@@ -72,50 +71,67 @@ class User(AbstractUser):
             checks = [
                 original.day_of_week != self.day_of_week,
                 original.start_time != self.start_time,
-                original.timezone != self.timezone
+                original.timezone != self.timezone,
             ]
 
             # if any field changed then we must
             # delete meetings and create a new one
             if any(checks):
-                print('---> meeting preferences changed')
-                Meeting = apps.get_model('meetings', 'Meeting')
-                available_meetings = Meeting.objects.filter(state='available',
-                                                            mentor=self)
+                print("---> meeting preferences changed")
+                Meeting = apps.get_model("meetings", "Meeting")
+                available_meetings = Meeting.objects.filter(
+                    state=Meeting.STATES.AVAILABLE, mentor=self
+                )
 
                 for meeting in available_meetings:
-                    meeting.get_state_info().make_transition('delete')
+                    meeting.flag_deleted()
+                    meeting.save()
 
                 self.get_or_create_meeting()
 
-        super(User, self).save(*args, **kwargs)
+        super().save(*args, **kwargs)
 
     def get_absolute_url(self):
-        return reverse_lazy('profile_detail', args=[self.username])
+        return reverse_lazy("profile_detail", args=[self.username])
 
     def get_url_with_domain(self):
         domain = Site.objects.get_current().domain
-        return '{0}://{1}{2}'.format(settings.PROTOCOL, domain, self.get_absolute_url())
+        return f"{settings.PROTOCOL}://{domain}{self.get_absolute_url()}"
 
     def get_tiny_name(self):
-        return '{0}. {1}'.format(self.first_name[0], self.last_name)
+        return f"{self.first_name[0]}. {self.last_name}"
 
     def has_complete_profile(self):
-        dates = all([str(self.day_of_week), str(self.start_time), self.timezone,
-                    self.city, self.state, self.bio, self.first_name, self.last_name])
+        dates = all(
+            [
+                str(self.day_of_week),
+                str(self.start_time),
+                self.timezone,
+                self.city,
+                self.state,
+                self.bio,
+                self.first_name,
+                self.last_name,
+            ]
+        )
 
-        contact = any([self.phone, self.skype,
-                      self.google, self.jitsi, self.address])
+        contact = any([self.phone, self.skype, self.google, self.jitsi, self.address])
 
         return all([dates, contact])
 
     def has_social_links(self):
-        return any([self.twitter_username, self.github_username,
-                   self.linkedin_url, self.website_url])
+        return any(
+            [
+                self.twitter_username,
+                self.github_username,
+                self.linkedin_url,
+                self.website_url,
+            ]
+        )
 
     def get_location(self):
         if self.city and self.state:
-            return u'{0}, {1}'.format(self.city, self.state)
+            return f"{self.city}, {self.state}"
         elif self.city:
             return self.city
         elif self.state:
@@ -123,14 +139,15 @@ class User(AbstractUser):
 
     def get_all_meeting_fromats(self):
         available_formats = (
-            (self.phone, 'phone', _(u'Teléfono')),
-            (self.skype, 'skype', _('Skype')),
-            (self.google, 'google', _('Google')),
-            (self.jitsi, 'jitsi', _('Jitsi')),
-            (self.address,
-             'inperson',
-             _('En persona') + u' ({0}, {1})'.format(self.city,
-                                                     self.state)),
+            (self.phone, "phone", _("Teléfono")),
+            (self.skype, "skype", _("Skype")),
+            (self.google, "google", _("Google")),
+            (self.jitsi, "jitsi", _("Jitsi")),
+            (
+                self.address,
+                "inperson",
+                _("En persona") + f" ({self.city}, {self.state})",
+            ),
         )
         return available_formats
 
@@ -154,9 +171,7 @@ class User(AbstractUser):
         output = []
         for format in all_formats:
             if format[0]:
-                output.append(
-                    (format[1], format[2].encode('utf-8'))
-                )
+                output.append((format[1], format[2].encode("utf-8")))
 
         return output
 
@@ -167,16 +182,17 @@ class User(AbstractUser):
         for format in formats:
             output.append(format[1])
 
-        return ', '.join(sorted(output))
+        return ", ".join(sorted(output))
 
     def get_or_create_meeting(self):
         if self.has_complete_profile() and self.is_active:
-            Meeting = apps.get_model('meetings', 'Meeting')
+            Meeting = apps.get_model("meetings", "Meeting")
 
             user_tz = pytz.timezone(self.timezone)
             date = next_weekday(now(), self.day_of_week)
             next_slot_local = make_aware(
-                datetime.combine(date, self.start_time), user_tz)
+                datetime.combine(date, self.start_time), user_tz
+            )
 
             default_tz = get_default_timezone()
             next_slot = next_slot_local.astimezone(default_tz)
@@ -184,20 +200,21 @@ class User(AbstractUser):
 
             # Getto get_or_create
             try:
-                meeting_slot = Meeting.objects.get(Q(state='available') |
-                                                   Q(state='reserved') |
-                                                   Q(state='confirmed'),
-                                                   mentor=self,
-                                                   datetime__range=week)
+                meeting_slot = Meeting.objects.get(
+                    Q(state=Meeting.STATES.AVAILABLE)
+                    | Q(state=Meeting.STATES.RESERVED)
+                    | Q(state=Meeting.STATES.CONFIRMED),
+                    mentor=self,
+                    datetime__range=week,
+                )
                 created = False
             except Meeting.DoesNotExist:
-                meeting_slot = Meeting.objects.create(mentor=self,
-                                                      datetime=next_slot)
+                meeting_slot = Meeting.objects.create(mentor=self, datetime=next_slot)
                 created = True
 
             # Notify user
             if created:
-                print('-> Created meeting_slot:{0}'.format(meeting_slot))
+                print(f"-> Created meeting_slot:{meeting_slot}")
 
             return meeting_slot, created
 

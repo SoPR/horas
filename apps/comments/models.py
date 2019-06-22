@@ -8,17 +8,19 @@ from ..core.models import BaseModel
 
 
 class Comment(BaseModel):
-    user = models.ForeignKey('profiles.User', related_name='users', on_delete=models.CASCADE)
+    user = models.ForeignKey(
+        "profiles.User", related_name="users", on_delete=models.CASCADE
+    )
     content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
     object_id = models.PositiveIntegerField()
-    content_object = GenericForeignKey('content_type', 'object_id')
+    content_object = GenericForeignKey("content_type", "object_id")
     comment = models.TextField()
 
-    def __unicode__(self):
-        return '{0}: {1}...'.format(self.user.first_name, self.comment[:50])
+    def __str__(self):
+        return f"{self.user.first_name,}: {self.comment[:50]}..."
 
     class Meta:
-        ordering = ('date_created',)
+        ordering = ("date_created",)
 
 
 def comment_saved(sender, instance, created, **kwargs):
@@ -35,10 +37,9 @@ def comment_saved(sender, instance, created, **kwargs):
     if created and recipient:
         notifications.send(
             [recipient],
-            'comment',
-            {'comment': instance,
-             'recipient': recipient,
-             'meeting_url': meeting_url})
+            "comment",
+            {"comment": instance, "recipient": recipient, "meeting_url": meeting_url},
+        )
 
 
 post_save.connect(comment_saved, sender=Comment)
