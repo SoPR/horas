@@ -8,14 +8,12 @@ import django_fsm
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('meetings', '0001_initial'),
-    ]
+    dependencies = [("meetings", "0001_initial")]
 
     operations = [
         migrations.AlterField(
-            model_name='meeting',
-            name='state',
-            field=django_fsm.FSMField(default='available', max_length=50),
-        ),
+            model_name="meeting",
+            name="state",
+            field=django_fsm.FSMField(default="available", max_length=50),
+        )
     ]
