@@ -43,7 +43,7 @@ $ git clone https://github.com/SoPR/horas.git
 
 # Install build dependencies
 $ cd horas/static
-$ npm install  # 'yarn' si lo tienes instalado
+$ npm install  # or 'yarn' 
 
 # Create the Docker image.
 $ cd ..
@@ -51,13 +51,6 @@ $ docker-compose build
 
 # Once the image is created you can create the container
 $ docker-compose up -d
-
-# When the containers are created and running you can then run Django manage commands
-$ docker-compose exec web python manage.py collectstatic
-
-# Django migrate and initial data load
-$ python manage.py migrate
-$ python manage.py loaddata apps/profiles/fixtures/admin.json
 ```
 
 The docker-compose.yml file contains all the configuration needed to have a running instance of Horas.
@@ -67,13 +60,14 @@ Now you can point your browser to [http://localhost:8000/](http://localhost:8000
 * username: **admin**
 * password: **abc123**
 
-#### Opción 2: Local
+#### Option 2: Local
 
-**Requisitos**
+**Requirements**
 
-- [Python 2.7](https://www.python.org/)
+- [Python 3.7](https://www.python.org/)
+- [Pipenv](https://docs.pipenv.org/en/latest/)
 - [Node.js LTS](https://nodejs.org)
-- [Yarn](https://yarnpkg.com) (opcional)
+- [Yarn](https://yarnpkg.com) (optional)
 
 ```bash
 # Clone the rep
@@ -81,21 +75,21 @@ $ git clone https://github.com/SoPR/horas.git
 
 # Install build dependencies
 $ cd horas/static
-$ npm install  # 'yarn' si lo tienes instalado
+$ npm install  # or 'yarn'
 
 # Make a copy of the .env.example file
 $ cd ..
 $ cp .env.example .env
 
 # Install Python dependencies
-$ pip install -r requirements.txt
+$ pipenv install --dev
 
 # Django migrate and initial data load
-$ python manage.py migrate
-$ python manage.py loaddata apps/profiles/fixtures/admin.json
+$ pipenv run python manage.py migrate
+$ pipenv run  python manage.py loaddata apps/profiles/fixtures/admin.json
 
-# Run the Djang server with webpack
-$ python manage.py webpackserver
+# Run the Djang server
+$ pipenv run python manage.py runserver
 ```
 
 Now you can point your browser to [http://localhost:8000/](http://localhost:8000/). To access the admin panel go to [http://localhost:8000/admin/](http://localhost:8000/admin/), and use the following credentials: 
@@ -104,10 +98,10 @@ Now you can point your browser to [http://localhost:8000/](http://localhost:8000
 * password: **abc123**
 
 ##### Mac OS users
-When installing the Python dependencies with Pip:
+When installing the Python dependencies with Pipenv:
 
 ```bash
-$ pip install -r requirements.txt
+$ pipenv install --dev
 ```
 
 It's possible to get the following error:
@@ -133,11 +127,11 @@ __Ports__
 $ sudo port install libmemcached
 ```
 
-Once installed you can go to the following step to continue: `$ pip install -r requirements.txt`.
+Once installed you can go to the following step to continue: `$ pipenv install --dev`.
 
 #### Running the Tests
 ```
-$ python manage.py test --configuration=Testing --verbosity=3 --noinput
+$ pipenv run python manage.py test --configuration=Testing --verbosity=3 --noinput
 ```
 
 ## Designers

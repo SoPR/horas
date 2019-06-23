@@ -88,14 +88,14 @@ $ cd ..
 $ cp .env.example .env
 
 # Instalar dependencias python
-$ pip install -r requirements.txt
+$ pipenv install --dev
 
 # Migración y data inicial
-$ python manage.py migrate
-$ python manage.py loaddata apps/profiles/fixtures/admin.json
+$ pipenv run python manage.py migrate
+$ pipenv run python manage.py loaddata apps/profiles/fixtures/admin.json
 
-# Correr server de django y webpack --watch
-$ python manage.py webpackserver
+# Correr server de django 
+$ pipenv run python manage.py runserver
 ```
 
 Abre tu browser en [http://localhost:8000/](http://localhost:8000/). Para accesar la sección de administración ve a [http://localhost:8000/admin/](http://localhost:8000/admin/), y usa el username **admin** y el password **abc123**.
@@ -104,7 +104,7 @@ Abre tu browser en [http://localhost:8000/](http://localhost:8000/). Para accesa
 Durante la instalacion de los requerimientos con pip:
 
 ```bash
-$ pip install -r requirements.txt
+$ pipenv install --dev
 ```
 Es posible que se encuentren con este error:
 
@@ -129,11 +129,11 @@ __Ports__
 $ sudo port install libmemcached
 ```
 
-Una vez hecho esto pueden volver al paso ```$ pip install -r requirements.txt``` y continuar con las instrucciones.
+Una vez hecho esto pueden volver al paso ```$ pipenv install --dev``` y continuar con las instrucciones.
 
 #### Para correr tests
 ```
-$ python manage.py test --configuration=Testing --verbosity=3 --noinput
+$ pipenv run python manage.py test --configuration=Testing --verbosity=3 --noinput
 ```
 
 ## Diseñadores
