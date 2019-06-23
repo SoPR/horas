@@ -122,7 +122,7 @@ class Common(Configuration):
     # Database
     # https://docs.djangoproject.com/en/dev/ref/settings/#databases
     DATABASES = values.DatabaseURLValue(
-        "sqlite:///{}".format(os.path.join(BASE_DIR, "db.sqlite3"))
+        "sqlite://{}".format(os.path.join(BASE_DIR, "db.sqlite3"))
     )
 
     # Internationalization
@@ -163,7 +163,7 @@ class Development(Common):
 
     PROTOCOL = "http"
 
-    Common.ALLOWED_HOSTS += ["127.0.0.1", "localhost"]
+    Common.ALLOWED_HOSTS += ["127.0.0.1", "localhost", "0.0.0.0"]
 
     INSTALLED_APPS = Common.INSTALLED_APPS + ("debug_toolbar",)
 
@@ -232,9 +232,8 @@ class Production(Common):
 
     CACHES = {
         "default": {
-            "BACKEND": "django_pylibmc.memcached.PyLibMCCache",
-            "TIMEOUT": 1000,
-            "BINARY": True,
-            "OPTIONS": {"tcp_nodelay": True, "remove_failed": 4},
+            "BACKEND": "django.core.cache.backends.memcached.PyLibMCCache",
+            "LOCATION": "127.0.0.1:11211",
+            "OPTIONS": {"binary": True},
         }
     }
