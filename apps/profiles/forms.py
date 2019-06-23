@@ -62,8 +62,7 @@ TIME_CHOICES = (
 class TagWidget(forms.Textarea):
     def render(self, name, value, attrs=None, renderer=None):
         if value is not None and not isinstance(value, str):
-            tags = [o.tag for o in value.select_related("tag")]
-            value = edit_string_for_tags(tags)
+            value = edit_string_for_tags(value)
         return super().render(name, value, attrs, renderer)
 
 
