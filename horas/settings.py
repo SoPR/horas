@@ -194,6 +194,8 @@ class Testing(Common):
 
     ANNOUNCE_TEST_MODE = True
 
+    DATABASES = {"default": {"ENGINE": "django.db.backends.sqlite3", "NAME": "testdb"}}
+
 
 class Production(Common):
     INSTALLED_APPS = Common.INSTALLED_APPS + ("raven.contrib.django.raven_compat",)
