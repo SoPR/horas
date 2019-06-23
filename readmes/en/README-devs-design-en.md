@@ -13,34 +13,7 @@ Please take a look at our [issue list](https://github.com/SoPR/horas/issues) for
 
 There's a couple of ways to run this project locally:
 
-#### Option 1: Vagrant
-You need to have installed [VirtualBox](https://www.virtualbox.org/) and [Vagrant](http://www.vagrantup.com/). Both are simple to install, free, and available in multiple platforms. This is probably the easiest option for new collaborators.
-
-#### Steps
-
-1. Clone the [SoPR/horas](https://github.com/SoPR/horas) repo and create the Vagrant instance:
-
-```bash
-$ git clone https://github.com/SoPR/horas.git
-$ cd horas
-$ vagrant up
-```
-
-2. Connect to the Vagrant instance and run the project:
-
-```bash
-$ vagrant ssh
-$ cd horas
-$ runhoras
-```
-
-Now you can point your browser to [http://localhost:8000/](http://localhost:8000/). To access the admin panel go to [http://localhost:8000/admin/](http://localhost:8000/admin/), and use the following credentials: 
-
-* username: **admin**
-* password: **abc123**
-
-
-#### Option 2: Docker
+#### Option 1: Docker
 
 **Installation**
 
@@ -94,7 +67,7 @@ Now you can point your browser to [http://localhost:8000/](http://localhost:8000
 * username: **admin**
 * password: **abc123**
 
-#### Opción 3: Local
+#### Opción 2: Local
 
 **Requisitos**
 

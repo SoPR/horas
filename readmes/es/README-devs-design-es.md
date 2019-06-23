@@ -14,28 +14,9 @@ Si necesitas ideas de como ayudar puede ver la lista de tareas pendientes.
 
 ### Para correr el proyecto
 
-Hay dos opciones para correr el proyecto la primera usando Vagrant y la segunda instalando en tu ambiente local.
+Hay dos opciones para correr el proyecto, la primera usando Docker y la segunda instalandolo en tu ambiente local.
 
-#### Opción 1: Vagrant
-Para esta opción debes tener instalado [VirtualBox](https://www.virtualbox.org/) y [Vagrant](http://www.vagrantup.com/). Ambos son fáciles de instalar, gratis y disponibles para varias plataformas. Esta es la opción recomendada para colaboradores nuevos.
-
-```bash
-$ git clone https://github.com/SoPR/horas.git
-$ cd horas
-$ vagrant up
-```
-Este paso tomará varios minutos dependiendo de su conexión de internet. Luego.
-
-```bash
-$ vagrant ssh
-$ cd horas
-$ runhoras
-```
-
-Abre tu browser en [http://localhost:8000/](http://localhost:8000/). Para accesar la sección de administración ve a [http://localhost:8000/admin/](http://localhost:8000/admin/), y usa el username **admin** y el password **abc123**.
-
-
-#### Opción 2: Docker
+#### Opción 1: Docker
 
 **Instalación**
 
@@ -86,7 +67,7 @@ El archivo docker-compose.yml contiene toda la configuración de los servicios d
 
 Abre tu browser en [http://localhost:8000/](http://localhost:8000/). Para accesar la sección de administración ve a [http://localhost:8000/admin/](http://localhost:8000/admin/), y usa el username **admin** y el password **abc123**.
 
-#### Opción 3: Local
+#### Opción 2: Local
 
 **Requisitos**
 
