@@ -54,7 +54,7 @@ sqlparse = "==0.3.0"
 toml = "==0.10.0"
 urllib3 = "==1.25.3"
 Collectfast = "==0.2.0"
-Django = "==2.0.13"
+Django = "==2.2"
 PySocks = "==1.7.0"
 Werkzeug = "==0.15.4"
 
