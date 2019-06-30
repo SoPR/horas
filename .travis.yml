@@ -11,4 +11,5 @@ install:
 script:
   - pipenv run black --check .
   - pipenv run flake8 horas --ignore=E501
+  - pipenv check
   - pipenv run python manage.py test --configuration=Testing --verbosity=3 --noinput

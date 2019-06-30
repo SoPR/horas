@@ -22,8 +22,6 @@ if [ "$1" = 'serve' ]; then
   done
 
   echo "==> Running migrations..."
-  pwd
-  ls static
   python manage.py collectstatic --noinput
   python manage.py migrate
   python manage.py loaddata apps/profiles/fixtures/admin.json
