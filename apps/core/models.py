@@ -9,10 +9,10 @@ class DateTimeCreatedField(models.DateTimeField):
     """
 
     def __init__(self, *args, **kwargs):
-        kwargs.setdefault('editable', False)
-        kwargs.setdefault('blank', True)
-        kwargs.setdefault('default', now)
-        super(DateTimeCreatedField, self).__init__(*args, **kwargs)
+        kwargs.setdefault("editable", False)
+        kwargs.setdefault("blank", True)
+        kwargs.setdefault("default", now)
+        super().__init__(*args, **kwargs)
 
     def get_internal_type(self):
         return "DateTimeField"
@@ -38,10 +38,11 @@ class BaseModel(models.Model):
         - date_created
         - date_modified
     """
+
     date_created = DateTimeCreatedField()
     date_modified = DateTimeModifiedField()
 
     class Meta:
-        get_latest_by = 'date_modified'
-        ordering = ('-date_modified', '-date_created',)
+        get_latest_by = "date_modified"
+        ordering = ("-date_modified", "-date_created")
         abstract = True

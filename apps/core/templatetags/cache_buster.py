@@ -18,22 +18,22 @@ class CacheBusterTag(template.Node):
 
     @staticmethod
     def _get_buster():
-        if settings.ENVIRONMENT == 'development':
+        if settings.ENVIRONMENT == "development":
             return int(time.time())
         else:
-            ref = os.getenv('HEAD_COMMIT_ID')
+            ref = os.getenv("HEAD_COMMIT_ID")
 
             if ref:
                 # Use the first 7 chars of SHA like git log pretty format
                 short_ref = ref[:7]
-                return unicode(short_ref)
+                return str(short_ref)
             else:
                 # Missing HEAD_COMMIT_ID environment variable
-                return 'BAD_HEAD_COMMIT_ID'
+                return "BAD_HEAD_COMMIT_ID"
 
     @staticmethod
     def get_head_cached():
-        if settings.ENVIRONMENT == 'development' or not CacheBusterTag.head:
+        if settings.ENVIRONMENT == "development" or not CacheBusterTag.head:
             CacheBusterTag.head = CacheBusterTag._get_buster()
         return CacheBusterTag.head
 

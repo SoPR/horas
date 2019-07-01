@@ -1,23 +1,35 @@
-# Horas basic configs
-export ENVIRONMENT=${ENVIRONMENT:-"development"}
-export SECRET_KEY=${SECRET_KEY:-"dont-tell-eve"}
-export SSO_SECRET_KEY=${SSO_SECRET_KEY:-"dont-tell-eve"}
-export HORAS_DEFAULT_TZ=${HORAS_DEFAULT_TZ:-"America/New_York"}
-export DEFAULT_FROM_EMAIL=${DEFAULT_FROM_EMAIL:-"admin@example.com"}
-export DATABASE_URL=${DATABASE_URL:-"postgres://db:5432"}
+#!/bin/ash
 
-#
-# PSA: DO NOT COMMIT THIS FILE WITH YOUR CREDENTIALS :)
-#
+set -e
 
-# Put your AWS credentials here. 
-export AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID:-""}
-export AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY:-""}
-export AWS_STORAGE_BUCKET_NAME=${AWS_STORAGE_BUCKET_NAME:-""}
+postgres_ready(){
+python manage.py shell << END
+import sys
+import psycopg2
+from django.db import connections
+try:
+    connections['default'].cursor()
+except psycopg2.OperationalError:
+    sys.exit(-1)
+sys.exit(0)
+END
+}
 
-# Memcache configuration
-export MEMCACHIER_SERVERS=${MEMCACHIER_SERVERS:-""}
-export MEMCACHIER_USERNAME=${MEMCACHIER_USERNAME:-""}
-export MEMCACHIER_PASSWORD=${MEMCACHIER_PASSWORD:-""}
+if [ "$1" = 'serve' ]; then
+  until postgres_ready; do
+    >&2 echo "==> Waiting for Postgres..."
+    sleep 1
+  done
 
-gunicorn --bind=${BIND_ADDRESS:-0.0.0.0:8000} --workers=${WORKERS:-3} horas.wsgi
+  echo "==> Running migrations..."
+  python manage.py collectstatic --noinput
+  python manage.py migrate
+  python manage.py loaddata apps/profiles/fixtures/admin.json
+
+  echo "==> Running gunicorn server..."
+  gunicorn --bind=${BIND_ADDRESS:-0.0.0.0:8000} --workers=${WORKERS:-3} horas.wsgi
+else
+  exec "$@"
+fi
+
+

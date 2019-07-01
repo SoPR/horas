@@ -4,8 +4,8 @@ from .models import Stat
 
 
 class StatAdmin(admin.ModelAdmin):
-    list_display = ('name', 'count', 'date_created')
-    list_filter = ('name',)
+    list_display = ("name", "count", "date_created")
+    list_filter = ("name",)
 
 
 admin.site.register(Stat, StatAdmin)

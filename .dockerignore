@@ -10,7 +10,6 @@ Dockerfile
 
 Procfile
 TODO.md
-Vagrantfile
 
 *.db
 *.sqlite3

@@ -23,23 +23,41 @@ class CustomUserCreationForm(UserCreationForm):
         except User.DoesNotExist:
             return username
         raise forms.ValidationError(
-            self.error_messages['duplicate_username'],
-            code='duplicate_username',
+            self.error_messages["duplicate_username"], code="duplicate_username"
         )
 
 
 class CustomUserAdmin(UserAdmin):
     form = CustomUserChangeForm
-    list_filter = ('is_superuser', 'is_staff', 'is_active', 'featured')
+    list_filter = ("is_superuser", "is_staff", "is_active", "featured")
     add_form = CustomUserCreationForm
     fieldsets = UserAdmin.fieldsets + (
-        ('Profile', {
-            'fields': ('featured', 'bio', 'city', 'state', 'twitter_username',
-                       'facebook_username', 'github_username', 'website_url',
-                       'gravatar_url', 'is_gravatar_verified', 'day_of_week',
-                       'start_time', 'phone', 'skype', 'google',
-                       'jitsi', 'address', 'tags', 'timezone')
-        }),
+        (
+            "Profile",
+            {
+                "fields": (
+                    "featured",
+                    "bio",
+                    "city",
+                    "state",
+                    "twitter_username",
+                    "facebook_username",
+                    "github_username",
+                    "website_url",
+                    "gravatar_url",
+                    "is_gravatar_verified",
+                    "day_of_week",
+                    "start_time",
+                    "phone",
+                    "skype",
+                    "google",
+                    "jitsi",
+                    "address",
+                    "tags",
+                    "timezone",
+                )
+            },
+        ),
     )
 
 

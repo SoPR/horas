@@ -1,8 +1,5 @@
 # Created by http://www.gitignore.io
 
-# Vagrant
-.vagrant
-
 ### OSX ###
 .DS_Store
 .AppleDouble
@@ -42,6 +39,10 @@ var/
 .installed.cfg
 *.egg
 static_src/
+static/admin
+static/debug_toolbar
+static/django_extensions
+static/facebook
 
 # Installer logs
 pip-log.txt

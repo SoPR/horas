@@ -1,7 +1,5 @@
-from django.conf.urls import url
+from django.urls import re_path
 
 from .views import StatsView
 
-urlpatterns = [
-    url('^$', StatsView.as_view(), name='stats'),
-]
+urlpatterns = [re_path("^$", StatsView.as_view(), name="stats")]
