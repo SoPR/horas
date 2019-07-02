@@ -56,7 +56,8 @@ Collectfast = "==0.6.2"
 Django = "==2.2.2"
 PySocks = "==1.7.0"
 Werkzeug = "==0.15.4"
-pycryptodome = "*"
+pycryptodome = "==3.8.2"
+pylibmc = "==1.6.0"
 
 [requires]
 python_version = "3.7"
