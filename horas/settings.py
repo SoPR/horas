@@ -225,33 +225,4 @@ class Production(Common):
     # cached sessions
     SESSION_ENGINE = "django.contrib.sessions.backends.cached_db"
 
-    # Memcache setup
-    memcachier_servers = os.environ.get("MEMCACHIER_SERVERS", "")
-    memcachier_username = os.environ.get("MEMCACHIER_USERNAME", "")
-    memcachier_password = os.environ.get("MEMCACHIER_PASSWORD", "")
-
-    CACHES = {
-        "default": {
-            "BACKEND": "django.core.cache.backends.memcached.PyLibMCCache",
-            "TIMEOUT": None,
-            "LOCATION": memcachier_servers,
-            "OPTIONS": {
-                "binary": True,
-                "username": memcachier_username,
-                "password": memcachier_password,
-                "behaviors": {
-                    "no_block": True,
-                    "tcp_nodelay": True,
-                    "tcp_keepalive": True,
-                    "connect_timeout": 2000,  # ms
-                    "send_timeout": 750 * 1000,  # us
-                    "receive_timeout": 750 * 1000,  # us
-                    "_poll_timeout": 2000,  # ms
-                    "ketama": True,
-                    "remove_failed": 1,
-                    "retry_timeout": 2,
-                    "dead_timeout": 30,
-                },
-            },
-        }
-    }
+    CACHES = {"default": {"BACKEND": "django.core.cache.backends.locmem.LocMemCache"}}
