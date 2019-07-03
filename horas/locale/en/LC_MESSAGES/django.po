@@ -560,7 +560,7 @@ msgstr ""
 "All this information will remain private until you comfir a meeting. When you confirm a meeting we will only share "
 "the information that is applicable for the meeting format. For example if the user asks for a meeting using Skype "
 "we will only share your Skype contact information."
-"All other information will remain private." 
+"All other information will remain private."
 
 #: apps/profiles/templates/profiles/user_form.html:214
 msgid "Tus horas"
@@ -1028,12 +1028,12 @@ msgstr ""
 #: templates/pinax/notifications/cancelled_by_mentor/notice.html:1
 #, python-format
 msgid "%(mentor_name)s acaba de cancelar la reunión que tenian pautada."
-msgstr "%(mentor_name)s just cancled the meeting you had scheduled."
+msgstr "%(mentor_name)s just canceled the meeting you had scheduled."
 
 #: templates/pinax/notifications/cancelled_by_mentor/short.txt:1
 #: templates/pinax/notifications/cancelled_by_protege/short.txt:1
 msgid "Reunión cancelada."
-msgstr "Meeting cancled."
+msgstr "Meeting canceled."
 
 #: templates/pinax/notifications/cancelled_by_protege/full.html:5
 #, python-format
@@ -1051,9 +1051,9 @@ msgstr ""
 "\n"
 "        Hello %(mentor_name)s,\n"
 "\n"
-"        <p>%(protege_name)s just cancled the meeting you had scheduled for "
+"        <p>%(protege_name)s just canceled the meeting you had scheduled for "
 "%(the_date)s @ %(the_time)s. You will receive a notification with the new "
-"meeeting space that we will create for you.</p>\n"
+"meeting space that we will create for you.</p>\n"
 "\n"
 "        <p>- <a href=\"https://1hora.org\">1hora.org</a></p>\n"
 "    "
@@ -1074,9 +1074,9 @@ msgstr ""
 "\n"
 "        Hello %(mentor_name)s,\n"
 "\n"
-"        %(protege_name)s just cancled the meeting you had scheduled for "
+"        %(protege_name)s just canceled the meeting you had scheduled for "
 "%(the_date)s @ %(the_time)s. You will receive a notification with the new "
-"meeeting space that we will create for you.\n"
+"meeting space that we will create for you.\n"
 "\n"
 "        - 1hora.org\n"
 "    "
