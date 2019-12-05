@@ -21,7 +21,9 @@ class UpdateMeetingsCommandTestCase(MeetingBaseTestCase):
 
         self.assertEqual(Meeting.objects.get(pk=m.id).state, "unused")
         self.assertEqual(Meeting.objects.filter(state="unused").count(), 1)
-        self.assertEqual(Meeting.objects.filter(state="available").count(), 1)
+
+        # An available meeting was get-or-create'd
+        self.assertEqual(Meeting.objects.filter(state="available").count(), 2)
 
     def test_should_create_missing_meetings(self):
         Meeting.objects.all().delete()
